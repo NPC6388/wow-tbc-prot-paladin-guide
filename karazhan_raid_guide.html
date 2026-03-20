@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karazhan Prot Paladin Tanking Guide - TBC</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: #0d1117;
+        }
+        .container {
+            background: #161b22;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #f0a500;
+            text-align: center;
+            border-bottom: 3px solid #f0a500;
+            padding-bottom: 10px;
+            font-size: 1.8em;
+        }
+        h2 {
+            color: #58a6ff;
+            border-left: 4px solid #58a6ff;
+            padding-left: 15px;
+            margin-top: 30px;
+            font-size: 1.4em;
+        }
+        h3 {
+            color: #ffffff;
+            background: #21262d;
+            margin-top: 20px;
+            padding: 8px 12px;
+            border-left: 4px solid #58a6ff;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        h4 {
+            color: #c9d1d9;
+            margin-top: 12px;
+            margin-bottom: 4px;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: #21262d;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border: 1px solid #30363d;
+            column-count: 2;
+            column-gap: 30px;
+        }
+        .toc ul { list-style-type: none; padding-left: 0; }
+        .toc ul ul { padding-left: 15px; list-style-type: disc; color: #8b949e; }
+        .toc a { color: #58a6ff; text-decoration: none; font-size: 0.9em; }
+        .toc a:hover { text-decoration: underline; }
+        .toc li { margin: 2px 0; }
+
+        /* Boss cards */
+        .boss-card {
+            background: linear-gradient(135deg, #c0392b 0%, #7b241c 100%);
+            color: white;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .boss-card h3 {
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid #f0a500;
+            color: #f0a500;
+            margin-top: 0;
+        }
+        .boss-card h4 { color: #ffd700; }
+        .boss-card ul { margin-left: 20px; margin-bottom: 8px; }
+        .boss-card li { margin: 3px 0; }
+
+        /* Trash section cards */
+        .trash-card {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .trash-card h4 { color: #ff7b72; margin-top: 0; }
+        .trash-card ul { margin-left: 20px; }
+        .trash-card li { margin: 2px 0; font-size: 0.95em; }
+
+        /* Tip / Warning / Pally tip boxes */
+        .warning {
+            background: #3d2e00;
+            border: 1px solid #5c4a00;
+            color: #f0c000;
+            padding: 12px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+        .tip {
+            background: #0d3330;
+            border: 1px solid #1a5550;
+            color: #58d6c8;
+            padding: 12px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+        .pally-tip {
+            background: linear-gradient(135deg, #2a1f00 0%, #1a1500 100%);
+            border: 1px solid #f0a500;
+            color: #f0d080;
+            padding: 12px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+        .pally-tip::before { content: "Prot Pally: "; font-weight: bold; }
+
+        /* Ability tags */
+        .ability {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        .magic { color: #71a6fc; }
+        .physical { color: #ff7b72; }
+        .shadow { color: #bf7fff; }
+        .fire { color: #ff6b35; }
+        .holy { color: #fff44f; }
+        .nature { color: #7fff7f; }
+        .arcane { color: #c8a2ff; }
+        .frost { color: #87ceeb; }
+
+        /* Map styles */
+        .map-container {
+            background: #0d1117;
+            border: 2px solid #30363d;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.3;
+            white-space: pre;
+            color: #8b949e;
+        }
+        .map-container .boss-marker { color: #ff4444; font-weight: bold; }
+        .map-container .area-label { color: #58a6ff; }
+        .map-container .path { color: #3d8c40; }
+        .map-container .wall { color: #555; }
+
+        /* Route indicator */
+        .route-step {
+            display: inline-block;
+            background: #238636;
+            color: white;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.85em;
+            margin-right: 6px;
+        }
+
+        /* Quick reference tables */
+        .combat-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        .combat-table th, .combat-table td {
+            border: 1px solid #30363d;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        .combat-table th {
+            background-color: #238636;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+        .combat-table tr:nth-child(even) { background-color: #21262d; }
+        .combat-table tr:nth-child(odd) { background-color: #161b22; }
+
+        /* Collapsible sections */
+        details { margin: 5px 0; }
+        summary {
+            cursor: pointer;
+            padding: 8px 12px;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            color: #58a6ff;
+            font-weight: bold;
+        }
+        summary:hover { background: #292e36; }
+        details[open] summary { border-radius: 4px 4px 0 0; }
+        details > div {
+            border: 1px solid #30363d;
+            border-top: none;
+            padding: 12px;
+            border-radius: 0 0 4px 4px;
+        }
+
+        /* Sticky sidebar nav for second monitor use */
+        @media (min-width: 900px) {
+            .quick-nav {
+                position: fixed;
+                right: 15px;
+                top: 15px;
+                background: #21262d;
+                border: 1px solid #30363d;
+                border-radius: 8px;
+                padding: 10px;
+                max-height: 90vh;
+                overflow-y: auto;
+                width: 180px;
+                font-size: 0.8em;
+                z-index: 1000;
+            }
+            .quick-nav a {
+                display: block;
+                color: #58a6ff;
+                text-decoration: none;
+                padding: 3px 5px;
+                border-radius: 3px;
+            }
+            .quick-nav a:hover { background: #292e36; }
+            .quick-nav .nav-boss { font-weight: bold; color: #ff7b72; }
+            .quick-nav .nav-header {
+                color: #f0a500;
+                font-weight: bold;
+                border-bottom: 1px solid #30363d;
+                padding-bottom: 4px;
+                margin-bottom: 4px;
+            }
+            body { margin-right: 200px; }
+        }
+
+        /* Phase tags */
+        .phase-tag {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            padding: 1px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            margin-left: 8px;
+        }
+
+        /* Skull/CC markers */
+        .skull { color: #ff4444; }
+        .cross { color: #ff4444; }
+        .moon { color: #c8c8ff; }
+        .square { color: #4488ff; }
+        .diamond { color: #ff88ff; }
+        .triangle { color: #44ff44; }
+
+        /* Print friendly */
+        @media print {
+            body { background: white; color: black; }
+            .quick-nav { display: none; }
+            .boss-card { background: #f0f0f0; color: black; border: 2px solid #c0392b; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sticky Quick-Nav Sidebar -->
+<div class="quick-nav">
+    <div class="nav-header">Quick Nav</div>
+    <a href="#map">Map & Route</a>
+    <a href="#quick-ref">Quick Reference</a>
+    <hr style="border-color:#30363d; margin:4px 0;">
+    <a class="nav-boss" href="#attumen">Attumen</a>
+    <a href="#attumen-trash">- Trash</a>
+    <a class="nav-boss" href="#moroes">Moroes</a>
+    <a href="#moroes-trash">- Trash</a>
+    <a class="nav-boss" href="#maiden">Maiden</a>
+    <a href="#maiden-trash">- Trash</a>
+    <a class="nav-boss" href="#opera">Opera Event</a>
+    <a href="#opera-trash">- Trash</a>
+    <a class="nav-boss" href="#curator">Curator</a>
+    <a href="#curator-trash">- Trash</a>
+    <a class="nav-boss" href="#shade">Shade of Aran</a>
+    <a href="#shade-trash">- Trash</a>
+    <a class="nav-boss" href="#illhoof">Illhoof</a>
+    <a class="nav-boss" href="#netherspite">Netherspite</a>
+    <a href="#netherspite-trash">- Trash</a>
+    <a class="nav-boss" href="#chess">Chess</a>
+    <a class="nav-boss" href="#prince">Prince</a>
+    <a href="#prince-trash">- Trash</a>
+    <a class="nav-boss" href="#nightbane">Nightbane</a>
+    <a class="nav-boss" href="#animal-bosses">Animal Bosses</a>
+    <a href="#references" style="border-top:1px solid #30363d; margin-top:6px; padding-top:6px;">References</a>
+</div>
+
+<div class="container">
+<h1>Karazhan - Prot Paladin Tanking Guide</h1>
+<p style="text-align:center; color:#8b949e; margin-bottom:5px;">TBC Classic &bull; 10-Man Raid &bull; Level 70 &bull; Attunement Required</p>
+<p style="text-align:center; color:#8b949e; font-size:0.85em;">Quick-reference for tanking every trash pack and boss. Keep this up on your second monitor.</p>
+
+<!-- ==================== TABLE OF CONTENTS ==================== -->
+<div class="toc">
+<ul>
+    <li><a href="#map"><strong>Map & Route</strong></a></li>
+    <li><a href="#quick-ref"><strong>Boss Quick Reference Table</strong></a></li>
+    <li><a href="#general"><strong>General Prot Paladin Tips</strong></a></li>
+    <li><a href="#attumen"><strong>1. Attumen the Huntsman</strong></a>
+        <ul><li><a href="#attumen-trash">Stables Trash</a></li></ul>
+    </li>
+    <li><a href="#moroes"><strong>2. Moroes</strong></a>
+        <ul><li><a href="#moroes-trash">Banquet Hall Trash</a></li></ul>
+    </li>
+    <li><a href="#maiden"><strong>3. Maiden of Virtue</strong></a>
+        <ul><li><a href="#maiden-trash">Guest Chambers Trash</a></li></ul>
+    </li>
+    <li><a href="#opera"><strong>4. Opera Event</strong></a>
+        <ul><li><a href="#opera-trash">Opera Hall Trash</a></li></ul>
+    </li>
+    <li><a href="#curator"><strong>5. The Curator</strong></a>
+        <ul><li><a href="#curator-trash">Broken Stair / Menagerie Trash</a></li></ul>
+    </li>
+    <li><a href="#shade"><strong>6. Shade of Aran</strong></a>
+        <ul><li><a href="#shade-trash">Guardian's Library Trash</a></li></ul>
+    </li>
+    <li><a href="#illhoof"><strong>7. Terestian Illhoof</strong></a></li>
+    <li><a href="#netherspite"><strong>8. Netherspite</strong></a>
+        <ul><li><a href="#netherspite-trash">Netherspite Trash</a></li></ul>
+    </li>
+    <li><a href="#chess"><strong>9. Chess Event</strong></a></li>
+    <li><a href="#prince"><strong>10. Prince Malchezaar</strong></a>
+        <ul><li><a href="#prince-trash">Prince's Tower Trash</a></li></ul>
+    </li>
+    <li><a href="#nightbane"><strong>11. Nightbane</strong></a></li>
+    <li><a href="#animal-bosses"><strong>12. Animal Bosses (Optional)</strong></a></li>
+    <li><a href="#references"><strong>References &amp; Sources</strong></a></li>
+</ul>
+</div>
+
+<!-- ==================== MAP & ROUTE ==================== -->
+<h2 id="map">Map & Route Through Karazhan</h2>
+
+<p>Karazhan is a vertical tower. You enter at the bottom and work your way up. The standard route is shown below.</p>
+
+<h3>Standard Clear Order</h3>
+<p>
+<span class="route-step">1</span> <a href="#attumen">Attumen the Huntsman</a> (Stables, ground floor) &rarr;
+<span class="route-step">2</span> <a href="#moroes">Moroes</a> (Banquet Hall) &rarr;
+<span class="route-step">3</span> <a href="#maiden">Maiden of Virtue</a> (Guest Chambers, side wing) &rarr;
+<span class="route-step">4</span> <a href="#opera">Opera Event</a> (Opera Hall, back entrance) &rarr;
+<span class="route-step">5</span> <a href="#nightbane">Nightbane</a> (Master's Terrace, if attuned - optional) &rarr;
+<span class="route-step">6</span> <a href="#curator">The Curator</a> (Menagerie, up the Broken Stair) &rarr;
+<span class="route-step">7</span> <a href="#shade">Shade of Aran</a> (Guardian's Library) &rarr;
+<span class="route-step">8</span> <a href="#illhoof">Terestian Illhoof</a> (off the Library hallway) &rarr;
+<span class="route-step">9</span> <a href="#netherspite">Netherspite</a> (side room past Library) &rarr;
+<span class="route-step">10</span> <a href="#chess">Chess Event</a> (Gamesman's Hall) &rarr;
+<span class="route-step">11</span> <a href="#prince">Prince Malchezaar</a> (Netherspace, top of tower)
+</p>
+
+<h3>Tower Layout (Floor-by-Floor)</h3>
+
+<svg viewBox="0 0 800 1750" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:800px; margin:0 auto; display:block; background:#0d1117; border:2px solid #30363d; border-radius:8px;">
+  <defs>
+    <!-- Boss marker glow -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Route arrow marker -->
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="4" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3d8c40"/>
+    </marker>
+    <!-- Shortcut arrow -->
+    <marker id="shortcut-arrow" markerWidth="8" markerHeight="6" refX="4" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f0a500"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" fill="#f0a500" font-size="20" font-weight="bold" font-family="Segoe UI, sans-serif">KARAZHAN TOWER MAP</text>
+  <text x="400" y="55" text-anchor="middle" fill="#8b949e" font-size="12" font-family="Segoe UI, sans-serif">Bottom to Top &bull; Standard Clear Route Shown in Green</text>
+
+  <!-- ============ ENTRANCE ============ -->
+  <rect x="290" y="1670" width="220" height="50" rx="5" fill="none" stroke="#555" stroke-width="2"/>
+  <text x="400" y="1692" text-anchor="middle" fill="#8b949e" font-size="13" font-family="Segoe UI, sans-serif">ENTRANCE / GATEHOUSE</text>
+  <text x="400" y="1710" text-anchor="middle" fill="#6e7681" font-size="10" font-family="Segoe UI, sans-serif">Berthold the Doorman (teleport after Aran dies)</text>
+  <!-- Entrance icon -->
+  <rect x="380" y="1720" width="40" height="12" rx="2" fill="#3d8c40"/>
+  <text x="400" y="1730" text-anchor="middle" fill="white" font-size="8" font-weight="bold" font-family="Segoe UI, sans-serif">DOOR</text>
+
+  <!-- Route line: Entrance to Stables -->
+  <line x1="400" y1="1670" x2="400" y2="1620" stroke="#3d8c40" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
+
+  <!-- ============ LIVERY STABLES ============ -->
+  <rect x="260" y="1530" width="280" height="90" rx="8" fill="#1a1e24" stroke="#30363d" stroke-width="2"/>
+  <text x="400" y="1552" text-anchor="middle" fill="#58a6ff" font-size="14" font-weight="bold" font-family="Segoe UI, sans-serif">THE LIVERY STABLES</text>
+  <text x="400" y="1570" text-anchor="middle" fill="#6e7681" font-size="10" font-family="Segoe UI, sans-serif">Spectral Chargers, Stallions, Stable Hands</text>
+  <!-- Boss 1 -->
+  <circle cx="400" cy="1596" r="16" fill="#c0392b" filter="url(#glow)"/>
+  <text x="400" y="1601" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">1</text>
+  <text x="432" y="1601" fill="#ff6b6b" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">ATTUMEN + MIDNIGHT</text>
+
+  <!-- Route: Stables to Servants' Quarters (side) -->
+  <line x1="400" y1="1530" x2="400" y2="1480" stroke="#3d8c40" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
+
+  <!-- ============ SERVANTS' QUARTERS (side branch) ============ -->
+  <rect x="560" y="1540" width="210" height="75" rx="8" fill="#1a1e24" stroke="#30363d" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="665" y="1560" text-anchor="middle" fill="#58a6ff" font-size="12" font-family="Segoe UI, sans-serif">SERVANTS' QUARTERS</text>
+  <text x="665" y="1576" text-anchor="middle" fill="#6e7681" font-size="9" font-family="Segoe UI, sans-serif">Spiders / Bats / Hounds (optional)</text>
+  <circle cx="625" cy="1598" r="12" fill="#7b241c" stroke="#c0392b" stroke-width="1"/>
+  <text x="625" y="1602" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="Segoe UI, sans-serif">?</text>
+  <text x="645" y="1602" fill="#ff9999" font-size="10" font-family="Segoe UI, sans-serif">Animal Boss</text>
+  <!-- Connector -->
+  <line x1="540" y1="1575" x2="560" y2="1575" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="550" y="1568" text-anchor="middle" fill="#6e7681" font-size="8" font-family="Segoe UI, sans-serif">opt.</text>
+
+  <!-- ============ BANQUET HALL ============ -->
+  <rect x="260" y="1390" width="280" height="90" rx="8" fill="#1a1e24" stroke="#30363d" stroke-width="2"/>
+  <text x="400" y="1412" text-anchor="middle" fill="#58a6ff" font-size="14" font-weight="bold" font-family="Segoe UI, sans-serif">THE BANQUET HALL</text>
+  <text x="400" y="1430" text-anchor="middle" fill="#6e7681" font-size="10" font-family="Segoe UI, sans-serif">Ghostly Stewards, Retainers (!RF), Phantom Guests</text>
+  <!-- Boss 2 -->
+  <circle cx="400" cy="1456" r="16" fill="#c0392b" filter="url(#glow)"/>
+  <text x="400" y="1461" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">2</text>
+  <text x="432" y="1461" fill="#ff6b6b" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">MOROES + 4 ADDS</text>
+
+  <!-- Route: Banquet to Guest Chambers -->
+  <line x1="260" y1="1435" x2="210" y2="1435" stroke="#3d8c40" stroke-width="3" stroke-dasharray="8,4"/>
+  <line x1="210" y1="1435" x2="210" y2="1340" stroke="#3d8c40" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
+
+  <!-- Route: Banquet up to Opera -->
+  <line x1="400" y1="1390" x2="400" y2="1330" stroke="#3d8c40" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
+
+  <!-- ============ GUEST CHAMBERS (side wing) ============ -->
+  <rect x="80" y="1260" width="260" height="80" rx="8" fill="#1a1e24" stroke="#30363d" stroke-width="2"/>
+  <text x="210" y="1282" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="bold" font-family="Segoe UI, sans-serif">GUEST CHAMBERS</text>
+  <text x="210" y="1298" text-anchor="middle" fill="#6e7681" font-size="9" font-family="Segoe UI, sans-serif">Night Mistress, Wanton Hostess, Phantom Guardsman</text>
+  <!-- Boss 3 -->
+  <circle cx="210" cy="1320" r="16" fill="#c0392b" filter="url(#glow)"/>
+  <text x="210" y="1325" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">3</text>
+  <text x="242" y="1325" fill="#ff6b6b" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">MAIDEN OF VIRTUE</text>
+
+  <!-- Route: Maiden back to main path and up -->
+  <line x1="210" y1="1260" x2="210" y2="1240" stroke="#3d8c40" stroke-width="2" stroke-dasharray="6,3"/>
+  <line x1="210" y1="1240" x2="400" y2="1240" stroke="#3d8c40" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="305" y="1234" text-anchor="middle" fill="#3d8c40" font-size="9" font-family="Segoe UI, sans-serif">return to Ballroom</text>
+
+  <!-- ============ OPERA HALL ============ -->
+  <rect x="260" y="1160" width="280" height="100" rx="8" fill="#1a1e24" stroke="#30363d" stroke-width="2"/>
+  <text x="400" y="1182" text-anchor="middle" fill="#58a6ff" font-size="14" font-weight="bold" font-family="Segoe UI, sans-serif">THE OPERA HALL</text>
+  <text x="400" y="1198" text-anchor="middle" fill="#6e7681" font-size="10" font-family="Segoe UI, sans-serif">Skeletal Ushers (!Threat Wipe), Spectral Performers</text>
+  <!-- Boss 4 -->
+  <circle cx="400" cy="1228" r="16" fill="#c0392b" filter="url(#glow)"/>
+  <text x="400" y="1233" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">4</text>
+  <text x="432" y="1233" fill="#ff6b6b" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">OPERA EVENT</text>
+  <text x="400" y="1248" text-anchor="middle" fill="#ffaa44" font-size="9" font-style="italic" font-family="Segoe UI, sans-serif">Wolf / Romulo &amp; Julianne / Wizard of Oz (random)</text>
+  <!-- Side entrance note -->
+  <rect x="560" y="1190" width="170" height="36" rx="4" fill="#1a2e1a" stroke="#3d8c40" stroke-width="1"/>
+  <text x="645" y="1205" text-anchor="middle" fill="#3d8c40" font-size="9" font-weight="bold" font-family="Segoe UI, sans-serif">SIDE ENTRANCE</text>
+  <text x="645" y="1218" text-anchor="middle" fill="#3d8c40" font-size="8" font-family="Segoe UI, sans-serif">Unlocks after Opera clear</text>
+  <line x1="540" y1="1210" x2="560" y2="1210" stroke="#3d8c40" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Route: Opera up to Broken Stair -->
+  <line x1="400" y1="1160" x2="400" y2="1100" stroke="#3d8c40" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
+  <text x="410" y="1128" fill="#6e7681" font-size="9" font-family="Segoe UI, sans-serif">backstage &amp; up</text>
+
+  <!-- ============ MASTER'S TERRACE (side branch from Broken Stair) ============ -->
+  <rect x="560" y="1030" width="210" height="80" rx="8" fill="#1a1e24" stroke="#c0392b" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="665" y="1052" text-anchor="middle" fill="#58a6ff" font-size="12" font-family="Segoe UI, sans-serif">MASTER'S TERRACE</text>
+  <text x="665" y="1067" text-anchor="middle" fill="#6e7681" font-size="9" font-family="Segoe UI, sans-serif">Outdoor balcony (need Blackened Urn)</text>
+  <!-- Boss 5 -->
+  <circle cx="665" cy="1090" r="16" fill="#c0392b" filter="url(#glow)"/>
+  <text x="665" y="1095" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">5</text>
+  <text x="697" y="1095" fill="#ff6b6b" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">NIGHTBANE</text>
+  <text x="665" y="1105" text-anchor="middle" fill="#ffaa44" font-size="8" font-style="italic" font-family="Segoe UI, sans-serif">(summoned, optional)</text>
+
+  <!-- ============ BROKEN STAIR ============ -->
+  <rect x="290" y="1020" width="230" height="80" rx="8" fill="#1a1e24" stroke="#555" stroke-width="1"/>
+  <text x="405" y="1042" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="bold" font-family="Segoe UI, sans-serif">THE BROKEN STAIR</text>
+  <text x="405" y="1058" text-anchor="middle" fill="#6e7681" font-size="9" font-family="Segoe UI, sans-serif">Ghastly Haunts, Trapped Souls</text>
+  <text x="405" y="1072" text-anchor="middle" fill="#f0a500" font-size="9" font-weight="bold" font-family="Segoe UI, sans-serif">MAJOR JUNCTION</text>
+  <!-- Servants' Entrance Door note -->
+  <rect x="80" y="1040" width="190" height="36" rx="4" fill="#2a1f00" stroke="#f0a500" stroke-width="1"/>
+  <text x="175" y="1055" text-anchor="middle" fill="#f0a500" font-size="9" font-weight="bold" font-family="Segoe UI, sans-serif">SERVANTS' ENTRANCE DOOR</text>
+  <text x="175" y="1068" text-anchor="middle" fill="#f0a500" font-size="8" font-family="Segoe UI, sans-serif">Shortcut to Ballroom (unlock from here)</text>
+  <line x1="270" y1="1058" x2="290" y2="1058" stroke="#f0a500" stroke-width="1" stroke-dasharray="4,3"/>
+  <!-- Connector to Nightbane -->
+  <line x1="520" y1="1060" x2="560" y2="1070" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="540" y="1052" text-anchor="middle" fill="#6e7681" font-size="8" font-family="Segoe UI, sans-serif">ramp</text>
+
+  <!-- Route: Broken Stair up to Menagerie -->
+  <line x1="405" y1="1020" x2="405" y2="960" stroke="#3d8c40" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
+
+  <!-- ============ MENAGERIE ============ -->
+  <rect x="260" y="870" width="290" height="90" rx="8" fill="#1a1e24" stroke="#30363d" stroke-width="2"/>
+  <text x="405" y="892" text-anchor="middle" fill="#58a6ff" font-size="14" font-weight="bold" font-family="Segoe UI, sans-serif">THE MENAGERIE</text>
+  <text x="405" y="910" text-anchor="middle" fill="#6e7681" font-size="10" font-family="Segoe UI, sans-serif">Mana Warps (!Explode), Arcane Watchmen, Syphoners</text>
+  <!-- Boss 6 -->
+  <circle cx="405" cy="936" r="16" fill="#c0392b" filter="url(#glow)"/>
+  <text x="405" y="941" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">6</text>
+  <text x="437" y="941" fill="#ff6b6b" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">THE CURATOR</text>
+
+  <!-- Route: Menagerie up to Library -->
+  <line x1="405" y1="870" x2="405" y2="810" stroke="#3d8c40" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
+
+  <!-- ============ GUARDIAN'S LIBRARY ============ -->
+  <rect x="230" y="680" width="350" height="130" rx="8" fill="#1a1e24" stroke="#30363d" stroke-width="2"/>
+  <text x="405" y="702" text-anchor="middle" fill="#58a6ff" font-size="14" font-weight="bold" font-family="Segoe UI, sans-serif">GUARDIAN'S LIBRARY &amp; UPPER HALLS</text>
+  <text x="405" y="720" text-anchor="middle" fill="#6e7681" font-size="9" font-family="Segoe UI, sans-serif">Spell Shades, Mana Feeders (!Spell Immune), Arcane Protectors, Ethereals</text>
+
+  <!-- Boss 7: Shade -->
+  <circle cx="310" cy="750" r="16" fill="#c0392b" filter="url(#glow)"/>
+  <text x="310" y="755" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">7</text>
+  <text x="310" y="772" text-anchor="middle" fill="#ff6b6b" font-size="11" font-weight="bold" font-family="Segoe UI, sans-serif">SHADE OF ARAN</text>
+  <text x="310" y="785" text-anchor="middle" fill="#ffaa44" font-size="8" font-style="italic" font-family="Segoe UI, sans-serif">Circular room, door locks</text>
+  <text x="310" y="796" text-anchor="middle" fill="#ff4444" font-size="8" font-weight="bold" font-family="Segoe UI, sans-serif">NO TANK NEEDED</text>
+
+  <!-- Boss 8: Illhoof (side room) -->
+  <circle cx="505" cy="740" r="16" fill="#c0392b" filter="url(#glow)"/>
+  <text x="505" y="745" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">8</text>
+  <text x="505" y="762" text-anchor="middle" fill="#ff6b6b" font-size="11" font-weight="bold" font-family="Segoe UI, sans-serif">ILLHOOF</text>
+  <text x="505" y="774" text-anchor="middle" fill="#6e7681" font-size="8" font-family="Segoe UI, sans-serif">Behind bookshelf</text>
+
+  <!-- Boss 9: Netherspite (side room) -->
+  <circle cx="505" cy="796" r="14" fill="#c0392b" filter="url(#glow)"/>
+  <text x="505" y="801" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Segoe UI, sans-serif">9</text>
+  <text x="534" y="801" fill="#ff6b6b" font-size="10" font-weight="bold" font-family="Segoe UI, sans-serif">NETHERSPITE</text>
+
+  <!-- Divider lines for side rooms -->
+  <line x1="460" y1="730" x2="460" y2="810" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="475" y="722" fill="#6e7681" font-size="8" font-family="Segoe UI, sans-serif">side rooms</text>
+
+  <!-- Berthold teleport shortcut -->
+  <path d="M 230 750 Q 100 750 100 1200 Q 100 1650 290 1690" fill="none" stroke="#f0a500" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#shortcut-arrow)"/>
+  <rect x="30" y="880" width="140" height="50" rx="4" fill="#2a1f00" stroke="#f0a500" stroke-width="1"/>
+  <text x="100" y="898" text-anchor="middle" fill="#f0a500" font-size="10" font-weight="bold" font-family="Segoe UI, sans-serif">BERTHOLD TELEPORT</text>
+  <text x="100" y="912" text-anchor="middle" fill="#f0a500" font-size="8" font-family="Segoe UI, sans-serif">Entrance &harr; Library</text>
+  <text x="100" y="924" text-anchor="middle" fill="#f0a500" font-size="8" font-family="Segoe UI, sans-serif">After Shade of Aran dies</text>
+
+  <!-- Route: Library up to Chess -->
+  <line x1="405" y1="680" x2="405" y2="620" stroke="#3d8c40" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
+
+  <!-- ============ GAMESMAN'S HALL ============ -->
+  <rect x="270" y="530" width="270" height="90" rx="8" fill="#1a1e24" stroke="#30363d" stroke-width="2"/>
+  <text x="405" y="552" text-anchor="middle" fill="#58a6ff" font-size="14" font-weight="bold" font-family="Segoe UI, sans-serif">GAMESMAN'S HALL</text>
+  <!-- Boss 10 -->
+  <circle cx="405" cy="580" r="16" fill="#c0392b" filter="url(#glow)"/>
+  <text x="405" y="585" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Segoe UI, sans-serif">10</text>
+  <text x="441" y="585" fill="#ff6b6b" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">CHESS EVENT</text>
+  <text x="405" y="605" text-anchor="middle" fill="#44ff44" font-size="10" font-style="italic" font-family="Segoe UI, sans-serif">Free Loot &bull; Control King piece</text>
+  <!-- chess grid icon -->
+  <rect x="340" y="567" width="30" height="20" rx="2" fill="none" stroke="#6e7681" stroke-width="1"/>
+  <line x1="350" y1="567" x2="350" y2="587" stroke="#6e7681" stroke-width="0.5"/>
+  <line x1="360" y1="567" x2="360" y2="587" stroke="#6e7681" stroke-width="0.5"/>
+  <line x1="340" y1="577" x2="370" y2="577" stroke="#6e7681" stroke-width="0.5"/>
+
+  <!-- Route: Chess up to Medivh's Chambers / Prince -->
+  <line x1="405" y1="530" x2="405" y2="460" stroke="#3d8c40" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
+  <text x="415" y="498" fill="#6e7681" font-size="9" font-family="Segoe UI, sans-serif">Medivh's Chambers</text>
+
+  <!-- ============ NETHERSPACE ============ -->
+  <rect x="240" y="340" width="330" height="120" rx="8" fill="#0d0015" stroke="#8b5cf6" stroke-width="2"/>
+  <!-- Stars / nether effect -->
+  <circle cx="280" cy="370" r="1.5" fill="#8b5cf6" opacity="0.6"/>
+  <circle cx="350" cy="355" r="1" fill="#c8a2ff" opacity="0.5"/>
+  <circle cx="520" cy="380" r="1.5" fill="#8b5cf6" opacity="0.7"/>
+  <circle cx="460" cy="360" r="1" fill="#c8a2ff" opacity="0.4"/>
+  <circle cx="310" cy="440" r="1" fill="#c8a2ff" opacity="0.5"/>
+  <circle cx="530" cy="430" r="1.5" fill="#8b5cf6" opacity="0.6"/>
+  <text x="405" y="368" text-anchor="middle" fill="#c8a2ff" font-size="14" font-weight="bold" font-family="Segoe UI, sans-serif">NETHERSPACE</text>
+  <text x="405" y="386" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Segoe UI, sans-serif">Rooftop platform in the Nether</text>
+  <!-- Boss 11 -->
+  <circle cx="405" cy="420" r="20" fill="#c0392b" filter="url(#glow)"/>
+  <text x="405" y="426" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="Segoe UI, sans-serif">11</text>
+  <text x="405" y="448" text-anchor="middle" fill="#ff6b6b" font-size="13" font-weight="bold" font-family="Segoe UI, sans-serif">PRINCE MALCHEZAAR</text>
+  <!-- Infernal warning -->
+  <text x="405" y="395" text-anchor="middle" fill="#ff6b35" font-size="9" font-style="italic" font-family="Segoe UI, sans-serif">Greater Fleshbeasts on stairs! Infernals rain from the sky!</text>
+
+  <!-- ============ LEGEND ============ -->
+  <rect x="20" y="70" width="200" height="140" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="120" y="90" text-anchor="middle" fill="#c9d1d9" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">LEGEND</text>
+  <!-- Boss marker -->
+  <circle cx="40" cy="108" r="10" fill="#c0392b"/>
+  <text x="40" y="112" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Segoe UI, sans-serif">#</text>
+  <text x="60" y="112" fill="#e0e0e0" font-size="11" font-family="Segoe UI, sans-serif">Boss (numbered)</text>
+  <!-- Route line -->
+  <line x1="30" y1="130" x2="55" y2="130" stroke="#3d8c40" stroke-width="3" stroke-dasharray="6,3"/>
+  <text x="60" y="134" fill="#e0e0e0" font-size="11" font-family="Segoe UI, sans-serif">Standard route</text>
+  <!-- Shortcut -->
+  <line x1="30" y1="150" x2="55" y2="150" stroke="#f0a500" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="60" y="154" fill="#e0e0e0" font-size="11" font-family="Segoe UI, sans-serif">Shortcut / unlock</text>
+  <!-- Optional -->
+  <rect x="30" y="163" width="25" height="15" rx="3" fill="none" stroke="#30363d" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="60" y="175" fill="#e0e0e0" font-size="11" font-family="Segoe UI, sans-serif">Optional area</text>
+  <!-- Danger note -->
+  <text x="40" y="198" fill="#ff4444" font-size="10" font-weight="bold" font-family="Segoe UI, sans-serif">!</text>
+  <text x="60" y="198" fill="#e0e0e0" font-size="11" font-family="Segoe UI, sans-serif">Pally danger callout</text>
+
+  <!-- ============ ROUTE ORDER (right side) ============ -->
+  <rect x="610" y="70" width="170" height="290" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="695" y="92" text-anchor="middle" fill="#3d8c40" font-size="12" font-weight="bold" font-family="Segoe UI, sans-serif">CLEAR ORDER</text>
+  <text x="630" y="114" fill="#ff6b6b" font-size="10" font-family="monospace">1.</text><text x="650" y="114" fill="#c9d1d9" font-size="10" font-family="Segoe UI, sans-serif">Attumen</text>
+  <text x="630" y="132" fill="#ff6b6b" font-size="10" font-family="monospace">2.</text><text x="650" y="132" fill="#c9d1d9" font-size="10" font-family="Segoe UI, sans-serif">Moroes</text>
+  <text x="630" y="150" fill="#ff6b6b" font-size="10" font-family="monospace">3.</text><text x="650" y="150" fill="#c9d1d9" font-size="10" font-family="Segoe UI, sans-serif">Maiden</text>
+  <text x="630" y="168" fill="#ff6b6b" font-size="10" font-family="monospace">4.</text><text x="650" y="168" fill="#c9d1d9" font-size="10" font-family="Segoe UI, sans-serif">Opera</text>
+  <text x="630" y="186" fill="#ff6b6b" font-size="10" font-family="monospace">5.</text><text x="650" y="186" fill="#8b949e" font-size="10" font-style="italic" font-family="Segoe UI, sans-serif">Nightbane (opt.)</text>
+  <text x="630" y="204" fill="#ff6b6b" font-size="10" font-family="monospace">6.</text><text x="650" y="204" fill="#c9d1d9" font-size="10" font-family="Segoe UI, sans-serif">Curator</text>
+  <text x="630" y="222" fill="#ff6b6b" font-size="10" font-family="monospace">7.</text><text x="650" y="222" fill="#c9d1d9" font-size="10" font-family="Segoe UI, sans-serif">Shade of Aran</text>
+  <text x="630" y="240" fill="#ff6b6b" font-size="10" font-family="monospace">8.</text><text x="650" y="240" fill="#8b949e" font-size="10" font-style="italic" font-family="Segoe UI, sans-serif">Illhoof (opt.)</text>
+  <text x="630" y="258" fill="#ff6b6b" font-size="10" font-family="monospace">9.</text><text x="650" y="258" fill="#8b949e" font-size="10" font-style="italic" font-family="Segoe UI, sans-serif">Netherspite (opt.)</text>
+  <text x="630" y="276" fill="#ff6b6b" font-size="10" font-family="monospace">10.</text><text x="656" y="276" fill="#c9d1d9" font-size="10" font-family="Segoe UI, sans-serif">Chess Event</text>
+  <text x="630" y="294" fill="#ff6b6b" font-size="10" font-family="monospace">11.</text><text x="656" y="294" fill="#c9d1d9" font-size="10" font-family="Segoe UI, sans-serif">Prince Malchezaar</text>
+  <text x="695" y="316" text-anchor="middle" fill="#f0a500" font-size="9" font-family="Segoe UI, sans-serif">Mandatory: 2, 4, 6, 10</text>
+  <text x="695" y="330" text-anchor="middle" fill="#f0a500" font-size="9" font-family="Segoe UI, sans-serif">+ 11 (final boss)</text>
+  <text x="695" y="348" text-anchor="middle" fill="#8b949e" font-size="9" font-style="italic" font-family="Segoe UI, sans-serif">Rest optional but standard</text>
+
+</svg>
+
+<div class="tip"><strong>Navigation Tips:</strong>
+<ul style="margin-left:20px; margin-top:5px;">
+<li>After killing Opera, go <strong>backstage and up</strong> to reach the Broken Stair leading to Curator.</li>
+<li>The <strong>Master's Terrace</strong> (Nightbane) is accessed through the backstage area after Opera.</li>
+<li>After Curator, continue up through the library halls to reach Shade, then Illhoof and Netherspite are in side rooms off the same hallway.</li>
+<li>After Chess, there's a short spiral stair up to Prince's platform in the Netherspace.</li>
+<li>The <strong>Servants' Quarters</strong> (animal bosses) is a side area accessible from the entry &mdash; you can skip it or clear it first.</li>
+</ul>
+</div>
+
+<h3>Key Shortcuts</h3>
+<div class="warning"><strong>3 Shortcuts You Must Know:</strong>
+<ol style="margin-left:20px; margin-top:5px;">
+<li><strong>Berthold's Teleport (most important):</strong> After killing <strong>Shade of Aran</strong>, speak to Berthold the Doorman at the main entrance to teleport directly to the Guardian's Library. Skips the entire lower instance on wipe recovery.</li>
+<li><strong>Opera Side Entrance (external):</strong> After the Opera Event is cleared, an external side door of the tower unlocks. From outside, go right from the main entrance, cross the small creek, up stairs to a bridge, and through the door. Zones you in at the Opera level.</li>
+<li><strong>Servants' Entrance Door:</strong> In the Broken Stair area, a locked door can be opened from the upper side. Once opened, it connects down to the Ballroom mezzanine, letting you skip Opera on subsequent trips up.</li>
+</ol>
+</div>
+
+<!-- ==================== QUICK REFERENCE TABLE ==================== -->
+<h2 id="quick-ref">Boss Quick Reference Table</h2>
+
+<table class="combat-table">
+<thead>
+<tr>
+    <th>#</th>
+    <th>Boss</th>
+    <th>Key Tank Mechanic</th>
+    <th>Damage Type</th>
+    <th>Pally Rating</th>
+    <th>Critical Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>1</td>
+    <td><a href="#attumen" style="color:#58a6ff">Attumen</a></td>
+    <td>Phase transition at 95% (Midnight)</td>
+    <td><span class="physical">Physical</span></td>
+    <td>Easy</td>
+    <td>Tank Midnight, then mounted Attumen</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td><a href="#moroes" style="color:#58a6ff">Moroes</a></td>
+    <td>Gouge &rarr; threat drop; Garrote bleed</td>
+    <td><span class="physical">Physical</span></td>
+    <td>Good</td>
+    <td>OT picks up on Gouge; Blessing of Protection removes Garrote</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td><a href="#maiden" style="color:#58a6ff">Maiden of Virtue</a></td>
+    <td>Repentance (AoE stun); Holy Fire DoT</td>
+    <td><span class="holy">Holy</span></td>
+    <td>Medium</td>
+    <td>Holy damage bypasses armor, but Holy Ground 1s silence barely affects instant-cast Pally abilities. BoSac breaks Repentance.</td>
+</tr>
+<tr>
+    <td>4a</td>
+    <td><a href="#opera-wolf" style="color:#58a6ff">Big Bad Wolf</a></td>
+    <td>Little Red Riding Hood (random player transformed)</td>
+    <td><span class="physical">Physical</span></td>
+    <td>Easy</td>
+    <td>Kite when you get the debuff</td>
+</tr>
+<tr>
+    <td>4b</td>
+    <td><a href="#opera-rj" style="color:#58a6ff">Romulo & Julianne</a></td>
+    <td>Must kill both within 10 sec</td>
+    <td><span class="physical">Physical</span> / <span class="holy">Holy</span></td>
+    <td>Medium</td>
+    <td>Julianne heals; interrupt Heal spell</td>
+</tr>
+<tr>
+    <td>4c</td>
+    <td><a href="#opera-oz" style="color:#58a6ff">Wizard of Oz</a></td>
+    <td>4 adds then Crone; need multiple tanks</td>
+    <td>Mixed</td>
+    <td>Great</td>
+    <td>Consecrate is amazing here; Pally can hold multiple adds</td>
+</tr>
+<tr>
+    <td>5</td>
+    <td><a href="#curator" style="color:#58a6ff">The Curator</a></td>
+    <td>Hateful Bolt (2nd highest threat); Evocation phase</td>
+    <td><span class="arcane">Arcane</span></td>
+    <td>Easy</td>
+    <td>Stay #1 threat; burn during Evocation</td>
+</tr>
+<tr>
+    <td>6</td>
+    <td><a href="#shade" style="color:#58a6ff">Shade of Aran</a></td>
+    <td>NO TANK NEEDED; do not move during Flame Wreath</td>
+    <td><span class="arcane">Arcane</span>/<span class="fire">Fire</span>/<span class="frost">Frost</span></td>
+    <td>N/A</td>
+    <td>Untauntable; DPS and interrupt fight</td>
+</tr>
+<tr>
+    <td>7</td>
+    <td><a href="#illhoof" style="color:#58a6ff">Terestian Illhoof</a></td>
+    <td>Demon Chains on random player; Imp adds</td>
+    <td><span class="shadow">Shadow</span> / <span class="fire">Fire</span></td>
+    <td>Great</td>
+    <td>Consecrate shreds Imps; OT Kil'rek</td>
+</tr>
+<tr>
+    <td>8</td>
+    <td><a href="#netherspite" style="color:#58a6ff">Netherspite</a></td>
+    <td>3 colored beams; Portal phase / Banish phase</td>
+    <td>Mixed</td>
+    <td>Medium</td>
+    <td>Tank soaks Red beam (perseverance); rotate soakers</td>
+</tr>
+<tr>
+    <td>9</td>
+    <td><a href="#chess" style="color:#58a6ff">Chess Event</a></td>
+    <td>Control chess pieces</td>
+    <td>N/A</td>
+    <td>Free Loot</td>
+    <td>Control the King piece</td>
+</tr>
+<tr>
+    <td>10</td>
+    <td><a href="#prince" style="color:#58a6ff">Prince Malchezaar</a></td>
+    <td>3 phases; Enfeeble; Infernal drops</td>
+    <td><span class="physical">Physical</span> / <span class="shadow">Shadow</span></td>
+    <td>Medium</td>
+    <td>Enfeeble = don't be near the boss; watch Infernal positions</td>
+</tr>
+<tr>
+    <td>11</td>
+    <td><a href="#nightbane" style="color:#58a6ff">Nightbane</a></td>
+    <td>Ground/Air phases; fear; Smoking Blast</td>
+    <td><span class="physical">Physical</span> / <span class="fire">Fire</span></td>
+    <td>Good</td>
+    <td>Fear Ward / Tremor; stack on tank for Charred Earth</td>
+</tr>
+</tbody>
+</table>
+
+<!-- ==================== GENERAL PROT PALLY TIPS ==================== -->
+<h2 id="general">General Prot Paladin Tips for Karazhan</h2>
+
+<div class="pally-tip" style="font-size:1em;">
+<strong>Karazhan is where Prot Paladins shine.</strong> The large trash packs, undead mobs, and multi-add boss fights play directly to your strengths. Consecration + Holy Shield + Retribution Aura makes you the AoE king.
+</div>
+
+<div class="trash-card">
+<h4>Seal & Judgment Cheat Sheet</h4>
+<table class="combat-table">
+<tr><th>Situation</th><th>Seal</th><th>Judgment</th><th>Why</th></tr>
+<tr><td>AoE trash (3+ mobs)</td><td>Seal of Righteousness</td><td>Judgment of Righteousness on kill target</td><td>SoR procs on every Holy Shield block; huge AoE threat with Consecration</td></tr>
+<tr><td>Single target / Boss</td><td>Seal of Righteousness (or Seal of Blood)</td><td>Judge Righteousness or Blood; Judge Wisdom if mana issues</td><td>SoR gives consistent per-swing Holy damage; SoB hits harder but costs HP. Seal swap for max TPS.</td></tr>
+<tr><td>Undead trash</td><td>Seal of Righteousness + Exorcism + Holy Wrath</td><td>Judge Righteousness</td><td>Exorcism and Holy Wrath work on Undead &mdash; free extra threat/damage</td></tr>
+<tr><td>Mana starved</td><td>Any</td><td>Judgment of Wisdom</td><td>JoW returns mana on hit from all attackers; keep it up always in long fights</td></tr>
+</table>
+</div>
+
+<div class="trash-card">
+<h4 style="color:#f0a500;">Blessing of Sacrifice &mdash; Your Secret Weapon</h4>
+<p><strong>BoSac (30-sec CD)</strong> transfers damage to you from the target. Since taking damage breaks most CC effects, this lets you break yourself out of:</p>
+<ul>
+    <li><strong>Gouge</strong> (Moroes) &mdash; BoSac on OT/melee, Moroes hits them, damage transfers to you, Gouge breaks instantly</li>
+    <li><strong>Repentance</strong> (Maiden) &mdash; BoSac on someone in Holy Ground range</li>
+    <li><strong>Fear</strong> (Nightbane, Big Bad Wolf, Dorothee) &mdash; BoSac on anyone taking damage</li>
+    <li><strong>Polymorph</strong> (Shade of Aran mass poly) &mdash; BoSac on someone taking Blizzard/DoT damage</li>
+</ul>
+<p>This is the single most powerful Prot Paladin utility in Karazhan. <strong>Use it proactively before CC mechanics hit.</strong></p>
+</div>
+
+<div class="trash-card">
+<h4 style="color:#f0a500;">Holy Shield &amp; Uncrushable</h4>
+<p><strong>102.4% combined avoidance + block</strong> with Holy Shield active = uncrushable. This is mandatory for all raid bosses.</p>
+<ul>
+    <li>Holy Shield lasts 10 sec on an 8-sec cooldown &mdash; 2-sec overlap window. <strong>Never let it drop.</strong></li>
+    <li>Prioritize refreshing Holy Shield above Consecration and Judgment on boss fights.</li>
+    <li><strong>Do NOT cast Avenger's Shield mid-fight on bosses</strong> &mdash; the GCD can cause Holy Shield to lapse, opening a crush window.</li>
+    <li>Defense cap: <strong>490</strong> for crit immunity.</li>
+</ul>
+</div>
+
+<div class="tip"><strong>Key Consumables:</strong> Ironshield Potion (boss fights), Super Mana Potion (long fights), Flask of Blinding Light (threat) or Flask of Fortification (survival), Elixir of Major Defense + Elixir of Draenic Wisdom (if not flasking). Flame Cap for burst threat on pull. Nightmare Seed for emergency HP (Prince Phase 2).</div>
+
+<div class="warning"><strong>Prot Paladin Weaknesses to Watch:</strong> No interrupt (bring other interrupters for Shade, Moroes adds, etc.). No spell reflect. Single-target threat ramp-up can be slower than Warriors on pull &mdash; use Avenger's Shield + Judgment of Blood for snap threat. Fear is your enemy (no Berserker Rage) &mdash; coordinate Fear Ward, Tremor Totem, and BoSac for Nightbane/Moroes. <strong>Silences</strong> shut down your entire kit (Shadikith, Wanton Hostess wraith form). <strong>Spectral Retainer Antimagic Pulse strips Righteous Fury</strong> &mdash; keep RF on your bar.</div>
+
+
+<h3>CC Quick Reference</h3>
+<table class="combat-table" style="font-size:0.85em;">
+<tr><th>CC Type</th><th>Works On</th><th>Key Targets</th></tr>
+<tr><td><strong>Shackle Undead</strong></td><td>All Undead mobs (Stables, Banquet, Guest Chambers, Opera, Broken Stair, Spell Shades)</td><td>Skeletal Ushers, Phantom Guests, Ghostly Philanthropists</td></tr>
+<tr><td><strong>Polymorph</strong></td><td>Humanoids (Ethereal Thieves/Spellfilchers in Library)</td><td>Ethereal Spellfilcher (stacking Int debuff)</td></tr>
+<tr><td><strong>Freezing Trap</strong></td><td>All Servants' Quarters beasts + general use</td><td>Coldmist Widows, Greater Shadowbats</td></tr>
+<tr><td><strong>Banish</strong></td><td>Demons (Homunculus, Shadow Pillager in Library)</td><td>Shadow Pillagers</td></tr>
+<tr><td><strong>Turn Evil</strong> (Paladin)</td><td>Undead mobs (short duration, causes flee)</td><td>Emergency CC on Moroes adds, stray undead</td></tr>
+<tr><td><strong>Hibernate</strong> (Druid)</td><td>Beasts (Servants' Quarters)</td><td>Phase Hounds, Shadowbats</td></tr>
+</table>
+
+<!-- ==================================================================================== -->
+<!--                                    BOSS SECTIONS                                     -->
+<!-- ==================================================================================== -->
+
+<!-- ==================== ATTUMEN ==================== -->
+<h2 id="attumen">1. Attumen the Huntsman</h2>
+
+<h3 id="attumen-trash">Stables Trash</h3>
+<p>The first trash in Karazhan. Mostly undead horses and their handlers. Great for Prot Paladin AoE.</p>
+
+<div class="trash-card">
+<h4>Spectral Stallion</h4>
+<ul>
+    <li><span class="ability">Stomping</span> &mdash; AoE knockback to nearby players, minor physical damage</li>
+    <li><span class="ability">Absorb Vitality</span> &mdash; Drains health from the target, healing itself</li>
+    <li>Non-elite, pulled in packs. Consecrate and tank multiples easily.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Spectral Charger</h4>
+<ul>
+    <li><span class="ability">Charge</span> &mdash; Charges a random distant player, dealing physical damage and stunning briefly</li>
+    <li><span class="ability">Absorb Vitality</span> &mdash; Drains health, healing the mob</li>
+    <li>Will charge ranged players &mdash; warn your group to not stand too far back.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Spectral Stable Hand</h4>
+<ul>
+    <li><span class="ability">Healing Touch</span> &mdash; <span class="nature">Nature</span>. Heals nearby horses for a significant amount. <strong>Interrupt with Hammer of Justice if no other interrupt!</strong></li>
+    <li><span class="ability">Knockdown</span> &mdash; 2-sec stun on tank</li>
+    <li><span class="ability">Pierce Armor</span> &mdash; Stacking armor reduction debuff. <strong>Dangerous when tanking multiple mobs.</strong></li>
+    <li><span class="ability">Whip Frenzy</span> &mdash; Buffs nearby Chargers/Stallions, increasing their attack speed</li>
+    <li><strong>Kill Priority:</strong> Kill or CC these first to prevent heals and Pierce Armor stacks.</li>
+</ul>
+</div>
+
+<div class="pally-tip">Undead mobs! Use <strong>Exorcism</strong> on pull for snap threat, and use <strong>Holy Wrath</strong> as an AoE stun + damage on big packs. This is where you dominate.</div>
+
+<!-- Attumen Boss -->
+<div class="boss-card">
+<h3>ATTUMEN THE HUNTSMAN &amp; MIDNIGHT</h3>
+
+<h4>Overview</h4>
+<p>Two-phase fight. You engage Midnight (the horse) first. At 95% HP, Attumen spawns. At 25% Midnight HP, Attumen mounts up and the fight becomes single target.</p>
+
+<h4>Phase 1: Midnight (100% &rarr; 25%)</h4>
+<ul>
+    <li><span class="ability">Knockdown</span> &mdash; <span class="physical">Physical</span>. Stuns the tank for 3 sec. Unavoidable.</li>
+    <li><span class="ability">Summon Attumen</span> &mdash; At 95% Midnight HP, Attumen spawns and must be picked up by an OT or the MT grabs both.</li>
+</ul>
+
+<h4>Attumen (while dismounted)</h4>
+<ul>
+    <li><span class="ability">Shadow Cleave</span> &mdash; <span class="shadow">Shadow</span>. Frontal cleave dealing ~4,000-6,000 shadow damage. <strong>Face away from raid!</strong></li>
+    <li><span class="ability">Intangible Presence</span> &mdash; <span class="shadow">Shadow</span>. Curse, reduces chance to hit by 50% on nearby targets. Can be decursed.</li>
+    <li><span class="ability">Berserker Charge</span> &mdash; Charges a random player, dealing damage and briefly stunning them.</li>
+</ul>
+
+<h4>Phase 2: Mounted Attumen (Midnight at 25%)</h4>
+<ul>
+    <li>Attumen mounts Midnight &mdash; they become one mob. <strong>Full HP reset to 100%. THREAT TABLE WIPES.</strong></li>
+    <li>Retains <span class="ability">Shadow Cleave</span>, <span class="ability">Intangible Presence</span>, and <span class="ability">Berserker Charge</span>.</li>
+    <li><span class="ability">Berserker Charge</span> has a <strong>minimum 8-yard range</strong> &mdash; if the entire raid stacks within 8 yards, he can't charge anyone.</li>
+    <li><span class="ability">Knockdown</span> &mdash; Inherited from Midnight. Still stuns the tank.</li>
+    <li>Hits harder in mounted form. Use cooldowns if needed.</li>
+</ul>
+
+<div class="pally-tip">Tank Midnight and let the OT grab Attumen when he spawns (or solo-tank both if geared). Face Attumen away from the raid due to Shadow Cleave. Consecrate hits both when they're near each other. After mount-up, straightforward tank and spank.</div>
+
+<div class="warning"><strong>Intangible Presence</strong> (-50% hit) must be decursed ASAP, especially on the tank. Without decurse it massively reduces your threat output.</div>
+</div>
+
+<!-- ==================== MOROES ==================== -->
+<h2 id="moroes">2. Moroes</h2>
+
+<h3 id="moroes-trash">Banquet Hall Trash</h3>
+<p>The banquet hall is filled with undead ghosts at dining tables. Many packs of 4-6 mobs. Another area where Prot Paladin AoE is extremely strong.</p>
+
+<div class="trash-card">
+<h4>Ghostly Steward</h4>
+<ul>
+    <li><span class="ability">Drunken Skull Crack</span> &mdash; <span class="physical">Physical</span>. 4-second stun on highest threat target</li>
+    <li><span class="ability">Enrage</span> &mdash; At <strong>50% HP</strong>, enrages and <strong>wipes threat</strong>, increases damage significantly</li>
+    <li><strong>Immune to Shackle, Taunt, and Stun.</strong> Both tanks should build threat before DPS. Re-establish threat after Enrage.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Phantom Guest</h4>
+<ul>
+    <li><span class="ability">Searing Pain</span> &mdash; <span class="fire">Fire</span> nuke. Caster mob.</li>
+    <li><span class="ability">Immolate</span> &mdash; <span class="fire">Fire</span> DoT</li>
+    <li><span class="ability">Curse of Agony</span> &mdash; <span class="shadow">Shadow</span> DoT</li>
+    <li>Some variants heal. <strong>Interrupt or CC caster variants.</strong> Can be <strong>shackled</strong>.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Ghostly Philanthropist</h4>
+<ul>
+    <li><span class="ability">Incite Rage</span> &mdash; Buffs nearby ghosts, increasing their damage</li>
+    <li>Low damage itself but empowers the pack. <strong>Kill early.</strong></li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Phantom Valet</h4>
+<ul>
+    <li><span class="ability">Demoralizing Shout</span> &mdash; AoE attack power reduction</li>
+    <li><span class="ability">Kick</span> &mdash; Interrupt + silence</li>
+    <li>Annoying but low priority. Can be <strong>shackled</strong>.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Skeletal Waiter</h4>
+<ul>
+    <li><span class="ability">Brittle Bones</span> &mdash; <strong>Curse. Increases ALL damage taken by 35% for 10 seconds.</strong> <span style="color:#ff4444;">DECURSE IMMEDIATELY!</span></li>
+    <li>Undead. Use Exorcism/Holy Wrath. <strong>Shackle</strong> or AoE down. Kill or CC these to prevent Brittle Bones on the tank.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4 style="color:#ff4444;">Spectral Retainer (DANGER)</h4>
+<ul>
+    <li><span class="ability">Oath of Fealty</span> &mdash; Mind controls a raid member. <strong>Cannot be dispelled</strong> (unlike Priest MC). Sheep the MC'd player.</li>
+    <li><span class="ability">Antimagic Pulse</span> &mdash; <span style="color:#ff4444; font-weight:bold;">AoE mass dispel that strips ALL buffs from nearby players, INCLUDING RIGHTEOUS FURY!</span> If RF is removed, you lose massive threat instantly.</li>
+    <li><span class="ability">Rend</span> &mdash; <span class="physical">Physical</span> bleed on highest threat target</li>
+    <li><strong>Immune to Shackle, Taunt, and Stun.</strong> Use Grounding Totem if available. <strong>FIRST KILL PRIORITY in every pack.</strong> Re-apply Righteous Fury immediately if dispelled.</li>
+</ul>
+</div>
+
+<div class="pally-tip">All undead! This is Prot Paladin paradise. Holy Wrath stuns the entire pack. Consecrate holds everything. Use Exorcism on pull for snap threat. <span style="color:#ff4444;"><strong>EXCEPT: Watch for Spectral Retainers!</strong></span> Their Antimagic Pulse strips Righteous Fury. Always kill Retainers first and keep RF on your action bar for instant reapplication.</div>
+
+<!-- Moroes Boss -->
+<div class="boss-card">
+<h3>MOROES</h3>
+
+<h4>Overview</h4>
+<p>Moroes spawns with <strong>4 random dinner guests</strong> (adds). The adds must be CC'd or killed. Moroes applies a lethal bleed (Garrote) throughout the fight.</p>
+
+<h4>Moroes' Abilities</h4>
+<ul>
+    <li><span class="ability">Vanish</span> &mdash; Moroes vanishes and reappears, applying <span class="ability">Garrote</span> to a random player. Resets threat temporarily.</li>
+    <li><span class="ability">Garrote</span> &mdash; <span class="physical">Physical</span> bleed. Deals ~1,000 damage every 3 seconds for 5 minutes. <strong>Persists through death!</strong> Only removed by: Blessing of Protection, Ice Block, Divine Shield, Stoneform, or killing Moroes.</li>
+    <li><span class="ability">Gouge</span> &mdash; Incapacitates the current tank for 6 seconds. <strong>OT must immediately pick up Moroes.</strong> Facing away prevents it (but risky).</li>
+    <li><span class="ability">Blind</span> &mdash; 10-second disorient on a nearby melee player.</li>
+    <li><span class="ability">Enrage</span> &mdash; At 30% HP, increases damage dealt by 10% and attack speed.</li>
+</ul>
+
+<h4>Dinner Guest Adds (4 Random from this pool)</h4>
+<table class="combat-table" style="font-size:0.85em;">
+<tr><th>Add</th><th>Type</th><th>Abilities</th><th>CC Options</th><th>Priority</th></tr>
+<tr><td>Baroness Dorothea Millstipe</td><td>Shadow Priest</td><td><span class="shadow">Mana Burn</span>, <span class="shadow">Mind Flay</span>, <span class="shadow">Shadow Word: Pain</span></td><td>Shackle, Trap</td><td>HIGH &mdash; Mana Burns healers</td></tr>
+<tr><td>Lady Catriona Von'Indi</td><td>Holy Priest</td><td><span class="holy">Heal</span>, <span class="holy">Power Word: Shield</span>, <span class="holy">Dispel Magic</span></td><td>Shackle, Trap, Kick heals</td><td>HIGH &mdash; Heals other adds</td></tr>
+<tr><td>Lady Keira Berrybuck</td><td>Holy Paladin</td><td><span class="holy">Heal</span>, <span class="holy">Blessing of Might</span>, <span class="holy">Cleanse</span></td><td>Shackle, Trap, Kick heals</td><td>HIGH &mdash; Heals and cleanses CC</td></tr>
+<tr><td>Baron Rafe Dreuger</td><td>Retribution</td><td><span class="physical">Hammer of Justice</span>, <span class="physical">Seal + Judge</span>, Melee</td><td>Shackle, Trap, OT</td><td>MED</td></tr>
+<tr><td>Lord Robin Daris</td><td>Arms Warrior</td><td><span class="physical">Mortal Strike</span>, <span class="physical">Whirlwind</span></td><td>Shackle, Trap, OT</td><td>MED &mdash; MS reduces healing</td></tr>
+<tr><td>Lord Crispin Ference</td><td>Prot Warrior</td><td><span class="physical">Shield Bash</span>, <span class="physical">Shield Wall</span>, High armor</td><td>Shackle, Trap, OT</td><td>LOW &mdash; Takes a while to kill but not dangerous</td></tr>
+</table>
+
+<div class="pally-tip"><strong>Strategy:</strong> Shackle 2 adds, trap 1, OT or kill the 4th. As MT, focus Moroes. Use <strong>Blessing of Protection</strong> on Garroted players who are dying (removes the bleed!). This is one of your unique contributions. You can also use <strong>Turn Evil</strong> as emergency CC on one undead add.
+
+<br><br><strong>Gouge Trick (Pally exclusive):</strong> Cast <strong>Blessing of Sacrifice</strong> on the OT or a melee DPS before Gouge is expected. When Moroes Gouges you, the incoming damage to the BoSac target transfers damage back to you, which <strong>immediately breaks the Gouge</strong>. Moroes stays on you with zero downtime. This is one of the strongest Prot Paladin advantages in all of Karazhan.</div>
+
+<div class="warning"><strong>Gouge (without BoSac trick):</strong> Moroes will Gouge the tank regularly. You MUST have an OT ready to taunt immediately. Communicate with your OT. After Gouge wears off, taunt back.</div>
+</div>
+
+<!-- ==================== MAIDEN ==================== -->
+<h2 id="maiden">3. Maiden of Virtue</h2>
+
+<h3 id="maiden-trash">Guest Chambers Trash</h3>
+<p>Undead maids and ghostly concubines in the side hallway leading to Maiden's room.</p>
+
+<div class="trash-card">
+<h4>Night Mistress / Night Lord</h4>
+<ul>
+    <li><span class="ability">Shadow Bolt</span> &mdash; <span class="shadow">Shadow</span>. 2,200-2,800 damage nuke</li>
+    <li><span class="ability">Impending Betrayal</span> &mdash; <span class="shadow">Shadow</span>. At 50% HP, transforms to ghost form and applies this debuff: ~3,000 shadow damage to the raid after 10 sec</li>
+    <li>Spread out to avoid splash. Can be <strong>shackled</strong>. Warn healers about the 50% HP phase change burst.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Wanton Hostess / Wanton Host</h4>
+<ul>
+    <li><span class="ability">Alluring Aura</span> (above 50% HP) &mdash; Reduces <strong>physical</strong> damage dealt by 50% for nearby players</li>
+    <li><span class="ability">Bewitching Aura</span> (below 50% HP) &mdash; Reduces <strong>spell</strong> damage dealt by 50% for nearby players</li>
+    <li><span class="ability">Banshee Shriek</span> &mdash; 5-sec <strong>silence</strong> to nearby enemies</li>
+    <li>At 50% transforms to Wraith form, breaking all CC. Can be <strong>shackled</strong> before transformation.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Phantom Guardsman</h4>
+<ul>
+    <li><span class="ability">Consecrate</span> &mdash; <span class="holy">Holy</span>. AoE damage zone &mdash; move out</li>
+    <li><span class="ability">Knockdown</span> &mdash; Stun for several seconds</li>
+    <li><span class="ability">Shield Slam</span> &mdash; High-damage physical hit</li>
+    <li><span class="ability">Summon Phantom Hound</span> &mdash; Summons an add on pull</li>
+    <li>Hits for 5,000-7,000. Can be <strong>shackled</strong>.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Spectral Sentry</h4>
+<ul>
+    <li><span class="ability">Shoot</span> &mdash; Ranged physical attack on highest aggro</li>
+    <li><span class="ability">Multi-Shot</span> &mdash; Hits 3 random players for 3,150-3,850 physical damage</li>
+    <li>Stationary ranged mob. LoS pull to you. Multi-Shot hurts clothies. Can be <strong>shackled</strong>.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Phantom Attendant</h4>
+<ul>
+    <li><span class="ability">Kick</span> &mdash; Interrupt + 4 second silence</li>
+    <li><span class="ability">Shadow Rejuvenation</span> &mdash; <span class="shadow">Shadow</span>. HoT healing ~2,000/sec on allies. Dispel or kill fast.</li>
+    <li>Melee mob that heals. Can be <strong>shackled</strong>.</li>
+</ul>
+</div>
+
+<div class="pally-tip">Undead &mdash; Exorcism and Holy Wrath work here. <strong>Wanton Hostess Alluring Aura does NOT affect Holy damage</strong> &mdash; your Consecration, Holy Shield, and Judgment are unaffected by the 50% physical damage reduction, making Prot Pally actually strong against these. Watch for Banshee Shriek silence from the Wraith form though.</div>
+
+<!-- Maiden Boss -->
+<div class="boss-card">
+<h3>MAIDEN OF VIRTUE</h3>
+
+<h4>Overview</h4>
+<p>Single-target fight in a circular room. Deals primarily <strong>Holy damage</strong> which bypasses your armor. This is one of the harder fights for Prot Paladins because your mitigation is less effective.</p>
+
+<h4>Abilities</h4>
+<ul>
+    <li><span class="ability">Repentance</span> &mdash; <span class="holy">Holy</span>. AoE 12-second incapacitate on the <strong>entire raid</strong> every ~30-35 seconds, dealing 1,750-2,250 holy damage. Breaks on subsequent damage. She continues meleeing the tank during Repentance. <strong>Healers must be topped before this hits.</strong></li>
+    <li><span class="ability">Holy Fire</span> &mdash; <span class="holy">Holy</span>. DoT on a random player. Deals 3,238-3,762 initial damage + 1,750 every 2 seconds for 12 seconds. <strong>Very heavy damage.</strong></li>
+    <li><span class="ability">Holy Ground</span> &mdash; <span class="holy">Holy</span>. Persistent AoE aura dealing 240-360 Holy damage every 3 seconds and silencing anyone within ~12 yards for 1 second. Melee must eat this. Ranged should stay out.</li>
+    <li><span class="ability">Holy Wrath</span> &mdash; <span class="holy">Holy</span>. Chain damage that bounces between nearby players, dealing increasing damage per bounce. <strong>Spread out to limit bounces.</strong></li>
+</ul>
+
+<div class="pally-tip"><strong>Actually better than you'd think for Prot Pally.</strong> Holy Ground's silence only lasts <strong>1 second per 3-second tick</strong> &mdash; since all Prot Paladin abilities are <strong>instant cast</strong>, you can fit them between silence ticks without issue. Your threat generation is barely affected. Use Ironshield Potion (she still melees). Keep Holy Shield up for block value mitigation on her melee swings. During Repentance, you'll take unhealed melee hits for up to 12 sec &mdash; use Ardent Defender passive. <strong>BoSac trick:</strong> Cast Blessing of Sacrifice on someone taking Holy Ground damage &mdash; the transferred damage will break your Repentance early!</div>
+
+<div class="warning"><strong>Repentance timing:</strong> Holy Ground ticks will break Repentance on melee after a few seconds, but healers at range stay stunned the full duration. The tank takes unhealed damage during this window. Make sure you're near full HP when Repentance hits.</div>
+
+<div class="tip"><strong>Positioning:</strong> Tank Maiden in the center. Ranged and healers spread out around the edges of the room, staying out of Holy Ground range. Melee stack behind her.</div>
+</div>
+
+<!-- ==================== OPERA ==================== -->
+<h2 id="opera">4. Opera Event</h2>
+
+<h3 id="opera-trash">Opera Hall Trash</h3>
+<p>The path to Opera goes through the Grand Ballroom with ghostly guests and then through the audience hall with skeletal ushers.</p>
+
+<div class="trash-card">
+<h4>Spectral Performer</h4>
+<ul>
+    <li><span class="ability">Spotlight</span> &mdash; <span class="holy">Holy</span>. AoE damage around the mob, deals fire/holy damage in a radius</li>
+    <li><span class="ability">Curtain Call</span> &mdash; Disorient effect on nearby players</li>
+    <li>Ranged caster. Pull with Avenger's Shield. Can be CC'd.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4 style="color:#ff4444;">Skeletal Usher (DANGER)</h4>
+<ul>
+    <li><span class="ability">Ice Tomb</span> &mdash; <span class="frost">Frost</span>. Encases the <strong>highest-threat target</strong> in ice for 10 seconds. <span style="color:#ff4444; font-weight:bold;">WIPES THE THREAT TABLE.</span> All mobs go loose after this. Must DPS the ice block to free the player.</li>
+    <li><span class="ability">Frost Shock</span> &mdash; <span class="frost">Frost</span>. 2,800-3,500 damage nuke + slow</li>
+    <li><span class="ability">Magnetic Pull</span> &mdash; Pulls a random distant player to the Usher</li>
+    <li>Undead. <strong>Shackle</strong> the extras. <strong>OT must be ready to pick up all mobs when the MT gets Ice Tombed.</strong> Grounding Totem can absorb Ice Tomb. Free Action Potion prevents the freeze.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Ghostly Philanthropist (also found here)</h4>
+<ul>
+    <li><span class="ability">Incite Rage</span> &mdash; Buffs nearby allies' damage</li>
+    <li>Kill early to prevent buffing the pack.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Spectral Patron</h4>
+<ul>
+    <li><span class="ability">Kick</span> &mdash; Interrupt + silence</li>
+    <li><span class="ability">Goblet of Flames</span> &mdash; <span class="fire">Fire</span>. Throws a burning goblet at a player, dealing AoE fire damage on impact</li>
+    <li>Melee mob. Straightforward to tank.</li>
+</ul>
+</div>
+
+<div class="pally-tip">Mostly undead again. The Skeletal Ushers are the most dangerous trash here &mdash; Ice Tomb can kill if not broken fast, and Frost Shock hurts. Shackle extras and focus them down. Consecrate holds the rest easily.</div>
+
+<!-- Opera Boss: Big Bad Wolf -->
+<div class="boss-card" id="opera-wolf">
+<h3>OPERA: THE BIG BAD WOLF</h3>
+
+<h4>Overview</h4>
+<p>Single-target boss. Periodically transforms a random player into Little Red Riding Hood who must kite the boss.</p>
+
+<h4>Abilities</h4>
+<ul>
+    <li><span class="ability">Little Red Riding Hood</span> &mdash; Transforms a random raid member into Red Riding Hood for 15 seconds. They move faster but cannot use abilities and have reduced armor. <strong>The Wolf chases them &mdash; they must kite!</strong> If the Wolf reaches them, he one-shots them.</li>
+    <li><span class="ability">Terrifying Howl</span> &mdash; <span class="physical">Physical</span>. AoE fear for 3 seconds on nearby players.</li>
+    <li><span class="ability">Wide Swipe</span> &mdash; Frontal cone knockback.</li>
+</ul>
+
+<div class="pally-tip">Tank and spank when you're not Red Riding Hood. If <strong>you</strong> get transformed, run! Kite around the stage edges. When someone else is Red Riding Hood, the Wolf ignores threat and chases them &mdash; just keep DPSing until he returns. Blessing of Freedom on the Red Riding Hood target helps them kite.</div>
+</div>
+
+<!-- Opera Boss: Romulo and Julianne -->
+<div class="boss-card" id="opera-rj">
+<h3>OPERA: ROMULO AND JULIANNE</h3>
+
+<h4>Overview</h4>
+<p>Three-phase fight. Julianne first, then Romulo, then both. They must die within 10 seconds of each other or the survivor resurrects the other.</p>
+
+<h4>Phase 1: Julianne (alone)</h4>
+<ul>
+    <li><span class="ability">Devotion</span> &mdash; Self-buff increasing damage and attack speed by 50%. <strong>Purge or dispel!</strong></li>
+    <li><span class="ability">Powerful Attraction</span> &mdash; <span class="holy">Holy</span>. Stuns a random player for 6 seconds.</li>
+    <li><span class="ability">Blinding Passion</span> &mdash; <span class="holy">Holy</span>. 1,500 holy damage + 3,000 over 4 seconds + disorient on a random player.</li>
+    <li><span class="ability">Eternal Affection</span> &mdash; <span class="holy">Holy</span>. Large heal on herself. <strong>Must be interrupted!</strong></li>
+    <li>When "killed," she feigns death and Romulo spawns.</li>
+</ul>
+
+<h4>Phase 2: Romulo (alone)</h4>
+<ul>
+    <li><span class="ability">Backward Lunge</span> &mdash; <span class="physical">Physical</span>. Knocks back the tank.</li>
+    <li><span class="ability">Daring</span> &mdash; Self-buff increasing damage. Can be dispelled/purged.</li>
+    <li><span class="ability">Deadly Swathe</span> &mdash; <span class="physical">Physical</span>. Frontal cleave dealing heavy damage. <strong>Face away from raid.</strong></li>
+    <li><span class="ability">Poisoned Thrust</span> &mdash; <span class="nature">Nature</span>. Applies a stacking poison DoT.</li>
+    <li>When "killed," Julianne resurrects and Phase 3 begins.</li>
+</ul>
+
+<h4>Phase 3: Both Active</h4>
+<ul>
+    <li>Both retain all abilities from their solo phases.</li>
+    <li><strong>Must die within 10 seconds of each other</strong> or the living one resurrects the dead one at full HP.</li>
+    <li>Julianne heals both &mdash; <strong>interrupts are critical.</strong></li>
+</ul>
+
+<div class="pally-tip">You tank Romulo, face him away. Have a DPS or healer assigned to interrupt Julianne's heals (you can't, no interrupt). In Phase 3, OT or kite Julianne while you tank Romulo. DPS both evenly, then burn simultaneously. Romulo's Backward Lunge can punt you off the stage &mdash; tank with your back to a wall.</div>
+</div>
+
+<!-- Opera Boss: Wizard of Oz -->
+<div class="boss-card" id="opera-oz">
+<h3>OPERA: THE WIZARD OF OZ</h3>
+
+<h4>Overview</h4>
+<p>Four adds spawn first (Dorothee, Tito, Roar, Tinhead, Strawman). After all are killed, The Crone spawns. This is a <strong>Prot Paladin dream fight</strong>.</p>
+
+<h4>The Adds</h4>
+<table class="combat-table" style="font-size:0.85em;">
+<tr><th>Add</th><th>Abilities</th><th>Tank Notes</th></tr>
+<tr>
+    <td><strong>Dorothee</strong></td>
+    <td><span class="ability">Water Bolt</span> (<span class="frost">Frost</span>, 2,025-2,475 damage, random target), <span class="ability">Frightened Scream</span> (AoE fear if you get close)</td>
+    <td>Ranged caster. Don't tank &mdash; DPS kills her while staying spread. Fear if you melee her.</td>
+</tr>
+<tr>
+    <td><strong>Tito</strong></td>
+    <td><span class="ability">Yipping</span> (AoE silence in melee range)</td>
+    <td>Small dog, spawns near Dorothee. Kill Tito first &mdash; killing him makes Dorothee enrage but she's squishy. Silence is very annoying for you as Pally.</td>
+</tr>
+<tr>
+    <td><strong>Roar</strong></td>
+    <td><span class="ability">Frightened Scream</span> (AoE fear in melee range), <span class="ability">Shred Armor</span> (reduces armor by 5,000 for 8 sec), <span class="ability">Mangle</span> (1,600-2,400 physical + 2,500 bleed over 15 sec)</td>
+    <td>Cowardly lion. Actually hits hard with Mangle bleed. OT or fear-tank. <strong>AoE fear is annoying.</strong> BoSac breaks it.</td>
+</tr>
+<tr>
+    <td><strong>Tinhead</strong></td>
+    <td><span class="ability">Cleave</span> (frontal), <span class="ability">Rust</span> (self-debuff, slows himself over time making him easier to kite)</td>
+    <td><strong>Hits the hardest.</strong> MT tanks this one. Face away from raid. Gets slower as fight goes on due to Rust.</td>
+</tr>
+<tr>
+    <td><strong>Strawman</strong></td>
+    <td><span class="ability">Brain Bash</span> (stun on random player), Vulnerable to <span class="fire">Fire</span> damage (takes extra damage and is briefly disoriented by fire)</td>
+    <td>OT or kite. Brain Bash is annoying. Fire mages love him.</td>
+</tr>
+</table>
+
+<h4>The Crone (spawns after all adds die)</h4>
+<ul>
+    <li><span class="ability">Chain Lightning</span> &mdash; <span class="nature">Nature</span>. Bounces between players. Spread out.</li>
+    <li><span class="ability">Cyclone</span> &mdash; Summons a tornado that moves around the stage. <strong>If it touches you, you're thrown into the air for massive fall damage.</strong> Dodge it!</li>
+</ul>
+
+<div class="pally-tip"><strong>Your best Opera.</strong> You can tank Tinhead + Strawman + Roar simultaneously with Consecrate and Holy Shield. <strong>Kill order:</strong> Dorothee first (before Tito, to avoid her Enrage) &rarr; Strawman (fire vulnerability) &rarr; Tinhead &rarr; Roar &rarr; Tito. Then The Crone. Watch Tito's Yipping silence &mdash; try to stay out of its range or have someone pull Tito away. For the Crone, tank and dodge Cyclones.</div>
+</div>
+
+<!-- ==================== CURATOR ==================== -->
+<h2 id="curator">5. The Curator</h2>
+
+<h3 id="curator-trash">Broken Stair &amp; Menagerie Trash</h3>
+<p>After Opera, head backstage and up. The Broken Stair has arcane creatures, and the Menagerie has more.</p>
+
+<h4>Broken Stair Mobs</h4>
+<div class="trash-card">
+<h4>Ghastly Haunt</h4>
+<ul>
+    <li><span class="ability">Ethereal Curse</span> &mdash; Reduces chance to hit with physical attacks by 15%. <strong>STACKS.</strong> Decurse frequently.</li>
+    <li><span class="ability">Shadow Shock</span> &mdash; <span class="shadow">Shadow</span>. Instant shadow damage</li>
+    <li>Undead. Can be <strong>shackled</strong>. Stacking hit reduction is very dangerous for tanks and melee.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Trapped Soul</h4>
+<ul>
+    <li><span class="ability">Cone of Cold</span> &mdash; <span class="frost">Frost</span>. Frontal AoE frost damage + slow. <strong>Face away from raid.</strong></li>
+    <li><span class="ability">Elemental Armor</span> &mdash; Self-buff: +200 magic resistance. Can partially resist your Holy damage. Dispel if possible.</li>
+    <li>Undead. Can be <strong>shackled</strong>.</li>
+</ul>
+</div>
+
+<h4>Menagerie Mobs</h4>
+<div class="trash-card">
+<h4 style="color:#ff4444;">Mana Warp (DEATH EXPLOSION)</h4>
+<ul>
+    <li><span class="ability">Warp Breach</span> &mdash; <span class="arcane">Arcane</span>. <strong>~5,500 AoE arcane explosion at low HP!</strong> Use <strong>Hammer of Justice</strong> to stun at low HP to prevent this, or have all melee run out.</li>
+    <li><strong>Do NOT cleave multiple Mana Warps.</strong> Kill one at a time. Chain-exploding multiple Warps can wipe the raid.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Arcane Watchman</h4>
+<ul>
+    <li><span class="ability">Overload</span> &mdash; Places a lightning shield on a player causing them to periodically explode with <span class="arcane">Arcane Explosion</span>, damaging nearby raid members. <strong>Affected player must run away from the group!</strong></li>
+    <li>Hits hard in melee. Some reports say immune to taunt/stun.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Syphoner</h4>
+<ul>
+    <li><span class="ability">Drain Mana</span> &mdash; <span class="arcane">Arcane</span>. Channeled mana theft on random raid members. <strong>Devastates your healers.</strong></li>
+    <li>Kill quickly before healers are drained dry.</li>
+</ul>
+</div>
+
+<div class="warning"><strong>Mana Warp death explosions</strong> are the #1 trash killer in this area. Use Hammer of Justice to stun them at low HP. Never cleave multiple Warps simultaneously.</div>
+
+<!-- Curator Boss -->
+<div class="boss-card">
+<h3>THE CURATOR</h3>
+
+<h4>Overview</h4>
+<p>The Curator spawns Astral Flares (arcane adds) while fighting. When he runs out of mana, he enters Evocation and takes 300% increased damage. This is a DPS check and a threat fight.</p>
+
+<h4>Abilities</h4>
+<ul>
+    <li><span class="ability">Hateful Bolt</span> &mdash; <span class="arcane">Arcane</span>. Hits the <strong>person with the second-highest threat</strong> for ~4,000-5,500 arcane damage. Fires every ~10 seconds. A designated soaker (plate DPS or OT) must stay #2 on threat.</li>
+    <li><span class="ability">Astral Flare</span> &mdash; <span class="arcane">Arcane</span>. Summons a small Astral Flare add every 10 seconds. Each Flare has ~17,000 HP and does ~675-825 arcane damage per hit. <strong>Must be killed quickly.</strong></li>
+    <li><span class="ability">Evocation</span> &mdash; At 0 mana, Curator channels Evocation for 20 seconds, taking <strong>300% increased damage</strong> and not attacking. <strong>This is the burn phase!</strong> All DPS and cooldowns go here.
+    <li>After Evocation, he returns to full mana and the cycle repeats.</li>
+    <li><span class="ability">Berserk</span> &mdash; 12-minute enrage timer.</li>
+</ul>
+
+<div class="pally-tip">Straightforward for you. Tank Curator in place, maintain #1 threat so Hateful Bolt hits the designated #2 soaker (usually an OT or plate DPS). Assign ranged DPS to kill Flares quickly. During Evocation, pop Avenging Wrath and burn. Your biggest job is just keeping solid threat so Hateful Bolt doesn't hit a squishy.</div>
+
+<div class="tip"><strong>Hateful Bolt soaker:</strong> Make sure someone in plate is consistently #2 on threat. If a healer accidentally takes #2, Hateful Bolt will destroy them.</div>
+</div>
+
+<!-- ==================== SHADE OF ARAN ==================== -->
+<h2 id="shade">6. Shade of Aran</h2>
+
+<h3 id="shade-trash">Guardian's Library Trash</h3>
+<p>The library area contains arcane creatures and spell-shade mobs.</p>
+
+<div class="trash-card">
+<h4 style="color:#ff4444;">Mana Feeder (SPELL IMMUNE)</h4>
+<ul>
+    <li><span class="ability">Astral Bite</span> &mdash; Burns mana from anyone casting spells nearby</li>
+    <li><span class="ability">Complete immunity to ALL magical damage</span> &mdash; <span style="color:#ff4444; font-weight:bold;">Your Consecration, Holy Shield procs, Judgment, and Exorcism do ZERO damage.</span></li>
+    <li><strong>Physical DPS only.</strong> Casters should not cast near these. Let a Warrior/Druid/Feral OT handle these.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4 style="color:#ff4444;">Chaotic Sentience (SPELL IMMUNE)</h4>
+<ul>
+    <li><span class="ability">Unstable Magic</span> &mdash; Debuff: +300 spell damage, but +600 spell damage <em>taken</em>. Dispel immediately.</li>
+    <li><span class="ability">Immune to spell damage</span> &mdash; Same as Mana Feeder. Physical DPS only.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Arcane Protector</h4>
+<ul>
+    <li><span class="ability">Fist of Stone</span> &mdash; Stun + undispellable debuff reducing movement speed, damage, and attack speed</li>
+    <li><strong>One of the hardest-hitting mobs in the entire instance.</strong> Both tanks should maintain threat.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Spell Shade / Sorcerous Shade</h4>
+<ul>
+    <li><span class="ability">Frostbolt</span> / <span class="ability">Shadow Bolt</span> / <span class="ability">Fireball</span> &mdash; Various school caster nukes</li>
+    <li><span class="ability">Phasing Invisibility</span> &mdash; Turns invisible periodically, drops target</li>
+    <li><strong>Sorcerous Shade</strong> variant casts <strong>Volleys</strong> (AoE versions) &mdash; much more dangerous</li>
+    <li>Undead. Can be <strong>shackled</strong>. Pull with Avenger's Shield to silence. LoS pull to stack.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Arcane Anomaly</h4>
+<ul>
+    <li><span class="ability">Arcane Volley</span> &mdash; <span class="arcane">Arcane</span>. Pulsing AoE arcane damage</li>
+    <li><span class="ability">Blink</span> &mdash; Teleports to a random location, <strong>resetting threat</strong></li>
+    <li><span class="ability">Mana Shield</span> &mdash; Absorbs damage using its mana pool</li>
+    <li><span class="ability">Loose Mana</span> &mdash; On death, restores mana to nearby players (kill first for healer mana!)</li>
+    <li>Consecrate helps re-establish threat after Blink.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Homunculus / Shadow Pillager</h4>
+<ul>
+    <li>Homunculus: <span class="ability">Firebolt</span> &mdash; <span class="fire">Fire</span>. Small fire-casting demons. Come in packs. Demon &mdash; <strong>Banish</strong> available.</li>
+    <li>Shadow Pillager: <span class="ability">Curse of Agony</span>, <span class="ability">Searing Pain</span>, <span class="ability">Immolate</span> &mdash; Demon caster. <strong>Banish</strong> or interrupt.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Ethereal Thief / Ethereal Spellfilcher</h4>
+<ul>
+    <li>Thief: <span class="ability">Cleave</span> (frontal), <span class="ability">Disarm</span> (8-sec), <span class="ability">Spatial Distortion</span> (stacking Str/Agi debuff)</li>
+    <li>Spellfilcher: <span class="ability">Arcane Volley</span>, <span class="ability">Spatial Distortion</span> (stacking Int/Spirit debuff &mdash; destroys healer effectiveness)</li>
+    <li><strong>Humanoid</strong> &mdash; can be <strong>Polymorphed</strong> and <strong>Sapped</strong>. Pull 1-2 at a time to prevent debuff stacking.</li>
+</ul>
+</div>
+
+<div class="pally-tip"><strong>This is the hardest trash area for Prot Paladin.</strong> Mana Feeders and Chaotic Sentiences are <strong>completely immune to spell damage</strong> &mdash; your entire kit does nothing to them. You MUST have a Warrior/Druid OT or heavy physical DPS for these. For everything else, LoS pull casters around corners. Use Hammer of Justice to stun Mana Warps at low HP to prevent their death explosion (~5,500 AoE). CC types by creature: Shackle (Undead Shades), Polymorph (Humanoid Ethereals), Banish (Demon Homunculus/Pillagers).</div>
+
+<!-- Shade Boss -->
+<div class="boss-card">
+<h3>SHADE OF ARAN</h3>
+
+<h4>Overview</h4>
+<p><strong>NO TANK NEEDED.</strong> Shade of Aran is untauntable and has no aggro table &mdash; he randomly targets spells. You are DPS for this fight. The door locks when combat starts.</p>
+
+<h4>Abilities</h4>
+<ul>
+    <li><span class="ability">Frostbolt</span> &mdash; <span class="frost">Frost</span>. Single-target nuke. <strong>Interrupt this.</strong></li>
+    <li><span class="ability">Fireball</span> &mdash; <span class="fire">Fire</span>. Single-target nuke. <strong>Interrupt this.</strong></li>
+    <li><span class="ability">Arcane Missiles</span> &mdash; <span class="arcane">Arcane</span>. Channels at a random player. <strong>Interrupt this.</strong></li>
+    <li><span class="ability">Chains of Ice</span> &mdash; <span class="frost">Frost</span>. Roots everyone in place and pulls them to the center, then casts <span class="ability">Frost Nova</span> (AoE ice explosion). <strong>Run to the edges of the room immediately when pulled in!</strong></li>
+    <li><span class="ability">Flame Wreath</span> &mdash; <span class="fire">Fire</span>. Places fire rings around 3 random players. <span style="color:#ff4444; font-weight:bold; font-size:1.1em;">DO NOT MOVE!</span> If anyone moves through a ring, it explodes for massive raid-wide fire damage, likely wiping the group. Lasts ~20 seconds.</li>
+    <li><span class="ability">Arcane Explosion</span> &mdash; <span class="arcane">Arcane</span>. Aran slowly casts a massive AoE. Begins at ~40% mana. <strong>Run to the walls to outrange it.</strong> Counterspell/interrupt does NOT work on this &mdash; just run.</li>
+    <li><span class="ability">Blizzard</span> &mdash; <span class="frost">Frost</span>. Rotating Blizzard around the room. Avoid standing in it. Slow + damage.</li>
+    <li><span class="ability">Mass Polymorph</span> &mdash; <span class="arcane">Arcane</span>. Polymorphs the entire raid and Aran drinks to restore mana. Breaks when he starts casting again. <strong>Do NOT damage him below 40% during this or he won't drink and will Pyroblast.</strong></li>
+    <li><span class="ability">Summon Water Elementals</span> &mdash; At 40% HP, summons 4 Water Elementals. They cast <span class="frost">Frost</span> bolts. <strong>AoE them down or CC (Banish/Fear).</strong></li>
+    <li><span class="ability">Pyroblast</span> &mdash; <span class="fire">Fire</span>. If anyone drinks a mana potion during the fight, Aran casts Pyroblast for ~7,000 fire damage on the whole raid. <strong>DO NOT USE MANA POTIONS in this fight</strong> (some versions of this mechanic are disputed in TBC Classic, but be safe).</li>
+</ul>
+
+<div class="pally-tip"><strong>You're DPS here.</strong> Swap to Seal of Righteousness and melee. Your biggest contribution: use <strong>Holy Wrath</strong> on the Water Elementals (they're Elementals, not Undead, so HW doesn't work &mdash; instead help AoE them with Consecrate). Use Blessing of Freedom on players rooted by Frost Nova after Chains of Ice pull-in. Stay calm during Flame Wreath &mdash; literally do nothing, don't even auto-attack if it might move you.</div>
+
+<div class="warning" style="font-size:1.1em;"><strong>FLAME WREATH: DO. NOT. MOVE.</strong> This is the #1 wipe mechanic. If you have a fire ring around you, stand absolutely still until it fades. No strafing, no jumping, no turning with keyboard movement. This applies to everyone.</div>
+</div>
+
+<!-- ==================== ILLHOOF ==================== -->
+<h2 id="illhoof">7. Terestian Illhoof</h2>
+
+<div class="boss-card">
+<h3>TERESTIAN ILLHOOF</h3>
+
+<h4>Overview</h4>
+<p>Demon boss in a side room off the library hallway. He has a permanent imp companion (Kil'rek) and summons waves of Imps. Periodically sacrifices a raid member with Demon Chains. A <strong>Prot Paladin dream fight</strong> due to the Imp swarms.</p>
+
+<h4>Abilities</h4>
+<ul>
+    <li><span class="ability">Shadow Bolt</span> &mdash; <span class="shadow">Shadow</span>. Casts at random targets for ~4,000 shadow damage.</li>
+    <li><span class="ability">Sacrifice (Demon Chains)</span> &mdash; <span class="shadow">Shadow</span>. Chains a random raid member to the Demon Chains portal, dealing 1,500 shadow damage per second and healing Illhoof for ~3,000/sec. The Chains have ~13,000 HP and <strong>must be DPS'd down immediately</strong> to free the player or they die.</li>
+    <li><span class="ability">Summon Imp</span> &mdash; Summons waves of <strong>Fiendish Imps</strong> throughout the fight. They cast <span class="fire">Firebolt</span> at random targets. Left unchecked, they overwhelm healers.</li>
+    <li><span class="ability">Amplify Flames</span> &mdash; <span class="fire">Fire</span>. Debuff on a random player increasing fire damage taken by 500. <strong>Dispel immediately</strong> or Imp Firebolts (~200 base, up to ~700 with Amplify) will destroy them.</li>
+</ul>
+
+<h4>Kil'rek (Permanent Imp Companion)</h4>
+<ul>
+    <li><span class="ability">Broken Pact</span> &mdash; When Kil'rek dies, Illhoof takes increased damage for ~45 seconds, then Kil'rek respawns.</li>
+    <li>OT or DPS handles Kil'rek. Kill him during burn phases for the damage bonus on Illhoof.</li>
+</ul>
+
+<div class="pally-tip"><strong>You are the Imp killer.</strong> Consecrate + Holy Shield + Retribution Aura = Imps melt. Stand near the Imp portal and keep Consecration down permanently. Your AoE threat makes this fight trivial for your raid. Tank Illhoof, keep Consecrate running for Imps, and call for DPS to switch to Demon Chains when someone gets sacrificed. This is one of your absolute best fights in all of Karazhan.</div>
+
+<div class="warning"><strong>Demon Chains</strong> are the kill-or-die mechanic. Everyone must swap to Chains immediately when someone is Sacrificed. The chained player dies in about 8 seconds without intervention.</div>
+</div>
+
+<!-- ==================== NETHERSPITE ==================== -->
+<h2 id="netherspite">8. Netherspite</h2>
+
+<h3 id="netherspite-trash">Netherspite Trash</h3>
+<p>A few packs of Nether creatures guard the path to Netherspite's room.</p>
+
+<div class="trash-card">
+<h4>Nether Wraith</h4>
+<ul>
+    <li><span class="ability">Arcane Missiles</span> &mdash; <span class="arcane">Arcane</span>. Channels at target</li>
+    <li><span class="ability">Blink</span> &mdash; Teleports randomly, drops threat</li>
+    <li>Ghostly caster. Annoying Blink threat drops &mdash; Consecrate helps.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Netherspite Infernal</h4>
+<ul>
+    <li><span class="ability">Hellfire</span> &mdash; <span class="fire">Fire</span>. Pulsing AoE fire damage around itself</li>
+    <li><span class="ability">War Stomp</span> &mdash; AoE stun</li>
+    <li>Big demon. Hits hard. <strong>Spread out to avoid War Stomp hitting everyone.</strong></li>
+</ul>
+</div>
+
+<!-- Netherspite Boss -->
+<div class="boss-card">
+<h3>NETHERSPITE</h3>
+
+<h4>Overview</h4>
+<p>Netherspite alternates between <strong>Portal Phase</strong> (beams active) and <strong>Banish Phase</strong> (beams gone, AoE damage). During Portal Phase, 3 colored beams connect portals on the walls to Netherspite. Players must intercept these beams.</p>
+
+<h4>The Three Beams (Portal Phase)</h4>
+<table class="combat-table">
+<tr><th>Beam</th><th>Color</th><th>Effect on Player</th><th>Effect on Netherspite</th><th>Who Soaks</th></tr>
+<tr>
+    <td><strong>Perseverance</strong></td>
+    <td style="color:#ff4444;">Red</td>
+    <td>Reduces damage taken, increases max HP, reduces healing received. Stacks &mdash; too many stacks = unhealable</td>
+    <td>If it reaches him: heals him massively</td>
+    <td><strong>TANK</strong> (rotate 2 tanks)</td>
+</tr>
+<tr>
+    <td><strong>Serenity</strong></td>
+    <td style="color:#44ff44;">Green</td>
+    <td>Restores HP and mana rapidly. Stacking debuff reduces max HP over time</td>
+    <td>If it reaches him: heals him</td>
+    <td>Healer (rotate)</td>
+</tr>
+<tr>
+    <td><strong>Dominance</strong></td>
+    <td style="color:#4488ff;">Blue</td>
+    <td>Increases spell damage and healing. Stacking debuff increases spell damage taken</td>
+    <td>If it reaches him: increases his damage</td>
+    <td>DPS caster (rotate)</td>
+</tr>
+</table>
+
+<h4>Portal Phase (~60 seconds)</h4>
+<ul>
+    <li>3 beams are active. Players must block all 3 from reaching Netherspite.</li>
+    <li><span class="ability">Void Zone</span> &mdash; <span class="shadow">Shadow</span>. Places void zones on the ground. <strong>Move out immediately!</strong> ~1,000 shadow damage every 2 seconds.</li>
+    <li>Each beam gives stacking buffs/debuffs. <strong>Players must rotate in and out</strong> to avoid too many stacks (especially Red &mdash; too many stacks makes you unhealable).</li>
+</ul>
+
+<h4>Banish Phase (~30 seconds)</h4>
+<ul>
+    <li>Netherspite banishes himself, becoming untargetable. All beams disappear.</li>
+    <li><span class="ability">Nether Burn</span> &mdash; <span class="shadow">Shadow</span>. Pulsing AoE shadow damage to the entire raid (~150 per 5 sec, increasing over time). Increases in intensity. <strong>Heal through it.</strong></li>
+    <li>All beam debuffs reset during this phase.</li>
+    <li>After Banish Phase, Portal Phase resumes with beams in new positions.</li>
+</ul>
+
+<h4>Other Abilities</h4>
+<ul>
+    <li><span class="ability">Nether Breath</span> &mdash; <span class="shadow">Shadow</span>. Frontal cone dealing ~4,500 arcane damage to anyone in front of him (not tanking through the Red beam). <strong>Only the Red beam tank should be in front.</strong></li>
+    <li><span class="ability">Enrage</span> &mdash; 9-minute hard enrage.</li>
+</ul>
+
+<div class="pally-tip"><strong>Beam management is everything.</strong> As MT, you soak the <strong>Red beam</strong>. Stand between the red portal and Netherspite. After 4-5 stacks (~25 seconds), swap out with the OT (who stands behind you to take over the beam). During Banish Phase your stacks reset. Rotate: you take Red in odd portal phases, OT in even (or vice versa). Keep Holy Shield up &mdash; you'll still be getting melee'd. During Banish phase, just heal up and get ready for next beam positions.</div>
+
+<div class="warning"><strong>Never let Red beam reach Netherspite</strong> &mdash; it heals him for a massive amount. If the tank dies or mispositions, someone must immediately step into the beam. Also, don't stand in front of Netherspite if you're not the Red beam tank &mdash; Nether Breath will delete you.</div>
+</div>
+
+<!-- ==================== CHESS ==================== -->
+<h2 id="chess">9. Chess Event</h2>
+
+<div class="boss-card">
+<h3>CHESS EVENT</h3>
+
+<h4>Overview</h4>
+<p>A giant chess board. Each player controls one chess piece. Free loot if you don't throw. Medivh occasionally "cheats" by buffing enemy pieces or damaging yours.</p>
+
+<h4>Key Pieces</h4>
+<ul>
+    <li><span class="ability">King Llane</span> (Alliance) / <span class="ability">Warchief Blackhand</span> (Horde) &mdash; Your king. If he dies, you lose. Move him out of fire. Tank should control the King.</li>
+    <li><span class="ability">Conjurer/Warlock</span> &mdash; Ranged DPS piece. Channels Rain of Fire / Fireball.</li>
+    <li><span class="ability">Charger/Wolf</span> &mdash; Cavalry. High burst damage. Good for flanking their King.</li>
+    <li><span class="ability">Cleric/Necrolyte</span> &mdash; Healer piece. Keeps your King and frontline alive.</li>
+    <li><span class="ability">Footman/Grunt</span> &mdash; Pawns. Meat shields.</li>
+</ul>
+
+<h4>Medivh's Cheats</h4>
+<ul>
+    <li><span class="ability">Medivh's Cheat: Hand of Medivh</span> &mdash; <span class="fire">Fire</span>. AoE fire damage on a section of the board. <strong>Move your piece out!</strong></li>
+    <li><span class="ability">Medivh's Cheat: Flame Shield</span> &mdash; Buffs an enemy piece with a fire shield, dealing damage to adjacent pieces. Kill it or move away.</li>
+    <li><span class="ability">Medivh's Cheat: Fury of Medivh</span> &mdash; Massive fire damage in an area. Move immediately.</li>
+</ul>
+
+<div class="pally-tip">Control the <strong>King</strong> piece. Move out of fire/cheat effects. Use your King's special abilities on cooldown. Keep the King alive and push enemy pieces. This fight is essentially a freebie &mdash; hard to fail unless people AFK. After winning, loot the chest and head up the stairs to Prince.</div>
+</div>
+
+<!-- ==================== PRINCE ==================== -->
+<h2 id="prince">10. Prince Malchezaar</h2>
+
+<h3 id="prince-trash">Prince's Tower Trash</h3>
+<p>A gauntlet of fel creatures on the spiral staircase to Prince's platform.</p>
+
+<div class="trash-card">
+<h4 style="color:#ff4444;">Greater Fleshbeast (EXTREME DANGER)</h4>
+<ul>
+    <li><span class="ability">Thrash</span> &mdash; Multiple extra melee attacks in quick succession (like Windfury)</li>
+    <li><span class="ability">Gaping Maw</span> &mdash; <span class="physical">Physical</span> bleed DoT</li>
+    <li><span class="ability">Infectious Poison</span> &mdash; <span class="nature">Nature</span> poison. Removable with Cleanse.</li>
+    <li>~120,000 HP. Hits for ~3,000 melee + Thrash gives multiple hits. <span style="color:#ff4444; font-weight:bold;">"Possible to die in nearly one attack."</span> <strong>Pull ONE at a time. Use ALL defensive cooldowns. Maximum healing.</strong> Among the most dangerous trash in the entire instance.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Fleshbeast</h4>
+<ul>
+    <li>Same abilities as Greater Fleshbeast (Thrash, Gaping Maw, Infectious Poison) but less HP and damage</li>
+    <li>Still dangerous due to Thrash. Cleanse the poison. Pull carefully.</li>
+</ul>
+</div>
+
+<div class="pally-tip"><strong>Greater Fleshbeasts are THE most dangerous trash for Prot Paladin.</strong> Thrash can spike you from full to dead. Use Ardent Defender, Holy Shield, Ironshield Potion, and every cooldown available. Self-Cleanse the Infectious Poison between GCDs. Pull these one at a time &mdash; <strong>NEVER pull two.</strong></div>
+
+<!-- Prince Boss -->
+<div class="boss-card">
+<h3>PRINCE MALCHEZAAR</h3>
+
+<h4>Overview</h4>
+<p>Three-phase fight at the top of the tower. Infernals rain from the sky periodically. Enfeeble is the key mechanic. This is a gear check and a positioning fight.</p>
+
+<h4>All Phases</h4>
+<ul>
+    <li><span class="ability">Enfeeble</span> &mdash; <span class="shadow">Shadow</span>. Reduces 5 random raid members' HP to <strong>1 HP</strong> for 7 seconds. Does NOT affect the highest-threat target (the tank). After Enfeeble ends, players' HP is restored. <strong>Enfeebled players must NOT take any damage or they die.</strong></li>
+    <li><span class="ability">Shadow Word: Pain</span> &mdash; <span class="shadow">Shadow</span>. Applies SW:P to a random player. Standard DoT. <strong>If an Enfeebled player has SW:P, they will die.</strong> Dispel SW:P before Enfeeble hits.</li>
+    <li><span class="ability">Summon Infernal</span> &mdash; <span class="fire">Fire</span>. Infernals crash down from the sky in random locations every 40 seconds (faster in later phases). They have a <strong>Hellfire aura</strong> dealing constant fire damage to anyone near them. <strong>They don't move and cannot be tanked.</strong> Bad Infernal placement can make the fight impossible.</li>
+</ul>
+
+<h4>Phase 1 (100% - 60%)</h4>
+<ul>
+    <li>Standard melee attacks + Enfeeble + Shadow Word: Pain + Infernals.</li>
+    <li>Moderate melee damage. Tank and spank with positioning awareness.</li>
+</ul>
+
+<h4>Phase 2 (60% - 30%)</h4>
+<ul>
+    <li><span class="ability">Sunder Armor</span> &mdash; Stacking armor reduction (-1,000 per stack) on the tank. Stacks up to 5. <strong>Massive increase in physical damage taken.</strong></li>
+    <li><span class="ability">Thrash</span> &mdash; Grants 2 extra melee attacks (like Windfury).</li>
+    <li>Equips two axes. Hits <strong>much harder.</strong> Combined with Sunder, the tank takes enormous damage.</li>
+    <li>Infernals drop every 40 seconds.</li>
+</ul>
+
+<h4>Phase 3 (30% - 0%)</h4>
+<ul>
+    <li><span class="ability">Shadow Nova</span> &mdash; <span class="shadow">Shadow</span>. AoE shadow damage (~3,000) to everyone within 30 yards. Frequently cast. <strong>Ranged and healers must stay at max range.</strong></li>
+    <li>Axes disappear, returns to mostly spell damage. Still does Shadow Nova + Enfeeble.</li>
+    <li>Infernals drop every <strong>18 seconds</strong> &mdash; space gets tight fast.</li>
+    <li>Damage on the tank is less than Phase 2, but raid-wide damage is very high.</li>
+</ul>
+
+<div class="pally-tip"><strong>Positioning is everything.</strong> Tank Prince at the edge of his platform so Infernals have maximum room. Adjust your position if an Infernal lands near you. Phase 2 is the hardest for you &mdash; Sunder Armor strips your mitigation. Use Ironshield Potion, all defensive cooldowns, and call for emergency heals during Thrash + Sunder stacks. In Phase 3, the physical damage is lighter but you need to survive Shadow Nova &mdash; Shadow Resistance gear can help if your raid has it.</div>
+
+<div class="warning"><strong>Enfeeble + SW:P = instant death.</strong> Dispellers must remove SW:P from players before Enfeeble hits. Enfeebled players must immediately move away from Infernals. If an Infernal ticks on an Enfeebled player, they die at 1 HP.</div>
+
+<div class="tip"><strong>Infernal management:</strong> Start Prince on one edge of the platform. If Infernals fill that side, slowly kite Prince to the other side. If extremely unlucky with Infernal placement, you may need to reset.</div>
+</div>
+
+<!-- ==================== NIGHTBANE ==================== -->
+<h2 id="nightbane">11. Nightbane (Summoned Boss)</h2>
+
+<div class="boss-card">
+<h3>NIGHTBANE</h3>
+
+<h4>Overview</h4>
+<p>Optional boss summoned on the Master's Terrace (accessed through Opera backstage). Requires the <em>Blackened Urn</em> from a quest chain. Two alternating phases: Ground and Air. Undead dragon.</p>
+
+<h4>Ground Phase</h4>
+<ul>
+    <li><span class="ability">Bellowing Roar</span> &mdash; AoE <strong>fear</strong> on the entire raid. 4-second fear. ~30 second cooldown. <strong>Fear Ward, Tremor Totem, or Berserker Rage (warriors) to counter.</strong></li>
+    <li><span class="ability">Charred Earth</span> &mdash; <span class="fire">Fire</span>. Places a fire patch under a random player that deals heavy fire damage. <strong>Move out immediately.</strong></li>
+    <li><span class="ability">Cleave</span> &mdash; <span class="physical">Physical</span>. Frontal cleave. Face away from raid.</li>
+    <li><span class="ability">Distracting Ash</span> &mdash; <span class="fire">Fire</span>. Reduces chance to hit by 30% on the tank. Essentially a debuff that weakens your threat.</li>
+    <li><span class="ability">Smoldering Breath</span> &mdash; <span class="fire">Fire</span>. Frontal cone breath dealing 5,000-6,000 fire damage + fire DoT. <strong>Only the tank should be in front.</strong></li>
+    <li><span class="ability">Tail Sweep</span> &mdash; Knocks back anyone behind the dragon. Don't stand behind him.</li>
+</ul>
+
+<h4>Air Phase (at 75%, 50%, 25% HP)</h4>
+<ul>
+    <li>Nightbane flies into the air and becomes untargetable for ~45-60 seconds.</li>
+    <li><span class="ability">Rain of Bones</span> &mdash; Targets a random player. Deals physical damage in 6-yard radius and spawns <strong>5 Restless Skeletons</strong> (~13,500 HP each, hit ~1,300 on cloth, ~450 on plate). <strong>All skeletons must die before Nightbane lands.</strong></li>
+    <li><span class="ability">Smoking Blast</span> &mdash; Targets the <strong>highest-threat player</strong> (tank) every ~1 second for ~15 seconds. Deals 1,850-2,150 physical damage (mitigated by armor, ~750 on plate) + <strong>3,000 fire damage DoT over 18 seconds</strong> (dispellable). The tank must be healed through this.</li>
+    <li><span class="ability">Fireball Barrage</span> &mdash; <span class="fire">Fire</span>. <strong>Triggers if anyone is more than 40 yards away.</strong> Massive raid damage. <strong>STAY WITHIN 40 YARDS of Nightbane at all times.</strong></li>
+    <li>Restless Skeletons have <span class="ability">Immolation Aura</span> &mdash; ~1,000 fire damage/tick to nearby enemies.</li>
+</ul>
+
+<div class="pally-tip"><strong>Great fight for Prot Paladin.</strong> Ground phase: standard dragon tanking. Face Nightbane away, keep your back to a wall to avoid fear running you off the terrace. <strong>Fear is your biggest problem</strong> &mdash; coordinate Fear Ward from a Priest and/or Tremor Totem from a Shaman. Without fear mitigation, you'll lose threat and positioning.
+
+<br><br><strong>Air phase: You shine!</strong> Consecrate + Holy Wrath on the Restless Skeletons (undead!). AoE tank all the skeleton adds while eating Smoking Blast damage. Make sure healers are ready for Smoking Blast &mdash; it hits hard and you're also tanking adds. Exorcism the skeletons for extra threat. When Nightbane lands, re-establish threat immediately.</div>
+
+<div class="warning"><strong>Fear management is critical.</strong> Without Fear Ward or Tremor Totem, Bellowing Roar will cause the tank to run around feared while Nightbane cleaves/breathes the raid. Have fear mitigation for every fear cooldown.</div>
+</div>
+
+<!-- ==================== ANIMAL BOSSES ==================== -->
+<h2 id="animal-bosses">12. Animal Bosses (Optional - Servants' Quarters)</h2>
+
+<p>One of three random animal bosses spawns in the Servants' Quarters (accessible from the entry area). They drop badges and modest loot. Which boss spawns depends on which trash mob types are present in the area.</p>
+
+<div class="boss-card">
+<h3>HYAKISS THE LURKER (Spider)</h3>
+<p><em>Spawns when Spiders are present in Servants' Quarters.</em></p>
+<ul>
+    <li><span class="ability">Hyakiss' Web</span> &mdash; Stuns the <strong>highest-threat target</strong> for <strong>10 seconds</strong>! Dispellable (Magic). Boss switches to #2 threat.</li>
+    <li><span class="ability">Acidic Fang</span> &mdash; <span class="nature">Nature</span>. Poison. 500 nature damage every 2 sec for 30 sec. <strong>Reduces armor by 1,000 per stack, up to 7 stacks (7,000 armor shred!).</strong> Cleansable.</li>
+    <li><span class="ability">Sneak</span> &mdash; Starts stealthed; slows movement by 50%</li>
+</ul>
+<div class="pally-tip"><strong>Best animal boss for Prot Pally.</strong> Two tanks should build threat simultaneously &mdash; OT picks up when MT gets webbed (10 sec stun!). Self-<strong>Cleanse</strong> the Acidic Fang poison between GCDs to prevent armor shred stacks &mdash; this is a huge Paladin advantage here.</div>
+</div>
+
+<div class="boss-card">
+<h3>ROKAD THE RAVAGER (Darkhound)</h3>
+<p><em>Spawns when Darkhounds are present in Servants' Quarters.</em></p>
+<ul>
+    <li><span class="ability">Ravage</span> &mdash; <span class="physical">Physical</span>. Heavy melee attack on the tank</li>
+    <li><span class="ability">Frenzied Charge</span> &mdash; Charges a random player, briefly stunning and dealing damage</li>
+    <li><span class="ability">Enrage</span> &mdash; At low HP, gains increased attack speed and damage</li>
+</ul>
+<div class="pally-tip">Straightforward. Tank and spank. Save cooldowns for the Enrage phase below 30%. He hits hard but has no special mechanics.</div>
+</div>
+
+<div class="boss-card">
+<h3>SHADIKITH THE GLIDER (Bat)</h3>
+<p><em>Spawns when Bats are present in Servants' Quarters.</em></p>
+<ul>
+    <li><span class="ability">Sonic Burst</span> &mdash; AoE dealing ~2,500 damage to nearby enemies + <strong>5-second silence</strong>. Prevents ALL spellcasting.</li>
+    <li><span class="ability">Wing Buffet</span> &mdash; Frontal cone: 1,050-1,350 damage + knockback + <strong>threat reduction</strong></li>
+    <li><span class="ability">Dive</span> &mdash; Charges the <strong>farthest raid member</strong> in LoS. ~5,000 on cloth + fear on nearby targets at landing</li>
+</ul>
+<div class="pally-tip"><strong>Hardest animal boss for Prot Paladin.</strong> Sonic Burst 5-sec silence locks out your ENTIRE toolkit &mdash; no Consecrate, Holy Shield, Judgment, or any cast. Wing Buffet also <strong>reduces threat</strong> and knocks you back. Tank with <strong>back to a wall</strong>. OT must be ready to taunt after Wing Buffet. Split raid: melee/tank at one wall, ranged/healers at opposite wall. Assign someone at max range to soak Dive charges.</div>
+</div>
+
+<h3>Servants' Quarters Trash</h3>
+
+<div class="trash-card">
+<h4>Coldmist Widow (Spider)</h4>
+<ul>
+    <li><span class="ability">Poison Bolt</span> &mdash; <span class="nature">Nature</span>. Ranged poison nuke</li>
+    <li><span class="ability">Frost Mist</span> &mdash; <span class="frost">Frost</span>. AoE frost slow + damage</li>
+    <li>Can be crowd controlled. Moderate threat.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Coldmist Stalker (Spider)</h4>
+<ul>
+    <li><span class="ability">Web</span> &mdash; Stuns and roots a target for several seconds</li>
+    <li><span class="ability">Poison</span> &mdash; <span class="nature">Nature</span> DoT</li>
+    <li>Stealthed. Patrols. Can surprise you. Watch for patrols.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Shadowbat / Greater Shadowbat</h4>
+<ul>
+    <li><span class="ability">Dive</span> &mdash; Charges a random player, dealing damage</li>
+    <li><span class="ability">Wing Buffet</span> &mdash; Frontal cone knockback</li>
+    <li>Flying mobs. Come in packs. AoE them down.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Vampiric Shadowbat</h4>
+<ul>
+    <li><span class="ability">Vampiric Touch</span> &mdash; <span class="shadow">Shadow</span>. Leeches HP from targets</li>
+    <li>Kill quickly to prevent healing.</li>
+</ul>
+</div>
+
+<div class="trash-card">
+<h4>Phase Hound / Darkhound</h4>
+<ul>
+    <li><span class="ability">Ravage</span> &mdash; Heavy melee strike</li>
+    <li><span class="ability">Charge</span> &mdash; Charges a distant player</li>
+    <li>Simple melee mobs. Come in packs. AoE tank them.</li>
+</ul>
+</div>
+
+<div class="pally-tip">The Servants' Quarters trash is great for AoE. Bats and spiders come in large packs &mdash; Consecrate and Holy Shield them all. Watch for spider webs and bat silences. The hounds are simple melee mobs.</div>
+
+<!-- ==================== REFERENCES ==================== -->
+<h2 id="references" style="margin-top:50px;">References &amp; Sources</h2>
+
+<p>All boss abilities, trash mob data, and damage numbers in this guide were cross-referenced against the following sources:</p>
+
+<h4>Wowhead Strategy Guides</h4>
+<ul style="color:#8b949e;">
+    <li><a href="https://www.wowhead.com/tbc/guide/karazhan-attumen-the-huntsman-strategy" style="color:#58a6ff;">Attumen the Huntsman Strategy Guide</a></li>
+    <li><a href="https://www.wowhead.com/tbc/guide/karazhan-moroes-strategy" style="color:#58a6ff;">Moroes Strategy Guide</a></li>
+    <li><a href="https://www.wowhead.com/tbc/guide/karazhan-maiden-of-virtue-strategy" style="color:#58a6ff;">Maiden of Virtue Strategy Guide</a></li>
+    <li><a href="https://www.wowhead.com/tbc/guide/karazhan-opera-event-strategy" style="color:#58a6ff;">Opera Event Strategy Guide</a> &mdash; Wizard of Oz, Romulo &amp; Julianne, Big Bad Wolf</li>
+    <li><a href="https://www.wowhead.com/tbc/guide/karazhan-the-curator-strategy" style="color:#58a6ff;">The Curator Strategy Guide</a></li>
+    <li><a href="https://www.wowhead.com/tbc/guide/karazhan-shade-of-aran-strategy" style="color:#58a6ff;">Shade of Aran Strategy Guide</a></li>
+    <li><a href="https://www.wowhead.com/tbc/guide/karazhan-terestian-illhoof-strategy" style="color:#58a6ff;">Terestian Illhoof Strategy Guide</a></li>
+    <li><a href="https://www.wowhead.com/tbc/guide/karazhan-netherspite-strategy" style="color:#58a6ff;">Netherspite Strategy Guide</a></li>
+    <li><a href="https://www.wowhead.com/tbc/guide/karazhan-chess-event-strategy" style="color:#58a6ff;">Chess Event Strategy Guide</a></li>
+    <li><a href="https://www.wowhead.com/tbc/guide/karazhan-prince-malchezaar-strategy" style="color:#58a6ff;">Prince Malchezaar Strategy Guide</a></li>
+    <li><a href="https://www.wowhead.com/tbc/guide/karazhan-nightbane-strategy" style="color:#58a6ff;">Nightbane Strategy Guide</a></li>
+    <li><a href="https://www.wowhead.com/tbc/npc=16179/hyakiss-the-lurker" style="color:#58a6ff;">Hyakiss the Lurker</a> / <a href="https://www.wowhead.com/tbc/npc=16181/rokad-the-ravager" style="color:#58a6ff;">Rokad the Ravager</a> / <a href="https://www.wowhead.com/tbc/npc=16180/shadikith-the-glider" style="color:#58a6ff;">Shadikith the Glider</a></li>
+</ul>
+
+<h4>Warcraft Wiki (warcraft.wiki.gg)</h4>
+<ul style="color:#8b949e;">
+    <li><a href="https://warcraft.wiki.gg/wiki/Karazhan_(Classic)" style="color:#58a6ff;">Karazhan (instance)</a> &mdash; full dungeon overview, boss list, trash mobs</li>
+    <li>Individual boss pages:
+        <a href="https://warcraft.wiki.gg/wiki/Attumen_the_Huntsman" style="color:#58a6ff;">Attumen</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Midnight_(Karazhan)" style="color:#58a6ff;">Midnight</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Moroes" style="color:#58a6ff;">Moroes</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Maiden_of_Virtue" style="color:#58a6ff;">Maiden of Virtue</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Opera_Event" style="color:#58a6ff;">Opera Event</a>,
+        <a href="https://warcraft.wiki.gg/wiki/The_Curator" style="color:#58a6ff;">The Curator</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Shade_of_Aran" style="color:#58a6ff;">Shade of Aran</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Terestian_Illhoof" style="color:#58a6ff;">Terestian Illhoof</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Netherspite" style="color:#58a6ff;">Netherspite</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Prince_Malchezaar" style="color:#58a6ff;">Prince Malchezaar</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Nightbane" style="color:#58a6ff;">Nightbane</a>
+    </li>
+    <li>Trash mob pages:
+        <a href="https://warcraft.wiki.gg/wiki/Spectral_Stallion" style="color:#58a6ff;">Spectral Stallion</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Spectral_Charger" style="color:#58a6ff;">Spectral Charger</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Spectral_Stable_Hand" style="color:#58a6ff;">Spectral Stable Hand</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Ghostly_Steward" style="color:#58a6ff;">Ghostly Steward</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Phantom_Guest" style="color:#58a6ff;">Phantom Guest</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Spectral_Retainer" style="color:#58a6ff;">Spectral Retainer</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Skeletal_Usher" style="color:#58a6ff;">Skeletal Usher</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Spectral_Performer" style="color:#58a6ff;">Spectral Performer</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Spectral_Patron" style="color:#58a6ff;">Spectral Patron</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Arcane_Watchman" style="color:#58a6ff;">Arcane Watchman</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Mana_Warp" style="color:#58a6ff;">Mana Warp</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Syphoner" style="color:#58a6ff;">Syphoner</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Ethereal_Thief" style="color:#58a6ff;">Ethereal Thief</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Ethereal_Spellfilcher" style="color:#58a6ff;">Ethereal Spellfilcher</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Homunculus_(Karazhan)" style="color:#58a6ff;">Homunculus</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Shadow_Pillager" style="color:#58a6ff;">Shadow Pillager</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Fleshbeast" style="color:#58a6ff;">Fleshbeast</a>,
+        <a href="https://warcraft.wiki.gg/wiki/Greater_Fleshbeast" style="color:#58a6ff;">Greater Fleshbeast</a>
+    </li>
+</ul>
+
+<h4>Wowhead Spell &amp; NPC Database</h4>
+<ul style="color:#8b949e;">
+    <li>Spell tooltips used for exact damage values:
+        <a href="https://www.wowhead.com/tbc/spell=41926/hateful-bolt" style="color:#58a6ff;">Hateful Bolt</a>,
+        <a href="https://www.wowhead.com/tbc/npc=17096/astral-flare" style="color:#58a6ff;">Astral Flare</a>,
+        <a href="https://www.wowhead.com/tbc/spell=30254/evocation" style="color:#58a6ff;">Evocation</a>,
+        <a href="https://www.wowhead.com/tbc/spell=30505/shadow-bolt" style="color:#58a6ff;">Shadow Bolt (Illhoof)</a>,
+        <a href="https://www.wowhead.com/tbc/spell=30115/sacrifice" style="color:#58a6ff;">Sacrifice</a>,
+        <a href="https://www.wowhead.com/tbc/spell=30053/amplify-flames" style="color:#58a6ff;">Amplify Flames</a>,
+        <a href="https://www.wowhead.com/tbc/spell=30050/firebolt" style="color:#58a6ff;">Firebolt (Imp)</a>,
+        <a href="https://www.wowhead.com/tbc/spell=29523/holy-ground" style="color:#58a6ff;">Holy Ground</a>,
+        <a href="https://www.wowhead.com/tbc/spell=29511/repentance" style="color:#58a6ff;">Repentance</a>,
+        <a href="https://www.wowhead.com/tbc/spell=29522/holy-fire" style="color:#58a6ff;">Holy Fire</a>,
+        <a href="https://www.wowhead.com/tbc/spell=31012/water-bolt" style="color:#58a6ff;">Water Bolt</a>,
+        <a href="https://www.wowhead.com/tbc/spell=31043/shred-armor" style="color:#58a6ff;">Shred Armor</a>,
+        <a href="https://www.wowhead.com/tbc/spell=31041/mangle" style="color:#58a6ff;">Mangle</a>,
+        <a href="https://www.wowhead.com/tbc/spell=31944/devotion" style="color:#58a6ff;">Devotion (Julianne)</a>,
+        <a href="https://www.wowhead.com/tbc/spell=30890/blinding-passion" style="color:#58a6ff;">Blinding Passion</a>,
+        <a href="https://www.wowhead.com/tbc/spell=36922/bellowing-roar" style="color:#58a6ff;">Bellowing Roar</a>,
+        <a href="https://www.wowhead.com/tbc/spell=30210/smoldering-breath" style="color:#58a6ff;">Smoldering Breath</a>,
+        <a href="https://www.wowhead.com/tbc/spell=30522/nether-burn" style="color:#58a6ff;">Nether Burn</a>,
+        <a href="https://www.wowhead.com/tbc/spell=30533/void-zone" style="color:#58a6ff;">Void Zone</a>,
+        <a href="https://www.wowhead.com/tbc/spell=38523/netherbreath" style="color:#58a6ff;">Netherbreath</a>,
+        <a href="https://www.wowhead.com/tbc/spell=30852/shadow-nova" style="color:#58a6ff;">Shadow Nova</a>,
+        <a href="https://www.wowhead.com/tbc/spell=30901/sunder-armor" style="color:#58a6ff;">Sunder Armor (Prince)</a>,
+        <a href="https://www.wowhead.com/tbc/spell=12787/thrash" style="color:#58a6ff;">Thrash</a>,
+        <a href="https://www.wowhead.com/tbc/spell=30843/enfeeble" style="color:#58a6ff;">Enfeeble</a>
+    </li>
+    <li>NPC pages for HP values:
+        <a href="https://www.wowhead.com/tbc/npc=17096/astral-flare" style="color:#58a6ff;">Astral Flare</a>,
+        <a href="https://www.wowhead.com/tbc/npc=17248/demon-chains" style="color:#58a6ff;">Demon Chains</a>,
+        <a href="https://www.wowhead.com/tbc/npc=17261/restless-skeleton" style="color:#58a6ff;">Restless Skeleton</a>,
+        <a href="https://www.wowhead.com/tbc/npc=17229/kilrek" style="color:#58a6ff;">Kil'rek</a>
+    </li>
+</ul>
+
+<h4>Community Guides</h4>
+<ul style="color:#8b949e;">
+    <li>TBC Classic Protection Paladin tanking community guides (general tanking strategy, CC usage, Blessing of Sacrifice techniques)</li>
+    <li>Karazhan attunement and quest chain references (Nightbane Blackened Urn quest)</li>
+</ul>
+
+<p style="color:#8b949e; font-style:italic; margin-top:20px;">All damage numbers represent base values before resistances/mitigation unless otherwise noted. Actual damage taken will vary based on gear, buffs, resistances, and talents. Last verified: March 2026.</p>
+
+
+<hr style="border-color:#30363d; margin-top:40px;">
+<p style="text-align:center; color:#8b949e; font-size:0.85em;">
+    Karazhan Prot Paladin Tanking Guide &bull; TBC Classic<br>
+    Keep this on your second monitor. Good luck, and may your Consecrate never run dry.
+</p>
+
+</div><!-- end container -->
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prot Paladin - Max Threat Rotation (Not Taking Damage)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #0d1117;
+        }
+        .container {
+            background: #161b22;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #f0a500;
+            text-align: center;
+            border-bottom: 3px solid #f0a500;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #58a6ff;
+            border-left: 4px solid #58a6ff;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #ffffff;
+            background: #21262d;
+            margin-top: 20px;
+            padding: 8px 12px;
+            border-left: 4px solid #58a6ff;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        h4 { color: #c9d1d9; margin-top: 15px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: #0d1117;
+        }
+        th, td {
+            padding: 10px 14px;
+            text-align: left;
+            border: 1px solid #30363d;
+        }
+        th {
+            background: #21262d;
+            color: #58a6ff;
+            font-weight: bold;
+        }
+        tr:nth-child(even) { background: #161b22; }
+        tr:hover { background: #1c2333; }
+        .warning {
+            background: linear-gradient(135deg, #5a1a1a 0%, #3d1111 100%);
+            border-left: 4px solid #f85149;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .warning strong:first-child { color: #f85149; }
+        .tip {
+            background: linear-gradient(135deg, #1a3a2a 0%, #112211 100%);
+            border-left: 4px solid #3fb950;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .tip strong:first-child { color: #3fb950; }
+        .formula {
+            background: #1a1a2e;
+            border: 1px solid #30363d;
+            border-left: 4px solid #bc8cff;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .code-block {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 2;
+            margin: 15px 0;
+            color: #c9d1d9;
+        }
+        .offline-tag {
+            display: inline-block;
+            background: #f85149;
+            color: #fff;
+            font-size: 0.75em;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            vertical-align: middle;
+            margin-left: 6px;
+        }
+        .active-tag {
+            display: inline-block;
+            background: #3fb950;
+            color: #0d1117;
+            font-size: 0.75em;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            vertical-align: middle;
+            margin-left: 6px;
+        }
+        .phase-card {
+            background: linear-gradient(135deg, #c0392b 0%, #7b241c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .phase-card h4 { color: #fff; }
+        .phase-card ol li { margin-bottom: 6px; }
+        .mana-card {
+            background: linear-gradient(135deg, #8e44ad 0%, #5b2c6f 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .mana-card h4 { color: #fff; }
+        ul, ol { padding-left: 20px; }
+        li { margin-bottom: 4px; }
+        .subtitle {
+            text-align: center;
+            color: #8b949e;
+            font-style: italic;
+            margin-top: -5px;
+        }
+        .strikethrough { text-decoration: line-through; color: #f85149; opacity: 0.7; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>Prot Paladin: Max Threat Rotation</h1>
+    <p class="subtitle">When you're not taking damage &mdash; only offensive abilities work</p>
+
+    <!-- WHAT GOES OFFLINE -->
+    <h2>What Goes Offline</h2>
+
+    <p>When you aren't being hit, three major threat sources &mdash; and your entire mana engine &mdash; shut down:</p>
+
+    <table>
+        <tr>
+            <th>Source</th>
+            <th>Why It's Dead</th>
+            <th>Threat Lost</th>
+        </tr>
+        <tr>
+            <td><strong>Holy Shield</strong> <span class="offline-tag">OFFLINE</span></td>
+            <td>Procs on block. No incoming attacks = no blocks = 0 procs.</td>
+            <td>~342 threat per block &times; 8 charges = massive loss</td>
+        </tr>
+        <tr>
+            <td><strong>Retribution Aura</strong> <span class="offline-tag">OFFLINE</span></td>
+            <td>Reflects damage when hit. No hits = no reflection.</td>
+            <td>49.4 threat per hit taken (96 TPS on AOE)</td>
+        </tr>
+        <tr>
+            <td><strong>Blessing of Sanctuary</strong> <span class="offline-tag">OFFLINE</span></td>
+            <td>Procs on block. Same as Holy Shield.</td>
+            <td>87.4 threat per block</td>
+        </tr>
+        <tr>
+            <td><strong>Spiritual Attunement</strong> <span class="offline-tag">OFFLINE</span></td>
+            <td>Returns mana when healed. Not taking damage = no heals = no mana return.</td>
+            <td>Not a threat source, but kills your mana engine</td>
+        </tr>
+    </table>
+
+    <div class="warning">
+        <strong>Critical:</strong> Spiritual Attunement is how paladin tanks sustain mana in combat. With it offline, you are running on base regen + pots/runes only. Full rotation burns ~635 mana per 8s cycle. You will OOM in <strong>~30&ndash;40 seconds</strong> going all-out.
+    </div>
+
+    <!-- WHAT STILL WORKS -->
+    <h2>What Still Works</h2>
+
+    <h3>Offensive Ability Priority (@ 300 Spell Power)</h3>
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Ability</th>
+            <th>Cooldown</th>
+            <th>Threat</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><strong>Judgement of Blood</strong> <span class="active-tag">ACTIVE</span></td>
+            <td>8 sec (talented)</td>
+            <td>~834</td>
+            <td>Highest per-GCD. Recast SoR immediately after judging.</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>Consecration</strong> <span class="active-tag">ACTIVE</span></td>
+            <td>8 sec</td>
+            <td>~1,165 (over 8s)</td>
+            <td>Biggest total threat per cast. First to drop when mana-starved.</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><strong>Avenger's Shield</strong> <span class="active-tag">ACTIVE</span></td>
+            <td>30 sec</td>
+            <td>~1,093</td>
+            <td>High burst on CD. 6 sec daze.</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><strong>Exorcism</strong> <span class="active-tag">ACTIVE</span></td>
+            <td>15 sec</td>
+            <td>~1,412</td>
+            <td>Undead/Demon ONLY. If available, jumps to #2 priority.</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><strong>Auto-attack + SoR procs</strong> <span class="active-tag">ACTIVE</span></td>
+            <td>weapon speed</td>
+            <td>~110 TPS passive</td>
+            <td>Free. Runs automatically with Seal of Righteousness active.</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td><strong>Avenging Wrath</strong> <span class="active-tag">ACTIVE</span></td>
+            <td>3 min</td>
+            <td>+30% all damage</td>
+            <td>Use on pull / opener. Causes Forbearance.</td>
+        </tr>
+    </table>
+
+    <!-- GCD TIMELINE -->
+    <h2>GCD Timeline</h2>
+
+    <h3>Standard Rotation (8-Second Loop)</h3>
+
+    <p>Without Holy Shield consuming a GCD every 8 seconds, you gain a free slot every cycle:</p>
+
+    <div class="code-block">
+        0.0s &mdash; Judgement of Blood<br>
+        1.5s &mdash; Seal of Righteousness (recast &mdash; judging consumed your seal)<br>
+        3.0s &mdash; Consecration<br>
+        4.5s &mdash; Avenger's Shield / Exorcism / [free]<br>
+        6.0s &mdash; [free]<br>
+        8.0s &mdash; repeat
+    </div>
+
+    <h3>Seal Swap Rotation (Maximum Threat)</h3>
+
+    <p>With the freed-up GCDs (no Holy Shield), seal swapping becomes <strong>free</strong> &mdash; you no longer have to choose between seal swap GCDs and Holy Shield. This yields <strong>~193 TPS from seals alone</strong>, roughly 27% more than either seal used exclusively.</p>
+
+    <div class="phase-card">
+        <h4>Seal Swap GCD Timeline</h4>
+        <ol>
+            <li><strong>0.0s:</strong> Seal of Blood (prep for judge)</li>
+            <li><strong>1.5s:</strong> Judgement of Blood (strongest Judgement)</li>
+            <li><strong>3.0s:</strong> Seal of Righteousness (resume per-swing procs)</li>
+            <li><strong>4.5s:</strong> Consecration</li>
+            <li><strong>6.0s:</strong> Avenger's Shield / Exorcism / [free]</li>
+            <li><strong>8.0s:</strong> repeat</li>
+        </ol>
+    </div>
+
+    <h3>Threat Math Per Cycle (8 sec, 300 SP)</h3>
+
+    <div class="formula">
+        SoR procs: ~4 swings &times; 127.7 &times; 1.9 = <strong>~971 threat</strong><br>
+        Judgement of Blood: (310 + 300&times;0.43) &times; 1.9 = <strong>~834 threat</strong><br>
+        Consecration: (512 + 300&times;0.336) &times; 1.9 = <strong>~1,165 threat</strong><br>
+        Avenger's Shield (amortized over 30s): ~1,093 / 30 &times; 8 = <strong>~291 threat per cycle</strong><br>
+        <br>
+        <strong>Total per 8s cycle: ~3,261 threat (~408 TPS)</strong><br>
+        <br>
+        With Avenging Wrath (+30%): <strong>~530 TPS</strong> for the first 20 seconds
+    </div>
+
+    <!-- MANA MANAGEMENT -->
+    <h2>The Mana Problem</h2>
+
+    <div class="mana-card">
+        <h4>Why Mana Is Critical Here</h4>
+        <p>Normally, taking damage triggers healing which triggers <strong>Spiritual Attunement</strong> (10% of healing received as mana). This is your primary mana engine. When you're not taking damage, it's completely dead.</p>
+        <p>You also lose the Seal of Blood self-damage &rarr; heal &rarr; mana loop.</p>
+        <p><strong>You're running on fumes:</strong> base mana regen + Super Mana Potions + Dark Runes only.</p>
+    </div>
+
+    <h3>Mana Cost Per 8s Cycle (with 5/5 Benediction)</h3>
+
+    <table>
+        <tr>
+            <th>Ability</th>
+            <th>Base Cost</th>
+            <th>With Benediction (-10%)</th>
+        </tr>
+        <tr>
+            <td>Consecration (Rank 6)</td>
+            <td>615</td>
+            <td>~554</td>
+        </tr>
+        <tr>
+            <td>Judgement</td>
+            <td>~180</td>
+            <td>~162</td>
+        </tr>
+        <tr>
+            <td>Seal of Blood (seal swap)</td>
+            <td>~210</td>
+            <td>~189</td>
+        </tr>
+        <tr>
+            <td>Seal of Righteousness (recast)</td>
+            <td>~210</td>
+            <td>~189</td>
+        </tr>
+        <tr>
+            <th>Total per 8s cycle</th>
+            <th>~1,215</th>
+            <th><strong>~1,094</strong></th>
+        </tr>
+    </table>
+
+    <div class="warning">
+        <strong>Time to OOM:</strong> With ~8,000 base mana and zero Spiritual Attunement return, full seal-swap rotation drains you in <strong>~7 cycles (~56 seconds)</strong>. A Super Mana Potion (1,800&ndash;3,000 mana) buys you roughly 2&ndash;3 more cycles.
+    </div>
+
+    <!-- DEGRADATION STRATEGY -->
+    <h2>Degradation Strategy (As Mana Drops)</h2>
+
+    <table>
+        <tr>
+            <th>Mana Level</th>
+            <th>Action</th>
+            <th>Approx TPS</th>
+        </tr>
+        <tr>
+            <td><strong>&gt;60%</strong></td>
+            <td>Full seal swap + Consecration + Avenger's Shield + Exorcism (if applicable)</td>
+            <td>~408&ndash;530 TPS</td>
+        </tr>
+        <tr>
+            <td><strong>40&ndash;60%</strong></td>
+            <td>Drop Consecration. Seal swap + Judge + Avenger's Shield.</td>
+            <td>~260 TPS</td>
+        </tr>
+        <tr>
+            <td><strong>20&ndash;40%</strong></td>
+            <td>Drop seal swapping. Pure SoR + Judge SoR + Avenger's Shield on CD.</td>
+            <td>~200 TPS</td>
+        </tr>
+        <tr>
+            <td><strong>&lt;20%</strong></td>
+            <td>Judge on CD only + auto-attack with SoR. Conserve for emergencies.</td>
+            <td>~130 TPS</td>
+        </tr>
+        <tr>
+            <td><strong>OOM</strong></td>
+            <td>Auto-attack with SoR (seal persists until judged). Melee swings only.</td>
+            <td>~110 TPS</td>
+        </tr>
+    </table>
+
+    <!-- OPENER -->
+    <h2>Recommended Opener (Max Burst)</h2>
+
+    <div class="phase-card">
+        <h4>Full Burst Opener Sequence</h4>
+        <ol>
+            <li><strong>Pre-cast:</strong> Seal of Righteousness + Righteous Fury active</li>
+            <li><strong>Avenging Wrath</strong> (+30% all damage for 20 sec)</li>
+            <li><strong>Avenger's Shield</strong> (ranged pull / opener burst)</li>
+            <li><strong>Seal of Blood</strong> (swap for judge)</li>
+            <li><strong>Judgement of Blood</strong> (boosted by Avenging Wrath)</li>
+            <li><strong>Seal of Righteousness</strong> (resume per-swing procs)</li>
+            <li><strong>Consecration</strong></li>
+            <li><strong>Exorcism</strong> (if Undead/Demon target)</li>
+            <li>Continue 8s seal swap loop</li>
+        </ol>
+    </div>
+
+    <div class="tip">
+        <strong>Tip:</strong> If you're Horde, weave <strong>Arcane Torrent</strong> (no GCD) between abilities for free mana from Mana Tap charges (~171 mana per charge, up to 3). Every bit of mana counts when Spiritual Attunement is offline.
+    </div>
+
+    <div class="tip">
+        <strong>Tip:</strong> If the target is Undead or Demon, Exorcism (~1,412 threat at 300 SP) becomes your second-highest priority ability behind Judgement of Blood. Use it on every 15s cooldown &mdash; it's worth more per-GCD than Consecration on single target.
+    </div>
+
+    <!-- GEAR OPTIMIZATION -->
+    <h2>Gear Optimization: Stack Spell Power</h2>
+
+    <p>Since ~85% of your threat scales with spell power when not taking damage, the natural conclusion is: <strong>swap out mitigation/avoidance gear for spell power gear</strong>. You're not getting hit &mdash; stamina, armor, dodge, and parry are doing nothing for you. Every gear slot spent on survival stats you don't need is threat you're leaving on the table.</p>
+
+    <h3>What to Swap</h3>
+
+    <table>
+        <tr>
+            <th>Slot</th>
+            <th>Swap From</th>
+            <th>Swap To</th>
+            <th>Why</th>
+        </tr>
+        <tr>
+            <td>Weapon</td>
+            <td>Mallet of the Tides (+34 Stam, +16 Def, +14 Expertise, 0 SP)</td>
+            <td>Gavel of Unearthed Secrets (+159 SP, +15 Spell Crit) or Continuum Blade (+121 SP, +8 Spell Hit)</td>
+            <td>Your biggest single-slot SP gain. Tank weapon stats are wasted here.</td>
+        </tr>
+        <tr>
+            <td>Rings / Neck / Cloak</td>
+            <td>Defense / Stamina / Avoidance pieces</td>
+            <td>Spell power / Spell hit / Spell crit pieces</td>
+            <td>Jewelry is the easiest swap &mdash; no armor class restriction. Caster rings and necks carry massive SP.</td>
+        </tr>
+        <tr>
+            <td>Trinkets</td>
+            <td>Stamina / Armor / Avoidance trinkets</td>
+            <td>Spell power trinkets (e.g., Icon of the Silver Crescent, Scryer's Bloodgem)</td>
+            <td>Active-use SP trinkets also give burst threat on demand.</td>
+        </tr>
+        <tr>
+            <td>Gems</td>
+            <td>Stamina / Defense gems</td>
+            <td>Spell power gems (Runed Living Ruby, Glowing Nightseye)</td>
+            <td>If running a dedicated off-tank threat set, gem entirely for SP + spell hit.</td>
+        </tr>
+        <tr>
+            <td>Enchants</td>
+            <td>Defense / Stamina enchants</td>
+            <td>Spell power enchants (Weapon: Major Spellpower, Chest: Exceptional Stats or Major Spirit for regen)</td>
+            <td>Superior Wizard Oil on weapon is already standard for threat sets.</td>
+        </tr>
+    </table>
+
+    <h3>What NOT to Drop</h3>
+
+    <div class="warning">
+        <strong>Keep your safety net.</strong> Even as an off-tank not currently taking damage, maintain these minimums in case you suddenly need to pick up adds or the main tank dies:
+        <ul>
+            <li><strong>490 Defense</strong> &mdash; non-negotiable. One crit while emergency tanking = death. Defense also contributes to the 102.4% crush cap.</li>
+            <li><strong>102.4% combined avoidance</strong> (with Holy Shield active) &mdash; if you might need to tank a raid boss at any point during the fight, stay uncrushable. Holy Shield provides 30%, so you need 72.4% from gear (miss + dodge + parry + block).</li>
+            <li><strong>Enough HP to survive a hit</strong> &mdash; if there's any chance of taking a boss swing, keep enough stamina to not get one-shot. A dead off-tank generates 0 TPS.</li>
+        </ul>
+    </div>
+
+    <div class="tip">
+        <strong>Build a dedicated spell power threat set.</strong> This is a third gear set alongside your boss mitigation and AOE sets. Hit the defense cap and crush cap minimums, then pour every remaining stat point into spell power, spell hit (until capped), and spell crit. This maximizes your threat contribution during phases where you're DPSing a boss without tanking it &mdash; exactly the scenario this page covers.
+    </div>
+
+    <!-- WEAPON SWAP ANALYSIS -->
+    <h2>Should You Swap to a Physical DPS Weapon?</h2>
+
+    <p>Since you're not blocking anyway, is there an argument for equipping a high-DPS melee weapon (or even a 2H) instead of your spell power tank weapon? <strong>No &mdash; and here's why.</strong></p>
+
+    <h3>Threat Source Breakdown (Not Taking Damage)</h3>
+
+    <table>
+        <tr>
+            <th>Threat Source</th>
+            <th>Scales With</th>
+            <th>% of Total TPS</th>
+        </tr>
+        <tr>
+            <td><strong>Consecration</strong></td>
+            <td>Spell Power (0.336 coeff)</td>
+            <td>~35%</td>
+        </tr>
+        <tr>
+            <td><strong>Judgement of Blood</strong></td>
+            <td>Spell Power (0.43 coeff)</td>
+            <td>~25%</td>
+        </tr>
+        <tr>
+            <td><strong>Avenger's Shield</strong></td>
+            <td>Spell Power (0.091 coeff)</td>
+            <td>~9%</td>
+        </tr>
+        <tr>
+            <td><strong>Exorcism</strong> (if applicable)</td>
+            <td>Spell Power (0.429 coeff)</td>
+            <td>~10%</td>
+        </tr>
+        <tr>
+            <td><strong>Seal of Righteousness procs</strong></td>
+            <td>Spell Power (0.2 coeff) + weapon speed</td>
+            <td>~15%</td>
+        </tr>
+        <tr style="background: #2a1a1a;">
+            <td><strong>SoB procs / Auto-attacks</strong></td>
+            <td>Weapon Damage / Attack Power</td>
+            <td style="color: #f85149;"><strong>~6&ndash;10%</strong></td>
+        </tr>
+    </table>
+
+    <div class="warning">
+        <strong>Key insight:</strong> ~85% of your threat scales with <strong>spell power</strong>. Only auto-attacks and Seal of Blood's weapon damage component (~6&ndash;10% of total) scale with raw weapon DPS / attack power.
+    </div>
+
+    <h3>What You'd Gain</h3>
+
+    <table>
+        <tr>
+            <th>Benefit</th>
+            <th>Impact</th>
+        </tr>
+        <tr>
+            <td>Bigger Seal of Blood procs</td>
+            <td>35% of weapon damage &mdash; a 200 DPS / 3.5 speed 2H = 700 dmg/swing &rarr; 245 Holy &times; 1.9 = <strong>465 threat/swing</strong><br>
+                vs. tank 1H (100 DPS / 1.8 speed) = 180 dmg/swing &rarr; 63 Holy &times; 1.9 = <strong>120 threat/swing</strong></td>
+        </tr>
+        <tr>
+            <td>Harder white hits</td>
+            <td>Higher auto-attack damage, but white damage generates 0 bonus threat (no Righteous Fury modifier)</td>
+        </tr>
+    </table>
+
+    <h3>What You'd Lose</h3>
+
+    <table>
+        <tr>
+            <th>Cost</th>
+            <th>Impact</th>
+        </tr>
+        <tr>
+            <td><strong>121&ndash;159 Spell Power</strong> from tank weapons</td>
+            <td>Feeds <em>every single ability</em> in your rotation. At 1.2&ndash;1.5 TPS per SP, that's <strong>~145&ndash;240 TPS lost</strong> across Consecration, Judgement, Avenger's Shield, Exorcism, and SoR procs.</td>
+        </tr>
+        <tr>
+            <td><strong>One-Handed Weapon Specialization</strong> (3/3)</td>
+            <td>+10% damage with 1H weapons. Gone if you equip a 2H. This multiplies <em>all</em> 1H damage including seal procs.</td>
+        </tr>
+        <tr>
+            <td><strong>Shield stats</strong></td>
+            <td>Shields like Aegis of the Vindicator carry +46 spell damage, stamina, and defense. Even without blocking, these stats contribute to threat and survivability if you suddenly need to pick up adds.</td>
+        </tr>
+        <tr>
+            <td><strong>Spell Hit / Spell Crit</strong> on tank weapons</td>
+            <td>Continuum Blade has +8 Spell Hit; Gavel has +15 Spell Crit. These improve consistency on Judgement, Consecration, and Avenger's Shield &mdash; your primary threat tools.</td>
+        </tr>
+    </table>
+
+    <h3>The Per-Point Comparison</h3>
+
+    <div class="formula">
+        Guide valuation:<br>
+        1 Spell Power &asymp; <strong>1.2&ndash;1.5 TPS</strong> (scales Consecration, Judgement, Holy Shield, Avenger's Shield, SoR)<br>
+        1 Strength (= 2 AP) &asymp; <strong>0.5&ndash;0.7 TPS</strong> (scales auto-attack, SoB weapon damage, block value)<br>
+        <br>
+        Spell power is roughly <strong>2&times; as valuable</strong> as attack power for paladin threat.
+    </div>
+
+    <h3>2H Weapon: SoB TPS Comparison</h3>
+
+    <div class="formula">
+        <strong>2H weapon</strong> (200 DPS, 3.5 speed, 0 SP):<br>
+        SoB per swing: 700 &times; 0.35 &times; 1.9 = 465 threat<br>
+        SoB TPS: 465 / 3.5 = <strong>~133 TPS</strong> (from SoB only)<br>
+        <br>
+        <strong>Tank 1H</strong> (100 DPS, 1.8 speed, +121 SP):<br>
+        SoB per swing: 180 &times; 0.35 &times; 1.9 = 120 threat<br>
+        SoB TPS: 120 / 1.8 = <strong>~67 TPS</strong> (from SoB only)<br>
+        <br>
+        SoB gain from 2H: +66 TPS<br>
+        SP loss from dropping tank weapon: 121 SP &times; ~1.35 TPS/SP = <strong>&minus;163 TPS</strong><br>
+        One-Handed Weapon Spec loss: <strong>&minus;10% all 1H damage</strong><br>
+        <br>
+        <strong>Net: roughly &minus;100 TPS or worse.</strong> The 2H loses.
+    </div>
+
+    <h3>The One Exception: OOM Auto-Attack Only</h3>
+
+    <div class="tip">
+        <strong>Edge case:</strong> If you are completely OOM and reduced to pure auto-attacking (SoR persists until judged), a high-DPS weapon would technically generate more threat from white hits + SoR procs than a 100 DPS caster mace. But this is a <strong>failure state</strong>, not a rotation choice. If you're OOM and not taking damage, something has gone very wrong with the encounter.
+    </div>
+
+    <h3>Verdict</h3>
+
+    <div class="warning">
+        <strong>Keep your spell power weapon.</strong> Paladin threat is a spell-damage class wearing plate. Even without taking damage, ~85% of your active rotation is spell-based. Losing 120+ SP from your weapon to gain bigger auto-attacks is a net TPS loss. The math doesn't close &mdash; not with a DPS 1H, and not with a 2H.
+    </div>
+
+    <!-- GRUUL CASE STUDY -->
+    <h2>Case Study: Gruul Off-Tank (Hurtful Strike Soaker)</h2>
+
+    <p>Gruul the Dragonkiller is the <strong>perfect encounter</strong> for a spell power off-tank set. The Hurtful Strike mechanic has unique properties that make defense cap and crush immunity completely unnecessary for the #2 threat position.</p>
+
+    <h3>Gruul's Key Mechanics</h3>
+
+    <table>
+        <tr>
+            <th>Ability</th>
+            <th>Effect</th>
+            <th>Frequency</th>
+        </tr>
+        <tr>
+            <td><strong>Growth</strong></td>
+            <td>+15% damage per stack, +10% size per stack. Stacks to 30.</td>
+            <td>Every 30 sec</td>
+        </tr>
+        <tr>
+            <td><strong>Hurtful Strike</strong></td>
+            <td>12,350&ndash;13,650 physical damage to <strong>2nd highest threat in melee range</strong></td>
+            <td>~Every 8 sec</td>
+        </tr>
+        <tr>
+            <td><strong>Ground Slam</strong></td>
+            <td>AoE knockback &rarr; Gronn Lord's Grasp (20% slow, stacks 5&times; &rarr; Stoned)</td>
+            <td>~Every 70 sec</td>
+        </tr>
+        <tr>
+            <td><strong>Shatter</strong></td>
+            <td>Raid-wide damage based on proximity (~1,100 at 15+ yards, up to 8,500+ if stacked)</td>
+            <td>Follows Ground Slam</td>
+        </tr>
+        <tr>
+            <td><strong>Cave In</strong></td>
+            <td>~3,000 physical damage every 3 sec in targeted area. Scales with Growth.</td>
+            <td>Periodic (more frequent later)</td>
+        </tr>
+        <tr>
+            <td><strong>Reverberation</strong></td>
+            <td>4-second AoE silence (resistible)</td>
+            <td>Periodic</td>
+        </tr>
+    </table>
+
+    <h3>Why Hurtful Strike Changes Everything</h3>
+
+    <div class="tip">
+        <strong>Key mechanic:</strong> Hurtful Strike <strong>cannot crit</strong> and <strong>cannot be a crushing blow</strong>. It is a flat physical hit mitigated only by armor, block, dodge, and parry. This has massive gearing implications.
+    </div>
+
+    <table>
+        <tr>
+            <th>Tanking Requirement</th>
+            <th>Normal Boss Tanking</th>
+            <th>Gruul Off-Tank (Hurtful Strike)</th>
+        </tr>
+        <tr>
+            <td><strong>490 Defense (crit immunity)</strong></td>
+            <td>Non-negotiable. One crit = death.</td>
+            <td style="color: #3fb950;"><strong>NOT NEEDED.</strong> Hurtful Strike cannot crit. You are not the MT &mdash; Gruul's normal melee swings target the MT only.</td>
+        </tr>
+        <tr>
+            <td><strong>102.4% avoidance (crush immunity)</strong></td>
+            <td>Required. Crushing blows deal 150% damage.</td>
+            <td style="color: #3fb950;"><strong>NOT NEEDED.</strong> Hurtful Strike cannot crush. Boss auto-attacks go to the MT.</td>
+        </tr>
+        <tr>
+            <td><strong>High armor</strong></td>
+            <td>Important for physical bosses.</td>
+            <td style="color: #f0a500;"><strong>YOUR PRIMARY DEFENSE.</strong> Hurtful Strike is physical. Armor is the only stat reducing every hit.</td>
+        </tr>
+        <tr>
+            <td><strong>Stamina / HP</strong></td>
+            <td>Need to survive burst combos.</td>
+            <td style="color: #f0a500;"><strong>CRITICAL.</strong> Must survive Hurtful Strike at high Growth stacks without getting one-shot.</td>
+        </tr>
+        <tr>
+            <td><strong>Threat generation</strong></td>
+            <td>Hold aggro above all DPS.</td>
+            <td style="color: #f85149;"><strong>THE REAL CHALLENGE.</strong> Must stay #2 on threat &mdash; above every melee DPS &mdash; or they eat a Hurtful Strike and die.</td>
+        </tr>
+    </table>
+
+    <div class="warning">
+        <strong>Critical:</strong> If you drop below a melee DPS player on threat, <em>they</em> take the next Hurtful Strike. A 13,000+ physical hit on a rogue or fury warrior is almost certainly a one-shot. Your job is to hold #2 threat &mdash; the spell power set exists to make this possible. <strong>Pets are not valid Hurtful Strike targets</strong> &mdash; warlock/hunter pets cannot soak for you. If no second player is in melee range, Hurtful Strike hits the Main Tank instead.
+    </div>
+
+    <h3>Hurtful Strike Damage vs. Growth Stacks</h3>
+
+    <p>Armor formula vs. level 73 boss: <code>DR% = Armor / (Armor + 11,960)</code></p>
+
+    <table>
+        <tr>
+            <th>Growth Stack</th>
+            <th>Time Into Fight</th>
+            <th>Damage Multiplier</th>
+            <th>Raw Hurtful Strike (avg)</th>
+            <th>After 14,000 Armor (53.9% DR)</th>
+            <th>After 16,000 Armor (57.2% DR)</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0:00</td>
+            <td>&times;1.00</td>
+            <td>13,000</td>
+            <td><strong>5,993</strong></td>
+            <td><strong>5,564</strong></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>1:30</td>
+            <td>&times;1.45</td>
+            <td>18,850</td>
+            <td><strong>8,690</strong></td>
+            <td><strong>8,068</strong></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>2:30</td>
+            <td>&times;1.75</td>
+            <td>22,750</td>
+            <td><strong>10,488</strong></td>
+            <td><strong>9,737</strong></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>4:00</td>
+            <td>&times;2.20</td>
+            <td>28,600</td>
+            <td><strong>13,185</strong></td>
+            <td><strong>12,241</strong></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>5:00</td>
+            <td>&times;2.50</td>
+            <td>32,500</td>
+            <td><strong>14,983</strong></td>
+            <td><strong>13,910</strong></td>
+        </tr>
+        <tr style="background: #2a1a1a;">
+            <td>12</td>
+            <td>6:00</td>
+            <td>&times;2.80</td>
+            <td>36,400</td>
+            <td style="color: #f85149;"><strong>16,781</strong></td>
+            <td style="color: #f85149;"><strong>15,579</strong></td>
+        </tr>
+        <tr style="background: #2a1a1a;">
+            <td>15</td>
+            <td>7:30</td>
+            <td>&times;3.25</td>
+            <td>42,250</td>
+            <td style="color: #f85149;"><strong>19,478</strong></td>
+            <td style="color: #f85149;"><strong>18,083</strong></td>
+        </tr>
+    </table>
+
+    <div class="warning">
+        <strong>Survivability threshold:</strong> At Growth 10+ (5 minutes), Hurtful Strike hits for 14,000&ndash;15,000 after armor. You need <strong>16,000+ HP minimum</strong> to survive with any safety margin. At Growth 12+ (6 minutes), you need <strong>17,000+ HP</strong>. Most Gruul kills should happen before Growth 15 &mdash; if the fight goes past 8 minutes, the raid is wiping to Growth damage anyway.
+    </div>
+
+    <h3>The Mana Twist: Spiritual Attunement Is Partially Online</h3>
+
+    <p>Unlike the pure "not taking damage" scenario covered above, the Gruul OT <strong>does</strong> take damage &mdash; one Hurtful Strike every ~8 seconds, which aligns almost perfectly with your 8-second rotation cycle. This nearly fully restores your mana engine:</p>
+
+    <div class="formula">
+        Hurtful Strike hit (Growth 5, 14k armor): ~10,488 damage<br>
+        Healer tops you off: ~10,488 effective healing<br>
+        Spiritual Attunement (10%): <strong>~1,049 mana returned per hit</strong><br>
+        <br>
+        Hurtful Strike frequency: ~every 8 sec = <strong>1 hit per rotation cycle</strong><br>
+        Per 8s rotation cycle cost (seal swap): ~1,094 mana<br>
+        SA return per 8s cycle: <strong>~1,049 mana</strong><br>
+        <br>
+        Net mana deficit per 8s cycle: 1,094 &minus; 1,049 = <strong>~45 mana</strong><br>
+        <br>
+        vs. pure "no damage" deficit: <strong>~1,094 mana per cycle</strong>
+    </div>
+
+    <div class="tip">
+        <strong>You are nearly mana-neutral.</strong> Spiritual Attunement covers <strong>~96%</strong> of your rotation costs from Hurtful Strike healing alone. The remaining ~45 mana/cycle deficit is trivially covered by base MP5 regen, Blessing of Wisdom, or occasional Judgement of Wisdom procs. You can sustain the <strong>full seal swap rotation for the entire fight</strong> without degradation &mdash; a massive advantage over the pure no-damage scenario where you OOM in under a minute. As Growth stacks increase, Hurtful Strike hits harder, you receive more healing, and SA returns <em>even more</em> mana &mdash; your sustain actually improves as the fight goes on.
+    </div>
+
+    <p>Additional mana sources on this fight:</p>
+    <ul>
+        <li><strong>Seal of Wisdom judged on Gruul</strong> &mdash; melee DPS proc 121 mana per hit. Consider judging Wisdom instead of Blood if mana is critical and DPS are providing enough threat cushion.</li>
+        <li><strong>Blessing of Wisdom</strong> &mdash; ~41 MP5 passive if another paladin covers Sanctuary/Kings.</li>
+        <li><strong>Arcane Torrent</strong> (Blood Elf) &mdash; free ~513 mana every 2 minutes from Mana Tap charges.</li>
+        <li><strong>Shatter/Cave In damage</strong> &mdash; raid-wide damage triggers heals, which trigger more SA mana.</li>
+    </ul>
+
+    <h3>Recommended Gear Approach</h3>
+
+    <table>
+        <tr>
+            <th>Stat</th>
+            <th>Priority</th>
+            <th>Target</th>
+        </tr>
+        <tr>
+            <td><strong>Spell Power</strong></td>
+            <td style="color: #3fb950;">#1</td>
+            <td>As high as possible. Every point = ~1.2&ndash;1.5 TPS. This is how you hold #2 threat.</td>
+        </tr>
+        <tr>
+            <td><strong>Stamina</strong></td>
+            <td style="color: #3fb950;">#2</td>
+            <td>16,000+ HP buffed (17,000+ for safer margin past Growth 10).</td>
+        </tr>
+        <tr>
+            <td><strong>Armor</strong></td>
+            <td style="color: #f0a500;">#3</td>
+            <td>Keep plate + shield equipped. ~14,000+ armor. Devotion Aura from another paladin adds ~1,292.</td>
+        </tr>
+        <tr>
+            <td><strong>Spell Hit</strong></td>
+            <td style="color: #f0a500;">#4</td>
+            <td>Cap (16% / 202 rating) if possible. A resisted Judgement is a huge threat loss.</td>
+        </tr>
+        <tr>
+            <td><strong>Defense / Avoidance</strong></td>
+            <td style="color: #8b949e;">Low</td>
+            <td>Not needed. No crits, no crushes. Dodge/parry are a bonus if they come free on plate, but don't gem or enchant for them.</td>
+        </tr>
+        <tr>
+            <td><strong>Block Rating / Block Value</strong></td>
+            <td style="color: #8b949e;">Low</td>
+            <td>Holy Shield gives 30% block chance passively. Blocking a Hurtful Strike reduces it by your block value (~200&ndash;300), which is negligible on a 13,000+ hit.</td>
+        </tr>
+    </table>
+
+    <div class="tip">
+        <strong>This is your third gear set.</strong> You already have a boss mitigation set (490 def, crush immune) and an AOE threat set (SP + block). The Gruul OT set is: <strong>plate + shield for armor/HP, everything else spell power</strong>. Gem SP, enchant SP, use SP trinkets (Icon of the Silver Crescent, Scryer's Bloodgem). You are a caster in plate.
+    </div>
+
+    <h3>What About Dodge / Parry / Block?</h3>
+
+    <p>These stats still <em>work</em> against Hurtful Strike &mdash; a dodge or parry avoids the hit entirely, and a block reduces it by your block value. But they are unreliable as a strategy:</p>
+
+    <ul>
+        <li><strong>Hurtful Strike hits once every ~8 seconds.</strong> You get one chance to dodge/parry/block per strike. With 15% combined avoidance (no defense stacking), you dodge/parry roughly 1 in 7 Hurtful Strikes. That's nice when it happens, but you can't gear around it.</li>
+        <li><strong>Block value is negligible.</strong> Blocking removes ~200&ndash;300 damage from a 13,000+ hit. That's &lt;2.5% mitigation. Armor does far more per item budget.</li>
+        <li><strong>Every stat point in avoidance is a stat point not in spell power.</strong> And spell power is what keeps a melee DPS from taking the next Hurtful Strike and dying.</li>
+    </ul>
+
+    <h3>Gruul OT Rotation (Seal Swap)</h3>
+
+    <div class="phase-card">
+        <h4>Full Rotation &mdash; Sustain as Long as Mana Allows</h4>
+        <ol>
+            <li><strong>Pre-pull:</strong> Seal of Righteousness + Righteous Fury + Avenging Wrath</li>
+            <li><strong>0.0s:</strong> Avenger's Shield (ranged pull assist / burst threat)</li>
+            <li><strong>1.5s:</strong> Seal of Blood</li>
+            <li><strong>3.0s:</strong> Judgement of Blood</li>
+            <li><strong>4.5s:</strong> Seal of Righteousness</li>
+            <li><strong>6.0s:</strong> Consecration</li>
+            <li><strong>8.0s:</strong> Repeat from step 2</li>
+        </ol>
+        <p><strong>Degrade Consecration first</strong> when mana dips below 50%. Your Spiritual Attunement returns extend the full rotation significantly compared to pure no-damage scenarios.</p>
+    </div>
+
+    <div class="tip">
+        <strong>Ground Slam recovery:</strong> After each Ground Slam knockback, immediately Sprint/move back into melee range. If you're out of melee range when Hurtful Strike fires, it targets the next person on threat &mdash; which is a DPS player who will die. Use <strong>Blessing of Freedom</strong> (if available from another paladin) to remove the Gronn Lord's Grasp slow and get back in faster.
+    </div>
+
+    <h3>Verdict: Gruul Off-Tank</h3>
+
+    <div class="tip">
+        <strong>YES &mdash; the spell power off-tank set works perfectly here.</strong> Hurtful Strike's inability to crit or crush makes defense cap and crush immunity dead stats. Plate armor + shield + stamina handle the raw physical damage, while spell power keeps you locked at #2 threat above every melee DPS. You even get partial Spiritual Attunement mana return from Hurtful Strike healing, extending your rotation sustainability well beyond the pure no-damage scenario. This encounter is the textbook case for the max-threat-not-tanking gear philosophy.
+    </div>
+
+    <p style="text-align: center; color: #8b949e; margin-top: 30px; font-size: 0.85em;">
+        Reference companion to the <a href="index.html" style="color: #58a6ff;">TBC Paladin Tanking Guide</a>
+    </p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TBC Crit &amp; Crush Immunity Calculator - Spreadsheet Formulas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #e0e0e0;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 { color: #f0a500; text-align: center; border-bottom: 3px solid #f0a500; padding-bottom: 10px; }
+        h2 { color: #58a6ff; border-left: 4px solid #58a6ff; padding-left: 15px; margin-top: 30px; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #30363d; padding: 8px 12px; text-align: left; }
+        th { background: #21262d; color: #58a6ff; }
+        tr:nth-child(even) { background: #161b22; }
+        tr:nth-child(odd) { background: #0d1117; }
+        .formula { font-family: 'Consolas', 'Courier New', monospace; color: #7ee787; background: #161b22; padding: 2px 6px; border-radius: 3px; cursor: pointer; }
+        .formula:hover { background: #2d333b; }
+        .note { background: #1c2128; border-left: 4px solid #f0a500; padding: 12px 16px; margin: 15px 0; border-radius: 4px; }
+        .diagram { font-family: 'Consolas', 'Courier New', monospace; background: #161b22; padding: 16px; border-radius: 8px; margin: 15px 0; white-space: pre; line-height: 1.4; color: #c9d1d9; }
+        .input-row td { background: #2a1f00 !important; }
+        .result-row td { background: #0a2a0a !important; }
+        .result-row td strong { color: #7ee787; }
+    </style>
+</head>
+<body>
+
+<h1>TBC Crit &amp; Crush Immunity Calculator &mdash; Spreadsheet Formulas</h1>
+
+<div class="note">
+    Copy these labels and formulas into your spreadsheet. Column A = labels, Column B = values/formulas.
+    All inputs come straight from your <strong>character sheet</strong> (press C in-game).
+</div>
+
+<h2>Crit Immunity &mdash; Inputs</h2>
+<table>
+    <tr><th>Row</th><th>A (Label)</th><th>B (Value)</th><th>Notes</th></tr>
+    <tr class="input-row"><td>1</td><td>Defense Skill (from character sheet)</td><td class="formula">429</td><td>Shown on Defense tab as "Defense". Base is 350 at level 70.</td></tr>
+    <tr class="input-row"><td>2</td><td>Resilience Rating (from gear)</td><td class="formula">24</td><td>Sum of resilience rating across all equipped gear. Also shown on character sheet.</td></tr>
+</table>
+
+<h2>Crit Immunity &mdash; Conversions</h2>
+<table>
+    <tr><th>Row</th><th>A (Label)</th><th>B (Formula)</th><th>Example Result</th></tr>
+    <tr><td>4</td><td>Defense Skill from Gear</td><td class="formula">=B1-350</td><td>79</td></tr>
+    <tr><td>5</td><td>Crit Reduction from Defense (%)</td><td class="formula">=B4*0.04</td><td>3.16%</td></tr>
+    <tr><td>6</td><td>Crit Reduction from Resilience (%)</td><td class="formula">=B2/39.4231</td><td>0.61%</td></tr>
+    <tr class="result-row"><td>7</td><td><strong>Total Crit Reduction (%)</strong></td><td class="formula">=B5+B6</td><td><strong>3.77%</strong></td></tr>
+</table>
+
+<h2>Crit Immunity &mdash; Check</h2>
+<table>
+    <tr><th>Row</th><th>A (Label)</th><th>B (Formula)</th><th>Example Result</th></tr>
+    <tr><td>9</td><td>Crit to Suppress (Heroic, Lv72)</td><td class="formula">5.4</td><td>5.4%</td></tr>
+    <tr><td>10</td><td>Crit to Suppress (Raid, Lv73)</td><td class="formula">5.6</td><td>5.6%</td></tr>
+    <tr class="result-row"><td>11</td><td><strong>Heroic Surplus / Deficit</strong></td><td class="formula">=B7-B9</td><td><strong>-1.63%</strong></td></tr>
+    <tr class="result-row"><td>12</td><td><strong>Raid Surplus / Deficit</strong></td><td class="formula">=B7-B10</td><td><strong>-1.83%</strong></td></tr>
+    <tr class="result-row"><td>13</td><td><strong>Heroic Crit Immune?</strong></td><td class="formula">=IF(B11&gt;=0,"YES","NO")</td><td><strong>NO</strong></td></tr>
+    <tr class="result-row"><td>14</td><td><strong>Raid Crit Immune?</strong></td><td class="formula">=IF(B12&gt;=0,"YES","NO")</td><td><strong>NO</strong></td></tr>
+</table>
+
+<h2>How Much More Do I Need? (Crit)</h2>
+<table>
+    <tr><th>Row</th><th>A (Label)</th><th>B (Formula)</th><th>Example Result</th></tr>
+    <tr><td>16</td><td>Defense Skill still needed (Heroic)</td><td class="formula">=IF(B11&gt;=0,0,ABS(B11)/0.04)</td><td>40.75</td></tr>
+    <tr><td>17</td><td>...as Defense Rating</td><td class="formula">=B16*2.3654</td><td>96.39</td></tr>
+    <tr><td>18</td><td>...or Resilience Rating instead</td><td class="formula">=IF(B11&gt;=0,0,ABS(B11)*39.4231)</td><td>64.26</td></tr>
+    <tr><td>19</td><td>Defense Skill still needed (Raid)</td><td class="formula">=IF(B12&gt;=0,0,ABS(B12)/0.04)</td><td>45.75</td></tr>
+    <tr><td>20</td><td>...as Defense Rating</td><td class="formula">=B19*2.3654</td><td>108.22</td></tr>
+    <tr><td>21</td><td>...or Resilience Rating instead</td><td class="formula">=IF(B12&gt;=0,0,ABS(B12)*39.4231)</td><td>72.15</td></tr>
+</table>
+
+<h2>How It Works</h2>
+<div class="diagram">Character Sheet               Formula                      Result
+─────────────────             ───────                      ──────
+Defense Skill (B1)  ── minus 350 ──▶  Skill from Gear  ──× 0.04──▶  Crit Reduction %
+                                                                          ╲
+                                                                           + = Total
+                                                                          ╱
+Resilience Rating (B2)  ──────────÷ 39.4231──────────▶  Crit Reduction %</div>
+
+<div class="note">
+    There is no single "resilience to defense" conversion. Both stats convert to <strong>crit reduction %</strong>
+    through different rates, and the percentages simply add together. That's the key insight.
+</div>
+
+<!-- ============================================================ -->
+<!-- CRUSH IMMUNITY -->
+<!-- ============================================================ -->
+
+<h1 style="margin-top: 50px;">Crush Immunity (102.4% Combat Table)</h1>
+
+<div class="note">
+    <strong>Crushing blows</strong> deal 150% normal damage and can only be landed by mobs <strong>3+ levels above you</strong>
+    (i.e. level 73 raid bosses). Heroic dungeon bosses (level 72) <strong>cannot crush</strong>.<br><br>
+    To push crushing blows off the single-roll combat table, your combined avoidance must reach
+    <strong>102.4%</strong>: Miss + Dodge + Parry + Block &ge; 102.4%.<br><br>
+    Holy Shield adds <strong>30% block chance</strong> while active, which is why paladins are the easiest tanks to make uncrushable.
+</div>
+
+<h2>Crush Immunity &mdash; Inputs</h2>
+
+<div class="note">
+    Read these values from your <strong>character sheet</strong> (press C in-game &rarr; Defense tab).
+    Enter percentages <strong>without Holy Shield active</strong> &mdash; the sheet adds it automatically.
+    Character sheet values already include contributions from Defense skill, so no double-counting.
+</div>
+
+<table>
+    <tr><th>Row</th><th>A (Label)</th><th>B (Value)</th><th>Notes</th></tr>
+    <tr class="input-row"><td>23</td><td>Miss % (from character sheet)</td><td class="formula">7.2</td><td>Shown as "chance to be missed" on Defense tab</td></tr>
+    <tr class="input-row"><td>24</td><td>Dodge % (from character sheet)</td><td class="formula">12.5</td><td>Includes agility, dodge rating, defense contributions</td></tr>
+    <tr class="input-row"><td>25</td><td>Parry % (from character sheet)</td><td class="formula">10.8</td><td>Includes parry rating and defense contributions</td></tr>
+    <tr class="input-row"><td>26</td><td>Block % (from character sheet)</td><td class="formula">18.4</td><td><strong>Without</strong> Holy Shield active. Includes block rating, defense, Shield Specialization</td></tr>
+    <tr class="input-row"><td>27</td><td>Holy Shield Block Bonus</td><td class="formula">30</td><td>Constant 30% while Holy Shield is active</td></tr>
+</table>
+
+<h2>Crush Immunity &mdash; Calculations</h2>
+<table>
+    <tr><th>Row</th><th>A (Label)</th><th>B (Formula)</th><th>Example Result</th></tr>
+    <tr><td>29</td><td>Total Avoidance (without Holy Shield)</td><td class="formula">=B23+B24+B25+B26</td><td>48.90%</td></tr>
+    <tr><td>30</td><td>Total Avoidance (with Holy Shield)</td><td class="formula">=B29+B27</td><td>78.90%</td></tr>
+    <tr><td>31</td><td>Uncrushable Threshold</td><td class="formula">102.4</td><td>102.4%</td></tr>
+    <tr class="result-row"><td>32</td><td><strong>Crush Surplus / Deficit</strong></td><td class="formula">=B30-B31</td><td><strong>-23.50%</strong></td></tr>
+    <tr class="result-row"><td>33</td><td><strong>Uncrushable?</strong></td><td class="formula">=IF(B32&gt;=0,"YES","NO")</td><td><strong>NO</strong></td></tr>
+</table>
+
+<h2>How Much More Do I Need? (Crush)</h2>
+<table>
+    <tr><th>Row</th><th>A (Label)</th><th>B (Formula)</th><th>Example Result</th></tr>
+    <tr><td>35</td><td>Block Rating still needed</td><td class="formula">=IF(B32&gt;=0,0,ABS(B32)*7.88)</td><td>185.18</td></tr>
+    <tr><td>36</td><td>...or Dodge Rating instead</td><td class="formula">=IF(B32&gt;=0,0,ABS(B32)*18.92)</td><td>444.62</td></tr>
+    <tr><td>37</td><td>...or Defense Skill instead</td><td class="formula">=IF(B32&gt;=0,0,ABS(B32)/0.04)</td><td>587.50</td></tr>
+    <tr><td>38</td><td>...as Defense Rating</td><td class="formula">=B37*2.3654</td><td>1,389.67</td></tr>
+</table>
+
+<div class="note">
+    <strong>Block Rating is by far the cheapest</strong> way to reach uncrushable (7.88 rating per 1%
+    vs 18.92 for dodge or 23.65 for parry). Combined with Holy Shield's 30%, this is why paladins
+    are the only tank class that can realistically reach 102.4% in early tiers.<br><br>
+    <strong>Resilience does not help here at all</strong> &mdash; it only reduces crit chance, not the combat table.
+</div>
+
+<h2>Combat Table Breakdown</h2>
+<div class="diagram">Single-Roll Combat Table (must total 102.4% to push off crush):
+
+  Miss:        B23  =  7.20%    ████████
+  Dodge:       B24  = 12.50%    █████████████
+  Parry:       B25  = 10.80%    ███████████
+  Block:       B26  = 18.40%    ███████████████████
+  Holy Shield: B27  = 30.00%    ██████████████████████████████
+                       ──────
+  Total:       B30  = 78.90%    &larr; Need 102.4%, short by 23.50%
+
+  Remaining gap is filled by: Crushing Blow / Normal Hit</div>
+
+<div class="note">
+    <strong>Heroic dungeon bosses (level 72) cannot crush.</strong> You only need to worry about
+    crush immunity for <strong>raid content</strong>. For heroics, focus on crit immunity and effective health.
+</div>
+
+</body>
+</html>
