@@ -461,10 +461,9 @@
                 </li>
                 <li><a href="#builds">Paladin Builds</a>
                     <ul>
-                        <li><a href="#aoe-build">AOE Tank Build (0/49/12)</a></li>
-                        <li><a href="#boss-build">Boss Tank Build (0/47/14)</a></li>
+                        <li><a href="#avengers-build">Avenger's Shield Build (0/43/18)</a></li>
+                        <li><a href="#sanctity-build">Sanctity Aura Build (0/40/21)</a></li>
                         <li><a href="#build-comparison">Build Comparison</a></li>
-                        <li><a href="#sanctity-vs-as">Sanctity Aura vs Avenger's Shield</a></li>
                     </ul>
                 </li>
                 <li><a href="#consumables">Consumables</a></li>
@@ -823,7 +822,7 @@
             <ul>
                 <li><strong>Seal of Righteousness</strong> has the highest sustained single-target TPS (~152) at this gear level. It scales excellently with spell power and is the recommended AOE tanking seal.</li>
                 <li><strong>Seal of Blood</strong> has a stronger Judgement (~73 TPS) but a weaker active proc with 1H weapons. Its total TPS (~134) is competitive, and it also returns mana via Spiritual Attunement (self-damage &rarr; healing &rarr; mana). <strong>Recommended for boss tanking.</strong></li>
-                <li><strong>Seal of Command</strong> (~101 TPS) procs 70% weapon damage as Holy at 7 PPM, with a strong Judgement of Command. However, it <strong>requires 11 points in Retribution</strong> (Seal of Command talent), which standard 0/49/12 Prot builds do not have. Only relevant for deep Ret hybrid builds.</li>
+                <li><strong>Seal of Command</strong> (~101 TPS) procs 70% weapon damage as Holy at 7 PPM, with a strong Judgement of Command. However, it <strong>requires 11 points in Retribution</strong> (Seal of Command talent). Neither the Avenger's Shield (0/43/18) nor the Sanctity (0/40/21) build takes this talent. Only relevant for deep Ret hybrid builds.</li>
                 <li><strong>Seal of the Crusader</strong> (~101 TPS) has low direct threat from the seal itself (+495 AP to auto-attacks), but its real value is the <strong>Judgement of the Crusader debuff</strong>: +219 Holy damage taken by the target for 20 sec. This indirectly boosts all Holy abilities (Consecration, Holy Shield, SoR procs, Judgements) by ~66 TPS. Typically you judge Crusader first, then swap to SoR or SoB for sustained damage.</li>
                 <li><strong>SotC with 3/3 Improved</strong> (Ret talent) adds +15% to the AP bonus and grants <strong>+3% melee/ranged crit</strong> against the judged target &mdash; a raid-wide DPS benefit. Worth considering if another paladin can maintain the judgement.</li>
                 <li><strong>Seal of Wisdom</strong> generates zero threat but is essential for mana recovery on extended AOE pulls or low-mana emergencies.</li>
@@ -902,7 +901,7 @@
                                     const idx = context[0].dataIndex;
                                     const notes = [
                                         '26 Holy dmg × 1.9 RF per hit taken.\nScales linearly with mob count.',
-                                        '+10% Holy damage to party (Ret talent).\nNot available in standard 0/49/12 Prot builds.\nAlso boosts other paladins\' Holy damage.',
+                                        '+10% Holy damage to party (Ret talent).\nAvailable in the Sanctity (0/40/21) build.\nAlso boosts other paladins\' Holy damage.',
                                         '+1,292 armor (861 base + 50% IDA).\nPhysical damage reduction only.',
                                         '+70 Fire Resist ≈ 14.4% avg spell reduction.\nEncounter-dependent — 0 value on physical fights.',
                                         '+70 Frost Resist ≈ 14.4% avg spell reduction.\nEncounter-dependent — 0 value on physical fights.',
@@ -939,7 +938,7 @@
             <strong>Aura selection guidelines:</strong>
             <ul>
                 <li><strong>Retribution Aura</strong> is the default for <strong>AOE pulls</strong>. At 96 TPS across 6 mobs, it's free passive threat with zero mana cost and no talent investment. On single-target bosses, its 13 TPS contribution is negligible.</li>
-                <li><strong>Sanctity Aura</strong> (+10% Holy damage) is the highest-throughput threat aura for both AOE and single-target &mdash; but it <strong>requires 21 points in Retribution</strong>, making it unavailable in standard 0/49/12 Prot builds. If another paladin runs Sanctity for the group, you can use Retribution or Devotion instead. Also boosts other paladins' Holy damage in the party.</li>
+                <li><strong>Sanctity Aura</strong> (+10% Holy damage) is the highest-throughput threat aura for both AOE and single-target &mdash; <strong>requires 21 points in Retribution</strong>, available in the <a href="#sanctity-build">Sanctity (0/40/21) build</a>. If another paladin runs Sanctity for the group, you can use Retribution or Devotion instead. Also boosts other paladins' Holy damage in the party.</li>
                 <li><strong>Devotion Aura</strong> (with 5/5 Improved) adds <strong>1,292 armor</strong> to the entire raid &mdash; roughly 1.6% additional physical damage reduction at typical gear levels. This is the default for <strong>physical bosses</strong> and any fight where survival matters more than AOE threat.</li>
                 <li><strong>Resistance Auras</strong> are situationally <em>extremely</em> powerful. Against a magic-heavy boss (Hydross, Mother Shahraz, Al'ar), 70 resistance provides ~14.4% average spell damage reduction for the whole raid &mdash; far more mitigation than Devotion Aura on those fights. <strong>Always use the matching resistance aura on magic-damage encounters.</strong></li>
                 <li><strong>Concentration Aura</strong> is niche for tanks. Useful when you need uninterrupted self-heals (emergency Flash of Light casts) or when assigned to a healer group on heavy-interrupt fights.</li>
@@ -1734,187 +1733,128 @@
         <!-- ============================================================ -->
         <h2 id="builds"><a href="#toc">Paladin Builds</a></h2>
 
-        <h3 id="aoe-build">Protection AOE Tank Build (0/49/12)</h3>
-
-        <div class="aoe-tank">
-            <h4>Standard AOE Tank &mdash; 0/49/12</h4>
-            <p><strong>Talent Calculator:</strong> <a href="https://www.wowhead.com/tbc/talent-calc/paladin" style="color: #fff; text-decoration: underline;">WoWHead TBC Paladin Talents</a></p>
-        </div>
-
-        <h4>Protection Tree (49 points)</h4>
-        <table class="combat-table">
-            <tr><th>Talent</th><th>Points</th><th>Why</th></tr>
-            <tr><td>Improved Devotion Aura</td><td>5/5</td><td>+50% armor from Devotion Aura (raid utility)</td></tr>
-            <tr><td>Precision</td><td>3/3</td><td>+3% melee hit, +1% spell hit (threat consistency)</td></tr>
-            <tr><td>Guardian's Favor</td><td>1/2</td><td>Reduced Hand of Protection CD</td></tr>
-            <tr><td>Toughness</td><td>5/5</td><td>+10% armor from items</td></tr>
-            <tr><td>Blessing of Sanctuary</td><td>1/1</td><td>Core buff &mdash; damage reduction + mana on block</td></tr>
-            <tr><td>Improved Righteous Fury</td><td>3/3</td><td><strong>Essential.</strong> 1.9&times; Holy threat modifier.</td></tr>
-            <tr><td>Reckoning</td><td>0/5</td><td>Skip &mdash; unreliable and can cause parry-haste on bosses</td></tr>
-            <tr><td>Shield Specialization</td><td>0/3</td><td>Skip for AOE build</td></tr>
-            <tr><td>Anticipation</td><td>5/5</td><td>+20 defense skill (massive &mdash; reduces defense gear needed)</td></tr>
-            <tr><td>Stoicism</td><td>0/2</td><td>Skip</td></tr>
-            <tr><td>Improved Hammer of Justice</td><td>0/3</td><td>Skip (bosses immune to stun)</td></tr>
-            <tr><td>Spell Warding</td><td>2/2</td><td>-4% spell damage taken</td></tr>
-            <tr><td>Sacred Duty</td><td>2/2</td><td>+6% stamina</td></tr>
-            <tr><td>One-Handed Weapon Specialization</td><td>3/3</td><td>+10% damage with 1H weapons (threat)</td></tr>
-            <tr><td>Holy Shield</td><td>1/1</td><td><strong>Core ability.</strong> Required.</td></tr>
-            <tr><td>Improved Holy Shield</td><td>2/2</td><td>8 charges instead of 4 + increased Holy Shield damage</td></tr>
-            <tr><td>Ardent Defender</td><td>2/2</td><td>Damage reduction below 35% HP (cheat death)</td></tr>
-            <tr><td>Redoubt</td><td>5/5</td><td>10% chance on melee/ranged hit taken: +30% block for 10s or 5 blocks</td></tr>
-            <tr><td>Combat Expertise</td><td>3/3</td><td>+6 expertise, +6% stamina</td></tr>
-            <tr><td>Avenger's Shield</td><td>1/1</td><td><strong>Core ability.</strong> 3-target ranged pull + 6 sec daze.</td></tr>
-        </table>
-
-        <h4>Retribution Tree (12 points)</h4>
-        <table class="combat-table">
-            <tr><th>Talent</th><th>Points</th><th>Why</th></tr>
-            <tr><td>Benediction</td><td>5/5</td><td><strong>Essential.</strong> -15% mana cost on instant spells (Consecration, HS, AS).</td></tr>
-            <tr><td>Improved Blessing of Might</td><td>5/5</td><td>+20% AP from BoM (raid utility if you're buffing melee)</td></tr>
-            <tr><td>Improved Judgement</td><td>2/2</td><td>-2 sec Judgement CD (10s &rarr; 8s). More threat per cycle.</td></tr>
-        </table>
-
-        <h3 id="boss-build">Protection Boss Tank Build (0/49/12 Variant)</h3>
+        <!-- ============================================================ -->
+        <!-- BUILD 1: AVENGER'S SHIELD -->
+        <!-- ============================================================ -->
+        <h3 id="avengers-build">Avenger's Shield Build (0/43/18)</h3>
 
         <div class="boss-tank">
-            <h4>Boss-Focused Tank &mdash; 0/49/12 (Threat Variant)</h4>
-            <p>Same 49-point Protection core. The difference is in the Retribution allocation:</p>
+            <h4>Avenger's Shield &mdash; 0/43/18</h4>
+            <p>The all-rounder build. Avenger's Shield gives you a <strong>ranged pull with 6s daze</strong>, Blessing of Kings provides raid utility, and deep Retribution picks up Deflection, Conviction, Pursuit of Justice, and Crusade for a well-rounded threat and survivability package.</p>
+            <p><strong>Talent Calculator:</strong> <a href="https://www.wowhead.com/tbc/talent-calc/paladin/-0530513050000152421051-050050203003" style="color: #58a6ff;">View on WoWHead</a></p>
         </div>
 
-        <h4>Retribution Tree (12 points &mdash; Boss Variant)</h4>
+        <div style="text-align: center; margin: 1em 0;">
+            <a href="https://www.wowhead.com/tbc/talent-calc/paladin/-0530513050000152421051-050050203003" target="_blank" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #1a1a2e, #16213e); border: 2px solid #f48c06; border-radius: 8px; color: #f48c06; font-size: 1.1em; font-weight: bold; text-decoration: none; transition: background 0.2s;">&#9876; Open Build in WoWHead Talent Calculator</a>
+        </div>
+
+        <h4>Protection Tree (43 points)</h4>
         <table class="combat-table">
             <tr><th>Talent</th><th>Points</th><th>Why</th></tr>
-            <tr><td>Benediction</td><td>5/5</td><td><strong>Essential.</strong> Mana cost reduction.</td></tr>
-            <tr><td>Improved Judgement</td><td>2/2</td><td>8 sec Judgement CD for tighter rotation.</td></tr>
-            <tr><td>Deflection</td><td>5/5</td><td>+5% parry chance &mdash; more avoidance and crush immunity contribution.</td></tr>
+            <tr><td>Redoubt</td><td>5/5</td><td>10% chance on melee/ranged hit taken: +30% block for 10s or 5 blocks</td></tr>
+            <tr><td>Precision</td><td>3/3</td><td>+3% melee hit, +1% spell hit (threat consistency)</td></tr>
+            <tr><td>Toughness</td><td>5/5</td><td>+10% armor from items</td></tr>
+            <tr><td>Blessing of Kings</td><td>1/1</td><td>+10% all stats to target &mdash; strong raid buff</td></tr>
+            <tr><td>Improved Righteous Fury</td><td>3/3</td><td><strong>Essential.</strong> 1.9&times; Holy threat modifier</td></tr>
+            <tr><td>Anticipation</td><td>5/5</td><td>+20 defense skill &mdash; massive, reduces defense gear needed</td></tr>
+            <tr><td>Blessing of Sanctuary</td><td>1/1</td><td>Core buff &mdash; damage reduction + mana on block</td></tr>
+            <tr><td>Reckoning</td><td>5/5</td><td>Extra melee swings = more SoR procs = more threat. Strong filler for this build</td></tr>
+            <tr><td>Sacred Duty</td><td>2/2</td><td>+6% stamina</td></tr>
+            <tr><td>One-Handed Weapon Specialization</td><td>4/5</td><td>+8% all damage with 1H weapons (threat)</td></tr>
+            <tr><td>Improved Holy Shield</td><td>2/2</td><td>8 charges instead of 4 + increased Holy Shield damage</td></tr>
+            <tr><td>Holy Shield</td><td>1/1</td><td><strong>Core ability.</strong> Required for uncrushable</td></tr>
+            <tr><td>Combat Expertise</td><td>5/5</td><td>+10 expertise, +10% stamina</td></tr>
+            <tr><td>Avenger's Shield</td><td>1/1</td><td><strong>Core ability.</strong> 3-target ranged pull + 6 sec daze</td></tr>
         </table>
 
-        <div class="tip">
-            <strong>Flex Points:</strong> The 5 points in Deflection (boss) vs Improved Blessing of Might (AOE) are the main difference. For most guilds, the standard 0/49/12 build works for both AOE and boss tanking. Only swap to the Deflection variant if you're struggling with survivability on progression bosses.
+        <h4>Retribution Tree (18 points)</h4>
+        <table class="combat-table">
+            <tr><th>Talent</th><th>Points</th><th>Why</th></tr>
+            <tr><td>Benediction</td><td>5/5</td><td><strong>Essential.</strong> -15% mana cost on instant spells (Consecration, HS, AS)</td></tr>
+            <tr><td>Deflection</td><td>5/5</td><td>+5% parry chance &mdash; avoidance and crush immunity contribution</td></tr>
+            <tr><td>Conviction</td><td>2/5</td><td>+2% melee crit (filler for deeper talents)</td></tr>
+            <tr><td>Pursuit of Justice</td><td>3/3</td><td>+15% movement speed &mdash; huge quality of life for positioning</td></tr>
+            <tr><td>Crusade</td><td>3/3</td><td>+3% damage to Humanoids, Demons, Undead, Elementals (covers most raid content)</td></tr>
+        </table>
+
+        <!-- ============================================================ -->
+        <!-- BUILD 2: SANCTITY AURA -->
+        <!-- ============================================================ -->
+        <h3 id="sanctity-build">Sanctity Aura Build (0/40/21)</h3>
+
+        <div class="aoe-tank">
+            <h4>Sanctity Aura &mdash; 0/40/21 (No Kings)</h4>
+            <p>The <strong>max threat</strong> build. Trades Avenger's Shield, Blessing of Kings, and 1 point of Weapon Spec for <strong>Sanctity Aura</strong> (+10% Holy damage to your entire party) and <strong>Improved Judgement</strong> (8s CD). The party-wide Holy damage boost benefits other paladins significantly.</p>
+            <p><strong>Talent Calculator:</strong> <a href="https://www.wowhead.com/tbc/talent-calc/paladin/-053050305000015232105-05205020300301" style="color: #58a6ff;">View on WoWHead</a></p>
         </div>
 
+        <div style="text-align: center; margin: 1em 0;">
+            <a href="https://www.wowhead.com/tbc/talent-calc/paladin/-053050305000015232105-05205020300301" target="_blank" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #1a1a2e, #16213e); border: 2px solid #a370ff; border-radius: 8px; color: #a370ff; font-size: 1.1em; font-weight: bold; text-decoration: none; transition: background 0.2s;">&#9876; Open Build in WoWHead Talent Calculator</a>
+        </div>
+
+        <h4>Protection Tree (40 points)</h4>
+        <table class="combat-table">
+            <tr><th>Talent</th><th>Points</th><th>Why</th></tr>
+            <tr><td>Redoubt</td><td>5/5</td><td>10% chance on melee/ranged hit taken: +30% block for 10s or 5 blocks</td></tr>
+            <tr><td>Precision</td><td>3/3</td><td>+3% melee hit, +1% spell hit (threat consistency)</td></tr>
+            <tr><td>Toughness</td><td>5/5</td><td>+10% armor from items</td></tr>
+            <tr><td>Improved Righteous Fury</td><td>3/3</td><td><strong>Essential.</strong> 1.9&times; Holy threat modifier</td></tr>
+            <tr><td>Anticipation</td><td>5/5</td><td>+20 defense skill &mdash; massive, reduces defense gear needed</td></tr>
+            <tr><td>Blessing of Sanctuary</td><td>1/1</td><td>Core buff &mdash; damage reduction + mana on block</td></tr>
+            <tr><td>Reckoning</td><td>5/5</td><td>Extra melee swings = more SoR procs = more threat</td></tr>
+            <tr><td>Sacred Duty</td><td>2/2</td><td>+6% stamina</td></tr>
+            <tr><td>One-Handed Weapon Specialization</td><td>3/5</td><td>+6% all damage with 1H weapons (threat)</td></tr>
+            <tr><td>Improved Holy Shield</td><td>2/2</td><td>8 charges instead of 4 + increased Holy Shield damage</td></tr>
+            <tr><td>Holy Shield</td><td>1/1</td><td><strong>Core ability.</strong> Required for uncrushable</td></tr>
+            <tr><td>Combat Expertise</td><td>5/5</td><td>+10 expertise, +10% stamina</td></tr>
+        </table>
+
+        <h4>Retribution Tree (21 points)</h4>
+        <table class="combat-table">
+            <tr><th>Talent</th><th>Points</th><th>Why</th></tr>
+            <tr><td>Benediction</td><td>5/5</td><td><strong>Essential.</strong> -15% mana cost on instant spells (Consecration, HS)</td></tr>
+            <tr><td>Improved Judgement</td><td>2/2</td><td>-2 sec Judgement CD (10s &rarr; 8s) &mdash; more threat per cycle</td></tr>
+            <tr><td>Deflection</td><td>5/5</td><td>+5% parry chance &mdash; avoidance and crush immunity contribution</td></tr>
+            <tr><td>Conviction</td><td>2/5</td><td>+2% melee crit (filler for deeper talents)</td></tr>
+            <tr><td>Pursuit of Justice</td><td>3/3</td><td>+15% movement speed &mdash; huge quality of life for positioning</td></tr>
+            <tr><td>Crusade</td><td>3/3</td><td>+3% damage to Humanoids, Demons, Undead, Elementals (covers most raid content)</td></tr>
+            <tr><td>Sanctity Aura</td><td>1/1</td><td><strong>+10% Holy damage to entire party.</strong> Boosts your threat and other paladins' damage</td></tr>
+        </table>
+
+        <!-- ============================================================ -->
+        <!-- BUILD COMPARISON -->
+        <!-- ============================================================ -->
         <h3 id="build-comparison">Build Comparison</h3>
 
         <table class="combat-table">
             <tr>
                 <th>Aspect</th>
-                <th>AOE Build (0/49/12)</th>
-                <th>Boss Variant (0/49/12)</th>
+                <th>Avenger's Shield (0/43/18)</th>
+                <th>Sanctity Aura (0/40/21)</th>
             </tr>
-            <tr><td>AOE Threat</td><td><strong>Excellent</strong></td><td>Excellent</td></tr>
-            <tr><td>Single-Target Threat</td><td>Very Good</td><td><strong>Very Good</strong></td></tr>
-            <tr><td>Mana Efficiency</td><td><strong>Excellent</strong> (Benediction)</td><td><strong>Excellent</strong> (Benediction)</td></tr>
-            <tr><td>Survivability</td><td>Good</td><td><strong>Better</strong> (+5% parry from Deflection)</td></tr>
-            <tr><td>Raid Utility</td><td><strong>Better</strong> (Improved BoM)</td><td>Good</td></tr>
-            <tr><td>Best For</td><td>Heroic dungeons, raid trash, general use</td><td>Progression boss tanking</td></tr>
+            <tr><td>Ranged Pull</td><td><strong>Avenger's Shield</strong> (3 targets, 6s daze)</td><td>None &mdash; must body-pull or Exorcism (Undead/Demon only)</td></tr>
+            <tr><td>Blessing of Kings</td><td><strong>Yes</strong> (+10% all stats)</td><td>No &mdash; another paladin must provide Kings</td></tr>
+            <tr><td>Party Aura</td><td>Retribution / Devotion</td><td><strong>Sanctity Aura</strong> (+10% Holy damage to party)</td></tr>
+            <tr><td>Judgement CD</td><td>10 sec</td><td><strong>8 sec</strong> (Improved Judgement 2/2)</td></tr>
+            <tr><td>1H Weapon Spec</td><td><strong>4/5</strong> (+8% all damage)</td><td>3/5 (+6% all damage)</td></tr>
+            <tr><td>Single-Target Threat</td><td>Very Good</td><td><strong>Excellent</strong> (Sanctity + 8s Judgement)</td></tr>
+            <tr><td>AOE Threat</td><td><strong>Excellent</strong> (AS hits 3 targets)</td><td>Very Good (Sanctity boosts Consecration/HS)</td></tr>
+            <tr><td>Survivability</td><td><strong>Same core</strong></td><td><strong>Same core</strong></td></tr>
+            <tr><td>Raid Utility</td><td><strong>Kings + ranged pull</strong></td><td><strong>+10% Holy damage to party</strong></td></tr>
+            <tr><td>Best For</td><td>General use, heroics, raids where you're the only paladin</td><td>Raids with multiple paladins (someone else provides Kings)</td></tr>
         </table>
-
-        <div class="warning">
-            <strong>Mandatory Talents (Never Drop):</strong> Benediction 5/5, Improved Righteous Fury 3/3, Anticipation 5/5, Holy Shield 1/1, Improved Holy Shield 2/2, Avenger's Shield 1/1, Combat Expertise 3/3, Precision 3/3.
-        </div>
-
-        <h3 id="sanctity-vs-as">Alternative Builds: Sanctity Aura vs Avenger's Shield</h3>
-
-        <p>A common debate among paladin tanks is whether to invest deep enough in Retribution to unlock <strong>Sanctity Aura</strong> (+10% Holy damage for the party) at the cost of dropping <strong>Avenger's Shield</strong> and some <strong>One-Handed Weapon Specialization</strong> from the Protection tree.</p>
-
-        <table class="combat-table">
-            <tr>
-                <th>Talent</th>
-                <th><a href="https://www.wowhead.com/tbc/talent-calc/paladin/-053051305000015222105-05205020300301" style="color: #58a6ff;">Sanctity Build (0/40/21)</a></th>
-                <th><a href="https://www.wowhead.com/tbc/talent-calc/paladin/-0530513050000152421051-050050203003" style="color: #58a6ff;">Avenger's Build (0/43/18)</a></th>
-            </tr>
-            <tr><td>Sanctity Aura</td><td><strong>1/1</strong> (+10% Holy dmg to party)</td><td>&mdash;</td></tr>
-            <tr><td>Improved Judgement</td><td><strong>2/2</strong> (8s Judgement CD)</td><td>0/2 (10s Judgement CD)</td></tr>
-            <tr><td>Avenger's Shield</td><td>&mdash;</td><td><strong>1/1</strong></td></tr>
-            <tr><td>One-Handed Weapon Spec</td><td>2/5 (+4% all damage)</td><td><strong>4/5</strong> (+8% all damage)</td></tr>
-        </table>
-
-        <h4>Build TPS Comparison</h4>
-        <p>Estimated sustained threat per second for each build. The <strong>Sanctity build uses Sanctity Aura</strong>; the <strong>Avenger's build uses Retribution Aura</strong> (AOE) or Retribution Aura (boss). Both assume 300 spell power, 100 DPS / 2.0 speed 1H weapon, Righteous Fury, Seal of Righteousness active, and realistic hit rates vs level 73.</p>
-
-        <div style="max-width: 600px; margin: 1.5em auto;">
-            <canvas id="buildTPSChart" width="600" height="420"></canvas>
-        </div>
-        <script>
-        (function() {
-            const ctx = document.getElementById('buildTPSChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['AOE (6 mobs)', 'Single Target'],
-                    datasets: [
-                        {
-                            label: 'Sanctity Build (0/40/21)',
-                            data: [1520, 590],
-                            backgroundColor: 'rgba(163, 112, 255, 0.85)',
-                            borderColor: 'rgba(163, 112, 255, 1)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: "Avenger's Build (0/43/18)",
-                            data: [1630, 595],
-                            backgroundColor: 'rgba(255, 165, 0, 0.85)',
-                            borderColor: 'rgba(255, 165, 0, 1)',
-                            borderWidth: 1
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: "Build TPS: Sanctity (0/40/21) vs Avenger's Shield (0/43/18)",
-                            color: '#e6edf3',
-                            font: { size: 14, weight: 'bold' }
-                        },
-                        legend: {
-                            labels: { color: '#e6edf3', font: { size: 12 } }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                afterBody: function(context) {
-                                    var di = context[0].dataIndex;
-                                    var si = context[0].datasetIndex;
-                                    if (di === 0 && si === 0) return 'Sanctity +10% Holy to all 6 mobs.\nNo Avenger\'s Shield pull.\n8s Judgement CD.';
-                                    if (di === 0 && si === 1) return 'Avenger\'s Shield hits 3 targets.\nRetribution Aura passive threat.\n+8% all damage from 1H WS.';
-                                    if (di === 1 && si === 0) return 'Sanctity +10% Holy boosts all abilities.\n8s Judgement CD = +21 TPS.\nNo Avenger\'s Shield.';
-                                    if (di === 1 && si === 1) return 'Avenger\'s Shield every 30s = +39 TPS.\n+8% all damage from 1H WS.\nRet Aura adds ~13 TPS.';
-                                    return '';
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            ticks: { color: '#8b949e', font: { size: 13 } },
-                            grid: { color: 'rgba(139, 148, 158, 0.15)' }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Threat Per Second (total)',
-                                color: '#e6edf3'
-                            },
-                            ticks: { color: '#8b949e' },
-                            grid: { color: 'rgba(139, 148, 158, 0.15)' }
-                        }
-                    }
-                }
-            });
-        })();
-        </script>
 
         <div class="tip">
-            <strong>Analysis:</strong>
+            <strong>Which build should I use?</strong>
             <ul>
-                <li><strong>Single target:</strong> Nearly identical (~1% difference). The Sanctity build's +10% Holy damage and 8s Judgement CD roughly offset the Avenger's build's Avenger's Shield and +4% extra weapon spec damage.</li>
-                <li><strong>AOE:</strong> The Avenger's build wins by ~7%. Avenger's Shield hitting 3 targets every 30s and Retribution Aura's passive 96 TPS across 6 mobs outpace Sanctity's 10% multiplicative boost.</li>
-                <li><strong>Hidden advantage &mdash; Sanctity:</strong> The +10% Holy damage applies to your <em>entire party</em>, not just you. If you have a ret paladin, holy priest (Smite), or another prot paladin in the group, the raid-wide DPS increase is significant and <strong>not reflected in the chart above</strong>.</li>
-                <li><strong>Hidden advantage &mdash; Avenger's:</strong> Avenger's Shield provides a <strong>ranged pull with 6s daze</strong> &mdash; essential for clean pulls in heroics and raids. Without it, you must body-pull or use Exorcism (Undead/Demon only), which is a major playstyle limitation.</li>
-                <li><strong>Both builds skip Improved Holy Shield</strong> (only 4 charges vs 8) &mdash; a meaningful survivability tradeoff compared to the standard 0/49/12 builds. Plan Holy Shield usage carefully on fast-hitting trash.</li>
+                <li><strong>Avenger's Shield</strong> is the safer, more self-sufficient choice. Ranged pulling with daze makes heroics and raid trash much smoother, and you can provide Kings yourself. Take this if you're the only paladin or want flexibility.</li>
+                <li><strong>Sanctity Aura</strong> is the higher-throughput choice when your raid has another paladin for Kings. The +10% Holy damage to your <em>entire party</em> is a significant raid DPS increase if you group with a ret paladin, holy priest (Smite), or another prot paladin. Improved Judgement also tightens your threat rotation.</li>
+                <li><strong>Both builds</strong> share the same survivability core: Redoubt 5/5, Anticipation 5/5, Improved Holy Shield 2/2, Sacred Duty 2/2, Combat Expertise 5/5, Toughness 5/5, and Deflection 5/5.</li>
             </ul>
+        </div>
+
+        <div class="warning">
+            <strong>Mandatory Talents (Never Drop):</strong> Benediction 5/5, Improved Righteous Fury 3/3, Anticipation 5/5, Holy Shield 1/1, Improved Holy Shield 2/2, Combat Expertise 5/5, Precision 3/3, Redoubt 5/5.
         </div>
 
         <!-- ============================================================ -->
