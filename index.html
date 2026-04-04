@@ -745,25 +745,25 @@
                 type: 'bar',
                 data: {
                     labels: [
+                        'SoV / SoC\n(5 stacks)',
                         'Seal of\nRighteousness',
                         'Seal of\nBlood',
-                        'SoV / SoC\n(5 stacks)',
-                        'Seal of\nCommand',
-                        'Seal of the\nCrusader',
                         'SotC\n(3/3 Improved)',
+                        'Seal of the\nCrusader',
+                        'Seal of\nCommand',
                         'Seal of\nWisdom'
                     ],
                     datasets: [
                         {
                             label: 'Active TPS (seal proc on swing)',
-                            data: [110, 67, 131, 34, 35, 41, 0],
+                            data: [131, 110, 67, 41, 35, 34, 0],
                             backgroundColor: 'rgba(255, 206, 86, 0.85)',
                             borderColor: 'rgba(255, 206, 86, 1)',
                             borderWidth: 1
                         },
                         {
                             label: 'Judged TPS (Judgement / 10s CD)',
-                            data: [44, 80, 146, 77, 66, 71, 0],
+                            data: [146, 44, 80, 71, 66, 77, 0],
                             backgroundColor: 'rgba(255, 99, 132, 0.85)',
                             borderColor: 'rgba(255, 99, 132, 1)',
                             borderWidth: 1
@@ -786,8 +786,8 @@
                             callbacks: {
                                 afterBody: function(context) {
                                     const idx = context[0].dataIndex;
-                                    const totals = [154, 147, 277, 111, 101, 112, 0];
-                                    const notes = ['(Proc cannot crit)', '(Proc + Judge crit at 2×)', '(5-stack steady state; ~10s ramp-up; DoT cannot crit)', '(Requires 11 pts Ret; crits at 2×)', '(Judged = indirect debuff TPS)', '(Judged = indirect debuff TPS)', '(Mana only)'];
+                                    const totals = [277, 154, 147, 112, 101, 111, 0];
+                                    const notes = ['(5-stack steady state; ~10s ramp-up; DoT cannot crit)', '(Proc cannot crit)', '(Proc + Judge crit at 2×)', '(Judged = indirect debuff TPS)', '(Judged = indirect debuff TPS)', '(Requires 11 pts Ret; crits at 2×)', '(Mana only)'];
                                     var result = 'Combined: ' + totals[idx] + ' TPS';
                                     if (notes[idx]) result += '\n' + notes[idx];
                                     return result;
