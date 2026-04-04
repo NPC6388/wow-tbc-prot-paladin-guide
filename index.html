@@ -733,7 +733,7 @@
         </div>
 
         <h4>Seal TPS Comparison</h4>
-        <p>Not all seals are created equal. The chart below compares the <strong>threat per second</strong> contribution from each seal &mdash; both the passive proc component (seal active on melee swings) and the Judgement component (amortized over a 10-second Judgement cooldown). Assumes 300 spell power, 100 DPS / 2.0 speed weapon, 1.9&times; Righteous Fury, and realistic hit rates vs a level 73 boss.</p>
+        <p>Not all seals are created equal. The chart below compares the <strong>threat per second</strong> contribution from each seal &mdash; both the passive proc component (seal active on melee swings) and the Judgement component (amortized over a 10-second Judgement cooldown). Assumes 300 spell power, 100 DPS / 2.0 speed weapon, 1.9&times; Righteous Fury, 10% melee crit, 10% spell crit, and realistic hit rates vs a level 73 boss. <strong>Crit matters:</strong> Seal of Blood procs crit at 2&times; using melee crit, while Seal of Righteousness procs <em>cannot crit at all</em>. Judgement of Blood crits at 2&times; (melee crit); Judgement of Righteousness crits at 1.5&times; (spell crit).</p>
 
         <div style="max-width: 700px; margin: 1.5em auto;">
             <canvas id="sealTPSChart" width="700" height="450"></canvas>
@@ -747,6 +747,7 @@
                     labels: [
                         'Seal of\nRighteousness',
                         'Seal of\nBlood',
+                        'SoV / SoC\n(5 stacks)',
                         'Seal of\nCommand',
                         'Seal of the\nCrusader',
                         'SotC\n(3/3 Improved)',
@@ -755,14 +756,14 @@
                     datasets: [
                         {
                             label: 'Active TPS (seal proc on swing)',
-                            data: [110, 61, 31, 35, 41, 0],
+                            data: [110, 67, 131, 34, 35, 41, 0],
                             backgroundColor: 'rgba(255, 206, 86, 0.85)',
                             borderColor: 'rgba(255, 206, 86, 1)',
                             borderWidth: 1
                         },
                         {
                             label: 'Judged TPS (Judgement / 10s CD)',
-                            data: [42, 73, 70, 66, 71, 0],
+                            data: [44, 80, 146, 77, 66, 71, 0],
                             backgroundColor: 'rgba(255, 99, 132, 0.85)',
                             borderColor: 'rgba(255, 99, 132, 1)',
                             borderWidth: 1
@@ -774,7 +775,7 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Seal TPS Comparison (300 SP, 2.0 speed 1H, vs Boss)',
+                            text: 'Seal TPS Comparison (300 SP, 2.0 speed 1H, 10% crit, vs Boss)',
                             color: '#e6edf3',
                             font: { size: 15, weight: 'bold' }
                         },
@@ -785,8 +786,8 @@
                             callbacks: {
                                 afterBody: function(context) {
                                     const idx = context[0].dataIndex;
-                                    const totals = [152, 134, 101, 101, 112, 0];
-                                    const notes = ['', '', '(Requires 11 pts Ret)', '(Judged = indirect debuff TPS)', '(Judged = indirect debuff TPS)', '(Mana only)'];
+                                    const totals = [154, 147, 277, 111, 101, 112, 0];
+                                    const notes = ['(Proc cannot crit)', '(Proc + Judge crit at 2×)', '(5-stack steady state; ~10s ramp-up; DoT cannot crit)', '(Requires 11 pts Ret; crits at 2×)', '(Judged = indirect debuff TPS)', '(Judged = indirect debuff TPS)', '(Mana only)'];
                                     var result = 'Combined: ' + totals[idx] + ' TPS';
                                     if (notes[idx]) result += '\n' + notes[idx];
                                     return result;
@@ -820,15 +821,30 @@
         <div class="tip">
             <strong>Key takeaways:</strong>
             <ul>
-                <li><strong>Seal of Righteousness</strong> has the highest sustained single-target TPS (~152) at this gear level. It scales excellently with spell power and is the recommended AOE tanking seal.</li>
-                <li><strong>Seal of Blood</strong> has a stronger Judgement (~73 TPS) but a weaker active proc with 1H weapons. Its total TPS (~134) is competitive, and it also returns mana via Spiritual Attunement (self-damage &rarr; healing &rarr; mana). <strong>Recommended for boss tanking.</strong></li>
-                <li><strong>Seal of Command</strong> (~101 TPS) procs 70% weapon damage as Holy at 7 PPM, with a strong Judgement of Command. However, it <strong>requires 11 points in Retribution</strong> (Seal of Command talent). Neither the Avenger's Shield (0/43/18) nor the Sanctity (0/40/21) build takes this talent. Only relevant for deep Ret hybrid builds.</li>
+                <li><strong>Seal of Righteousness</strong> (~154 TPS) is the best <strong>instant-threat</strong> seal &mdash; no ramp-up, no target-switch penalty, and the recommended AOE tanking seal. Its proc <strong>cannot crit</strong>, but it scales excellently with spell power. Judgement of Righteousness can crit (spell crit, 1.5&times;).</li>
+                <li><strong>Seal of Blood</strong> is close behind (~147 TPS) and <strong>scales better with crit</strong> &mdash; both the seal proc and Judgement of Blood crit at 2&times; using melee crit. It also returns mana via Spiritual Attunement (self-damage &rarr; healing &rarr; mana). As crit rises with gear, SoB overtakes SoR for single-target. <strong>Recommended for boss tanking.</strong></li>
+                <li><strong>Seal of Vengeance / Corruption</strong> has the <strong>highest sustained single-target TPS (~277)</strong> at 5 stacks, thanks to a powerful DoT (131 TPS) and the strongest Judgement in the game at full stacks (146 TPS). The DoT <strong>cannot crit</strong>, but Judgement of Vengeance/Corruption can (spell crit, 1.5&times;). The major tradeoff is a <strong>~10-second ramp-up</strong> to reach 5 stacks, and losing stacks on target switches wipes out the advantage. Best for sustained single-target boss fights where you stay on one target.</li>
+                <li><strong>Seal of Command</strong> (~111 TPS) procs 70% weapon damage as Holy at 7 PPM (can crit at 2&times;), with a strong Judgement of Command. However, it <strong>requires 11 points in Retribution</strong> (Seal of Command talent). Neither the Avenger's Shield (0/43/18) nor the Sanctity (0/40/21) build takes this talent. Only relevant for deep Ret hybrid builds.</li>
                 <li><strong>Seal of the Crusader</strong> (~101 TPS) has low direct threat from the seal itself (+495 AP to auto-attacks), but its real value is the <strong>Judgement of the Crusader debuff</strong>: +219 Holy damage taken by the target for 20 sec. This indirectly boosts all Holy abilities (Consecration, Holy Shield, SoR procs, Judgements) by ~66 TPS. Typically you judge Crusader first, then swap to SoR or SoB for sustained damage.</li>
                 <li><strong>SotC with 3/3 Improved</strong> (Ret talent) adds +15% to the AP bonus and grants <strong>+3% melee/ranged crit</strong> against the judged target &mdash; a raid-wide DPS benefit. Worth considering if another paladin can maintain the judgement.</li>
                 <li><strong>Seal of Wisdom</strong> generates zero threat but is essential for mana recovery on extended AOE pulls or low-mana emergencies.</li>
-                <li><strong>Seal Swap Technique:</strong> You can maintain SoR for per-swing procs and swap to SoB just before judging for the stronger Judgement of Blood, yielding ~193 combined TPS &mdash; the theoretical maximum. See the <a href="#boss-rotation" style="color: #58a6ff;">Boss Rotation section</a> for the full technique.</li>
+                <li><strong>Seal Swap Technique:</strong> You can maintain SoR for per-swing procs and swap to SoB just before judging for the stronger Judgement of Blood, yielding ~202 combined TPS &mdash; the highest burst-ready option with zero ramp-up. See the <a href="#boss-rotation" style="color: #58a6ff;">Boss Rotation section</a> for the full technique.</li>
             </ul>
         </div>
+
+        <table>
+            <caption style="text-align: left; font-weight: bold; margin-bottom: 0.5em;">Seal &amp; Judgement Crit Mechanics (TBC 2.4.3)</caption>
+            <tr><th>Ability</th><th>Can Crit?</th><th>Crit Type</th><th>Multiplier</th></tr>
+            <tr><td>Seal of Righteousness (proc)</td><td style="color: #f85149;">No</td><td>&mdash;</td><td>&mdash;</td></tr>
+            <tr><td>Judgement of Righteousness</td><td style="color: #7ee787;">Yes</td><td>Spell crit</td><td>1.5&times;</td></tr>
+            <tr><td>Seal of Blood (proc)</td><td style="color: #7ee787;">Yes</td><td>Melee crit</td><td>2&times;</td></tr>
+            <tr><td>Judgement of Blood</td><td style="color: #7ee787;">Yes</td><td>Melee crit</td><td>2&times;</td></tr>
+            <tr><td>Seal of Command (proc)</td><td style="color: #7ee787;">Yes</td><td>Melee crit</td><td>2&times;</td></tr>
+            <tr><td>Judgement of Command</td><td style="color: #7ee787;">Yes</td><td>Melee crit</td><td>2&times;</td></tr>
+            <tr><td>Seal of Vengeance / Corruption (DoT)</td><td style="color: #f85149;">No</td><td>&mdash;</td><td>&mdash;</td></tr>
+            <tr><td>Judgement of Vengeance / Corruption</td><td style="color: #7ee787;">Yes</td><td>Spell crit</td><td>1.5&times;</td></tr>
+        </table>
+        <p style="color: #8b949e; font-size: 0.9em;">Sources: <a href="https://www.cgalliance.org/forums/threads/tbc-pally-info.17961/" style="color: #58a6ff;">Kalgan Q&amp;A (CGAlliance)</a>, <a href="https://www.wowhead.com/tbc/spell=31892/seal-of-blood" style="color: #58a6ff;">Wowhead TBC &mdash; Seal of Blood</a>, <a href="https://github.com/Atlantiss/NetherwingBugtracker/issues/6507" style="color: #58a6ff;">Netherwing Bugtracker #6507</a></p>
 
         <h4>Aura Comparison: Threat vs Mitigation</h4>
         <p>You can only have <strong>one aura active</strong> at a time &mdash; choosing the right one is a core tanking decision. The chart below compares each aura's <strong>threat generation</strong> (TPS) and <strong>damage prevention</strong> (DPPS &mdash; damage prevented per second) for both AOE and single-target scenarios. Assumes 5/5 Improved Devotion Aura, 16,000 base armor, Righteous Fury active.</p>
@@ -1664,7 +1680,7 @@
 
         <h4>Advanced: Seal Swapping for Maximum Threat</h4>
 
-        <p>Because <strong>Seal of Righteousness</strong> has the highest per-swing TPS (~110) while <strong>Seal of Blood</strong> has the strongest Judgement TPS (~83), you can combine both by <strong>strategically swapping seals before judging</strong>. This yields ~193 TPS from seals alone &mdash; roughly 27% more than using either seal exclusively.</p>
+        <p>Because <strong>Seal of Righteousness</strong> has the highest per-swing TPS (~110, but cannot crit) while <strong>Seal of Blood</strong> has the strongest Judgement TPS (~80, crits at 2&times; with melee crit), you can combine both by <strong>strategically swapping seals before judging</strong>. This yields ~202 TPS from seals alone &mdash; roughly 31% more than using either seal exclusively.</p>
 
         <div class="boss-tank">
             <h4>Seal Swap Rotation</h4>
@@ -1678,12 +1694,12 @@
         </div>
 
         <div class="formula">
-            Per cycle (10s):<br>
-            SoR procs: ~5 swings &times; 127.7 &times; 1.9 = <strong>~1,100 threat</strong><br>
-            Judgement of Blood: (310 + 300&times;0.43) &times; 1.9 = <strong>~834 threat</strong><br>
-            Combined seal threat per cycle: <strong>~1,934 threat (~193 TPS)</strong><br>
-            vs. pure SoR: ~1,520 threat (152 TPS)<br>
-            vs. pure SoB: ~1,340 threat (134 TPS)
+            Per cycle (10s) with 10% melee crit, 10% spell crit:<br>
+            SoR procs: ~5 swings &times; 127.7 &times; 1.9 = <strong>~1,100 threat</strong> (SoR cannot crit)<br>
+            Judgement of Blood: (310 + 300&times;0.43) &times; 1.9 &times; 1.10 = <strong>~917 threat</strong> (JoB crits at 2&times; via melee crit)<br>
+            Combined seal threat per cycle: <strong>~2,017 threat (~202 TPS)</strong><br>
+            vs. pure SoR: ~1,540 threat (154 TPS)<br>
+            vs. pure SoB: ~1,470 threat (147 TPS)
         </div>
 
         <div class="warning">
