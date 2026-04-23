@@ -10,7 +10,7 @@
 
 - **Damage Formula**: 8 ticks over 8 seconds (1 tick per second)
 - **Rank 6 (Level 70)**: 512 total Holy damage (64 damage per tick)
-- **Spell Power Coefficient**: 0.042 per tick (0.336 total over 8 seconds, or 33.6%)
+- **Spell Power Coefficient**: 0.125 per tick (1.000 total over 8 seconds, or 100%). Verified empirically from combat logs (141 and 129 avg tick values at 516 SP match 0.125/tick). This is the post-patch-2.3 TBC value; vanilla/early-TBC used 0.336.
 - **Mana Cost**: Rank 6 costs 660 mana (565 with 5/5 Benediction)
 - **Threat**: Base damage × Righteous Fury multiplier (1.9x with talents)
 - **Cast Time**: Instant
@@ -26,9 +26,9 @@
 - Rank 6 (Level 70): 660 mana, 512 total damage
 
 **Threat Calculation Example:**
-- Base damage: 512 + (Spell Power × 0.336)
-- With 500 spell power: 512 + 168 = 680 damage
-- With Righteous Fury (1.9x): 680 × 1.9 = 1,292 threat
+- Base damage: 512 + (Spell Power × 1.0)
+- With 500 spell power: 512 + 500 = 1,012 damage
+- With Righteous Fury (1.9x): 1,012 × 1.9 = 1,923 threat
 - Per target over 8 seconds
 
 ### Holy Shield
@@ -305,7 +305,7 @@
 
 | Ability | Base Damage | Coefficient | Duration | Notes |
 |---------|-------------|-------------|----------|-------|
-| Consecration (R6) | 512 total (64/tick) | 0.336 total (0.042/tick) | 8 sec | Can downrank for mana |
+| Consecration (R6) | 512 total (64/tick) | 1.000 total (0.125/tick) | 8 sec | Can downrank for mana |
 | Holy Shield (R4) | 155 per block | 0.05 per block | 10 sec | 8 charges max |
 | Avenger's Shield (R3) | 494-604 per target | 0.091 per target | Instant | 3 targets |
 | Seal of Righteousness | Based on weapon speed | 0.25 | Passive | Per swing |
