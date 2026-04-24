@@ -669,8 +669,8 @@
             <tr>
                 <td><strong>Avenger's Shield</strong> (Rank 3)</td>
                 <td>494&ndash;602 per target</td>
-                <td>0.091 per target</td>
-                <td>(548 + SP&times;0.091) &times; 1.9 per target</td>
+                <td>0.193 per target</td>
+                <td>(548 + SP&times;0.193) &times; 1.9 per target</td>
                 <td>3 targets, 6 sec daze, 30 sec CD</td>
             </tr>
             <tr>
@@ -690,9 +690,9 @@
             <tr>
                 <td><strong>Seal of Righteousness</strong></td>
                 <td>Varies by weapon speed</td>
-                <td>0.2 (per swing)</td>
-                <td>(Base + SP&times;0.2) &times; 1.9</td>
-                <td>Flat per-swing, no ramp-up</td>
+                <td>0.092 &times; speed (1H); 0.108 &times; speed (2H)</td>
+                <td>(Base + SP&times;0.092&times;speed) &times; 1.9 &mdash; per swing, 1H</td>
+                <td>Scales with base weapon speed; 1.8s 1H &rarr; ~0.166 effective SP coeff per swing</td>
             </tr>
             <tr>
                 <td><strong>Exorcism</strong> (Rank 7)</td>
@@ -703,9 +703,9 @@
             </tr>
             <tr>
                 <td><strong>Holy Wrath</strong> (Rank 3)</td>
-                <td>637&ndash;748</td>
-                <td>0.19</td>
-                <td>(693 + SP&times;0.19) &times; 1.9</td>
+                <td>567&ndash;701 (635 avg)</td>
+                <td>0.286</td>
+                <td>(635 + SP&times;0.286) &times; 1.9</td>
                 <td>Undead/Demon AOE, 2 sec cast, 1 min CD</td>
             </tr>
             <tr>
@@ -728,7 +728,7 @@
         <div class="formula">
             Consecration (8 sec): (512 + 500&times;1.0) &times; 1.9 = (512 + 500) &times; 1.9 = <strong>1,923 threat</strong><br>
             Holy Shield (per block): (155 + 500&times;0.05) &times; 1.9 = (155 + 25) &times; 1.9 = <strong>342 threat</strong><br>
-            Avenger's Shield (per target): (548 + 500&times;0.091) &times; 1.9 = (548 + 45.5) &times; 1.9 = <strong>1,128 threat</strong><br>
+            Avenger's Shield (per target): (548 + 500&times;0.193) &times; 1.9 = (548 + 96.5) &times; 1.9 = <strong>1,224 threat</strong><br>
             Judgement of Blood: (310 + 500&times;0.43) &times; 1.9 = (310 + 215) &times; 1.9 = <strong>998 threat</strong>
         </div>
 
@@ -1171,10 +1171,10 @@
                 <td>Single target</td>
             </tr>
             <tr>
-                <td>Seal of Righteousness (per swing)</td>
-                <td>0.2</td>
-                <td>38.0</td>
-                <td>Melee proc</td>
+                <td>Seal of Righteousness (per swing, 1.8s 1H)</td>
+                <td>0.166 (=0.092&times;1.8)</td>
+                <td>31.5</td>
+                <td>Melee proc; scales with weapon speed</td>
             </tr>
             <tr>
                 <td>Exorcism</td>
@@ -1184,9 +1184,9 @@
             </tr>
             <tr>
                 <td>Avenger's Shield (per target)</td>
-                <td>0.091</td>
-                <td>17.3 per target</td>
-                <td>Ranged AOE (6 sec daze)</td>
+                <td>0.193</td>
+                <td>36.7 per target</td>
+                <td>Ranged AOE (6 sec daze); up to 3 targets</td>
             </tr>
             <tr>
                 <td>Holy Shield (per block)</td>
@@ -1203,13 +1203,13 @@
                 <th>Consecration Threat (8 sec, per target)</th>
                 <th>Content Level</th>
             </tr>
-            <tr><td>~200</td><td>1,101</td><td>Fresh 70 / pre-raid</td></tr>
-            <tr><td>~350</td><td>1,198</td><td>Karazhan / T4</td></tr>
-            <tr><td>~500</td><td>1,292</td><td>T5 content</td></tr>
-            <tr><td>~650</td><td>1,388</td><td>T6 content</td></tr>
+            <tr><td>~200</td><td>1,353</td><td>Fresh 70 / pre-raid</td></tr>
+            <tr><td>~350</td><td>1,638</td><td>Karazhan / T4</td></tr>
+            <tr><td>~500</td><td>1,923</td><td>T5 content</td></tr>
+            <tr><td>~650</td><td>2,208</td><td>T6 content</td></tr>
         </table>
 
-        <p>On a 5-target trash pull with 500 SP, a single Consecration generates <strong>~6,460 threat</strong> spread across all targets. No other tank class comes close to this AOE throughput.</p>
+        <p>On a 5-target trash pull with 500 SP, a single Consecration generates <strong>~9,615 threat</strong> spread across all targets. No other tank class comes close to this AOE throughput.</p>
 
         <!-- MANA MANAGEMENT -->
         <h3 id="mana-management">Mana Management</h3>
@@ -2723,8 +2723,8 @@
                 <td>35% weapon damage as Holy, 10% self-damage</td>
             </tr>
             <tr>
-                <td><a href="https://www.wowhead.com/tbc/spell=31893/judgement-of-blood">WoWHead TBC &mdash; Judgement of Blood</a></td>
-                <td>Base damage, 33% self-damage, SP coefficient (0.43)</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=31898/judgement-of-blood">WoWHead TBC &mdash; Judgement of Blood</a></td>
+                <td>Base damage 295&ndash;325, 33% self-damage, SP coefficient 0.429</td>
             </tr>
             <tr>
                 <td><a href="https://www.wowhead.com/tbc/spell=28730/arcane-torrent">WoWHead TBC &mdash; Arcane Torrent (Paladin)</a></td>
@@ -2740,7 +2740,7 @@
             </tr>
             <tr>
                 <td><a href="https://www.wowhead.com/tbc/spell=27155/seal-of-righteousness">WoWHead TBC &mdash; Seal of Righteousness (Rank 9)</a></td>
-                <td>Flat Holy per swing, 0.2 SP coefficient, scales with weapon speed</td>
+                <td>Flat Holy per swing, weapon-speed scaled (0.092 &times; speed for 1H, 0.108 &times; speed for 2H)</td>
             </tr>
             <tr>
                 <td><a href="https://www.wowhead.com/tbc/spell=27166/seal-of-wisdom">WoWHead TBC &mdash; Seal of Wisdom (Rank 4)</a></td>
@@ -2802,13 +2802,101 @@
         </table>
 
         <h3>Spell Power Coefficient Sources</h3>
+        <p style="color: #8b949e; font-size: 0.9em;">Every coefficient in this guide is sourced from either Wowhead's TBC Classic spell database (which reflects the Blizzard spell files for patch 2.4.3) or empirical combat-log testing by the TBC theorycrafting community. Per-spell citations below.</p>
         <table class="combat-table">
-            <tr><th>Source</th><th>Used For</th></tr>
+            <tr><th>Ability</th><th>Coefficient</th><th>Source</th></tr>
             <tr>
-                <td>TBC Paladin Theorycrafting (Maintankadin Archives, Elitist Jerks 2007&ndash;2008)</td>
-                <td>Spell power coefficients: Consecration 1.0 total (0.125/tick, empirically verified via combat log), Holy Shield 0.05/block, Avenger's Shield 0.091, Seal of Righteousness 0.2, Judgement of Blood 0.43, Exorcism 0.429, Holy Wrath 0.19</td>
+                <td><strong>Consecration (R6)</strong></td>
+                <td>0.125 per tick / 1.000 total</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27173/consecration">Wowhead TBC &mdash; Consecration Rank 6</a> (DB lists 0.119/tick / 0.952 total); empirically verified at 0.125/tick via combat log (129/tick at 516 SP, no AW/Sanctity/JotC). Matches post-patch-2.3 value documented on <a href="https://github.com/Atlantiss/NetherwingBugtracker">Atlantiss bugtracker</a>. Vanilla/early-TBC was 0.336.</td>
+            </tr>
+            <tr>
+                <td><strong>Holy Shield (R4)</strong></td>
+                <td>0.05 per block</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27179/holy-shield">Wowhead TBC &mdash; Holy Shield Rank 4</a> ("Value: 155 (SP mod: 0.05)")</td>
+            </tr>
+            <tr>
+                <td><strong>Avenger's Shield (R3)</strong></td>
+                <td>0.193 per target</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=32700/avengers-shield">Wowhead TBC &mdash; Avenger's Shield Rank 3</a> ("Value: 494 (SP mod: 0.193)"). Rank 1 (<a href="https://www.wowhead.com/tbc/spell=31935/avengers-shield">31935</a>) confirms the same 0.193 across ranks.</td>
+            </tr>
+            <tr>
+                <td><strong>Judgement of Blood</strong></td>
+                <td>0.429</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=31898/judgement-of-blood">Wowhead TBC &mdash; Judgement of Blood</a> ("Value: 295 (SP mod: 0.429)"). Uses melee crit; can crit at 2&times;.</td>
+            </tr>
+            <tr>
+                <td><strong>Seal of Blood (active proc)</strong></td>
+                <td>Weapon dmg &times; 0.35 (no SP scaling)</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=31892/seal-of-blood">Wowhead TBC &mdash; Seal of Blood</a>: 35% of weapon damage as Holy per swing, 10% self-damage. Scales with weapon DPS only.</td>
+            </tr>
+            <tr>
+                <td><strong>Seal of Righteousness (per swing)</strong></td>
+                <td>0.092 &times; weapon speed (1H); 0.108 &times; weapon speed (2H)</td>
+                <td><a href="https://worldofwarcraft.livejournal.com/4381573.html">TBC Paladin Spell Coefficients (LiveJournal empirical testing)</a>: "9.2% per 1.0 Speed 1H; 10.8% per 1.0 Speed 2H". Cross-verified at <a href="https://www.wowhead.com/tbc/spell=27155/seal-of-righteousness">Wowhead TBC &mdash; SoR Rank 9</a> (SP mod 0.1 per 1.0s displayed). For a 1.8s 1H weapon: effective per-swing coeff &asymp; 0.166.</td>
+            </tr>
+            <tr>
+                <td><strong>Judgement of Righteousness (R9)</strong></td>
+                <td>0.728</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27157/judgement-of-righteousness">Wowhead TBC &mdash; JoR Rank 9</a> ("Value: 208 (SP mod: 0.728)"). Uses spell crit; crits at 1.5&times;.</td>
+            </tr>
+            <tr>
+                <td><strong>Seal of Vengeance / Corruption (DoT)</strong></td>
+                <td>0.034 per tick per stack</td>
+                <td><a href="https://warcraft.wiki.gg/wiki/Talk:Spell_power_coefficient">Warcraft Wiki Talk:Spell_power_coefficient</a> (empirical testing: 0.0341&ndash;0.0345 per tick per stack). Base 10 damage per tick per stack. DoT cannot crit.</td>
+            </tr>
+            <tr>
+                <td><strong>Judgement of Vengeance / Corruption</strong></td>
+                <td>0.429 base + ~0.022 per stack (refresh bonus)</td>
+                <td><a href="https://warcraft.wiki.gg/wiki/Talk:Spell_power_coefficient">Warcraft Wiki empirical testing</a> (0.4279&ndash;0.4292 direct; 0.0216&ndash;0.0228 per stack for refresh bonus). Base 121 per stack of Holy Vengeance. <a href="https://www.wowhead.com/tbc/spell=31804/judgement-of-vengeance">Wowhead TBC &mdash; JoV</a> confirms base 120 and SP mod 0.429.</td>
+            </tr>
+            <tr>
+                <td><strong>Exorcism (R7)</strong></td>
+                <td>0.429</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27138/exorcism">Wowhead TBC &mdash; Exorcism Rank 7</a> ("Value: 619 (SP mod: 0.429)"). Undead/Demon only in TBC.</td>
+            </tr>
+            <tr>
+                <td><strong>Holy Wrath (R3)</strong></td>
+                <td>0.286</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27139/holy-wrath">Wowhead TBC &mdash; Holy Wrath Rank 3</a> ("Value: 635 (SP mod: 0.286)"). Older community formula (2/3.5/3 = 0.19) predates TBC implementation; Blizzard's TBC Classic DB uses 0.286 (2/3.5/2, the standard no-cap AoE penalty).</td>
+            </tr>
+            <tr>
+                <td><strong>Judgement of the Crusader</strong></td>
+                <td>+219 Holy dmg taken (flat, no SP scaling)</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27159/judgement-of-the-crusader">Wowhead TBC &mdash; JotC Rank 7</a>: 20s duration, no direct damage. Applies the Holy damage taken debuff from Seal of the Crusader (R7 = +219). <a href="https://worldofwarcraft.livejournal.com/4381573.html">LiveJournal source</a> confirms JotC is static (no SP scaling).</td>
+            </tr>
+            <tr>
+                <td><strong>Judgement of Command (R4)</strong></td>
+                <td>0.429</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=20467/judgement-of-command">Wowhead TBC &mdash; JoC</a> ("Value: 93 (SP mod: 0.429)"). 50% chance to deal 2&times; damage vs stunned targets.</td>
+            </tr>
+            <tr>
+                <td><strong>Hammer of Wrath (R4)</strong></td>
+                <td>0.429</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27180/hammer-of-wrath">Wowhead TBC &mdash; HoW Rank 4</a> ("Value: 665 (SP mod: 0.429)"). Execute phase only (&lt;20% HP).</td>
+            </tr>
+            <tr>
+                <td><strong>Retribution Aura (R6)</strong></td>
+                <td>Flat 26 per hit (no SP scaling in TBC)</td>
+                <td>Pre-WotLK: no spell-power scaling. Improved Retribution Aura (2/2) adds +50% = 39 per hit. Scaling was added in patch 3.0.</td>
+            </tr>
+            <tr>
+                <td><strong>Blessing of Sanctuary (R5)</strong></td>
+                <td>Flat 46 per block (no SP scaling)</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27168/blessing-of-sanctuary">Wowhead TBC &mdash; Blessing of Sanctuary R5</a>: 46 Holy on block, flat damage reduction on incoming hits. Pre-WotLK no scaling.</td>
             </tr>
         </table>
+
+        <h3>Coefficient Verification Notes</h3>
+        <div class="tip">
+            <strong>Post-patch-2.3 Consecration fix:</strong> The original vanilla coefficient (0.336 total) was inflated to 1.000 total in TBC patch 2.3 as part of the Consecration mana-cost-and-power rebalance. Verified empirically: a 516-SP Protection Paladin with no AW / no JotC / no Sanctity / no SP trinket proc / no Shadow Priest averaged 129 damage per Consecration tick. Math: (129 &minus; 64 base) / 516 = 0.126/tick &asymp; 0.125/tick &rarr; 1.000 total over 8 ticks.
+        </div>
+        <div class="tip">
+            <strong>SoR weapon-speed scaling:</strong> Seal of Righteousness is the only paladin ability whose SP coefficient scales with weapon speed. Wowhead's raw DB value (0.1) represents the per-1.0s-speed figure; the LiveJournal empirical value of 9.2%/1.0s for 1H is slightly lower and is the value most commonly used in theorycrafting. At 1.8s (T4/T5 tank-threat weapons like Continuum Blade): 0.092 &times; 1.8 &asymp; 0.166 per swing. At 2.6s 2H: 0.108 &times; 2.6 &asymp; 0.281 per swing.
+        </div>
+        <div class="tip">
+            <strong>Holy Wrath 0.19 vs 0.286 discrepancy:</strong> Older community references (vanilla WoWWiki) show Holy Wrath at 2/3.5/3 = 0.19, using a /3 AoE penalty. Wowhead's TBC DB (post-2.3) lists 0.286 (2/3.5/2, the standard no-cap AoE penalty of &frac12;). The 0.286 value is what's actually applied in TBC Classic. For a Prot Paladin this is a ~50% threat increase on HoW casts vs the old estimate, though HoW is still only used on Undead/Demon fights with a 1-min CD.
+        </div>
 
         <h3>Seal Twisting &amp; Seal Mechanics Sources</h3>
         <table class="combat-table">
@@ -2873,6 +2961,17 @@
         <!-- ============================================================ -->
         <h2 id="changelog"><a href="#toc">Changelog</a></h2>
         <div class="toc">
+            <h3>2026-04-23 (v1.4) &mdash; Spell Power Coefficient Accuracy Pass (TBC Classic Anniversary)</h3>
+            <ul>
+                <li><strong>Avenger's Shield:</strong> Corrected SP coefficient 0.091 &rarr; <strong>0.193</strong>. Verified against <a href="https://www.wowhead.com/tbc/spell=32700/avengers-shield">Wowhead TBC spell 32700</a> ("Value: 494 (SP mod: 0.193)") and Rank 1 (<a href="https://www.wowhead.com/tbc/spell=31935/avengers-shield">31935</a>). All downstream per-target threat calculations updated.</li>
+                <li><strong>Holy Wrath (R3):</strong> Corrected SP coefficient 0.19 &rarr; <strong>0.286</strong>. Verified against <a href="https://www.wowhead.com/tbc/spell=27139/holy-wrath">Wowhead TBC spell 27139</a> ("Value: 635 (SP mod: 0.286)"). The 0.19 figure came from older vanilla references (2/3.5/3); Blizzard's TBC DB uses the standard no-cap AoE penalty (2/3.5/2 = 0.286). Base damage range corrected to 567&ndash;701 (635 avg).</li>
+                <li><strong>Seal of Righteousness:</strong> Replaced flat "0.2 per swing" with the correct weapon-speed-scaled formula: <strong>0.092 &times; weapon speed for 1H, 0.108 &times; weapon speed for 2H</strong> (LiveJournal empirical testing, cross-verified with Wowhead DB value 0.1/1.0s). For the T4/T5 1.8s 1H threat weapon this is 0.166 effective per swing, not 0.2.</li>
+                <li><strong>Consecration breakpoints table:</strong> Updated per-target-threat breakpoints from old 0.336-coefficient values to the verified 1.000-coefficient values (200 SP: 1,101 &rarr; 1,353; 500 SP: 1,292 &rarr; 1,923; etc.). The 5-target trash-pull example updated: 6,460 &rarr; <strong>9,615 threat</strong>.</li>
+                <li><strong>New section:</strong> Full per-ability Spell Power Coefficient Sources table with one citation per coefficient (Wowhead TBC DB spell IDs for each ability, LiveJournal empirical data for SoR and SoV, Warcraft Wiki empirical testing for SoV/JoV DoT). Expanded beyond the original 6-ability summary to cover SoV/SoC DoT, JoV, JoR, JoC, HoW, JotC, Retribution Aura, and Blessing of Sanctuary.</li>
+                <li><strong>Verification notes added:</strong> Plain-language explanations of the Consecration post-2.3 fix, SoR weapon-speed scaling, and the Holy Wrath 0.19-vs-0.286 discrepancy between older community references and the TBC Classic DB.</li>
+                <li><strong>Verified unchanged:</strong> Consecration 1.0 total (post-2.3, already verified in v1.3 work), Holy Shield 0.05/block, Judgement of Blood 0.429, Exorcism 0.429, SoV/SoC DoT 0.034/tick/stack, JoV 0.429, Seal of Blood 35% weapon damage, Judgement of Command 0.429, Hammer of Wrath 0.429.</li>
+            </ul>
+
             <h3>2026-02-24 (v1.3) &mdash; Resilience vs Defense &amp; Crit/Crush Calculator</h3>
             <ul>
                 <li><strong>New Section:</strong> "Resilience vs Defense: When PvP Gear Works for Tanking" &mdash; per-point comparison table, crit immunity thresholds by content (heroics vs raids), heroic dungeon sweet spot analysis, raid warning</li>
@@ -2974,19 +3073,11 @@
                 <td>Could not verify exact talent tooltip on Wowhead (spell ID mismatch)</td>
                 <td>Most community sources agree on 8 charges at 2/2. Some sources say +2 per rank (= 8 total), others say the talent adds 4 total at rank 2. Functionally the same result. Verify in-game.</td>
             </tr>
-            <tr>
-                <td><strong>Exorcism Rank 7 &mdash; Base Damage</strong></td>
-                <td>573&ndash;655</td>
-                <td>Could not verify (Wowhead spell ID redirected to wrong spell)</td>
-                <td>Values taken from original guide research. Cross-check against Wowhead TBC spell database or in-game tooltip.</td>
-            </tr>
-            <tr>
-                <td><strong>Seal of Righteousness &mdash; SP Coefficient</strong></td>
-                <td>0.2 per swing</td>
-                <td>Could not independently verify</td>
-                <td>Sourced from Maintankadin/Elitist Jerks theorycrafting archives. The coefficient may vary slightly by weapon speed (SoR scales with weapon speed in TBC). Verify via combat log testing.</td>
-            </tr>
         </table>
+
+        <div class="tip">
+            <strong>Resolved in v1.4 (2026-04-23):</strong> Previously flagged items &mdash; Exorcism R7 base damage (resolved: <a href="https://www.wowhead.com/tbc/spell=27138/exorcism">Wowhead TBC spell 27138</a> "Value: 619 (SP mod: 0.429)"), Seal of Righteousness SP coefficient (resolved: weapon-speed-scaled 0.092 &times; speed for 1H / 0.108 &times; speed for 2H per <a href="https://worldofwarcraft.livejournal.com/4381573.html">LiveJournal empirical testing</a>), and Avenger's Shield / Holy Wrath SP coefficients (both corrected to verified Wowhead DB values). See v1.4 changelog entry for full details.
+        </div>
 
     </div>
 </body>

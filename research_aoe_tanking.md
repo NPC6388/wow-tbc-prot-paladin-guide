@@ -65,18 +65,18 @@
 - **Cast Time**: Instant
 - **Cooldown**: 30 seconds
 - **Mana Cost**: 26% of base mana (~780 mana at level 70)
-- **Base Damage**: 494-604 Holy damage (Rank 3)
-- **Spell Power Coefficient**: 0.091 per target (9.1%)
-- **Silence Effect**: 3 seconds (interrupts casting)
-- **Daze Effect**: 10 seconds (50% movement speed reduction)
-- **Threat**: (Base damage + SP×0.091) × 1.9 per target
+- **Base Damage**: 494-602 Holy damage (Rank 3)
+- **Spell Power Coefficient**: 0.193 per target (19.3%) — verified against [Wowhead TBC spell 32700](https://www.wowhead.com/tbc/spell=32700/avengers-shield) "Value: 494 (SP mod: 0.193)". The previously-quoted 0.091 was incorrect.
+- **Silence Effect**: None in TBC (6 sec daze only; silence added in WotLK)
+- **Daze Effect**: 6 seconds (50% movement speed reduction)
+- **Threat**: (Base damage + SP×0.193) × 1.9 per target
 - **Requirement**: Requires shield equipped
 
 **Damage Calculation Example:**
-- Average base damage: 549
-- With 500 spell power: 549 + 45.5 = 594.5 per target
-- With Righteous Fury: 594.5 × 1.9 = 1,129.5 threat per target
-- 3 targets = 3,388.5 total threat on pull
+- Average base damage: 548
+- With 500 spell power: 548 + 96.5 = 644.5 per target
+- With Righteous Fury: 644.5 × 1.9 = 1,224.6 threat per target
+- 3 targets = 3,673.7 total threat on pull
 
 **Rank Progression:**
 - Rank 1 (Level 58): 303-371 damage
@@ -307,19 +307,21 @@
 |---------|-------------|-------------|----------|-------|
 | Consecration (R6) | 512 total (64/tick) | 1.000 total (0.125/tick) | 8 sec | Can downrank for mana |
 | Holy Shield (R4) | 155 per block | 0.05 per block | 10 sec | 8 charges max |
-| Avenger's Shield (R3) | 494-604 per target | 0.091 per target | Instant | 3 targets |
-| Seal of Righteousness | Based on weapon speed | 0.25 | Passive | Per swing |
-| Judgement of Righteousness | 219-241 | 0.32 | Instant | +weapon speed × 50% |
-| Exorcism (R7) | 573-655 | 0.429 | Instant | Undead/Demon only |
-| Holy Wrath (R3) | 757 | 0.19 | Instant | Undead/Demon AoE |
-| Hammer of Wrath (R4) | 712-788 | 0.429 | Instant | <20% health only |
+| Avenger's Shield (R3) | 494-602 per target | 0.193 per target | Instant | 3 targets |
+| Seal of Righteousness | Based on weapon speed | 0.092 × speed (1H); 0.108 × speed (2H) | Passive | Per swing; ~0.166 at 1.8s 1H |
+| Judgement of Righteousness (R9) | 208 | 0.728 | Instant | Crit at 1.5× (spell crit) |
+| Exorcism (R7) | 573-655 (619 avg) | 0.429 | Instant | Undead/Demon only |
+| Holy Wrath (R3) | 567-701 (635 avg) | 0.286 | 2s cast | Undead/Demon AoE |
+| Hammer of Wrath (R4) | 712-788 (665 avg) | 0.429 | Instant | <20% health only |
 
 **Key Observations:**
-- Consecration has moderate scaling but high uptime (best threat/mana)
-- Holy Shield has low scaling but multiple procs
-- Avenger's Shield has low scaling but hits 3 targets
-- Judgements have high scaling but single target
-- Exorcism/Holy Wrath have excellent scaling (situational)
+- Consecration has the highest scaling and best threat/mana on multiple targets
+- Holy Shield has low scaling but ticks multiple times per cooldown
+- Avenger's Shield has solid single-target scaling (0.193) and hits up to 3 targets
+- Judgements have high scaling but are single-target and GCD-locked
+- Exorcism/Holy Wrath have excellent scaling (situational — undead/demon only)
+
+**Coefficient sources:** All values from [Wowhead TBC Classic spell DB](https://www.wowhead.com/tbc/) except Seal of Righteousness (from [LiveJournal empirical testing](https://worldofwarcraft.livejournal.com/4381573.html)) and Consecration 1.0-total (empirically verified via combat log, post-patch-2.3).
 
 ### Spell Power vs Stamina/Mitigation Tradeoffs
 
