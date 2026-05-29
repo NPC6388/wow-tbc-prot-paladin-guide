@@ -374,6 +374,33 @@ All rotation sections now explicitly state which seal to recast after judging:
 
 ---
 
+### 10. Builds Section Rewrite & Consumable Updates (COMPLETED)
+
+**Date:** 2026-03-21
+
+#### Builds Section Replaced
+- **Removed** old 0/49/12 AOE and Boss variant builds, comparison table, and Sanctity vs Avenger's Shield alternative section
+- **Added** two new primary builds:
+  1. **Avenger's Shield (0/43/18)** — All-rounder with ranged pull, Blessing of Kings, 4/5 1H Weapon Spec, Reckoning 5/5, Deflection 5/5, Pursuit of Justice 3/3, Crusade 3/3
+  2. **Sanctity Aura (0/40/21, No Kings)** — Max threat build with Sanctity Aura, Improved Judgement 2/2, 3/5 1H Weapon Spec, no Avenger's Shield, no Blessing of Kings
+- Each build has a styled WoWHead link button and full Protection + Retribution talent breakdown tables
+- New comparison table covering: ranged pull, Kings, aura, Judgement CD, weapon spec, threat profile, raid utility, best-use-case
+- Updated references to old 0/49/12 builds throughout the guide (Seal of Command note, Sanctity Aura description, chart tooltip)
+
+#### Consumable Additions
+- **Flask of Supreme Power** (+70 Spell Damage, 2 hr) — budget alternative to Blinding Light
+- **Destruction Potion** (+120 Spell Damage, +2% Spell Crit for 15 sec) — burst threat pre-pot
+- **Free Action Potion** (immune to Stun/Movement Impairing for 30 sec) — anti-CC utility
+
+#### Repo Fix
+- Discovered TBC guide is deployed from `NPC6388/wow-tbc-prot-paladin-guide` repo (separate from warrior guide repo)
+- Reverted accidental commits pushed to the warrior guide repo
+- All changes now pushed to correct repo
+
+## NEXT SESSION: Start with the Gear Optimization Strategy section
+
+---
+
 ### 9. Karazhan Raid Guide Created (COMPLETED)
 
 **Date:** 2026-03-19

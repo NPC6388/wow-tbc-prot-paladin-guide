@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoA vs Windfury vs Wizard Oil — Prot Paladin TBC</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #0d1117;
+        }
+        .container {
+            background: #161b22;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #f0a500;
+            text-align: center;
+            border-bottom: 3px solid #f0a500;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #58a6ff;
+            border-left: 4px solid #58a6ff;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #ffffff;
+            background: #21262d;
+            margin-top: 20px;
+            padding: 8px 12px;
+            border-left: 4px solid #58a6ff;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        h4 { color: #c9d1d9; margin-top: 15px; }
+        .formula {
+            background: #1a202c;
+            border: 1px solid #4a5568;
+            border-left: 4px solid #63b3ed;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            color: #f7fafc;
+            border-radius: 6px;
+            line-height: 1.4;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .warning {
+            background: #3d2e00;
+            border: 1px solid #5c4a00;
+            color: #f0c000;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .tip {
+            background: #0d3330;
+            border: 1px solid #1a5550;
+            color: #58d6c8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .verdict {
+            background: #1a1a3d;
+            border: 1px solid #3d3d6b;
+            border-left: 4px solid #a78bfa;
+            color: #d8d8ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #30363d;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        th { background-color: #238636; color: white; }
+        tr:nth-child(even) { background-color: #21262d; }
+        tr:nth-child(odd) { background-color: #161b22; }
+        .assumptions {
+            background: #21262d;
+            border: 1px solid #30363d;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-size: 0.9em;
+            color: #8b949e;
+        }
+        a { color: #58a6ff; }
+        .gain-good { color: #7ee787; font-weight: bold; }
+        .gain-mid  { color: #f0a500; font-weight: bold; }
+        .gain-bad  { color: #f85149; font-weight: bold; }
+        .header-card {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-left: 4px solid #f0a500;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .header-card strong { color: #f0a500; }
+        .summary-row td { font-weight: bold; background: rgba(126,231,135,0.10) !important; }
+        .legend-pill {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-right: 6px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        .pill-woa { background:#1f4068; color:#a8d8ff; }
+        .pill-wf  { background:#5c2a00; color:#f0c890; }
+        .pill-oil { background:#0d3330; color:#7ee787; }
+        .chart-container {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>Wrath of Air vs Windfury vs Superior Wizard Oil</h1>
+    <p style="text-align:center; color:#8b949e;">
+        DPS &amp; Threat contribution for a TBC Prot Paladin tank (patch 2.4.3) &mdash;
+        companion to <a href="prot_paladin_rotations.html">prot_paladin_rotations.html</a>
+    </p>
+
+    <div class="header-card">
+        <strong>Question being answered</strong>
+        <p style="margin:8px 0 0;">If a shaman in your party can drop <em>one</em> Air totem (only one Air totem can be active at a time per shaman), and you can optionally weapon-coat with Superior Wizard Oil, which adds the most DPS and TPS to your rotation? <strong>Wrath of Air Totem (WoA) and Windfury Totem (WF) compete for the same Air slot.</strong> Wizard Oil is independent of either.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- BASELINE -->
+    <!-- ============================================================ -->
+    <h2>Baseline Assumptions (Same as Main Rotation Guide)</h2>
+    <div class="assumptions">
+        T4/T5 raid-geared profile, raid-buffed (Flask only &mdash; Wizard Oil not assumed):
+        <strong style="color:#7ee787;">709 spell power</strong> &bull;
+        <strong>436 AP</strong> &bull;
+        <strong>Fang of the Leviathan</strong> (1.80 speed, 41.1 weapon DPS, +40 spell damage) &bull;
+        <strong>~9.5% melee crit</strong> / <strong>~11% spell crit</strong> &bull;
+        <strong>2/2 Improved Holy Shield</strong> (8 charges, +20% HS damage) &bull;
+        <strong>1.9&times; Righteous Fury</strong> &bull;
+        <strong>4/5 Justicar</strong> &mdash; 2pc (&times;1.10 on seal procs / SoC DoT) + 4pc (+15 flat per HS block) &bull;
+        <strong>Seal of Righteousness</strong> as primary seal &bull;
+        Level 73 boss, ~7,700 armor.
+        <br><br>
+        Hit gaps: melee miss <strong>6%</strong>, spell miss <strong>11.89%</strong>. Both Air totems and Wizard Oil are <strong>self/party buffs &mdash; not raid-wide</strong>: only your shaman's 5-man party gets the buff. This guide assumes your Prot Paladin <em>is</em> in that party.
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- THE THREE BUFFS -->
+    <!-- ============================================================ -->
+    <h2>What Each Buff Actually Does</h2>
+
+    <table>
+        <tr>
+            <th style="width:18%;">Buff</th>
+            <th>Effect</th>
+            <th>What It Scales</th>
+            <th>Talent Boost</th>
+        </tr>
+        <tr>
+            <td><span class="legend-pill pill-woa">WoA</span><strong>Wrath of Air Totem</strong></td>
+            <td>+<strong>101 spell power</strong> to all party members</td>
+            <td>Every Holy ability with an SP coefficient: SoR procs, JoR, JoC, SoC DoT, Consecration, Holy Shield, Avenger's Shield, Exorcism, Holy Wrath</td>
+            <td><strong>Improved Wrath of Air Totem</strong> (Elemental, 2 ranks, +20%) &rarr; <strong>+121 SP</strong>. Nearly universal on PvE Elemental shamans.</td>
+        </tr>
+        <tr>
+            <td><span class="legend-pill pill-wf">WF</span><strong>Windfury Totem (Rank 5)</strong></td>
+            <td>20% chance on melee swing to trigger an <strong>extra attack with +445 bonus AP</strong></td>
+            <td>Physical white damage of the extra swing, <em>and</em> a free SoR/SoC proc on top of it</td>
+            <td><strong>Improved Windfury Totem</strong> (Enhancement, 2 ranks, +30% bonus AP) &rarr; <strong>+578 AP</strong> on proc. Universal on PvE Enhancement shamans.</td>
+        </tr>
+        <tr>
+            <td><span class="legend-pill pill-oil">Oil</span><strong>Superior Wizard Oil</strong></td>
+            <td>+<strong>42 spell damage</strong> weapon coat, 1 hour</td>
+            <td>Same Holy abilities as WoA, but smaller magnitude. Self-applied &mdash; no party requirement.</td>
+            <td>None. Mutually exclusive with <strong>Superior Mana Oil</strong> (+14 MP5 +25 healing).</td>
+        </tr>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- PER-ABILITY: WRATH OF AIR -->
+    <!-- ============================================================ -->
+    <h2>Wrath of Air Totem: Per-Ability Contribution</h2>
+
+    <p>WoA adds +101 SP (or +121 with 2/2 Imp WoA). Every Holy ability with an SP coefficient gains. Below shows the <strong>added damage and threat per hit/tick/proc</strong> for the base 101 SP value. For Imp WoA, multiply by <strong>1.20</strong>.</p>
+
+    <div class="assumptions">
+        <strong>Calc:</strong> &Delta;dmg = 101 &times; coefficient &times; (Justicar 1.10 if seal proc / SoC DoT). &Delta;threat = &Delta;dmg &times; 1.9 RF &times; (1.05 spell crit avg) or (1.10 melee crit avg).
+    </div>
+
+    <table>
+        <tr>
+            <th>Ability</th>
+            <th>SP Coef</th>
+            <th>+ Damage</th>
+            <th>+ Threat</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td><strong>Seal of Righteousness</strong> (proc)</td>
+            <td>0.20</td>
+            <td class="gain-good">+22.2</td>
+            <td class="gain-good">+42.2</td>
+            <td>Cannot crit &bull; 2pc Justicar applies</td>
+        </tr>
+        <tr>
+            <td><strong>Judgement of Righteousness</strong></td>
+            <td>0.429</td>
+            <td class="gain-good">+43.3</td>
+            <td class="gain-good">+86.5</td>
+            <td>Spell crit 1.5&times;</td>
+        </tr>
+        <tr>
+            <td><strong>SoC DoT</strong> (per tick, 5 stacks)</td>
+            <td>0.17</td>
+            <td class="gain-good">+18.9</td>
+            <td class="gain-good">+35.9</td>
+            <td>5 ticks over 15s &bull; cannot crit</td>
+        </tr>
+        <tr>
+            <td><strong>SoC DoT</strong> (full 15s, 5 stacks)</td>
+            <td>0.85</td>
+            <td class="gain-good">+94.4</td>
+            <td class="gain-good">+179.4</td>
+            <td>Requires stack maintenance</td>
+        </tr>
+        <tr>
+            <td><strong>Judgement of Corruption</strong> (5 stacks)</td>
+            <td>0.429</td>
+            <td class="gain-good">+43.3</td>
+            <td class="gain-good">+86.5</td>
+            <td>Spell crit 1.5&times;</td>
+        </tr>
+        <tr>
+            <td><strong>Seal of Blood</strong> (proc)</td>
+            <td>0 (physical)</td>
+            <td class="gain-bad">+0</td>
+            <td class="gain-bad">+0</td>
+            <td>Pure weapon-damage scaling &mdash; WoA does nothing for SoB procs</td>
+        </tr>
+        <tr>
+            <td><strong>Judgement of Blood</strong></td>
+            <td>0.43</td>
+            <td class="gain-good">+43.4</td>
+            <td class="gain-good">+90.8</td>
+            <td>Melee crit 2&times;</td>
+        </tr>
+        <tr>
+            <td><strong>Consecration</strong> (per tick)</td>
+            <td>0.125</td>
+            <td class="gain-good">+12.6</td>
+            <td class="gain-good">+24.0</td>
+            <td>8 ticks/cast, cannot crit</td>
+        </tr>
+        <tr>
+            <td><strong>Consecration</strong> (full 8s cast)</td>
+            <td>1.000</td>
+            <td class="gain-good">+101.0</td>
+            <td class="gain-good">+191.9</td>
+            <td>Biggest single-cast gainer</td>
+        </tr>
+        <tr>
+            <td><strong>Holy Shield</strong> (per block, Imp HS &times;1.20)</td>
+            <td>0.05</td>
+            <td class="gain-good">+6.1</td>
+            <td class="gain-good">+11.5</td>
+            <td>Cannot crit</td>
+        </tr>
+        <tr>
+            <td><strong>Holy Shield</strong> (full 8 blocks)</td>
+            <td>0.40</td>
+            <td class="gain-good">+48.5</td>
+            <td class="gain-good">+92.1</td>
+            <td>Assumes every charge consumed</td>
+        </tr>
+        <tr>
+            <td><strong>Avenger's Shield</strong></td>
+            <td>0.193</td>
+            <td class="gain-good">+19.5</td>
+            <td class="gain-good">+39.0</td>
+            <td>30s CD &bull; spell crit 1.5&times;</td>
+        </tr>
+        <tr>
+            <td><strong>Exorcism</strong> (Undead/Demon only)</td>
+            <td>0.429</td>
+            <td class="gain-good">+43.3</td>
+            <td class="gain-good">+86.5</td>
+            <td>Big on Karazhan trash</td>
+        </tr>
+        <tr>
+            <td><strong>Holy Wrath</strong> (Undead/Demon only)</td>
+            <td>0.286</td>
+            <td class="gain-good">+28.9</td>
+            <td class="gain-good">+57.7</td>
+            <td>AoE no-cap penalty 2/3.5/2</td>
+        </tr>
+    </table>
+
+    <div class="tip">
+        <strong>Wrath of Air Totem Steady-State Contribution (SoR + JoR + Consec + HS rotation):</strong>
+        <ul>
+            <li><strong>SoR procs:</strong> 42.2 threat &times; 0.556 procs/s = <strong>+23.5 TPS</strong></li>
+            <li><strong>JoR on 10s CD:</strong> 86.5 / 10 = <strong>+8.6 TPS</strong></li>
+            <li><strong>Consec on 8s cycle:</strong> 191.9 / 8 = <strong>+24.0 TPS</strong> (if Consec kept up every cooldown)</li>
+            <li><strong>Holy Shield on 10s cycle (full 8 charges):</strong> 92.1 / 10 = <strong>+9.2 TPS</strong></li>
+            <li class="gain-good" style="font-size:1.05em;"><strong>Total added threat from WoA (101 SP): ~65 TPS</strong></li>
+            <li class="gain-good" style="font-size:1.05em;"><strong>With 2/2 Imp WoA (121 SP): ~78 TPS</strong></li>
+        </ul>
+        <p style="margin-top:10px;">Over a 5 minute fight: WoA adds <strong>~19,500 threat</strong> (Imp WoA: <strong>~23,400 threat</strong>). On Undead/Demon bosses with Exorcism + Holy Wrath in the rotation, add another <strong>~5&ndash;10 TPS</strong>.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PER-ABILITY: WINDFURY (already in main guide, summarized here) -->
+    <!-- ============================================================ -->
+    <h2>Windfury Totem: Per-Proc Contribution</h2>
+
+    <p>Full derivation is in the main rotation guide. Summary for the same gear profile:</p>
+
+    <div class="formula"><strong>WF proc economics (1.8s weapon, 436 AP, +578 Imp WF AP):</strong>
+Swings per second     = 1 / 1.8 = 0.556
+Proc chance           = 20%
+Procs per second      = 0.111  &rarr; one WF proc every ~9 seconds
+
+Per-proc damage breakdown:
+  Weapon roll           41.1 DPS &times; 1.8                 =  74.0
+  Normal AP swing       436 AP / 14 &times; 1.8              =  56.1
+  WF bonus AP           578 AP / 14 &times; 1.8              =  74.3
+  Raw extra hit                                          = 204.4 physical
+  &times; 1.095 crit avg, &times; 0.58 boss armor             = ~130 final dmg
+  &times; 1.9 RF                                            = ~247 threat
+
+Plus the extra swing triggers an SoR proc:
+  SoR proc dmg          44.2 + 709 &times; 0.20              = 186.2
+  &times; 1.10 (2pc Justicar) &times; 1.9 RF                  = ~389 threat
+
+Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
+
+    <table>
+        <tr>
+            <th>Variant</th>
+            <th>Bonus AP</th>
+            <th>Extra Swing Dmg</th>
+            <th>Threat per Proc</th>
+            <th>Steady TPS (SoR)</th>
+        </tr>
+        <tr>
+            <td>WF Rank 5 (base)</td>
+            <td>+445</td>
+            <td>~119</td>
+            <td>~226</td>
+            <td class="gain-mid">~68 TPS</td>
+        </tr>
+        <tr>
+            <td>WF Rank 5 + 2/2 Imp WF</td>
+            <td>+578</td>
+            <td>~130</td>
+            <td>~247</td>
+            <td class="gain-good">~71 TPS</td>
+        </tr>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- PER-ABILITY: WIZARD OIL (summarized) -->
+    <!-- ============================================================ -->
+    <h2>Superior Wizard Oil: Per-Ability Contribution</h2>
+
+    <p>Same scaling pattern as WoA, but only +42 SP. Below shows the full table for completeness.</p>
+
+    <table>
+        <tr>
+            <th>Ability</th>
+            <th>SP Coef</th>
+            <th>+ Damage</th>
+            <th>+ Threat</th>
+        </tr>
+        <tr><td>Seal of Righteousness (proc)</td><td>0.20</td><td class="gain-good">+9.2</td><td class="gain-good">+17.6</td></tr>
+        <tr><td>Judgement of Righteousness</td><td>0.429</td><td class="gain-good">+18.0</td><td class="gain-good">+35.9</td></tr>
+        <tr><td>SoC DoT (per tick, 5 stacks)</td><td>0.17</td><td class="gain-good">+7.9</td><td class="gain-good">+14.9</td></tr>
+        <tr><td>Consecration (full 8s)</td><td>1.000</td><td class="gain-good">+42.0</td><td class="gain-good">+79.8</td></tr>
+        <tr><td>Holy Shield (full 8 blocks)</td><td>0.40</td><td class="gain-good">+16.8</td><td class="gain-good">+38.3</td></tr>
+        <tr><td>Avenger's Shield</td><td>0.193</td><td class="gain-good">+8.1</td><td class="gain-good">+15.4</td></tr>
+        <tr><td>Seal of Blood / JoB</td><td>0 / 0.43</td><td class="gain-bad">+0</td><td class="gain-good">+18 (JoB only)</td></tr>
+    </table>
+
+    <div class="tip">
+        <strong>Wizard Oil Steady-State Contribution:</strong> ~21 TPS (SoR + JoR + Consec + HS). With SoC stacks, add ~5 TPS. Useless if you main-seal SoB (drops to ~11 TPS, swap to <strong>Superior Mana Oil</strong> instead).
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- HEAD-TO-HEAD -->
+    <!-- ============================================================ -->
+    <h2>Head-to-Head Summary</h2>
+
+    <p>Steady-state numbers for the same rotation (SoR main + JoR every 10s + Consec on 8s cycle + HS on 10s cycle), on a 5 minute boss fight, in the shaman's 5-man party:</p>
+
+    <table>
+        <tr>
+            <th>Buff</th>
+            <th>+ DPS</th>
+            <th>+ TPS</th>
+            <th>5-min total threat</th>
+            <th>Affects</th>
+            <th>Slot conflict</th>
+        </tr>
+        <tr>
+            <td><span class="legend-pill pill-oil">Oil</span><strong>Superior Wizard Oil</strong></td>
+            <td>~11 DPS</td>
+            <td class="gain-mid">~21 TPS</td>
+            <td>~6,300</td>
+            <td>All Holy abilities</td>
+            <td>Mana Oil</td>
+        </tr>
+        <tr>
+            <td><span class="legend-pill pill-woa">WoA</span><strong>Wrath of Air Totem</strong></td>
+            <td>~26 DPS</td>
+            <td class="gain-good">~65 TPS</td>
+            <td>~19,500</td>
+            <td>All Holy abilities</td>
+            <td>Windfury (Air totem slot)</td>
+        </tr>
+        <tr>
+            <td><span class="legend-pill pill-woa">WoA</span><strong>Imp Wrath of Air (2/2)</strong></td>
+            <td>~32 DPS</td>
+            <td class="gain-good">~78 TPS</td>
+            <td>~23,400</td>
+            <td>All Holy abilities</td>
+            <td>Windfury (Air totem slot)</td>
+        </tr>
+        <tr>
+            <td><span class="legend-pill pill-wf">WF</span><strong>Windfury Totem (base)</strong></td>
+            <td>~28 DPS</td>
+            <td class="gain-good">~58 TPS</td>
+            <td>~17,400</td>
+            <td>Melee swing + 1 SoR proc per WF</td>
+            <td>WoA (Air totem slot)</td>
+        </tr>
+        <tr class="summary-row">
+            <td><span class="legend-pill pill-wf">WF</span><strong>Imp Windfury Totem (2/2)</strong></td>
+            <td>~32 DPS</td>
+            <td class="gain-good">~65 TPS</td>
+            <td>~19,500</td>
+            <td>Melee swing + 1 SoR proc per WF</td>
+            <td>WoA (Air totem slot)</td>
+        </tr>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- TOTEM TWISTING -->
+    <!-- ============================================================ -->
+    <h2>Totem Twisting: What If The Shaman Cycles Both?</h2>
+
+    <p>A shaman with one Air totem slot can <strong>twist</strong> &mdash; alternate dropping WF then WoA on a cycle &mdash; so the party gets partial uptime on each. The question: does twisting give the Prot Paladin more threat than just running one totem full-time?</p>
+
+    <div class="warning">
+        <strong>Critical TBC mechanic:</strong> in TBC 2.4.3, <strong>Windfury Totem is a continuous aura</strong>, not a pulse-and-persist buff like vanilla. When you replace WF with WoA, the WF proc effect ends <em>immediately</em> &mdash; there is no carry-over window where both are active. Twisting gives <strong>strict alternating uptime</strong>, not overlap. (This is the opposite of WotLK, where WF Totem's buff lasted ~10s after dropping &mdash; that's where the famous twisting strats come from.)
+    </div>
+
+    <h3>Modeling the Twist (10s / 10s cycle)</h3>
+
+    <p>Realistic twist: drop WF, leave it up for ~10 seconds, swap to WoA for ~10 seconds, repeat. Faster (5s) twisting captures more WF procs but burns extra shaman mana on totem casts and GCDs. The 10s cycle gives <strong>50% uptime each</strong>.</p>
+
+    <div class="formula"><strong>Expected gains per 60s twisted cycle (Imp WF + base WoA from Enhancement shaman):</strong>
+WoA uptime: 30s &times; 65 TPS (base WoA on holy abilities)    = 1,950 threat
+WF  uptime: 30s &times; 0.111 procs/s &times; 582 threat/proc   = 1,940 threat
+Total twisted (60s)                                           = ~3,890 threat
+
+For comparison (same 60s window):
+  Imp WoA full uptime    78 &times; 60                           = 4,680 threat
+  Imp WF  full uptime    6.67 procs &times; 582                  = 3,880 threat
+  Base WoA full uptime   65 &times; 60                           = 3,900 threat
+  Base WF  full uptime   6.67 procs &times; ~520                 = 3,470 threat</div>
+
+    <h3>The Surprising Result</h3>
+
+    <table>
+        <tr>
+            <th>Strategy</th>
+            <th>60s threat</th>
+            <th>vs Imp WoA alone</th>
+            <th>vs Imp WF alone</th>
+        </tr>
+        <tr>
+            <td><strong>Imp WoA full uptime</strong> (Resto/Ele shaman)</td>
+            <td class="gain-good">4,680</td>
+            <td>&mdash;</td>
+            <td>+800 (+21%)</td>
+        </tr>
+        <tr>
+            <td><strong>Base WoA + Imp WF twisting</strong> (Enh shaman)</td>
+            <td class="gain-mid">~3,890</td>
+            <td>&minus;790 (&minus;17%)</td>
+            <td>+10 (basically equal)</td>
+        </tr>
+        <tr>
+            <td><strong>Imp WF full uptime</strong> (Enh shaman)</td>
+            <td class="gain-mid">~3,880</td>
+            <td>&minus;800 (&minus;17%)</td>
+            <td>&mdash;</td>
+        </tr>
+        <tr>
+            <td><strong>Imp WoA + base WF twisting</strong> (Resto shaman)</td>
+            <td class="gain-good">~4,070</td>
+            <td>&minus;610 (&minus;13%)</td>
+            <td>+190 (+5%)</td>
+        </tr>
+        <tr>
+            <td><strong>Base WoA full uptime</strong> (Resto/Ele shaman)</td>
+            <td class="gain-mid">~3,900</td>
+            <td>&minus;780 (&minus;17%)</td>
+            <td>+20</td>
+        </tr>
+    </table>
+
+    <div class="verdict">
+        <strong>For the Prot Paladin's threat specifically, twisting is a wash or a slight loss.</strong> The Imp version of either totem at 100% uptime beats any twisting combo, because losing half the uptime of an Imp buff costs more than gaining half the uptime of the un-Imp'd one. <br><br>
+        <strong>So why do shamans twist at all?</strong> Because the totem affects the <em>whole party</em>:
+        <ul>
+            <li>During WF time: melee DPS in the party get extra attacks too &mdash; their gain is much bigger than yours.</li>
+            <li>During WoA time: any caster in the party (healing paladin, mage, ele shaman, lock) gets +101 SP &mdash; raid-DPS gain on top of your threat.</li>
+            <li>Net party output goes up; your individual TPS stays flat or drops slightly.</li>
+        </ul>
+        <strong>Bottom line for you, the tank:</strong> you have no reason to <em>ask</em> a shaman to twist. If they do it for the party's sake, expect your threat-add to land around <span class="gain-mid">~65 TPS</span> &mdash; basically identical to keeping one totem up the whole time.
+    </div>
+
+    <div class="warning">
+        <strong>Caveats on the twist model:</strong>
+        <ul>
+            <li>Shaman pays <strong>~190 mana per totem drop</strong> + 1.0s GCD. At a 10s cycle = 12 drops/min = 2,280 mana/min, more than most Resto shamans can sustain alongside healing.</li>
+            <li>Each totem drop creates a small dead-zone window (one GCD) where neither buff is up. The 50/50 model above ignores this; in practice uptime drops to ~45/45 with a 10s cycle.</li>
+            <li>WF procs are random. The "0.111 procs/s" rate is expected value &mdash; in any single 30s window you might get 2 or 5 procs. WoA's scaling is deterministic.</li>
+            <li>If your shaman is in a different 5-man party (e.g. healer group), you get <strong>neither</strong> totem. The values above all assume the shaman is in your party.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- VISUAL -->
+    <!-- ============================================================ -->
+    <h2>Visual: Cumulative Threat Over 60 Seconds</h2>
+
+    <p>Each curve = added threat <em>on top of your baseline rotation</em>. WoA and Wizard Oil are smooth (every Holy hit scales). Windfury is bursty &mdash; flat between procs, then a big lump. <strong>Twist line</strong> alternates: WoA slope for 10s, then flat-with-WF-spike for 10s.</p>
+
+    <div class="chart-container">
+        <canvas id="chartThreat" width="900" height="450"></canvas>
+    </div>
+    <div id="chartNote" style="font-size:0.9em; color:#8b949e; margin-top:8px;"></div>
+
+    <!-- ============================================================ -->
+    <!-- VERDICT -->
+    <!-- ============================================================ -->
+    <h2>Verdict &amp; Practical Decision Tree</h2>
+
+    <div class="verdict">
+        <strong>Wizard Oil: always yes.</strong> It's a self-applied weapon coat with no party-comp requirement. ~21 TPS for the cost of one consumable per hour. Only skip it if you're main-sealing Seal of Blood, in which case <strong>Superior Mana Oil</strong> (+14 MP5) is the better trade.
+    </div>
+
+    <div class="verdict">
+        <strong>Air totem: it's close, but lean WoA in raids.</strong>
+        <ul>
+            <li><strong>Imp WF</strong> (~65 TPS) ties <strong>Imp WoA</strong> (~78 TPS at threat, but only ~32 DPS). For raw threat per second, <strong>Imp WoA edges out Imp WF</strong> in the SoR rotation.</li>
+            <li>WF is strictly party-local melee. WoA's value is shared by other casters in the party (healing paladin, ele shaman, mage in melee group, etc.), so it has higher <em>raid utility</em>.</li>
+            <li>WF's threat is <em>bursty</em>. A 9s gap with no proc, then a 582-threat spike. Bad for taunt-races where TPS averages don't matter, only the floor.</li>
+            <li>If you swap to <strong>Seal of Blood</strong> (Horde, on physical bosses where SoB outdamages SoR), <strong>WF flips ahead</strong>: WoA loses scaling on the SoB proc itself (0 SP coef), while WF still gives the extra swing.</li>
+        </ul>
+    </div>
+
+    <div class="verdict">
+        <strong>Default party setup for a Prot Paladin:</strong>
+        <ol>
+            <li>1 Enhancement shaman in the melee party with <strong>Windfury Totem + Strength of Earth</strong> &mdash; Imp WF benefits the whole melee group, you piggyback for ~65 TPS.</li>
+            <li>If no Enhancement is available, request <strong>Wrath of Air Totem</strong> from any Elemental/Resto shaman &mdash; ~78 TPS with Imp WoA, only slightly behind Imp WF, and helps any caster in your party too.</li>
+            <li>Either way, <strong>always coat with Superior Wizard Oil</strong> for the +21 TPS on top of whichever totem you get.</li>
+        </ol>
+    </div>
+
+    <div class="warning">
+        <strong>Caveats and corner cases:</strong>
+        <ul>
+            <li><strong>Threat &ne; DPS.</strong> WoA's TPS is inflated by Righteous Fury (1.9&times;) because every gain is Holy. WF's TPS is partially physical (1.0&times; RF). Compare DPS columns for a "fairness" check &mdash; there WoA and WF are nearly identical.</li>
+            <li><strong>SoR-cap weapons.</strong> SoR damage caps at a per-swing amount based on weapon speed. With a slow 2H, SoR procs are bigger but rarer; with a 1.8s 1H, they're smaller but more frequent. Numbers above use the rotation guide's 1.8s spell-power weapon.</li>
+            <li><strong>JotC debuff.</strong> Not modeled in these numbers. If your raid is running a JotC rotation (Judgement of the Crusader = +219 Holy damage taken), all WoA and Wizard Oil scaling is also amplified by that debuff. WF's physical portion is not.</li>
+            <li><strong>Mana cost.</strong> None of these three buffs costs you any mana. WoA does cost the shaman a totem slot, WF does too. Wizard Oil is gold (~3g per stack of 5).</li>
+            <li><strong>Hit and miss.</strong> Spell miss 11.89% applies to JoR/Exo/HoW/AS. Numbers above are post-miss expected values. WF extra swings still roll against the boss's miss table (6% white miss after hit).</li>
+        </ul>
+    </div>
+
+    <h2>One-Line Bottom Line</h2>
+    <div class="tip" style="font-size:1.05em;">
+        <strong>Raid rotation with SoR:</strong> <span class="gain-good">Imp WoA &asymp; Imp WF &asymp; +65&ndash;78 TPS</span>, <span class="gain-good">Wizard Oil &asymp; +21 TPS</span>. <br>
+        <strong>Bring all you can.</strong> Wizard Oil + whichever Air totem your shaman drops &mdash; that's your full threat-amp from this category.
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+(function() {
+    // Simulate 60 seconds of cumulative threat from each buff
+    // WoA: smooth gain from SoR (every 1.8s), JoR (every 10s), Consec (every 1s tick on 8s recast), HS (every 1.25s block on 10s recast)
+    // WF: discrete spikes every ~9s avg, deterministic at t = 9, 18, 27, 36, 45, 54
+    // Wizard Oil: same shape as WoA but 42/101 of the magnitude (~0.416x)
+
+    const T_END = 60;
+    const labels = [];
+    for (let t = 0; t <= T_END; t++) labels.push(t + 's');
+
+    // Continuous TPS rates derived in the analysis
+    const WOA_TPS = 65;     // base Wrath of Air
+    const IMPWOA_TPS = 78;  // 2/2 improved
+    const OIL_TPS = 21;
+
+    // WF: 582 threat per proc, one proc every 9s (Imp WF)
+    const WF_PROC = 582;
+    const WF_INTERVAL = 9;
+    const WF_PROC_TIMES = [9, 18, 27, 36, 45, 54];
+
+    const woa = [], impwoa = [], oil = [], wf = [], twist = [];
+    let wfCum = 0;
+    let nextProcIdx = 0;
+
+    // Twist cycle: 10s WF, 10s WoA, repeating. WF active during [0,10), [20,30), [40,50).
+    // During WF window: flat slope + 1 expected proc placed at midpoint (t=5, 25, 45).
+    // During WoA window: 65 TPS slope (base WoA, since Enh shaman with Imp WF won't have Imp WoA).
+    const TWIST_WOA_TPS = 65;
+    const TWIST_WF_PROC_TIMES = [5, 25, 45];
+    let twistCum = 0;
+    let twistProcIdx = 0;
+    for (let t = 0; t <= T_END; t++) {
+        woa.push(t * WOA_TPS);
+        impwoa.push(t * IMPWOA_TPS);
+        oil.push(t * OIL_TPS);
+
+        if (nextProcIdx < WF_PROC_TIMES.length && t >= WF_PROC_TIMES[nextProcIdx]) {
+            wfCum += WF_PROC;
+            nextProcIdx++;
+        }
+        wf.push(wfCum);
+
+        // twist: figure out which window t is in
+        const cyclePos = t % 20;
+        if (cyclePos === 0 && t > 0) {
+            // entered WF window — no continuous gain this second
+        }
+        // Add continuous WoA TPS during WoA window: cyclePos in [10, 20)
+        // We approximate per-second increments
+        if (t > 0) {
+            const prevPos = (t - 1) % 20;
+            if (prevPos >= 10 && prevPos < 20) {
+                twistCum += TWIST_WOA_TPS;  // each second of WoA window adds 65
+            }
+        }
+        // Add WF procs at the placed midpoints
+        if (twistProcIdx < TWIST_WF_PROC_TIMES.length && t >= TWIST_WF_PROC_TIMES[twistProcIdx]) {
+            twistCum += WF_PROC;
+            twistProcIdx++;
+        }
+        twist.push(twistCum);
+    }
+
+    new Chart(document.getElementById('chartThreat').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                { label: 'Imp Wrath of Air (+121 SP)', data: impwoa, borderColor: '#58a6ff', borderWidth: 3, fill: false, pointRadius: 0, tension: 0 },
+                { label: 'Wrath of Air (+101 SP)',     data: woa,    borderColor: '#a8d8ff', borderWidth: 2, fill: false, pointRadius: 0, tension: 0, borderDash: [6,3] },
+                { label: 'Imp Windfury Totem',         data: wf,     borderColor: '#f0a500', borderWidth: 3, fill: false, pointRadius: 4, stepped: 'after' },
+                { label: 'Twist: WF + base WoA (10s/10s)', data: twist, borderColor: '#a78bfa', borderWidth: 2.5, fill: false, pointRadius: 0, tension: 0 },
+                { label: 'Superior Wizard Oil',        data: oil,    borderColor: '#7ee787', borderWidth: 2.5, fill: false, pointRadius: 0, tension: 0 }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: { display: true, text: 'Cumulative Threat Added by Each Buff (first 60s, SoR rotation)', color: '#e0e0e0', font: { size: 16 } },
+                legend: { labels: { color: '#e0e0e0' } },
+                tooltip: { mode: 'index', intersect: false }
+            },
+            scales: {
+                x: { ticks: { color: '#8b949e', maxRotation: 0, autoSkip: true, maxTicksLimit: 13 }, grid: { color: '#21262d' }, title: { display: true, text: 'Time (seconds)', color: '#8b949e' } },
+                y: { ticks: { color: '#8b949e' }, grid: { color: '#21262d' }, title: { display: true, text: 'Cumulative Threat', color: '#8b949e' } }
+            }
+        }
+    });
+
+    document.getElementById('chartNote').textContent =
+        'After 60s — Imp WoA: ' + impwoa[60].toLocaleString() + ' threat | ' +
+        'WoA: ' + woa[60].toLocaleString() + ' | ' +
+        'Imp WF: ' + wf[60].toLocaleString() + ' | ' +
+        'Twist (WF+base WoA): ' + twist[60].toLocaleString() + ' | ' +
+        'Wizard Oil: ' + oil[60].toLocaleString() + '. ' +
+        'Twist line: slope = 0 during WF windows (with a spike at t=5,25,45), slope = 65 TPS during WoA windows. ' +
+        'Notice the twist line ends ~equal to base WoA alone — twisting trades smooth for choppy without gaining net threat.';
+})();
+</script>
+</body>
+</html>
