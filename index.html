@@ -423,8 +423,85 @@
 <body>
     <div class="container" id="top">
 
-        <h1>Tankenheimer's TBC Paladin Tanking Guide</h1>
+        <h1>Lollerskate's TBC Paladin Tanking Guide</h1>
         <p style="text-align: center; font-style: italic; color: #666;">AOE Dominance, Boss Threat, and Raid Utility - A Complete Mechanics & Optimization Guide (Horde)</p>
+
+        <div style="background: #21262d; border: 1px solid #30363d; border-left: 4px solid #f0a500; padding: 15px 20px; border-radius: 5px; margin: 20px 0; font-size: 0.95em; color: #c9d1d9;">
+            <strong style="color: #f0a500;">Gear Assumptions Used Throughout This Guide</strong>
+            <p style="margin: 8px 0 12px;">All TPS calculations, charts, and threat examples are based on the following T4/T5 raid-geared profile (unbuffed stats from <a href="https://sixtyupgrades.com/tbc/set/gG3jNZLAnMr6GEv99ZzyKh" style="color: #58a6ff;">Sixty Upgrades</a>):</p>
+            <table style="width: 100%; border-collapse: collapse; margin: 0 0 12px; font-size: 0.9em;">
+                <tr>
+                    <th style="background: #161b22; color: #f0a500; border: 1px solid #30363d; padding: 6px 10px; text-align: left;" colspan="2">Melee</th>
+                    <th style="background: #161b22; color: #f0a500; border: 1px solid #30363d; padding: 6px 10px; text-align: left;" colspan="2">Spell</th>
+                    <th style="background: #161b22; color: #f0a500; border: 1px solid #30363d; padding: 6px 10px; text-align: left;" colspan="2">Defense</th>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22;">Attack Power</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22; text-align: right;"><strong>436</strong></td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22;">Spell Damage</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22; text-align: right;"><span style="color: #7ee787;"><strong>639</strong></span></td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22;">Armor</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22; text-align: right;"><strong>15,139</strong></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px;">Hit Chance</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; text-align: right;"><strong>3.00%</strong></td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px;">Spell Hit</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; text-align: right;"><strong>4.11%</strong></td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px;">Defense</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; text-align: right;"><strong>500</strong></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22;">Crit Chance</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22; text-align: right;"><strong>6.29%</strong></td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22;">Spell Crit</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22; text-align: right;"><strong>7.86%</strong></td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22;">Block Chance</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22; text-align: right;"><strong>24.32%</strong></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px;">Expertise</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; text-align: right;"><strong>5</strong></td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px;">Spell Penetration</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; text-align: right;"><strong>0</strong></td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px;">Dodge Chance</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; text-align: right;"><strong>16.47%</strong></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22;">Armor Penetration</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22; text-align: right;"><strong>0</strong></td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22;">Mana per 5 Sec.</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22; text-align: right;"><strong>0</strong></td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22;">Parry Chance</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; background: #161b22; text-align: right;"><strong>16.00%</strong></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px;">Haste</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; text-align: right;"><strong>0.00%</strong></td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px;">Healing</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; text-align: right;"><strong>639</strong></td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px;">Total Avoidance</td>
+                    <td style="border: 1px solid #30363d; padding: 4px 10px; text-align: right;"><strong>67.79%</strong></td>
+                </tr>
+            </table>
+            <strong>Weapon:</strong> Fang of the Leviathan &mdash; 41.1 DPS / 1.80 speed, +40 spell damage, +21 spell crit rating, +221 spell damage proc<br>
+            <strong>Set Bonuses (4/5 Justicar Armor, T4):</strong>
+            <ul style="margin: 6px 0 8px 18px; padding: 0;">
+                <li><strong>2pc</strong> &mdash; <em>"Increases the damage dealt by your Seal of Righteousness, Seal of Vengeance, or Seal of Blood by 10%."</em> Applied to all SoR proc and SoV/SoC DoT values. Judgements are <strong>not</strong> affected by the bonus.</li>
+                <li><strong>4pc</strong> &mdash; <em>"Increases the damage dealt by your Holy Shield by 15."</em> Flat +15 damage per block; applied to HS threat in this guide.</li>
+            </ul>
+            <p style="margin: 10px 0 0; padding-top: 10px; border-top: 1px solid #30363d;">
+                <strong style="color: #f0a500;">Raid-Buffed Values Used in Calculations:</strong>
+                <span style="color: #7ee787;"><strong>709 spell power</strong></span> (639 + Flask of Supreme Power 70; Wizard Oil <em>not</em> assumed &mdash; treated as a situational comparison only) &bull;
+                <strong>~9.5% melee crit</strong> (6.29% + JotC/raid buffs) &bull;
+                <strong>~11% spell crit</strong> (7.86% + raid buffs) &bull;
+                <strong>1.9&times;</strong> Righteous Fury &bull;
+                <strong>+10%</strong> SoR/SoV/SoC seal damage (2pc Justicar) &bull;
+                <strong>+15</strong> per-block Holy Shield bonus (4pc Justicar) &bull;
+                Holy Shield active (8 charges w/ Improved HS) &bull;
+                Level 73 boss target
+            </p>
+        </div>
 
         <div class="toc" id="toc">
             <h3>Table of Contents</h3>
@@ -462,10 +539,11 @@
                 <li><a href="#builds">Paladin Builds</a>
                     <ul>
                         <li><a href="#avengers-build">Avenger's Shield Build (0/43/18)</a></li>
-                        <li><a href="#sanctity-build">Sanctity Aura Build (0/40/21)</a></li>
+                        <li><a href="#sanctity-build">Sanctity Build (0/38/23)</a></li>
                         <li><a href="#build-comparison">Build Comparison</a></li>
                     </ul>
                 </li>
+                <li><a href="#expertise-vs-sanctity">Combat Expertise vs Improved Sanctity Aura</a></li>
                 <li><a href="#consumables">Consumables</a></li>
                 <li><a href="#engineering">Engineering</a></li>
                 <li><a href="#gear-optimization">Gear Optimization</a>
@@ -650,6 +728,7 @@
                 <th>Base Damage</th>
                 <th>SP Coefficient</th>
                 <th>Threat (with 1.9&times; RF)</th>
+                <th>TPS or Threat (unbuffed&ndash;buffed)</th>
                 <th>Notes</th>
             </tr>
             <tr>
@@ -657,6 +736,7 @@
                 <td>512 total (64/tick, 8 ticks)</td>
                 <td>1.000 total (0.125/tick)</td>
                 <td>(512 + SP&times;1.0) &times; 1.9 per target</td>
+                <td style="color: #7ee787; font-weight: bold;">227&ndash;254 /target</td>
                 <td>8 sec duration, 8 yard radius, AOE</td>
             </tr>
             <tr>
@@ -664,151 +744,327 @@
                 <td>155 per block</td>
                 <td>0.05 per block</td>
                 <td>(155 + SP&times;0.05) &times; 1.9 per block</td>
-                <td>4 charges (8 with Improved HS talent)</td>
+                <td style="color: #7ee787; font-weight: bold;">126&ndash;130</td>
+                <td>~3 blocks/8s; 4 charges (8 w/ Improved HS)</td>
             </tr>
             <tr>
                 <td><strong>Avenger's Shield</strong> (Rank 3)</td>
                 <td>494&ndash;602 per target</td>
                 <td>0.193 per target</td>
                 <td>(548 + SP&times;0.193) &times; 1.9 per target</td>
-                <td>3 targets, 6 sec daze, 30 sec CD</td>
+                <td style="color: #7ee787; font-weight: bold;">1,204&ndash;1,245 /target</td>
+                <td>Per cast; 3 targets, 6s daze, 30s CD (opener, not rotational)</td>
             </tr>
             <tr>
                 <td><strong>Seal of Blood</strong></td>
                 <td>35% weapon damage as Holy</td>
                 <td>N/A (weapon dmg scaling)</td>
                 <td>(Weapon Dmg &times; 0.35) &times; 1.9</td>
-                <td>Per melee swing, 10% self-damage</td>
+                <td style="color: #7ee787; font-weight: bold;">29&ndash;30</td>
+                <td>Per melee swing, 10% self-damage; crits 2&times; (melee)</td>
             </tr>
             <tr>
                 <td><strong>Judgement of Blood</strong></td>
                 <td>295&ndash;325 base Holy</td>
                 <td>0.43</td>
                 <td>(310 + SP&times;0.43) &times; 1.9</td>
-                <td>33% of damage dealt back to self</td>
+                <td style="color: #7ee787; font-weight: bold;">102&ndash;115</td>
+                <td>10s CD; crits 2&times; (melee); 33% self-damage</td>
             </tr>
             <tr>
                 <td><strong>Seal of Righteousness</strong></td>
                 <td>Varies by weapon speed</td>
                 <td>0.092 &times; speed (1H); 0.108 &times; speed (2H)</td>
-                <td>(Base + SP&times;0.092&times;speed) &times; 1.9 &mdash; per swing, 1H</td>
-                <td>Scales with base weapon speed; 1.8s 1H &rarr; ~0.166 effective SP coeff per swing</td>
+                <td>(Base + SP&times;0.092&times;speed) &times; 1.9 &times; 1.10 (2pc T4)</td>
+                <td style="color: #7ee787; font-weight: bold;">136&ndash;160</td>
+                <td>Per-swing, cannot crit; +10% from 2pc Justicar. Weapon-speed scaled (0.166 effective at 1.8s)</td>
             </tr>
             <tr>
                 <td><strong>Exorcism</strong> (Rank 7)</td>
-                <td>573&ndash;655</td>
+                <td>573&ndash;655 (619 avg)</td>
                 <td>0.429</td>
-                <td>(614 + SP&times;0.429) &times; 1.9</td>
-                <td>Undead/Demon only, 15 sec CD</td>
+                <td>(619 + SP&times;0.429) &times; 1.9</td>
+                <td style="color: #7ee787; font-weight: bold;">105&ndash;113</td>
+                <td>Undead/Demon only, 15s CD; crits 1.5&times; (spell)</td>
             </tr>
             <tr>
                 <td><strong>Holy Wrath</strong> (Rank 3)</td>
                 <td>567&ndash;701 (635 avg)</td>
                 <td>0.286</td>
                 <td>(635 + SP&times;0.286) &times; 1.9</td>
-                <td>Undead/Demon AOE, 2 sec cast, 1 min CD</td>
+                <td style="color: #7ee787; font-weight: bold;">1,447&ndash;1,508 /cast</td>
+                <td>Undead/Demon AOE, 2s cast, 60s CD; crits 1.5&times; (spell)</td>
             </tr>
             <tr>
                 <td><strong>Retribution Aura</strong> (Rank 6)</td>
                 <td>26 per hit taken</td>
                 <td>None (flat)</td>
                 <td>26 &times; 1.9 = 49.4 per hit</td>
-                <td>Passive, no mana cost</td>
+                <td style="color: #7ee787; font-weight: bold;">13</td>
+                <td>Passive, no mana cost; single-target boss (2.5s swing)</td>
             </tr>
             <tr>
                 <td><strong>Blessing of Sanctuary</strong> (Rank 5)</td>
                 <td>46 per block</td>
                 <td>None (flat)</td>
                 <td>46 &times; 1.9 = 87.4 per block</td>
-                <td>Also reduces damage taken by up to 80</td>
+                <td style="color: #7ee787; font-weight: bold;">33</td>
+                <td>~3 blocks/8s; also reduces damage taken by up to 80</td>
             </tr>
         </table>
+        <p style="color: #8b949e; font-size: 0.9em;"><strong>TPS / Threat column:</strong> Range shows unbuffed (639 SP, 6.29% melee crit, 7.86% spell crit) to raid-buffed (709 SP, ~9.5% / ~11% crit). Rotational abilities show TPS assuming 1.80 speed weapon and ability used on cooldown. Avenger's Shield and Holy Wrath show <strong>per-cast threat</strong> instead of TPS since they are openers/cooldowns, not part of the steady-state rotation. Flat abilities (Ret Aura, BoSanc) show a single value. Crit-capable abilities include average crit contribution.</p>
 
-        <h4>Threat Example: 500 Spell Power, Single Target</h4>
+        <h4>Threat Example: 709 Spell Power, Single Target</h4>
         <div class="formula">
-            Consecration (8 sec): (512 + 500&times;1.0) &times; 1.9 = (512 + 500) &times; 1.9 = <strong>1,923 threat</strong><br>
-            Holy Shield (per block): (155 + 500&times;0.05) &times; 1.9 = (155 + 25) &times; 1.9 = <strong>342 threat</strong><br>
-            Avenger's Shield (per target): (548 + 500&times;0.193) &times; 1.9 = (548 + 96.5) &times; 1.9 = <strong>1,224 threat</strong><br>
-            Judgement of Blood: (310 + 500&times;0.43) &times; 1.9 = (310 + 215) &times; 1.9 = <strong>998 threat</strong>
+            Consecration (8 sec): (512 + 556&times;1.0) &times; 1.9 = (512 + 556) &times; 1.9 = <strong>2,029 threat</strong><br>
+            Holy Shield (per block): (155 + 556&times;0.05) &times; 1.9 = (155 + 27.8) &times; 1.9 = <strong>347 threat</strong><br>
+            Avenger's Shield (per target): (548 + 556&times;0.193) &times; 1.9 = (548 + 107.3) &times; 1.9 = <strong>1,245 threat</strong><br>
+            Judgement of Blood: (310 + 556&times;0.43) &times; 1.9 = (310 + 239) &times; 1.9 = <strong>1,043 threat</strong>
         </div>
 
         <h4>Seal TPS Comparison</h4>
-        <p>Not all seals are created equal. The chart below compares the <strong>threat per second</strong> contribution from each seal &mdash; both the passive proc component (seal active on melee swings) and the Judgement component (amortized over a 10-second Judgement cooldown). Assumes 300 spell power, 100 DPS / 2.0 speed weapon, 1.9&times; Righteous Fury, 10% melee crit, 10% spell crit, and realistic hit rates vs a level 73 boss. <strong>Crit matters:</strong> Seal of Blood procs crit at 2&times; using melee crit, while Seal of Righteousness procs <em>cannot crit at all</em>. Judgement of Blood crits at 2&times; (melee crit); Judgement of Righteousness crits at 1.5&times; (spell crit).</p>
+        <p>Not all seals are created equal. The chart below compares the <strong>threat per second</strong> contribution from each seal &mdash; both the passive proc component (seal active on melee swings) and the Judgement component (amortized over a 10-second Judgement cooldown). Assumes 556 spell power, 41 DPS / 1.8 speed weapon (spell power weapon), 1.9&times; Righteous Fury, 10% melee crit, 10% spell crit, <strong>2pc Justicar Armor (+10% SoR/SoV/SoC seal damage)</strong>. <strong>Crit matters:</strong> Seal of Blood procs crit at 2&times; using melee crit, while Seal of Righteousness procs <em>cannot crit at all</em>. Judgement of Blood crits at 2&times; (melee crit); Judgement of Righteousness crits at 1.5&times; (spell crit). <strong>Note:</strong> With a spell power weapon (low DPS), SoR dominates active procs because it scales with spell power. SoB/SoCommand active procs are weak because they scale with weapon damage. The 2pc T4 Justicar bonus boosts SoR proc and SoV/SoC DoT damage by 10% (Judgements are not affected by the bonus).</p>
 
-        <div style="max-width: 700px; margin: 1.5em auto;">
-            <canvas id="sealTPSChart" width="700" height="450"></canvas>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin: 1em auto; max-width: 1350px;">
+            <div style="flex: 1; min-width: 280px; max-width: 430px;">
+                <canvas id="sealActiveChart" height="280"></canvas>
+            </div>
+            <div style="flex: 1; min-width: 280px; max-width: 430px;">
+                <canvas id="sealJudgedChart" height="280"></canvas>
+            </div>
+            <div style="flex: 1; min-width: 280px; max-width: 430px;">
+                <canvas id="sealSwapChart" height="280"></canvas>
+            </div>
         </div>
         <script>
         (function() {
-            const ctx = document.getElementById('sealTPSChart').getContext('2d');
-            new Chart(ctx, {
+            // Active TPS chart — ordered highest to lowest
+            var ctxA = document.getElementById('sealActiveChart').getContext('2d');
+            new Chart(ctxA, {
                 type: 'bar',
                 data: {
-                    labels: [
-                        'SoV / SoC\n(5 stacks)',
-                        'Seal of\nRighteousness',
-                        'Seal of\nBlood',
-                        'SotC\n(3/3 Improved)',
-                        'Seal of the\nCrusader',
-                        'Seal of\nCommand',
-                        'Seal of\nWisdom'
-                    ],
-                    datasets: [
-                        {
-                            label: 'Active TPS (seal proc on swing)',
-                            data: [131, 110, 67, 41, 35, 34, 0],
-                            backgroundColor: 'rgba(255, 206, 86, 0.85)',
-                            borderColor: 'rgba(255, 206, 86, 1)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Judged TPS (Judgement / 10s CD)',
-                            data: [146, 44, 80, 71, 66, 77, 0],
-                            backgroundColor: 'rgba(255, 99, 132, 0.85)',
-                            borderColor: 'rgba(255, 99, 132, 1)',
-                            borderWidth: 1
-                        }
-                    ]
+                    labels: ['SoR', 'SoV/SoC\n(5 stk)', 'SotC 3/3', 'SotC', 'SoB', 'SoCommand', 'SoW'],
+                    datasets: [{
+                        label: 'Active TPS (seal proc on swing)',
+                        data: [180, 171, 41, 35, 30, 13, 0],
+                        backgroundColor: [
+                            'rgba(126, 231, 135, 0.85)',
+                            'rgba(179, 136, 255, 0.85)',
+                            'rgba(255, 206, 86, 0.85)',
+                            'rgba(255, 206, 86, 0.65)',
+                            'rgba(255, 99, 132, 0.85)',
+                            'rgba(255, 159, 64, 0.85)',
+                            'rgba(100, 100, 100, 0.5)'
+                        ],
+                        borderColor: [
+                            'rgba(126, 231, 135, 1)',
+                            'rgba(179, 136, 255, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(100, 100, 100, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
                 },
                 options: {
                     responsive: true,
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Seal TPS Comparison (300 SP, 2.0 speed 1H, 10% crit, vs Boss)',
+                            text: 'Active Seal TPS (Proc on Swing)',
                             color: '#e6edf3',
-                            font: { size: 15, weight: 'bold' }
+                            font: { size: 14, weight: 'bold' }
                         },
-                        legend: {
-                            labels: { color: '#e6edf3', font: { size: 12 } }
+                        subtitle: {
+                            display: true,
+                            text: '709 SP, 41.1 DPS / 1.80 speed, ~10% crit, 4pc Justicar',
+                            color: '#8b949e',
+                            font: { size: 11 }
                         },
+                        legend: { display: false },
                         tooltip: {
                             callbacks: {
                                 afterBody: function(context) {
-                                    const idx = context[0].dataIndex;
-                                    const totals = [277, 154, 147, 112, 101, 111, 0];
-                                    const notes = ['(5-stack steady state; ~10s ramp-up; DoT cannot crit)', '(Proc cannot crit)', '(Proc + Judge crit at 2×)', '(Judged = indirect debuff TPS)', '(Judged = indirect debuff TPS)', '(Requires 11 pts Ret; crits at 2×)', '(Mana only)'];
-                                    var result = 'Combined: ' + totals[idx] + ' TPS';
-                                    if (notes[idx]) result += '\n' + notes[idx];
-                                    return result;
+                                    var notes = [
+                                        'Cannot crit. Scales with SP. Includes +10% from 2pc Justicar.',
+                                        '5-stack DoT TPS. DoT cannot crit. ~10s ramp-up. +10% from 2pc Justicar.',
+                                        '+15% AP bonus (Ret talent). No SP scaling.',
+                                        '+495 AP to auto-attacks. No SP scaling.',
+                                        'Crits at 2× (melee). Scales with weapon DPS, not SP.',
+                                        'Requires 11 pts Ret. Scales with weapon DPS.',
+                                        'Zero threat — mana recovery only.'
+                                    ];
+                                    return notes[context[0].dataIndex];
                                 }
                             }
                         }
                     },
                     scales: {
                         x: {
-                            stacked: true,
                             ticks: { color: '#8b949e', font: { size: 11 } },
                             grid: { color: 'rgba(139, 148, 158, 0.15)' }
                         },
                         y: {
-                            stacked: true,
                             beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Threat Per Second',
-                                color: '#e6edf3'
-                            },
+                            title: { display: true, text: 'Threat Per Second', color: '#e6edf3' },
+                            ticks: { color: '#8b949e' },
+                            grid: { color: 'rgba(139, 148, 158, 0.15)' }
+                        }
+                    }
+                }
+            });
+
+            // Judged TPS chart — ordered highest to lowest
+            var ctxJ = document.getElementById('sealJudgedChart').getContext('2d');
+            new Chart(ctxJ, {
+                type: 'bar',
+                data: {
+                    labels: ['JoV/JoC\n(5 stk)', 'JoB', 'JoCommand', 'JoR', 'JotC 3/3', 'JotC', 'JoW'],
+                    datasets: [{
+                        label: 'Judged TPS (Judgement / 10s CD)',
+                        data: [168, 115, 115, 80, 71, 66, 0],
+                        backgroundColor: [
+                            'rgba(179, 136, 255, 0.85)',
+                            'rgba(255, 99, 132, 0.85)',
+                            'rgba(255, 159, 64, 0.85)',
+                            'rgba(126, 231, 135, 0.85)',
+                            'rgba(255, 206, 86, 0.85)',
+                            'rgba(255, 206, 86, 0.65)',
+                            'rgba(100, 100, 100, 0.5)'
+                        ],
+                        borderColor: [
+                            'rgba(179, 136, 255, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(126, 231, 135, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(100, 100, 100, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Judged Seal TPS (Judgement / 10s CD)',
+                            color: '#e6edf3',
+                            font: { size: 14, weight: 'bold' }
+                        },
+                        subtitle: {
+                            display: true,
+                            text: '709 SP, 41.1 DPS / 1.80 speed, ~10% crit, 4pc Justicar',
+                            color: '#8b949e',
+                            font: { size: 11 }
+                        },
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                afterBody: function(context) {
+                                    var notes = [
+                                        'Spell crit 1.5×. Strongest judge at 5 stacks.',
+                                        'Melee crit 2×. Scales with SP. 33% self-damage.',
+                                        'Melee crit 2×. Requires 11 pts Ret.',
+                                        'Spell crit 1.5×. Scales with SP.',
+                                        'Debuff: +219 Holy dmg taken. +3% crit (raid-wide).',
+                                        'Debuff: +219 Holy dmg taken by target.',
+                                        'Zero threat — applies Wisdom debuff for mana on hit.'
+                                    ];
+                                    return notes[context[0].dataIndex];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { color: '#8b949e', font: { size: 11 } },
+                            grid: { color: 'rgba(139, 148, 158, 0.15)' }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Threat Per Second', color: '#e6edf3' },
+                            ticks: { color: '#8b949e' },
+                            grid: { color: 'rgba(139, 148, 158, 0.15)' }
+                        }
+                    }
+                }
+            });
+
+            // Combined Active TPS chart — SoR swap at 5 SoC stacks
+            var ctxS = document.getElementById('sealSwapChart').getContext('2d');
+            new Chart(ctxS, {
+                type: 'bar',
+                data: {
+                    labels: ['SoR + SoC\nDoT (swap)', 'Pure\nSoR', 'Pure SoC\nDoT (5 stk)', 'SotC\n3/3', 'SotC', 'SoB', 'SoCmd'],
+                    datasets: [{
+                        label: 'Combined Active TPS',
+                        data: [351, 180, 171, 41, 35, 30, 13],
+                        backgroundColor: [
+                            'rgba(255, 215, 0, 0.9)',
+                            'rgba(126, 231, 135, 0.85)',
+                            'rgba(179, 136, 255, 0.85)',
+                            'rgba(255, 206, 86, 0.85)',
+                            'rgba(255, 206, 86, 0.65)',
+                            'rgba(255, 99, 132, 0.85)',
+                            'rgba(255, 159, 64, 0.85)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 215, 0, 1)',
+                            'rgba(126, 231, 135, 1)',
+                            'rgba(179, 136, 255, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Combined Active TPS (SoR Swap at 5 SoC Stacks)',
+                            color: '#e6edf3',
+                            font: { size: 14, weight: 'bold' }
+                        },
+                        subtitle: {
+                            display: true,
+                            text: '709 SP, 41.1 DPS / 1.80 speed, ~10% crit, 4pc Justicar',
+                            color: '#8b949e',
+                            font: { size: 11 }
+                        },
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                afterBody: function(context) {
+                                    var notes = [
+                                        'SoR procs (180) + SoC 5-stack DoT (171). Both +10% from 2pc Justicar.\nSwap to SoR at 5 stacks; DoT keeps ticking.\nSwap back to SoC ~9s before stacks expire.',
+                                        'SoR procs only. No ramp-up, no stack management. +10% from 2pc Justicar.',
+                                        'SoC DoT only (no per-swing proc). ~10s ramp-up. +10% from 2pc Justicar.',
+                                        '+15% AP bonus (Ret talent). No SP scaling.',
+                                        '+495 AP to auto-attacks. No SP scaling.',
+                                        'Scales with weapon DPS. Weak with SP weapons.',
+                                        'Requires 11 pts Ret. Scales with weapon DPS.'
+                                    ];
+                                    return notes[context[0].dataIndex];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { color: '#8b949e', font: { size: 11 } },
+                            grid: { color: 'rgba(139, 148, 158, 0.15)' }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Threat Per Second', color: '#e6edf3' },
                             ticks: { color: '#8b949e' },
                             grid: { color: 'rgba(139, 148, 158, 0.15)' }
                         }
@@ -821,14 +1077,14 @@
         <div class="tip">
             <strong>Key takeaways:</strong>
             <ul>
-                <li><strong>Seal of Righteousness</strong> (~154 TPS) is the best <strong>instant-threat</strong> seal &mdash; no ramp-up, no target-switch penalty, and the recommended AOE tanking seal. Its proc <strong>cannot crit</strong>, but it scales excellently with spell power. Judgement of Righteousness can crit (spell crit, 1.5&times;).</li>
-                <li><strong>Seal of Blood</strong> is close behind (~147 TPS) and <strong>scales better with crit</strong> &mdash; both the seal proc and Judgement of Blood crit at 2&times; using melee crit. It also returns mana via Spiritual Attunement (self-damage &rarr; healing &rarr; mana). As crit rises with gear, SoB overtakes SoR for single-target. <strong>Recommended for boss tanking.</strong></li>
-                <li><strong>Seal of Vengeance / Corruption</strong> has the <strong>highest sustained single-target TPS (~277)</strong> at 5 stacks, thanks to a powerful DoT (131 TPS) and the strongest Judgement in the game at full stacks (146 TPS). The DoT <strong>cannot crit</strong>, but Judgement of Vengeance/Corruption can (spell crit, 1.5&times;). The major tradeoff is a <strong>~10-second ramp-up</strong> to reach 5 stacks, and losing stacks on target switches wipes out the advantage. Best for sustained single-target boss fights where you stay on one target.</li>
-                <li><strong>Seal of Command</strong> (~111 TPS) procs 70% weapon damage as Holy at 7 PPM (can crit at 2&times;), with a strong Judgement of Command. However, it <strong>requires 11 points in Retribution</strong> (Seal of Command talent). Neither the Avenger's Shield (0/43/18) nor the Sanctity (0/40/21) build takes this talent. Only relevant for deep Ret hybrid builds.</li>
+                <li><strong>Seal of Righteousness</strong> (~260 TPS with 2pc Justicar) is the <strong>#1 seal with spell power weapons</strong> &mdash; no ramp-up, no target-switch penalty, and the recommended seal for both AOE and single-target tanking. SoR scales directly with spell power, making it dominant with SP weapons (low DPS). The 2pc Justicar bonus adds another +10% (180 active TPS, up from 164). Its proc <strong>cannot crit</strong>, but Judgement of Righteousness can (spell crit, 1.5&times;).</li>
+                <li><strong>Seal of Vengeance / Corruption</strong> has the <strong>highest sustained single-target TPS (~339 with 2pc Justicar)</strong> at 5 stacks, thanks to a powerful DoT (171 TPS, +10% from 2pc Justicar) and the strongest Judgement in the game at full stacks (168 TPS, unaffected by 2pc). The DoT <strong>cannot crit</strong>, but Judgement of Vengeance/Corruption can (spell crit, 1.5&times;). The major tradeoff is a <strong>~10-second ramp-up</strong> to reach 5 stacks, and losing stacks on target switches wipes out the advantage. Best for sustained single-target boss fights where you stay on one target. See the <a href="soc_vs_sor_timeline.html" style="color: #58a6ff;">SoC vs SoR Threat Timeline</a> for full rotation analysis.</li>
+                <li><strong>Seal of Blood</strong> (~145 TPS) has weak active procs with spell power weapons (30 TPS &mdash; scales with weapon DPS, not SP), but its <strong>Judgement of Blood is the strongest single Judgement</strong> (115 TPS) thanks to 2&times; melee crit and high SP scaling. SoB also returns mana via Spiritual Attunement (self-damage &rarr; healing &rarr; mana). Note: <strong>SoB is NOT boosted by 2pc Justicar</strong> &mdash; the bonus only applies to SoR/SoV/SoC. <strong>Best used in seal swapping:</strong> maintain SoR for procs, swap to SoB just before judging.</li>
+                <li><strong>Seal of Command</strong> (~128 TPS) procs 70% weapon damage as Holy at 7 PPM (can crit at 2&times;), but with a spell power weapon the proc is nearly negligible (13 TPS). Its Judgement matches JoB (115 TPS). <strong>Requires 11 points in Retribution</strong> (Seal of Command talent). Neither the Avenger's Shield (0/43/18) nor the Sanctity (0/38/23) build takes this talent. Only relevant for deep Ret hybrid builds. Not boosted by 2pc Justicar.</li>
                 <li><strong>Seal of the Crusader</strong> (~101 TPS) has low direct threat from the seal itself (+495 AP to auto-attacks), but its real value is the <strong>Judgement of the Crusader debuff</strong>: +219 Holy damage taken by the target for 20 sec. This indirectly boosts all Holy abilities (Consecration, Holy Shield, SoR procs, Judgements) by ~66 TPS. Typically you judge Crusader first, then swap to SoR or SoB for sustained damage.</li>
                 <li><strong>SotC with 3/3 Improved</strong> (Ret talent) adds +15% to the AP bonus and grants <strong>+3% melee/ranged crit</strong> against the judged target &mdash; a raid-wide DPS benefit. Worth considering if another paladin can maintain the judgement.</li>
                 <li><strong>Seal of Wisdom</strong> generates zero threat but is essential for mana recovery on extended AOE pulls or low-mana emergencies.</li>
-                <li><strong>Seal Swap Technique:</strong> You can maintain SoR for per-swing procs and swap to SoB just before judging for the stronger Judgement of Blood, yielding ~202 combined TPS &mdash; the highest burst-ready option with zero ramp-up. See the <a href="#boss-rotation" style="color: #58a6ff;">Boss Rotation section</a> for the full technique.</li>
+                <li><strong>Seal Swap Technique:</strong> You can maintain SoR for per-swing procs and swap to SoB just before judging for the stronger Judgement of Blood, yielding ~295 combined TPS with 2pc Justicar (180 SoR active + 115 JoB) &mdash; the highest burst-ready option with zero ramp-up. See the <a href="#boss-rotation" style="color: #58a6ff;">Boss Rotation section</a> for the full technique.</li>
             </ul>
         </div>
 
@@ -847,7 +1103,7 @@
         <p style="color: #8b949e; font-size: 0.9em;">Sources: <a href="https://www.cgalliance.org/forums/threads/tbc-pally-info.17961/" style="color: #58a6ff;">Kalgan Q&amp;A (CGAlliance)</a>, <a href="https://www.wowhead.com/tbc/spell=31892/seal-of-blood" style="color: #58a6ff;">Wowhead TBC &mdash; Seal of Blood</a>, <a href="https://github.com/Atlantiss/NetherwingBugtracker/issues/6507" style="color: #58a6ff;">Netherwing Bugtracker #6507</a></p>
 
         <h4>Aura Comparison: Threat vs Mitigation</h4>
-        <p>You can only have <strong>one aura active</strong> at a time &mdash; choosing the right one is a core tanking decision. The chart below compares each aura's <strong>threat generation</strong> (TPS) and <strong>damage prevention</strong> (DPPS &mdash; damage prevented per second) for both AOE and single-target scenarios. Assumes 5/5 Improved Devotion Aura, 16,000 base armor, Righteous Fury active.</p>
+        <p>You can only have <strong>one aura active</strong> at a time &mdash; choosing the right one is a core tanking decision. The chart below compares each aura's <strong>threat generation</strong> (TPS) and <strong>damage prevention</strong> (DPPS &mdash; damage prevented per second) for both AOE and single-target scenarios. Assumes 709 SP, 41.1 DPS / 1.80 speed 1H, 5/5 Improved Devotion Aura, ~15,140 base armor, Righteous Fury active.</p>
         <p style="color: #8b949e; font-size: 0.9em;"><strong>AOE scenario:</strong> 6 mobs, 2.0s swing timer, 35% avoidance. <strong>Boss scenario:</strong> Single boss, 2.5s swing timer, 35% avoidance. <strong>Magic boss:</strong> ~1,000 school-specific spell DPS.</p>
 
         <div style="max-width: 750px; margin: 1.5em auto;">
@@ -871,14 +1127,14 @@
                     datasets: [
                         {
                             label: 'AOE Threat (TPS)',
-                            data: [96, 110, 0, 0, 0, 0, 0],
+                            data: [96, 155, 0, 0, 0, 0, 0],
                             backgroundColor: 'rgba(255, 206, 86, 0.85)',
                             borderColor: 'rgba(255, 206, 86, 1)',
                             borderWidth: 1
                         },
                         {
                             label: 'Single-Target Threat (TPS)',
-                            data: [13, 38, 0, 0, 0, 0, 0],
+                            data: [13, 54, 0, 0, 0, 0, 0],
                             backgroundColor: 'rgba(255, 99, 132, 0.85)',
                             borderColor: 'rgba(255, 99, 132, 1)',
                             borderWidth: 1
@@ -917,7 +1173,7 @@
                                     const idx = context[0].dataIndex;
                                     const notes = [
                                         '26 Holy dmg × 1.9 RF per hit taken.\nScales linearly with mob count.',
-                                        '+10% Holy damage to party (Ret talent).\nAvailable in the Sanctity (0/40/21) build.\nAlso boosts other paladins\' Holy damage.',
+                                        '+10% Holy damage to party (Ret talent).\nAvailable in the Sanctity (0/38/23) build.\nAlso boosts other paladins\' Holy damage.',
                                         '+1,292 armor (861 base + 50% IDA).\nPhysical damage reduction only.',
                                         '+70 Fire Resist ≈ 14.4% avg spell reduction.\nEncounter-dependent — 0 value on physical fights.',
                                         '+70 Frost Resist ≈ 14.4% avg spell reduction.\nEncounter-dependent — 0 value on physical fights.',
@@ -954,7 +1210,7 @@
             <strong>Aura selection guidelines:</strong>
             <ul>
                 <li><strong>Retribution Aura</strong> is the default for <strong>AOE pulls</strong>. At 96 TPS across 6 mobs, it's free passive threat with zero mana cost and no talent investment. On single-target bosses, its 13 TPS contribution is negligible.</li>
-                <li><strong>Sanctity Aura</strong> (+10% Holy damage) is the highest-throughput threat aura for both AOE and single-target &mdash; <strong>requires 21 points in Retribution</strong>, available in the <a href="#sanctity-build">Sanctity (0/40/21) build</a>. If another paladin runs Sanctity for the group, you can use Retribution or Devotion instead. Also boosts other paladins' Holy damage in the party.</li>
+                <li><strong>Sanctity Aura</strong> (+10% Holy damage) is the highest-throughput threat aura for both AOE and single-target &mdash; <strong>requires 21 points in Retribution</strong>, available in the <a href="#sanctity-build">Sanctity (0/38/23) build</a>. If another paladin runs Sanctity for the group, you can use Retribution or Devotion instead. Also boosts other paladins' Holy damage in the party.</li>
                 <li><strong>Devotion Aura</strong> (with 5/5 Improved) adds <strong>1,292 armor</strong> to the entire raid &mdash; roughly 1.6% additional physical damage reduction at typical gear levels. This is the default for <strong>physical bosses</strong> and any fight where survival matters more than AOE threat.</li>
                 <li><strong>Resistance Auras</strong> are situationally <em>extremely</em> powerful. Against a magic-heavy boss (Hydross, Mother Shahraz, Al'ar), 70 resistance provides ~14.4% average spell damage reduction for the whole raid &mdash; far more mitigation than Devotion Aura on those fights. <strong>Always use the matching resistance aura on magic-damage encounters.</strong></li>
                 <li><strong>Concentration Aura</strong> is niche for tanks. Useful when you need uninterrupted self-heals (emergency Flash of Light casts) or when assigned to a healer group on heavy-interrupt fights.</li>
@@ -964,7 +1220,7 @@
 
         <h4>Blessing Comparison: Threat vs Mitigation</h4>
         <p>In a 25-man raid with multiple paladins, you'll receive several blessings simultaneously. But when blessings are limited (5-mans, few paladins), <strong>which blessing provides the most value for a tank?</strong> The chart below compares each blessing's personal threat generation and damage prevention.</p>
-        <p style="color: #8b949e; font-size: 0.9em;"><strong>Assumptions:</strong> 300 SP, 2.0 speed 1H, Righteous Fury, Holy Shield active (8 charges w/ Improved HS). <strong>AOE:</strong> 6 mobs, 2.0s swing. <strong>Boss:</strong> Single target, 2.5s swing, 35% avoidance. BoSanc Rank 5, BoK, BoM Rank 8 (264 AP), BoW Rank 7 (41 MP5), BoLight Rank 4.</p>
+        <p style="color: #8b949e; font-size: 0.9em;"><strong>Assumptions:</strong> 709 SP, 41.1 DPS / 1.80 speed 1H, Righteous Fury, Holy Shield active (8 charges w/ Improved HS). <strong>AOE:</strong> 6 mobs, 2.0s swing. <strong>Boss:</strong> Single target, 2.5s swing, 35% avoidance. BoSanc Rank 5, BoK, BoM Rank 8 (264 AP), BoW Rank 7 (41 MP5), BoLight Rank 4.</p>
 
         <div style="max-width: 700px; margin: 1.5em auto;">
             <canvas id="blessingComparisonChart" width="700" height="480"></canvas>
@@ -1174,7 +1430,7 @@
                 <td>Seal of Righteousness (per swing, 1.8s 1H)</td>
                 <td>0.166 (=0.092&times;1.8)</td>
                 <td>31.5</td>
-                <td>Melee proc; scales with weapon speed</td>
+                <td>Melee proc; weapon-speed scaled</td>
             </tr>
             <tr>
                 <td>Exorcism</td>
@@ -1640,7 +1896,7 @@
         <div class="boss-tank">
             <ol>
                 <li>Righteous Fury active</li>
-                <li>Seal of Blood active</li>
+                <li><strong>Seal of the Crusader</strong> active (judged on pull for the +219 Holy damage debuff &mdash; see opener discussion below). Alternatively, <strong>Seal of Righteousness</strong> if skipping the JotC opener.</li>
                 <li>Appropriate aura (Devotion for physical bosses, Resistance auras for magic)</li>
                 <li>Holy Shield cast ~2&ndash;3 seconds before pull</li>
                 <li>Pre-pot if desired (Ironshield Potion for survivability, or Super Mana Potion for sustain)</li>
@@ -1648,8 +1904,28 @@
         </div>
 
         <h4>Pull &amp; Opener</h4>
+
+        <p><strong>Recommended (long fights, debuff opener):</strong></p>
         <div class="formula">
-            Avenger's Shield &rarr; Holy Shield (if not already up) &rarr; Avenging Wrath &rarr; Judgement of Blood &rarr; <strong>Seal of Righteousness</strong> (judging consumes your seal &mdash; SoR has the highest per-swing TPS) &rarr; Consecration
+            <em>Pre-pull:</em> Seal of the Crusader &rarr; Holy Shield &rarr; Avenging Wrath<br>
+            <em>0.0s:</em> Avenger's Shield (PULL) &rarr; <em>1.5s:</em> Consecration &rarr; <em>3.0s:</em> <strong>Judgement of the Crusader</strong> (applies <strong>+219 Holy damage taken</strong> debuff for 20s) &rarr; <em>4.5s:</em> Seal of Righteousness &rarr; <em>6.0s:</em> Exorcism (if Undead/Demon) or Holy Shield refresh
+        </div>
+
+        <p><strong>Alternative (short fights, snap-threat opener):</strong></p>
+        <div class="formula">
+            <em>Pre-pull:</em> Seal of Blood (or SoR) &rarr; Holy Shield &rarr; Avenging Wrath<br>
+            <em>0.0s:</em> Avenger's Shield (PULL) &rarr; <em>1.5s:</em> Consecration &rarr; <em>3.0s:</em> <strong>Judgement of Blood</strong> (~1,492 threat snap with AW) &rarr; <em>4.5s:</em> Seal of Righteousness &rarr; <em>6.0s:</em> Holy Shield refresh
+        </div>
+
+        <div class="tip">
+            <strong>JotC opener vs JoB opener &mdash; the tradeoff:</strong>
+            <ul>
+                <li><strong>Judgement of Blood opener</strong> gives <strong>~1,492 threat</strong> snap on the first judge with AW. Best when you need maximum threat in the first 3 seconds (pull aggro, no MD/ToT support).</li>
+                <li><strong>Judgement of the Crusader opener</strong> only deals ~71 threat directly, but the +219 Holy damage debuff buffs every Holy ability for 20s &mdash; <strong>Consecration ticks (+1,533 raw / Consec), Holy Shield blocks, SoR procs, Exorcism, Holy Wrath, and your next JoB</strong>. Net amplification is roughly <strong>+8,000 to +11,000 threat</strong> over the 20s window.</li>
+                <li><strong>Use JotC opener when:</strong> a co-tank or DPS is on the boss first, you have Misdirection/ToT, or the fight will run long (3+ minutes). The amplification compounds with every Holy ability you cast.</li>
+                <li><strong>Use JoB opener when:</strong> you're solo-pulling, snap aggro is critical, or the boss will die in &lt;90 seconds (debuff amplification doesn't fully pay off).</li>
+                <li><strong>Refresh JotC every ~20s</strong> by judging Crusader off SotC again (costs 1 GCD + 1 judgement slot &mdash; usually worth it on long fights).</li>
+            </ul>
         </div>
 
         <h4>Sustained Boss Rotation (Priority System)</h4>
@@ -1661,14 +1937,16 @@
                 <th>Notes</th>
             </tr>
             <tr><td>1</td><td><strong>Holy Shield</strong></td><td>8 sec</td><td>NEVER let this drop. Threat + crush immunity.</td></tr>
-            <tr><td>2</td><td><strong>Judgement of Blood</strong></td><td>10 sec (8 with talent)</td><td>Highest per-GCD threat. Self-damage fuels Spiritual Attunement. <em>Recast Seal of Righteousness immediately after</em> (judging consumes your seal; SoR has the highest per-swing TPS).</td></tr>
+            <tr><td>2</td><td><strong>Judgement of Blood</strong></td><td>10 sec</td><td>Highest per-GCD threat. Self-damage fuels Spiritual Attunement. <em>Recast Seal of Righteousness immediately after</em> (judging consumes your seal; SoR has the highest per-swing TPS).</td></tr>
             <tr><td>3</td><td><strong>Avenger's Shield</strong></td><td>30 sec</td><td>High burst threat. Use on CD for single-target.</td></tr>
             <tr><td>4</td><td><strong>Exorcism</strong></td><td>15 sec</td><td>Only on Undead/Demon bosses (Illidan, Hyjal undead, etc.)</td></tr>
             <tr><td>5</td><td><strong>Consecration</strong></td><td>8 sec</td><td>CONDITIONAL: use if mana &gt; 40% or fight is short (&lt;3 min).</td></tr>
-            <tr><td>6</td><td><strong>Auto-attack</strong></td><td>Weapon speed</td><td>Seal of Righteousness procs on every landed melee swing (highest active TPS).</td></tr>
+            <tr><td>6</td><td><strong>Judgement of the Crusader</strong></td><td>~20 sec (refresh)</td><td>OPTIONAL on long fights. Skip every other JoB to refresh the +219 Holy damage debuff. Cycle: SoR &rarr; SotC &rarr; JotC &rarr; SoR. Net: amplifies 20s of Consec/HS/SoR/Exo by ~8,000&ndash;11,000 threat.</td></tr>
+            <tr><td>7</td><td><strong>Judgement of Wisdom</strong></td><td>~30 sec (mana sustain)</td><td>OPTIONAL on long fights. Every 3rd judgement, swap SoR &rarr; SoW &rarr; JoW &rarr; SoR. Applies the Wisdom debuff (mana on hit from boss melee). Costs one JoB but the debuff lasts the fight.</td></tr>
+            <tr><td>8</td><td><strong>Auto-attack</strong></td><td>Weapon speed</td><td>Seal of Righteousness procs on every landed melee swing (highest active TPS).</td></tr>
         </table>
 
-        <h4>GCD Timeline (8-Second Loop)</h4>
+        <h4>GCD Timeline (8-Second Loop &mdash; Steady-State)</h4>
         <div class="code-block">
             0.0s: Holy Shield<br>
             1.5s: Judgement of Blood<br>
@@ -1678,9 +1956,21 @@
             8.0s: Holy Shield (repeat)
         </div>
 
+        <h4>Long-Fight Variant: Crusader Refresh + Wisdom Sustain (~30s cycle)</h4>
+        <p>On 3+ minute boss fights, alternate <strong>JoB / JotC / JoW</strong> across three judgement cycles to keep the +219 Holy debuff up and recover mana via JoW. Skip JotC if a Ret/Holy paladin or Shadow Priest is keeping a stronger debuff up (Misery, JotC from another pally).</p>
+        <div class="code-block">
+            <strong>Cycle 1 (0&ndash;10s):</strong> HS &rarr; <strong>JoB</strong> &rarr; SoR &rarr; Consec / Exo &rarr; HS<br>
+            <strong>Cycle 2 (10&ndash;20s):</strong> HS &rarr; <strong>SotC</strong> (1 GCD) &rarr; <strong>JotC</strong> (refreshes +219 debuff) &rarr; SoR &rarr; Consec &rarr; HS<br>
+            <strong>Cycle 3 (20&ndash;30s):</strong> HS &rarr; <strong>SoW</strong> (1 GCD) &rarr; <strong>JoW</strong> (applies Wisdom debuff) &rarr; SoR &rarr; Consec &rarr; HS<br>
+            <strong>&rarr; repeat from Cycle 1</strong>
+        </div>
+        <div class="warning">
+            <strong>Cost:</strong> You give up 2 of every 3 JoBs (~2,300 threat / 30s lost) in exchange for: (a) +8,000&ndash;11,000 amplified threat from JotC's debuff, and (b) significant mana sustain from JoW. Net is positive on long fights, negative on short ones.
+        </div>
+
         <h4>Advanced: Seal Swapping for Maximum Threat</h4>
 
-        <p>Because <strong>Seal of Righteousness</strong> has the highest per-swing TPS (~110, but cannot crit) while <strong>Seal of Blood</strong> has the strongest Judgement TPS (~80, crits at 2&times; with melee crit), you can combine both by <strong>strategically swapping seals before judging</strong>. This yields ~202 TPS from seals alone &mdash; roughly 31% more than using either seal exclusively.</p>
+        <p>Because <strong>Seal of Righteousness</strong> has the highest per-swing TPS (~180 with 2pc Justicar, but cannot crit) while <strong>Seal of Blood</strong> has the strongest Judgement TPS (~115, crits at 2&times; with melee crit), you can combine both by <strong>strategically swapping seals before judging</strong>. This yields ~295 TPS from seals alone &mdash; roughly 13% more than pure SoR and 103% more than pure SoB with a spell power weapon.</p>
 
         <div class="boss-tank">
             <h4>Seal Swap Rotation</h4>
@@ -1694,12 +1984,12 @@
         </div>
 
         <div class="formula">
-            Per cycle (10s) with 10% melee crit, 10% spell crit:<br>
-            SoR procs: ~5 swings &times; 127.7 &times; 1.9 = <strong>~1,100 threat</strong> (SoR cannot crit)<br>
-            Judgement of Blood: (310 + 300&times;0.43) &times; 1.9 &times; 1.10 = <strong>~917 threat</strong> (JoB crits at 2&times; via melee crit)<br>
-            Combined seal threat per cycle: <strong>~2,017 threat (~202 TPS)</strong><br>
-            vs. pure SoR: ~1,540 threat (154 TPS)<br>
-            vs. pure SoB: ~1,470 threat (147 TPS)
+            Per cycle (10s) with 709 SP, 1.80 speed weapon, ~9.5% melee crit, ~11% spell crit, 2pc Justicar (+10% SoR):<br>
+            SoR procs: ~5.6 swings &times; (44.2 + 556&times;0.2) &times; 1.9 &times; 1.10 = ~5.6 &times; 324 = <strong>~1,803 threat</strong> (SoR cannot crit; 2pc T4 boost)<br>
+            Judgement of Blood: (310 + 556&times;0.43) &times; 1.9 &times; 1.10 = <strong>~1,148 threat</strong> (JoB crits at 2&times; via melee crit; 2pc T4 does NOT apply)<br>
+            Combined seal threat per cycle: <strong>~2,951 threat (~295 TPS)</strong><br>
+            vs. pure SoR (with 2pc): ~2,600 threat (260 TPS)<br>
+            vs. pure SoB: ~1,450 threat (145 TPS)
         </div>
 
         <div class="warning">
@@ -1707,7 +1997,7 @@
             <ul>
                 <li><strong>2 extra GCDs per cycle</strong> (Seal of Blood cast + Seal of Righteousness recast) &mdash; competes with Holy Shield, Consecration, and Avenger's Shield</li>
                 <li><strong>~420 extra mana per cycle</strong> (~210 per seal cast) &mdash; accelerates mana drain on long fights</li>
-                <li><strong>Judgement of Blood self-damage</strong> (33% of damage dealt back to you) &mdash; roughly 145&ndash;200 self-damage per judge (varies with spell power)</li>
+                <li><strong>Judgement of Blood self-damage</strong> (33% of damage dealt back to you) &mdash; roughly 220&ndash;240 self-damage per judge at 709 SP</li>
                 <li><strong>1&ndash;2 lost SoR procs</strong> during the brief SoB window before and after judging</li>
             </ul>
         </div>
@@ -1715,9 +2005,9 @@
         <div class="tip">
             <strong>When to seal swap vs. use a single seal:</strong>
             <ul>
-                <li><strong>Use seal swapping</strong> on short boss fights (&lt;3 min) where threat matters more than mana, or when you need burst snap aggro on pull.</li>
-                <li><strong>Use pure Seal of Blood</strong> on long fights (4+ min) where mana sustain matters. SoB's self-damage triggers healing &rarr; Spiritual Attunement &rarr; mana return, which offsets its lower per-swing threat.</li>
-                <li><strong>Use pure Seal of Righteousness</strong> if you are comfortable on threat and want to avoid the self-damage entirely (farm content, overgeared situations).</li>
+                <li><strong>Use seal swapping</strong> on short boss fights (&lt;3 min) where threat matters more than mana, or when you need burst snap aggro on pull. The +13% TPS over pure SoR is significant on threat-sensitive encounters.</li>
+                <li><strong>Use pure Seal of Righteousness</strong> as the default on long fights (4+ min) or when mana matters. With a spell power weapon and 2pc Justicar, SoR's 260 TPS dominates and avoids all self-damage and extra GCDs from seal swapping.</li>
+                <li><strong>Use pure Seal of Blood</strong> only on fights where mana sustain is critical and you need the Spiritual Attunement returns from self-damage. With a spell power weapon, SoB active TPS (30) is far below SoR (180 with 2pc Justicar), so this is a mana tool, not a threat tool.</li>
             </ul>
         </div>
 
@@ -1737,7 +2027,7 @@
             <tr><td>&gt;60%</td><td>Full rotation: Holy Shield + Judgement + Consecration on CD</td></tr>
             <tr><td>40&ndash;60%</td><td>Drop Consecration to every other cycle. Maintain HS + Judge.</td></tr>
             <tr><td>20&ndash;40%</td><td>Stop Consecration entirely. Holy Shield + Judgement only. Use Super Mana Potion.</td></tr>
-            <tr><td>&lt;20%</td><td>Use Dark Rune. Consider Seal of Wisdom for 2&ndash;3 swings to recover mana. Resume Seal of Blood once stable.</td></tr>
+            <tr><td>&lt;20%</td><td>Use Dark Rune. Swap to Seal of Wisdom + Judgement of Wisdom to apply the Wisdom debuff. Resume Seal of Righteousness once stable.</td></tr>
         </table>
 
         <div class="mana-warning">
@@ -1779,7 +2069,7 @@
             <tr><td>One-Handed Weapon Specialization</td><td>4/5</td><td>+8% all damage with 1H weapons (threat)</td></tr>
             <tr><td>Improved Holy Shield</td><td>2/2</td><td>8 charges instead of 4 + increased Holy Shield damage</td></tr>
             <tr><td>Holy Shield</td><td>1/1</td><td><strong>Core ability.</strong> Required for uncrushable</td></tr>
-            <tr><td>Combat Expertise</td><td>5/5</td><td>+10 expertise, +10% stamina</td></tr>
+            <tr><td>Combat Expertise</td><td>5/5</td><td>+5 expertise, +10% stamina</td></tr>
             <tr><td>Avenger's Shield</td><td>1/1</td><td><strong>Core ability.</strong> 3-target ranged pull + 6 sec daze</td></tr>
         </table>
 
@@ -1796,24 +2086,26 @@
         <!-- ============================================================ -->
         <!-- BUILD 2: SANCTITY AURA -->
         <!-- ============================================================ -->
-        <h3 id="sanctity-build">Sanctity Aura Build (0/40/21)</h3>
+        <h3 id="sanctity-build">Sanctity Build (0/38/23)</h3>
 
         <div class="aoe-tank">
-            <h4>Sanctity Aura &mdash; 0/40/21 (No Kings)</h4>
-            <p>The <strong>max threat</strong> build. Trades Avenger's Shield, Blessing of Kings, and 1 point of Weapon Spec for <strong>Sanctity Aura</strong> (+10% Holy damage to your entire party) and <strong>Improved Judgement</strong> (8s CD). The party-wide Holy damage boost benefits other paladins significantly.</p>
-            <p><strong>Talent Calculator:</strong> <a href="https://www.wowhead.com/tbc/talent-calc/paladin/-053050305000015232105-05205020300301" style="color: #58a6ff;">View on WoWHead</a></p>
+            <h4>Sanctity Build &mdash; Max Threat Raid without Ret Paladin in your party (0/38/23)</h4>
+            <p>The <strong>max threat</strong> build for raids where no Retribution paladin is in your party. Trades Avenger's Shield and 1 point of Weapon Spec for <strong>Sanctity Aura</strong> (+10% Holy damage to your entire party) and <strong>2/3 Improved Seal of the Crusader</strong> (+2% chance for the boss to be critically hit by your whole raid, plus a stronger Judgement of the Crusader Holy-damage debuff). Funds <strong>2/2 Improved Sanctity Aura</strong> (+2% all damage to party) by dropping <strong>Toughness 5/5 &rarr; 4/5</strong> (1 point) and <strong>Combat Expertise 5/5 &rarr; 3/5</strong> (2 points). The freed Toughness point goes back into <strong>Blessing of Kings 1/1</strong>, so this build still provides Kings &mdash; meaning you don't need another paladin to cover it. See <a href="#expertise-vs-sanctity">Combat Expertise vs Improved Sanctity Aura</a> for the trade-off.</p>
+            <p><strong>Why no Improved Judgement?</strong> Dropping Judgement to an 8-second cooldown desyncs it from the steady-state 969 cadence (Holy Shield / Consecration on their cooldowns), so the 2 points go into <strong>Improved Seal of the Crusader</strong> instead &mdash; a raid-wide threat and DPS gain that doesn't disturb the rotation.</p>
+            <p><strong>Talent Calculator:</strong> <a href="https://www.wowhead.com/tbc/talent-calc/paladin/-053041305000015232103-050250203003012" style="color: #58a6ff;">View on WoWHead</a></p>
         </div>
 
         <div style="text-align: center; margin: 1em 0;">
-            <a href="https://www.wowhead.com/tbc/talent-calc/paladin/-053050305000015232105-05205020300301" target="_blank" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #1a1a2e, #16213e); border: 2px solid #a370ff; border-radius: 8px; color: #a370ff; font-size: 1.1em; font-weight: bold; text-decoration: none; transition: background 0.2s;">&#9876; Open Build in WoWHead Talent Calculator</a>
+            <a href="https://www.wowhead.com/tbc/talent-calc/paladin/-053041305000015232103-050250203003012" target="_blank" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #1a1a2e, #16213e); border: 2px solid #a370ff; border-radius: 8px; color: #a370ff; font-size: 1.1em; font-weight: bold; text-decoration: none; transition: background 0.2s;">&#9876; Open Build in WoWHead Talent Calculator</a>
         </div>
 
-        <h4>Protection Tree (40 points)</h4>
+        <h4>Protection Tree (38 points)</h4>
         <table class="combat-table">
             <tr><th>Talent</th><th>Points</th><th>Why</th></tr>
             <tr><td>Redoubt</td><td>5/5</td><td>10% chance on melee/ranged hit taken: +30% block for 10s or 5 blocks</td></tr>
             <tr><td>Precision</td><td>3/3</td><td>+3% melee hit, +1% spell hit (threat consistency)</td></tr>
-            <tr><td>Toughness</td><td>5/5</td><td>+10% armor from items</td></tr>
+            <tr><td>Toughness</td><td>4/5</td><td>+8% armor from items &mdash; dropped from 5/5 (1 point) to fund Blessing of Kings</td></tr>
+            <tr><td>Blessing of Kings</td><td>1/1</td><td><strong>+10% all stats</strong> party-wide. Funded by dropping Toughness 5/5 &rarr; 4/5 &mdash; ensures Kings coverage when you have no other paladin in the party</td></tr>
             <tr><td>Improved Righteous Fury</td><td>3/3</td><td><strong>Essential.</strong> 1.9&times; Holy threat modifier</td></tr>
             <tr><td>Anticipation</td><td>5/5</td><td>+20 defense skill &mdash; massive, reduces defense gear needed</td></tr>
             <tr><td>Blessing of Sanctuary</td><td>1/1</td><td>Core buff &mdash; damage reduction + mana on block</td></tr>
@@ -1822,19 +2114,20 @@
             <tr><td>One-Handed Weapon Specialization</td><td>3/5</td><td>+6% all damage with 1H weapons (threat)</td></tr>
             <tr><td>Improved Holy Shield</td><td>2/2</td><td>8 charges instead of 4 + increased Holy Shield damage</td></tr>
             <tr><td>Holy Shield</td><td>1/1</td><td><strong>Core ability.</strong> Required for uncrushable</td></tr>
-            <tr><td>Combat Expertise</td><td>5/5</td><td>+10 expertise, +10% stamina</td></tr>
+            <tr><td>Combat Expertise</td><td>3/5</td><td>+3 expertise, +6% stamina &mdash; dropped from 5/5 to fund Improved Sanctity Aura (<a href="#expertise-vs-sanctity">why</a>)</td></tr>
         </table>
 
-        <h4>Retribution Tree (21 points)</h4>
+        <h4>Retribution Tree (23 points)</h4>
         <table class="combat-table">
             <tr><th>Talent</th><th>Points</th><th>Why</th></tr>
             <tr><td>Benediction</td><td>5/5</td><td><strong>Essential.</strong> -15% mana cost on instant spells (Consecration, HS)</td></tr>
-            <tr><td>Improved Judgement</td><td>2/2</td><td>-2 sec Judgement CD (10s &rarr; 8s) &mdash; more threat per cycle</td></tr>
+            <tr><td>Improved Seal of the Crusader</td><td>2/3</td><td><strong>+2% chance for the target to be critically hit</strong> by all attackers (a raid-wide DPS &amp; threat boost on the boss) and strengthens the Judgement of the Crusader Holy-damage debuff. Replaces Improved Judgement, whose 8s CD desyncs the 969 rotation</td></tr>
             <tr><td>Deflection</td><td>5/5</td><td>+5% parry chance &mdash; avoidance and crush immunity contribution</td></tr>
             <tr><td>Conviction</td><td>2/5</td><td>+2% melee crit (filler for deeper talents)</td></tr>
             <tr><td>Pursuit of Justice</td><td>3/3</td><td>+15% movement speed &mdash; huge quality of life for positioning</td></tr>
             <tr><td>Crusade</td><td>3/3</td><td>+3% damage to Humanoids, Demons, Undead, Elementals (covers most raid content)</td></tr>
             <tr><td>Sanctity Aura</td><td>1/1</td><td><strong>+10% Holy damage to entire party.</strong> Boosts your threat and other paladins' damage</td></tr>
+            <tr><td>Improved Sanctity Aura</td><td>2/2</td><td><strong>+2% to all damage</strong> (physical + magic) for your party. Same row as Sanctity Aura; funded by Combat Expertise 3/5 &mdash; see <a href="#expertise-vs-sanctity">analysis</a></td></tr>
         </table>
 
         <!-- ============================================================ -->
@@ -1846,32 +2139,180 @@
             <tr>
                 <th>Aspect</th>
                 <th>Avenger's Shield (0/43/18)</th>
-                <th>Sanctity Aura (0/40/21)</th>
+                <th>Sanctity Aura (0/38/23)</th>
             </tr>
             <tr><td>Ranged Pull</td><td><strong>Avenger's Shield</strong> (3 targets, 6s daze)</td><td>None &mdash; must body-pull or Exorcism (Undead/Demon only)</td></tr>
-            <tr><td>Blessing of Kings</td><td><strong>Yes</strong> (+10% all stats)</td><td>No &mdash; another paladin must provide Kings</td></tr>
-            <tr><td>Party Aura</td><td>Retribution / Devotion</td><td><strong>Sanctity Aura</strong> (+10% Holy damage to party)</td></tr>
-            <tr><td>Judgement CD</td><td>10 sec</td><td><strong>8 sec</strong> (Improved Judgement 2/2)</td></tr>
+            <tr><td>Blessing of Kings</td><td><strong>Yes</strong> (+10% all stats)</td><td><strong>Yes</strong> (+10% all stats) &mdash; funded by Toughness 4/5</td></tr>
+            <tr><td>Party Aura</td><td>Retribution / Devotion</td><td><strong>Sanctity + Improved Sanctity Aura</strong> (+10% Holy & +2% all damage to party)</td></tr>
+            <tr><td>Judgement CD</td><td>10 sec</td><td>10 sec (Improved Judgement skipped &mdash; 8s CD desyncs the 969 cadence)</td></tr>
+            <tr><td>Boss Crit Debuff</td><td>None</td><td><strong>+2%</strong> to be critically hit (2/3 Improved Seal of the Crusader)</td></tr>
             <tr><td>1H Weapon Spec</td><td><strong>4/5</strong> (+8% all damage)</td><td>3/5 (+6% all damage)</td></tr>
-            <tr><td>Single-Target Threat</td><td>Very Good</td><td><strong>Excellent</strong> (Sanctity + 8s Judgement)</td></tr>
+            <tr><td>Single-Target Threat</td><td>Very Good</td><td><strong>Excellent</strong> (Sanctity + Imp. Seal of the Crusader crit debuff)</td></tr>
             <tr><td>AOE Threat</td><td><strong>Excellent</strong> (AS hits 3 targets)</td><td>Very Good (Sanctity boosts Consecration/HS)</td></tr>
             <tr><td>Survivability</td><td><strong>Same core</strong></td><td><strong>Same core</strong></td></tr>
-            <tr><td>Raid Utility</td><td><strong>Kings + ranged pull</strong></td><td><strong>+10% Holy damage to party</strong></td></tr>
-            <tr><td>Best For</td><td>General use, heroics, raids where you're the only paladin</td><td>Raids with multiple paladins (someone else provides Kings)</td></tr>
+            <tr><td>Raid Utility</td><td><strong>Kings + ranged pull</strong></td><td><strong>+10% Holy & +2% all damage to party</strong></td></tr>
+            <tr><td>Best For</td><td>General use, heroics, raids where you need a ranged pull</td><td>Raids where no Retribution paladin is in your party (Sanctity Aura doesn't overlap)</td></tr>
         </table>
 
         <div class="tip">
             <strong>Which build should I use?</strong>
             <ul>
                 <li><strong>Avenger's Shield</strong> is the safer, more self-sufficient choice. Ranged pulling with daze makes heroics and raid trash much smoother, and you can provide Kings yourself. Take this if you're the only paladin or want flexibility.</li>
-                <li><strong>Sanctity Aura</strong> is the higher-throughput choice when your raid has another paladin for Kings. The +10% Holy damage to your <em>entire party</em> is a significant raid DPS increase if you group with a ret paladin, holy priest (Smite), or another prot paladin. Improved Judgement also tightens your threat rotation.</li>
-                <li><strong>Both builds</strong> share the same survivability core: Redoubt 5/5, Anticipation 5/5, Improved Holy Shield 2/2, Sacred Duty 2/2, Combat Expertise 5/5, Toughness 5/5, and Deflection 5/5.</li>
+                <li><strong>Sanctity Aura</strong> is the higher-throughput choice for raids <strong>where no Retribution paladin is in your party</strong> (otherwise their Sanctity Aura overlaps with yours). With 2/2 Improved Sanctity Aura it gives your <em>entire party</em> +10% Holy <em>and</em> +2% all damage &mdash; a significant raid DPS increase when you group with damage dealers. <strong>2/3 Improved Seal of the Crusader</strong> adds a +2% crit debuff to the boss for your whole raid and a stronger Judgement of the Crusader Holy-damage debuff &mdash; without disturbing the rotation the way Improved Judgement's 8s CD does. This build keeps <strong>Blessing of Kings</strong> (funded by Toughness 4/5), so you don't need another paladin to cover Kings.</li>
+                <li><strong>Both builds</strong> share Blessing of Kings and most of the survivability core: Redoubt 5/5, Anticipation 5/5, Improved Holy Shield 2/2, Sacred Duty 2/2, and Deflection 5/5. The Sanctity build runs <strong>Toughness 4/5</strong> (vs Avenger's 5/5) and <strong>Combat Expertise 3/5</strong> (vs Avenger's 5/5) to fund <strong>Sanctity Aura 1/1</strong>, <strong>2/2 Improved Sanctity Aura</strong>, and <strong>2/3 Improved Seal of the Crusader</strong>. Net loss vs Avenger's: ~2% armor from items, ~4% Stamina, 2 expertise, and Avenger's Shield itself (no ranged pull). Net gain: +10% Holy &amp; +2% all damage to your party, plus a +2% crit debuff on the boss for the whole raid (Improved Seal of the Crusader). See <a href="#expertise-vs-sanctity">Combat Expertise vs Improved Sanctity Aura</a> for that trade-off in detail.</li>
             </ul>
         </div>
 
         <div class="warning">
-            <strong>Mandatory Talents (Never Drop):</strong> Benediction 5/5, Improved Righteous Fury 3/3, Anticipation 5/5, Holy Shield 1/1, Improved Holy Shield 2/2, Combat Expertise 5/5, Precision 3/3, Redoubt 5/5.
+            <strong>Mandatory Talents (Never Drop):</strong> Benediction 5/5, Improved Righteous Fury 3/3, Anticipation 5/5, Holy Shield 1/1, Improved Holy Shield 2/2, Combat Expertise (5/5, or 3/5 in the Sanctity build &mdash; see <a href="#expertise-vs-sanctity">Combat Expertise vs Improved Sanctity Aura</a>), Precision 3/3, Redoubt 5/5.
         </div>
+
+        <!-- ============================================================ -->
+        <!-- COMBAT EXPERTISE VS IMPROVED SANCTITY AURA -->
+        <!-- ============================================================ -->
+        <h2 id="expertise-vs-sanctity"><a href="#toc">Combat Expertise vs Improved Sanctity Aura</a></h2>
+
+        <div class="tip">
+            <strong>The question:</strong> In a raid, what is the net effect of running <strong>5/5 Combat Expertise + Sanctity Aura</strong> versus <strong>3/5 Combat Expertise + 2/2 Improved Sanctity Aura</strong>? Both builds keep Sanctity Aura (1/1). The only thing that changes is where 2 talent points go: dropping 2 ranks of Combat Expertise (Protection) to pick up Improved Sanctity Aura (Retribution).
+        </div>
+
+        <h3>The Two Options</h3>
+
+        <p>This is a legal reallocation, and it is what <a href="#sanctity-build">this guide's Sanctity build (0/38/23)</a> now uses. Combat Expertise is the deepest Protection talent, so dropping it from 5/5 to 3/5 just lowers the tree to 38 points without breaking any prerequisite. Improved Sanctity Aura sits in the <em>same row</em> as Sanctity Aura (verified: Retribution row 4, requires 20 points, with Sanctity Aura as its prerequisite), so the 2 freed points reach it once you already have Sanctity Aura. The result is the <code>0/38/23</code> build.</p>
+
+        <table class="combat-table">
+            <tr>
+                <th>Talent</th>
+                <th>Option A &mdash; 5/5 Combat Expertise</th>
+                <th>Option B &mdash; 3/5 CE + 2/2 Imp. Sanctity</th>
+            </tr>
+            <tr>
+                <td><strong>Combat Expertise</strong></td>
+                <td>5/5 &rarr; +5 Expertise, +10% Stamina</td>
+                <td>3/5 &rarr; +3 Expertise, +6% Stamina</td>
+            </tr>
+            <tr>
+                <td><strong>Sanctity Aura</strong></td>
+                <td>1/1 &mdash; +10% Holy damage to party</td>
+                <td>1/1 &mdash; +10% Holy damage to party</td>
+            </tr>
+            <tr>
+                <td><strong>Improved Sanctity Aura</strong></td>
+                <td>&mdash;</td>
+                <td>2/2 &mdash; <strong>+2% to ALL damage</strong> for the party</td>
+            </tr>
+        </table>
+
+        <p>So Option B <strong>loses 2 Expertise and 4% Stamina</strong>, and <strong>gains +2% to all damage</strong> (physical and every magic school) for everyone in your 5-person party &mdash; including yourself.</p>
+
+        <h3>Exact Mechanics</h3>
+
+        <h4>Combat Expertise</h4>
+        <p>Combat Expertise grants <strong>+1 Expertise and +2% total Stamina per rank</strong>. At 5/5 that is <span class="highlight">+5 Expertise and +10% Stamina</span> &mdash; confirmed by WoWHead's TBC spell data (<code>Mod Expertise: 5</code>, <code>Mod Stat %: 10</code>). It grants no crit (the pre-2.3 crit version is long gone). Note that the guide's reference-gear profile lists <strong>Expertise = 5</strong> with no expertise on gear, which only adds up because Combat Expertise gives +5.</p>
+
+        <h4>Improved Sanctity Aura</h4>
+        <p>Sanctity Aura actually carries <em>two</em> damage effects: a +10% Holy-only modifier, and a second &ldquo;all schools + physical&rdquo; modifier that is dormant at 0 until you talent into it. Improved Sanctity Aura fills in that second effect at <strong>+1% per rank</strong>, so 2/2 adds <span class="highlight">+2% to ALL damage</span> for anyone affected by the aura.</p>
+        <p>This is the crucial part. Base Sanctity Aura's +10% only helps <strong>Holy</strong> damage &mdash; which, in a normal party, is almost nobody (your own threat, plus any Ret/Holy paladin). Improved Sanctity Aura turns the aura into a broad <strong>+2% to physical and all magic</strong>, so it now buffs your melee, hunters, mages, warlocks, shadow priests &mdash; everyone.</p>
+
+        <div class="aoe-tank">
+            <h4>&#9888; Auras are party-only in TBC</h4>
+            <p style="margin-bottom:0;">Paladin auras affect only the paladin's <strong>5-person party</strong> within 30 yards (40 with Aura Mastery), <strong>not the whole raid</strong>. So the +2% benefits up to 4 partymates plus yourself. To get value, your party needs actual damage dealers in it &mdash; this is the same reason you run the Sanctity build at all.</p>
+        </div>
+
+        <h4>Expertise &rarr; Boss Dodge &amp; Parry</h4>
+        <p>1 Expertise removes <strong>0.25% dodge and 0.25% parry</strong> from your target. A level-73 boss dodges 6.5% of your melee by default (26 Expertise = soft cap that eliminates it).</p>
+        <div class="formula">
+            5/5 CE (+5 Exp): boss dodge = 6.5% &minus; 1.25% = <strong>5.25%</strong><br>
+            3/5 CE (+3 Exp): boss dodge = 6.5% &minus; 0.75% = <strong>5.75%</strong><br>
+            <span style="color:#f0c000;">Net change from dropping 2 ranks: +0.5% boss dodge AND +0.5% boss parry</span>
+        </div>
+
+        <h3>Net Effect in a Raid</h3>
+
+        <h4>What You Lose</h4>
+        <table class="combat-table">
+            <tr><th>Cost</th><th>Magnitude</th><th>How much it matters</th></tr>
+            <tr>
+                <td><strong>&minus;2 Expertise</strong><br>(+0.5% boss dodge)</td>
+                <td>~1 in 200 of your white swings now dodged</td>
+                <td><strong>Trivial threat loss.</strong> Over a 5-minute fight (~150 swings) that is well under one extra dodge &mdash; only the lost Seal proc on that single swing. A small fraction of a percent of total threat.</td>
+            </tr>
+            <tr>
+                <td><strong>+0.5% boss parry</strong></td>
+                <td>Marginally more parry-haste events</td>
+                <td><strong>Minor survivability nit.</strong> A parried swing speeds up the boss's next melee. 0.5% more is barely noticeable.</td>
+            </tr>
+            <tr>
+                <td><strong>&minus;4% Stamina</strong><br>(+10% &rarr; +6%)</td>
+                <td>~3&ndash;4% of your health pool</td>
+                <td><strong>The only cost you actually feel.</strong> Roughly <span class="highlight">350&ndash;500 HP</span> at T4/T5 raid-buffed health (~12&ndash;14k). Matters on a brutal progression hit; negligible on farm.</td>
+            </tr>
+        </table>
+
+        <h4>What You Gain</h4>
+        <table class="combat-table">
+            <tr><th>Benefit</th><th>Magnitude</th><th>How much it matters</th></tr>
+            <tr>
+                <td><strong>+2% all damage to your party</strong></td>
+                <td>Up to 4 partymates' entire output</td>
+                <td><strong>The whole point.</strong> Real, measurable raid DPS &mdash; and it scales with how good your party's DPS is.</td>
+            </tr>
+            <tr>
+                <td><strong>+2% to your own threat</strong></td>
+                <td>All of your damage (Consec, Holy Shield, Judgement, seals, white hits)</td>
+                <td><strong>Outweighs the dodge loss.</strong> The aura buffs you too, so your own threat actually goes <em>up</em> slightly despite the extra dodges.</td>
+            </tr>
+        </table>
+
+        <h4>Worked example &mdash; a party of tank + 4 DPS</h4>
+        <div class="formula">
+            Assume 4 partymates average ~900 DPS each (conservative early-raid).<br><br>
+            Base Sanctity (+10% <em>Holy</em>): physical/caster DPS gain &asymp; <strong>0</strong> (they deal no Holy).<br>
+            Improved Sanctity (+2% <em>all</em>): 0.02 &times; 900 &times; 4 = <span class="highlight">+72 party DPS</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;...plus +2% to your own threat output.<br><br>
+            Over a 6-minute fight that is roughly <strong>+26,000 raid damage</strong>, scaling up with better gear.
+        </div>
+
+        <h4>Side-by-Side</h4>
+        <div class="race-chart">
+            <div class="chart-row">
+                <div class="chart-label" style="width:180px;">Your own threat</div>
+                <div class="chart-bar-container"><div class="chart-bar threat" style="width:62%;">slightly better (B)</div></div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-label" style="width:180px;">Party / raid DPS</div>
+                <div class="chart-bar-container"><div class="chart-bar utility" style="width:90%;">clearly better (B)</div></div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-label" style="width:180px;">Survivability (HP)</div>
+                <div class="chart-bar-container"><div class="chart-bar survival" style="width:38%;">slightly better (A)</div></div>
+            </div>
+        </div>
+
+        <h3>Verdict</h3>
+
+        <div class="tip">
+            <strong>For raid throughput, Option B (3/5 CE + 2/2 Improved Sanctity Aura) wins &mdash; and it isn't close.</strong>
+            <ul style="margin-bottom:0;">
+                <li><strong>Your own threat:</strong> slightly better (the +2% self all-damage beats the trivial dodge loss).</li>
+                <li><strong>Party DPS:</strong> clearly better (+2% to up to 4 players' entire output).</li>
+                <li><strong>Survivability:</strong> slightly worse (~4% Stamina / a few hundred HP, plus a hair more parry-haste).</li>
+            </ul>
+        </div>
+
+        <p>The entire reason to run the Sanctity build is to buff your party, and Improved Sanctity Aura is what makes that buff apply to <em>everyone</em> instead of just Holy damage. If you're already specced Sanctity and stacked in a party with real DPS, dropping 2 points of Combat Expertise for it is the higher-value play on any <strong>threat-comfortable / farm</strong> content.</p>
+
+        <div class="warning">
+            <strong>Keep 5/5 Combat Expertise only when:</strong> you're on a punishing <strong>progression</strong> hit where ~400 HP could decide a death, <em>or</em> your party has nobody to benefit from the +2% &mdash; in which case you shouldn't be running the Sanctity build at all (use the <a href="#avengers-build">Avenger's Shield / Kings build</a> instead).
+        </div>
+
+        <p style="font-size:0.9em; color:#8b949e;">
+            <strong>Sources:</strong>
+            <a href="https://www.wowhead.com/tbc/spell=31862/combat-expertise" target="_blank">Combat Expertise (WoWHead TBC)</a> &bull;
+            <a href="https://www.wowhead.com/tbc/spell=20218/sanctity-aura" target="_blank">Sanctity Aura</a> &bull;
+            <a href="https://www.wowhead.com/tbc/spell=31870/improved-sanctity-aura" target="_blank">Improved Sanctity Aura</a> &bull;
+            <a href="https://www.warcrafttavern.com/tbc/guides/paladin-auras/" target="_blank">Paladin Auras Guide (Warcraft Tavern)</a>
+        </p>
 
         <!-- ============================================================ -->
         <!-- CONSUMABLES -->
@@ -2723,8 +3164,8 @@
                 <td>35% weapon damage as Holy, 10% self-damage</td>
             </tr>
             <tr>
-                <td><a href="https://www.wowhead.com/tbc/spell=31898/judgement-of-blood">WoWHead TBC &mdash; Judgement of Blood</a></td>
-                <td>Base damage 295&ndash;325, 33% self-damage, SP coefficient 0.429</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=31893/judgement-of-blood">WoWHead TBC &mdash; Judgement of Blood</a></td>
+                <td>Base damage, 33% self-damage, SP coefficient (0.43)</td>
             </tr>
             <tr>
                 <td><a href="https://www.wowhead.com/tbc/spell=28730/arcane-torrent">WoWHead TBC &mdash; Arcane Torrent (Paladin)</a></td>
@@ -2740,7 +3181,7 @@
             </tr>
             <tr>
                 <td><a href="https://www.wowhead.com/tbc/spell=27155/seal-of-righteousness">WoWHead TBC &mdash; Seal of Righteousness (Rank 9)</a></td>
-                <td>Flat Holy per swing, weapon-speed scaled (0.092 &times; speed for 1H, 0.108 &times; speed for 2H)</td>
+                <td>Flat Holy per swing, 0.2 SP coefficient, scales with weapon speed</td>
             </tr>
             <tr>
                 <td><a href="https://www.wowhead.com/tbc/spell=27166/seal-of-wisdom">WoWHead TBC &mdash; Seal of Wisdom (Rank 4)</a></td>
@@ -2808,7 +3249,7 @@
             <tr>
                 <td><strong>Consecration (R6)</strong></td>
                 <td>0.125 per tick / 1.000 total</td>
-                <td><a href="https://www.wowhead.com/tbc/spell=27173/consecration">Wowhead TBC &mdash; Consecration Rank 6</a> (DB lists 0.119/tick / 0.952 total); empirically verified at 0.125/tick via combat log (129/tick at 516 SP, no AW/Sanctity/JotC). Matches post-patch-2.3 value documented on <a href="https://github.com/Atlantiss/NetherwingBugtracker">Atlantiss bugtracker</a>. Vanilla/early-TBC was 0.336.</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27173/consecration">Wowhead TBC &mdash; Consecration Rank 6</a>; empirically verified at 0.125/tick via combat log (129/tick at 516 SP with no amplifiers). Matches the post-patch-2.3 value documented on <a href="https://github.com/Atlantiss/NetherwingBugtracker">Atlantiss bugtracker</a>. Vanilla/early-TBC was 0.336.</td>
             </tr>
             <tr>
                 <td><strong>Holy Shield (R4)</strong></td>
@@ -2823,7 +3264,7 @@
             <tr>
                 <td><strong>Judgement of Blood</strong></td>
                 <td>0.429</td>
-                <td><a href="https://www.wowhead.com/tbc/spell=31898/judgement-of-blood">Wowhead TBC &mdash; Judgement of Blood</a> ("Value: 295 (SP mod: 0.429)"). Uses melee crit; can crit at 2&times;.</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=31898/judgement-of-blood">Wowhead TBC &mdash; Judgement of Blood</a> ("Value: 295 (SP mod: 0.429)"). Crits at 2&times; (melee crit).</td>
             </tr>
             <tr>
                 <td><strong>Seal of Blood (active proc)</strong></td>
@@ -2833,22 +3274,22 @@
             <tr>
                 <td><strong>Seal of Righteousness (per swing)</strong></td>
                 <td>0.092 &times; weapon speed (1H); 0.108 &times; weapon speed (2H)</td>
-                <td><a href="https://worldofwarcraft.livejournal.com/4381573.html">TBC Paladin Spell Coefficients (LiveJournal empirical testing)</a>: "9.2% per 1.0 Speed 1H; 10.8% per 1.0 Speed 2H". Cross-verified at <a href="https://www.wowhead.com/tbc/spell=27155/seal-of-righteousness">Wowhead TBC &mdash; SoR Rank 9</a> (SP mod 0.1 per 1.0s displayed). For a 1.8s 1H weapon: effective per-swing coeff &asymp; 0.166.</td>
+                <td><a href="https://worldofwarcraft.livejournal.com/4381573.html">TBC Paladin Spell Coefficients (LiveJournal empirical testing)</a>: "9.2% per 1.0 Speed 1H; 10.8% per 1.0 Speed 2H". Cross-verified at <a href="https://www.wowhead.com/tbc/spell=27155/seal-of-righteousness">Wowhead TBC &mdash; SoR Rank 9</a>. For a 1.8s 1H weapon: effective per-swing coeff &asymp; 0.166.</td>
             </tr>
             <tr>
                 <td><strong>Judgement of Righteousness (R9)</strong></td>
                 <td>0.728</td>
-                <td><a href="https://www.wowhead.com/tbc/spell=27157/judgement-of-righteousness">Wowhead TBC &mdash; JoR Rank 9</a> ("Value: 208 (SP mod: 0.728)"). Uses spell crit; crits at 1.5&times;.</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27157/judgement-of-righteousness">Wowhead TBC &mdash; JoR Rank 9</a> ("Value: 208 (SP mod: 0.728)"). Crits at 1.5&times; (spell crit).</td>
             </tr>
             <tr>
                 <td><strong>Seal of Vengeance / Corruption (DoT)</strong></td>
                 <td>0.034 per tick per stack</td>
-                <td><a href="https://warcraft.wiki.gg/wiki/Talk:Spell_power_coefficient">Warcraft Wiki Talk:Spell_power_coefficient</a> (empirical testing: 0.0341&ndash;0.0345 per tick per stack). Base 10 damage per tick per stack. DoT cannot crit.</td>
+                <td><a href="https://warcraft.wiki.gg/wiki/Talk:Spell_power_coefficient">Warcraft Wiki Talk:Spell_power_coefficient</a> &mdash; empirical testing (0.0341&ndash;0.0345 per tick per stack). Base 10 damage per tick per stack. DoT cannot crit.</td>
             </tr>
             <tr>
                 <td><strong>Judgement of Vengeance / Corruption</strong></td>
-                <td>0.429 base + ~0.022 per stack (refresh bonus)</td>
-                <td><a href="https://warcraft.wiki.gg/wiki/Talk:Spell_power_coefficient">Warcraft Wiki empirical testing</a> (0.4279&ndash;0.4292 direct; 0.0216&ndash;0.0228 per stack for refresh bonus). Base 121 per stack of Holy Vengeance. <a href="https://www.wowhead.com/tbc/spell=31804/judgement-of-vengeance">Wowhead TBC &mdash; JoV</a> confirms base 120 and SP mod 0.429.</td>
+                <td>0.429 + ~0.022 per stack</td>
+                <td><a href="https://warcraft.wiki.gg/wiki/Talk:Spell_power_coefficient">Warcraft Wiki empirical testing</a> (0.4279&ndash;0.4292 direct; 0.0216&ndash;0.0228 per stack for refresh bonus). Base 121 per stack of Holy Vengeance confirmed at <a href="https://www.wowhead.com/tbc/spell=31804/judgement-of-vengeance">Wowhead TBC &mdash; JoV</a>.</td>
             </tr>
             <tr>
                 <td><strong>Exorcism (R7)</strong></td>
@@ -2858,12 +3299,12 @@
             <tr>
                 <td><strong>Holy Wrath (R3)</strong></td>
                 <td>0.286</td>
-                <td><a href="https://www.wowhead.com/tbc/spell=27139/holy-wrath">Wowhead TBC &mdash; Holy Wrath Rank 3</a> ("Value: 635 (SP mod: 0.286)"). Older community formula (2/3.5/3 = 0.19) predates TBC implementation; Blizzard's TBC Classic DB uses 0.286 (2/3.5/2, the standard no-cap AoE penalty).</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27139/holy-wrath">Wowhead TBC &mdash; Holy Wrath Rank 3</a> ("Value: 635 (SP mod: 0.286)"). Older community references cite 0.19 (2/3.5/3); Blizzard's TBC Classic DB uses 0.286 (standard no-cap AoE penalty 2/3.5/2).</td>
             </tr>
             <tr>
                 <td><strong>Judgement of the Crusader</strong></td>
                 <td>+219 Holy dmg taken (flat, no SP scaling)</td>
-                <td><a href="https://www.wowhead.com/tbc/spell=27159/judgement-of-the-crusader">Wowhead TBC &mdash; JotC Rank 7</a>: 20s duration, no direct damage. Applies the Holy damage taken debuff from Seal of the Crusader (R7 = +219). <a href="https://worldofwarcraft.livejournal.com/4381573.html">LiveJournal source</a> confirms JotC is static (no SP scaling).</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27159/judgement-of-the-crusader">Wowhead TBC &mdash; JotC</a>: 20s duration, applies +219 Holy damage taken debuff from Seal of the Crusader R7. <a href="https://worldofwarcraft.livejournal.com/4381573.html">LiveJournal</a> confirms JotC is static (no SP scaling).</td>
             </tr>
             <tr>
                 <td><strong>Judgement of Command (R4)</strong></td>
@@ -2883,19 +3324,19 @@
             <tr>
                 <td><strong>Blessing of Sanctuary (R5)</strong></td>
                 <td>Flat 46 per block (no SP scaling)</td>
-                <td><a href="https://www.wowhead.com/tbc/spell=27168/blessing-of-sanctuary">Wowhead TBC &mdash; Blessing of Sanctuary R5</a>: 46 Holy on block, flat damage reduction on incoming hits. Pre-WotLK no scaling.</td>
+                <td>Pre-WotLK: no SP scaling. 46 Holy on block + flat damage reduction on incoming hits.</td>
             </tr>
         </table>
 
         <h3>Coefficient Verification Notes</h3>
         <div class="tip">
-            <strong>Post-patch-2.3 Consecration fix:</strong> The original vanilla coefficient (0.336 total) was inflated to 1.000 total in TBC patch 2.3 as part of the Consecration mana-cost-and-power rebalance. Verified empirically: a 516-SP Protection Paladin with no AW / no JotC / no Sanctity / no SP trinket proc / no Shadow Priest averaged 129 damage per Consecration tick. Math: (129 &minus; 64 base) / 516 = 0.126/tick &asymp; 0.125/tick &rarr; 1.000 total over 8 ticks.
+            <strong>Consecration (post-patch-2.3 value):</strong> Coefficient was inflated from 0.336 to 1.000 total in TBC patch 2.3. Verified empirically: a 516-SP Protection Paladin with no AW / no JotC / no Sanctity / no SP trinket / no Shadow Priest averaged 129 damage per Consecration tick. Math: (129 &minus; 64) / 516 &asymp; 0.125/tick &rarr; 1.000 total.
         </div>
         <div class="tip">
-            <strong>SoR weapon-speed scaling:</strong> Seal of Righteousness is the only paladin ability whose SP coefficient scales with weapon speed. Wowhead's raw DB value (0.1) represents the per-1.0s-speed figure; the LiveJournal empirical value of 9.2%/1.0s for 1H is slightly lower and is the value most commonly used in theorycrafting. At 1.8s (T4/T5 tank-threat weapons like Continuum Blade): 0.092 &times; 1.8 &asymp; 0.166 per swing. At 2.6s 2H: 0.108 &times; 2.6 &asymp; 0.281 per swing.
+            <strong>SoR weapon-speed scaling:</strong> Seal of Righteousness is the only paladin ability whose SP coefficient scales with weapon speed. At 1.8s 1H (Continuum Blade and similar T4/T5 tank-threat weapons): 0.092 &times; 1.8 &asymp; 0.166 per swing. At 2.6s 2H: 0.108 &times; 2.6 &asymp; 0.281 per swing. The previously-quoted flat 0.2 was an approximation that over-estimates SoR threat for a 1.8s weapon by &asymp;20%.
         </div>
         <div class="tip">
-            <strong>Holy Wrath 0.19 vs 0.286 discrepancy:</strong> Older community references (vanilla WoWWiki) show Holy Wrath at 2/3.5/3 = 0.19, using a /3 AoE penalty. Wowhead's TBC DB (post-2.3) lists 0.286 (2/3.5/2, the standard no-cap AoE penalty of &frac12;). The 0.286 value is what's actually applied in TBC Classic. For a Prot Paladin this is a ~50% threat increase on HoW casts vs the old estimate, though HoW is still only used on Undead/Demon fights with a 1-min CD.
+            <strong>Holy Wrath 0.19 vs 0.286:</strong> Older community references (vanilla WoWWiki, early theorycrafting posts) show Holy Wrath at 2/3.5/3 = 0.19 with a /3 AoE penalty. Wowhead's TBC DB lists 0.286 (2/3.5/2 &mdash; the standard no-cap AoE penalty of &frac12;). The 0.286 value matches Blizzard's TBC Classic implementation. For a Prot Paladin on a demon/undead fight this is a &asymp;50% threat increase on HoW casts vs the old estimate, though HoW is still only used with a 1-min CD.
         </div>
 
         <h3>Seal Twisting &amp; Seal Mechanics Sources</h3>
@@ -2961,15 +3402,18 @@
         <!-- ============================================================ -->
         <h2 id="changelog"><a href="#toc">Changelog</a></h2>
         <div class="toc">
-            <h3>2026-04-23 (v1.4) &mdash; Spell Power Coefficient Accuracy Pass (TBC Classic Anniversary)</h3>
+            <h3>2026-05-29 (v1.5) &mdash; Sanctity Build: Improved Seal of the Crusader over Improved Judgement</h3>
             <ul>
-                <li><strong>Avenger's Shield:</strong> Corrected SP coefficient 0.091 &rarr; <strong>0.193</strong>. Verified against <a href="https://www.wowhead.com/tbc/spell=32700/avengers-shield">Wowhead TBC spell 32700</a> ("Value: 494 (SP mod: 0.193)") and Rank 1 (<a href="https://www.wowhead.com/tbc/spell=31935/avengers-shield">31935</a>). All downstream per-target threat calculations updated.</li>
-                <li><strong>Holy Wrath (R3):</strong> Corrected SP coefficient 0.19 &rarr; <strong>0.286</strong>. Verified against <a href="https://www.wowhead.com/tbc/spell=27139/holy-wrath">Wowhead TBC spell 27139</a> ("Value: 635 (SP mod: 0.286)"). The 0.19 figure came from older vanilla references (2/3.5/3); Blizzard's TBC DB uses the standard no-cap AoE penalty (2/3.5/2 = 0.286). Base damage range corrected to 567&ndash;701 (635 avg).</li>
-                <li><strong>Seal of Righteousness:</strong> Replaced flat "0.2 per swing" with the correct weapon-speed-scaled formula: <strong>0.092 &times; weapon speed for 1H, 0.108 &times; weapon speed for 2H</strong> (LiveJournal empirical testing, cross-verified with Wowhead DB value 0.1/1.0s). For the T4/T5 1.8s 1H threat weapon this is 0.166 effective per swing, not 0.2.</li>
-                <li><strong>Consecration breakpoints table:</strong> Updated per-target-threat breakpoints from old 0.336-coefficient values to the verified 1.000-coefficient values (200 SP: 1,101 &rarr; 1,353; 500 SP: 1,292 &rarr; 1,923; etc.). The 5-target trash-pull example updated: 6,460 &rarr; <strong>9,615 threat</strong>.</li>
-                <li><strong>New section:</strong> Full per-ability Spell Power Coefficient Sources table with one citation per coefficient (Wowhead TBC DB spell IDs for each ability, LiveJournal empirical data for SoR and SoV, Warcraft Wiki empirical testing for SoV/JoV DoT). Expanded beyond the original 6-ability summary to cover SoV/SoC DoT, JoV, JoR, JoC, HoW, JotC, Retribution Aura, and Blessing of Sanctuary.</li>
-                <li><strong>Verification notes added:</strong> Plain-language explanations of the Consecration post-2.3 fix, SoR weapon-speed scaling, and the Holy Wrath 0.19-vs-0.286 discrepancy between older community references and the TBC Classic DB.</li>
-                <li><strong>Verified unchanged:</strong> Consecration 1.0 total (post-2.3, already verified in v1.3 work), Holy Shield 0.05/block, Judgement of Blood 0.429, Exorcism 0.429, SoV/SoC DoT 0.034/tick/stack, JoV 0.429, Seal of Blood 35% weapon damage, Judgement of Command 0.429, Hammer of Wrath 0.429.</li>
+                <li><strong>Build Change:</strong> Sanctity build (still <strong>0/38/23</strong>) drops <strong>2/2 Improved Judgement</strong> for <strong>2/3 Improved Seal of the Crusader</strong>. Improved Judgement's 8s Judgement cooldown desyncs the steady-state 969 cadence; Improved Seal of the Crusader instead adds a raid-wide +2% crit debuff on the boss and a stronger Judgement of the Crusader Holy-damage debuff without touching the rotation</li>
+                <li><strong>Rename:</strong> "Sanctity Aura Build" &rarr; "Sanctity Build (Max Threat Raid without Ret Paladin in your party)"</li>
+                <li><strong>Updated:</strong> Ret talent table, build comparison table (Judgement CD now 10s for both builds; new Boss Crit Debuff row), build-choice tips, talent calculator link, and the boss-rotation Judgement cooldown note</li>
+            </ul>
+
+            <h3>2026-05-27 (v1.4) &mdash; Combat Expertise vs Improved Sanctity Aura</h3>
+            <ul>
+                <li><strong>New Section:</strong> "Combat Expertise vs Improved Sanctity Aura" &mdash; net-effect analysis of 5/5 Combat Expertise vs 3/5 CE + 2/2 Improved Sanctity Aura (party-wide +2% all damage vs ~4% Stamina and 2 expertise), with worked party-DPS example and verdict</li>
+                <li><strong>Build Change:</strong> Sanctity build updated from 0/40/21 to <strong>0/38/23</strong> &mdash; Combat Expertise 5/5 &rarr; 3/5 to fund 2/2 Improved Sanctity Aura. Verified against talent data that Improved Sanctity Aura is a tier-5 (20-point) talent on the same row as Sanctity Aura, so the reallocation is legal</li>
+                <li><strong>Correction:</strong> Combat Expertise "+10 expertise" fixed to <strong>"+5 expertise"</strong> (+1 per rank, not +2) in both build tables and the Mandatory Talents box; matches the guide's reference profile (Expertise = 5)</li>
             </ul>
 
             <h3>2026-02-24 (v1.3) &mdash; Resilience vs Defense &amp; Crit/Crush Calculator</h3>
@@ -3073,11 +3517,19 @@
                 <td>Could not verify exact talent tooltip on Wowhead (spell ID mismatch)</td>
                 <td>Most community sources agree on 8 charges at 2/2. Some sources say +2 per rank (= 8 total), others say the talent adds 4 total at rank 2. Functionally the same result. Verify in-game.</td>
             </tr>
+            <tr>
+                <td><strong>Exorcism Rank 7 &mdash; Base Damage</strong></td>
+                <td>573&ndash;655</td>
+                <td>Could not verify (Wowhead spell ID redirected to wrong spell)</td>
+                <td>Values taken from original guide research. Cross-check against Wowhead TBC spell database or in-game tooltip.</td>
+            </tr>
+            <tr>
+                <td><strong>Seal of Righteousness &mdash; SP Coefficient</strong></td>
+                <td>0.2 per swing</td>
+                <td>Could not independently verify</td>
+                <td>Sourced from Maintankadin/Elitist Jerks theorycrafting archives. The coefficient may vary slightly by weapon speed (SoR scales with weapon speed in TBC). Verify via combat log testing.</td>
+            </tr>
         </table>
-
-        <div class="tip">
-            <strong>Resolved in v1.4 (2026-04-23):</strong> Previously flagged items &mdash; Exorcism R7 base damage (resolved: <a href="https://www.wowhead.com/tbc/spell=27138/exorcism">Wowhead TBC spell 27138</a> "Value: 619 (SP mod: 0.429)"), Seal of Righteousness SP coefficient (resolved: weapon-speed-scaled 0.092 &times; speed for 1H / 0.108 &times; speed for 2H per <a href="https://worldofwarcraft.livejournal.com/4381573.html">LiveJournal empirical testing</a>), and Avenger's Shield / Holy Wrath SP coefficients (both corrected to verified Wowhead DB values). See v1.4 changelog entry for full details.
-        </div>
 
     </div>
 </body>
