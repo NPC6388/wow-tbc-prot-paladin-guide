@@ -147,7 +147,11 @@
 
     <div class="header-card">
         <strong>Question being answered</strong>
-        <p style="margin:8px 0 0;">If a shaman in your party can drop <em>one</em> Air totem (only one Air totem can be active at a time per shaman), and you can optionally weapon-coat with Superior Wizard Oil, which adds the most DPS and TPS to your rotation? <strong>Wrath of Air Totem (WoA) and Windfury Totem (WF) compete for the same Air slot.</strong> Wizard Oil is independent of either.</p>
+        <p style="margin:8px 0 0;">If a shaman in your party can drop <em>one</em> Air totem (only one Air totem can be active at a time per shaman), and you can optionally weapon-coat with Superior Wizard Oil, which <em>combination</em> adds the most DPS and TPS to your rotation? Two slot conflicts drive the answer: <strong>(1) Wrath of Air Totem (WoA) and Windfury Totem (WF) compete for the shaman's Air totem slot</strong>, and &mdash; the one people miss &mdash; <strong>(2) Windfury Totem and Superior Wizard Oil compete for <em>your weapon's</em> temporary-enhancement slot.</strong></p>
+    </div>
+
+    <div class="warning">
+        <strong>The mechanic that decides this (TBC 2.4.3):</strong> Windfury Totem does not give you a stat aura &mdash; it applies a <strong>temporary weapon enhancement</strong> to every party member (the &ldquo;Windfury&rdquo; weapon buff that drives the extra-attack procs). That enhancement lives in the <em>same single weapon-enchant slot</em> as Superior Wizard Oil, sharpening stones, weightstones and Mana Oil &mdash; so <strong>Windfury Totem and Wizard Oil cannot coexist on your weapon</strong> &mdash; applying Wizard Oil <strong>overwrites the Windfury buff</strong> (and the totem won&rsquo;t re-stamp over your oil), so you run one or the other. This is the Classic/Vanilla behavior, and it <em>persists through all of TBC</em> &mdash; Windfury Totem was only reworked into a pure stat aura in <em>Wrath of the Lich King</em>. By contrast, <strong>Wrath of Air Totem is a stat aura (+spell power), not a weapon enhancement, so it stacks freely with Wizard Oil.</strong> That single difference, more than any per-second number below, is what separates the two Air totems for you.
     </div>
 
     <!-- ============================================================ -->
@@ -189,7 +193,7 @@
         </tr>
         <tr>
             <td><span class="legend-pill pill-wf">WF</span><strong>Windfury Totem (Rank 5)</strong></td>
-            <td>20% chance on melee swing to trigger an <strong>extra attack with +445 bonus AP</strong></td>
+            <td>20% chance on melee swing to trigger an <strong>extra attack with +445 bonus AP</strong>. Delivered as a <strong>temporary weapon enhancement</strong> &mdash; occupies your weapon-imbue slot (see warning above).</td>
             <td>Physical white damage of the extra swing, <em>and</em> a free SoR/SoC proc on top of it</td>
             <td><strong>Improved Windfury Totem</strong> (Enhancement, 2 ranks, +30% bonus AP) &rarr; <strong>+578 AP</strong> on proc. Universal on PvE Enhancement shamans.</td>
         </tr>
@@ -197,7 +201,7 @@
             <td><span class="legend-pill pill-oil">Oil</span><strong>Superior Wizard Oil</strong></td>
             <td>+<strong>42 spell damage</strong> weapon coat, 1 hour</td>
             <td>Same Holy abilities as WoA, but smaller magnitude. Self-applied &mdash; no party requirement.</td>
-            <td>None. Mutually exclusive with <strong>Superior Mana Oil</strong> (+14 MP5 +25 healing).</td>
+            <td>None. Occupies the <strong>weapon-enhancement slot</strong> &mdash; mutually exclusive with <strong>Superior Mana Oil</strong> (+14 MP5 +25 healing), sharpening/weightstones, <em>and the Windfury Totem buff</em>.</td>
         </tr>
     </table>
 
@@ -407,7 +411,59 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
     </table>
 
     <div class="tip">
-        <strong>Wizard Oil Steady-State Contribution:</strong> ~21 TPS (SoR + JoR + Consec + HS). With SoC stacks, add ~5 TPS. Useless if you main-seal SoB (drops to ~11 TPS, swap to <strong>Superior Mana Oil</strong> instead).
+        <strong>Wizard Oil Steady-State Contribution:</strong> ~21 TPS (SoR + JoR + Consec + HS). With SoC stacks, add ~5 TPS. It&rsquo;s worth it regardless of seal &mdash; Consecration, Holy Shield, the Judgements and Avenger&rsquo;s Shield all scale with spell damage no matter which seal you&rsquo;re running, so <strong>Superior Wizard Oil always beats Superior Mana Oil for a threat tank.</strong>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- COMBINING BUFFS -->
+    <!-- ============================================================ -->
+    <h2>Combining Buffs: The Real Choice Is &ldquo;WoA + Oil&rdquo; vs &ldquo;Windfury Alone&rdquo;</h2>
+
+    <p>Because Windfury Totem and Wizard Oil fight over the same weapon slot, you can never actually run all three at once. Your realistic loadouts collapse to just two packages &mdash; and that is what you should actually be comparing:</p>
+
+    <table>
+        <tr>
+            <th>Package</th>
+            <th>What you get</th>
+            <th>Combined SP to Holy threat</th>
+            <th>Steady TPS from this category</th>
+        </tr>
+        <tr>
+            <td><span class="legend-pill pill-woa">WoA</span> + <span class="legend-pill pill-oil">Oil</span> <strong>(stacks)</strong></td>
+            <td>Imp WoA stat aura <em>and</em> Wizard Oil on your weapon &mdash; both apply at once</td>
+            <td><strong>121 + 42 = 163 SP</strong></td>
+            <td class="gain-good">~78 + ~21 = <strong>~99 TPS</strong></td>
+        </tr>
+        <tr>
+            <td><span class="legend-pill pill-woa">WoA</span> + <span class="legend-pill pill-oil">Oil</span> (base WoA)</td>
+            <td>Non-Imp WoA + Wizard Oil</td>
+            <td>101 + 42 = 143 SP</td>
+            <td class="gain-good">~65 + ~21 = <strong>~86 TPS</strong></td>
+        </tr>
+        <tr class="summary-row">
+            <td><span class="legend-pill pill-woa">WoA</span> + <span class="legend-pill pill-wf">WF</span> via <strong>totem twisting</strong> (no Oil)</td>
+            <td>A dedicated twisting shaman keeps both air-totem effects up at once &mdash; the WF weapon buff persists through the swap (TBC mechanic). Still no oil.</td>
+            <td>101 SP (base WoA) + WF procs</td>
+            <td class="gain-good"><strong>~122 TPS</strong> &mdash; best case (see Twisting)</td>
+        </tr>
+        <tr>
+            <td><span class="legend-pill pill-wf">WF</span> alone <strong>(no Oil)</strong></td>
+            <td>Imp Windfury Totem &mdash; to keep its weapon buff you must run <em>no</em> oil, since applying Wizard Oil would wipe it</td>
+            <td>0 SP (WF grants none)</td>
+            <td class="gain-mid"><strong>~65 TPS</strong></td>
+        </tr>
+        <tr>
+            <td><span class="legend-pill pill-wf">WF</span> + <span class="legend-pill pill-oil">Oil</span></td>
+            <td colspan="3" style="color:#f85149;"><strong>Not possible</strong> &mdash; the two share your weapon slot. Apply Wizard Oil and it wipes the Windfury buff; to keep Windfury you leave your weapon un-oiled. You get one or the other, never the sum.</td>
+        </tr>
+    </table>
+
+    <div class="verdict">
+        <strong>Net result:</strong> the honest comparison isn&rsquo;t &ldquo;WoA ~78 vs WF ~65.&rdquo; It&rsquo;s <span class="gain-good">WoA + Oil &asymp; ~99 TPS</span> vs <span class="gain-mid">WF &asymp; ~65 TPS</span>, because choosing Windfury <em>costs</em> you the ~21 TPS of Wizard Oil you&rsquo;d otherwise keep. That turns a slim totem-vs-totem edge into a <strong>~34 TPS advantage for the WoA package</strong> in the SoR rotation. WF only claws it back when its <em>melee</em> value to you plus its value to the rest of your melee party outweighs that gap &mdash; a party-DPS argument, not a personal-threat one. The <em>only</em> thing that beats WoA + Oil for you is <strong>totem twisting</strong> (~122 TPS), which stacks both air-totem effects &mdash; see the <a href="#twisting">Totem Twisting</a> section below.
+    </div>
+
+    <div class="warning">
+        <strong>Practical consequence for the tank:</strong> if your party&rsquo;s shaman runs <strong>Windfury Totem</strong>, don&rsquo;t coat with Wizard Oil at all &mdash; every coat just wipes the Windfury buff off your weapon. Oil up <em>only</em> when your Air totem is <strong>Wrath of Air</strong> (or when no shaman in your party is dropping Windfury). Choosing to keep your oil means giving up the Windfury buff entirely.
     </div>
 
     <!-- ============================================================ -->
@@ -415,7 +471,7 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
     <!-- ============================================================ -->
     <h2>Head-to-Head Summary</h2>
 
-    <p>Steady-state numbers for the same rotation (SoR main + JoR every 10s + Consec on 8s cycle + HS on 10s cycle), on a 5 minute boss fight, in the shaman's 5-man party:</p>
+    <p>Steady-state numbers for each buff <em>in isolation</em>, same rotation (SoR main + JoR every 10s + Consec on 8s cycle + HS on 10s cycle), on a 5 minute boss fight, in the shaman&rsquo;s 5-man party. (For the realistic combined picture, see the package table above &mdash; remember the WF and Oil rows can&rsquo;t both apply.)</p>
 
     <table>
         <tr>
@@ -432,7 +488,7 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
             <td class="gain-mid">~21 TPS</td>
             <td>~6,300</td>
             <td>All Holy abilities</td>
-            <td>Mana Oil</td>
+            <td>Mana Oil, stones, <strong>WF Totem buff</strong></td>
         </tr>
         <tr>
             <td><span class="legend-pill pill-woa">WoA</span><strong>Wrath of Air Totem</strong></td>
@@ -456,7 +512,7 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
             <td class="gain-good">~58 TPS</td>
             <td>~17,400</td>
             <td>Melee swing + 1 SoR proc per WF</td>
-            <td>WoA (Air totem slot)</td>
+            <td>WoA (Air slot) + your Wizard Oil (weapon slot)</td>
         </tr>
         <tr class="summary-row">
             <td><span class="legend-pill pill-wf">WF</span><strong>Imp Windfury Totem (2/2)</strong></td>
@@ -464,95 +520,96 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
             <td class="gain-good">~65 TPS</td>
             <td>~19,500</td>
             <td>Melee swing + 1 SoR proc per WF</td>
-            <td>WoA (Air totem slot)</td>
+            <td>WoA (Air slot) + your Wizard Oil (weapon slot)</td>
         </tr>
     </table>
 
     <!-- ============================================================ -->
     <!-- TOTEM TWISTING -->
     <!-- ============================================================ -->
-    <h2>Totem Twisting: What If The Shaman Cycles Both?</h2>
+    <h2 id="twisting">Totem Twisting: What If The Shaman Cycles Both?</h2>
 
-    <p>A shaman with one Air totem slot can <strong>twist</strong> &mdash; alternate dropping WF then WoA on a cycle &mdash; so the party gets partial uptime on each. The question: does twisting give the Prot Paladin more threat than just running one totem full-time?</p>
+    <p>A shaman with one Air totem slot can <strong>twist</strong> &mdash; keep WoA down as the resident totem, then briefly re-drop Windfury every few seconds to refresh its weapon buff before it expires, then swap straight back to WoA. The question: does twisting give the Prot Paladin more threat than just running one totem full-time? In TBC, the answer is <strong>yes &mdash; a lot more.</strong></p>
 
     <div class="warning">
-        <strong>Critical TBC mechanic:</strong> in TBC 2.4.3, <strong>Windfury Totem is a continuous aura</strong>, not a pulse-and-persist buff like vanilla. When you replace WF with WoA, the WF proc effect ends <em>immediately</em> &mdash; there is no carry-over window where both are active. Twisting gives <strong>strict alternating uptime</strong>, not overlap. (This is the opposite of WotLK, where WF Totem's buff lasted ~10s after dropping &mdash; that's where the famous twisting strats come from.)
+        <strong>Critical TBC mechanic:</strong> in TBC, <strong>Windfury Totem applies a temporary weapon buff that persists for several seconds after the totem itself is replaced</strong> &mdash; the same pulse-and-persist behavior as vanilla. That carry-over window is exactly what makes twisting work: drop WF, swap the Air slot back to WoA, and for the lingering window the party benefits from <em>both</em> the persisting WF weapon buff <em>and</em> the live WoA aura at once. Done well, you approach <strong>full uptime on both totems' effects simultaneously.</strong> (This only changed in <strong>WotLK patch 3.0</strong>, when WF Totem became a continuous aura that ends the instant it's replaced &mdash; which is what killed twisting. It was alive and well all through TBC.)
     </div>
 
-    <h3>Modeling the Twist (10s / 10s cycle)</h3>
+    <h3>Modeling the Twist</h3>
 
-    <p>Realistic twist: drop WF, leave it up for ~10 seconds, swap to WoA for ~10 seconds, repeat. Faster (5s) twisting captures more WF procs but burns extra shaman mana on totem casts and GCDs. The 10s cycle gives <strong>50% uptime each</strong>.</p>
+    <p>Because the WF weapon buff carries over, WoA stays the &ldquo;resident&rdquo; totem and is only interrupted for the brief GCD it takes to re-stamp Windfury. So WoA runs at <strong>~88% uptime</strong> while the WF buff stays refreshed at <strong>~100%</strong>. The two stack on you.</p>
 
-    <div class="formula"><strong>Expected gains per 60s twisted cycle (Imp WF + base WoA from Enhancement shaman):</strong>
-WoA uptime: 30s &times; 65 TPS (base WoA on holy abilities)    = 1,950 threat
-WF  uptime: 30s &times; 0.111 procs/s &times; 582 threat/proc   = 1,940 threat
-Total twisted (60s)                                           = ~3,890 threat
+    <div class="formula"><strong>Expected gains per 60s twist (Enhancement shaman: Imp WF + base WoA):</strong>
+  WF weapon buff   ~100% &times; 65 TPS (Imp WF procs + their SoR procs)  = ~65 TPS
+  WoA aura          ~88% &times; 65 TPS (base WoA &mdash; Enh has no Imp WoA)  = ~57 TPS
+  Wizard Oil        0 (run un-oiled; a coat would wipe the WF buff)     =   0 TPS
+  Combined twist                                                        = ~122 TPS   (~7,300 / 60s)
 
-For comparison (same 60s window):
-  Imp WoA full uptime    78 &times; 60                           = 4,680 threat
-  Imp WF  full uptime    6.67 procs &times; 582                  = 3,880 threat
-  Base WoA full uptime   65 &times; 60                           = 3,900 threat
-  Base WF  full uptime   6.67 procs &times; ~520                 = 3,470 threat</div>
+For comparison (same 60s window, best realistic non-twist packages):
+  Imp WoA + Wizard Oil   99 &times; 60   = 5,940   (Ele/Resto shaman + your oil, they stack)
+  Base WoA + Wizard Oil  86 &times; 60   = 5,160
+  Imp WF alone (no oil)  65 &times; 60   = 3,900   (run un-oiled; oil wipes WF)
+  Imp WoA alone (no oil) 78 &times; 60   = 4,680</div>
 
-    <h3>The Surprising Result</h3>
+    <h3>The Result</h3>
 
     <table>
         <tr>
             <th>Strategy</th>
+            <th>Steady TPS</th>
             <th>60s threat</th>
-            <th>vs Imp WoA alone</th>
-            <th>vs Imp WF alone</th>
+            <th>Notes</th>
+        </tr>
+        <tr class="summary-row">
+            <td><strong>Twisting: WF + WoA</strong> (dedicated shaman, no oil)</td>
+            <td class="gain-good">~122</td>
+            <td class="gain-good">~7,300</td>
+            <td>Best case &mdash; persisting WF buff overlaps the live WoA aura</td>
         </tr>
         <tr>
-            <td><strong>Imp WoA full uptime</strong> (Resto/Ele shaman)</td>
-            <td class="gain-good">4,680</td>
-            <td>&mdash;</td>
-            <td>+800 (+21%)</td>
+            <td><strong>Imp WoA + Wizard Oil</strong> (Ele/Resto shaman)</td>
+            <td class="gain-good">~99</td>
+            <td class="gain-good">~5,940</td>
+            <td>Best you can do without a twisting shaman &mdash; the two stack</td>
         </tr>
         <tr>
-            <td><strong>Base WoA + Imp WF twisting</strong> (Enh shaman)</td>
-            <td class="gain-mid">~3,890</td>
-            <td>&minus;790 (&minus;17%)</td>
-            <td>+10 (basically equal)</td>
+            <td><strong>Base WoA + Wizard Oil</strong></td>
+            <td class="gain-mid">~86</td>
+            <td class="gain-mid">~5,160</td>
+            <td>No Imp WoA talent on the shaman</td>
         </tr>
         <tr>
-            <td><strong>Imp WF full uptime</strong> (Enh shaman)</td>
-            <td class="gain-mid">~3,880</td>
-            <td>&minus;800 (&minus;17%)</td>
-            <td>&mdash;</td>
+            <td><strong>Imp WoA alone</strong> (no oil)</td>
+            <td class="gain-mid">~78</td>
+            <td class="gain-mid">~4,680</td>
+            <td>If you skip oil for some reason</td>
         </tr>
         <tr>
-            <td><strong>Imp WoA + base WF twisting</strong> (Resto shaman)</td>
-            <td class="gain-good">~4,070</td>
-            <td>&minus;610 (&minus;13%)</td>
-            <td>+190 (+5%)</td>
-        </tr>
-        <tr>
-            <td><strong>Base WoA full uptime</strong> (Resto/Ele shaman)</td>
+            <td><strong>Imp WF alone</strong> (Enh shaman, no oil)</td>
+            <td class="gain-mid">~65</td>
             <td class="gain-mid">~3,900</td>
-            <td>&minus;780 (&minus;17%)</td>
-            <td>+20</td>
+            <td>Single totem &mdash; run no oil (a coat wipes the WF buff)</td>
         </tr>
     </table>
 
     <div class="verdict">
-        <strong>For the Prot Paladin's threat specifically, twisting is a wash or a slight loss.</strong> The Imp version of either totem at 100% uptime beats any twisting combo, because losing half the uptime of an Imp buff costs more than gaining half the uptime of the un-Imp'd one. <br><br>
-        <strong>So why do shamans twist at all?</strong> Because the totem affects the <em>whole party</em>:
+        <strong>For the Prot Paladin&rsquo;s threat, a real twist is the best case &mdash; if you can get it.</strong> Because the Windfury weapon buff persists through the totem swap, a dedicated twisting shaman gives you WoA <em>and</em> WF at the same time (~122 TPS), clearly ahead of any single-totem package. The catch is cost &mdash; twisting is essentially <strong>all the shaman does</strong>:
         <ul>
-            <li>During WF time: melee DPS in the party get extra attacks too &mdash; their gain is much bigger than yours.</li>
-            <li>During WoA time: any caster in the party (healing paladin, mage, ele shaman, lock) gets +101 SP &mdash; raid-DPS gain on top of your threat.</li>
-            <li>Net party output goes up; your individual TPS stays flat or drops slightly.</li>
+            <li>It eats ~190 mana per drop and near-constant GCDs &mdash; a Resto shaman who&rsquo;s also healing can&rsquo;t sustain it. Realistically only an Enhancement shaman (already meleeing in your group) twists.</li>
+            <li>An Enhancement twister has Imp WF but <em>not</em> Imp WoA, so your WoA portion is the base 101 SP value, not 121.</li>
+            <li>You forfeit Wizard Oil regardless &mdash; any coat you apply would wipe the WF buff, so you run un-oiled all fight.</li>
         </ul>
-        <strong>Bottom line for you, the tank:</strong> you have no reason to <em>ask</em> a shaman to twist. If they do it for the party's sake, expect your threat-add to land around <span class="gain-mid">~65 TPS</span> &mdash; basically identical to keeping one totem up the whole time.
+        <strong>Bottom line for you, the tank:</strong> if a shaman is already twisting WF/WoA for the melee group, you&rsquo;re the incidental big winner (~122 TPS). Don&rsquo;t <em>demand</em> a twist purely for your own threat &mdash; it&rsquo;s a heavy ask. Without one, <strong>WoA + Wizard Oil (~99 TPS)</strong> is your reliable best.
     </div>
 
     <div class="warning">
         <strong>Caveats on the twist model:</strong>
         <ul>
-            <li>Shaman pays <strong>~190 mana per totem drop</strong> + 1.0s GCD. At a 10s cycle = 12 drops/min = 2,280 mana/min, more than most Resto shamans can sustain alongside healing.</li>
-            <li>Each totem drop creates a small dead-zone window (one GCD) where neither buff is up. The 50/50 model above ignores this; in practice uptime drops to ~45/45 with a 10s cycle.</li>
-            <li>WF procs are random. The "0.111 procs/s" rate is expected value &mdash; in any single 30s window you might get 2 or 5 procs. WoA's scaling is deterministic.</li>
-            <li>If your shaman is in a different 5-man party (e.g. healer group), you get <strong>neither</strong> totem. The values above all assume the shaman is in your party.</li>
+            <li>The ~122 TPS figure is an idealized, well-executed twist. A sloppy or part-time twist lands somewhere between this and single-totem values.</li>
+            <li>Twisting relies on the WF weapon buff&rsquo;s carry-over lasting long enough to cover each WoA window. If the shaman lets it lapse, WF uptime drops and the procs go with it.</li>
+            <li>WF procs are random &mdash; the 0.111 procs/s rate is an expected value; any given 10s window might land 0 or 2.</li>
+            <li>Twisting forfeits your Wizard Oil entirely &mdash; you must run un-oiled so the WF buff stays up (a coat would wipe it). That cost is already baked into the ~122 TPS above.</li>
+            <li>If your shaman is in a different 5-man party (e.g. healer group), you get <strong>neither</strong> totem. Everything here assumes the shaman is in your party.</li>
         </ul>
     </div>
 
@@ -561,7 +618,7 @@ For comparison (same 60s window):
     <!-- ============================================================ -->
     <h2>Visual: Cumulative Threat Over 60 Seconds</h2>
 
-    <p>Each curve = added threat <em>on top of your baseline rotation</em>. WoA and Wizard Oil are smooth (every Holy hit scales). Windfury is bursty &mdash; flat between procs, then a big lump. <strong>Twist line</strong> alternates: WoA slope for 10s, then flat-with-WF-spike for 10s.</p>
+    <p>Each curve = added threat <em>on top of your baseline rotation</em>. WoA and Wizard Oil are smooth (every Holy hit scales). Windfury is bursty &mdash; flat between procs, then a big lump. The <strong>Imp WoA + Wizard Oil</strong> line is the realistic best-case package (the two stack); the <strong>Imp Windfury</strong> line already assumes <em>no</em> oil (a coat would wipe the totem buff, so you run un-oiled). The <strong>Twist line</strong> shows the WF buff persisting through the swap, so its procs ride on top of the steady WoA slope &mdash; both at once.</p>
 
     <div class="chart-container">
         <canvas id="chartThreat" width="900" height="450"></canvas>
@@ -574,25 +631,25 @@ For comparison (same 60s window):
     <h2>Verdict &amp; Practical Decision Tree</h2>
 
     <div class="verdict">
-        <strong>Wizard Oil: always yes.</strong> It's a self-applied weapon coat with no party-comp requirement. ~21 TPS for the cost of one consumable per hour. Only skip it if you're main-sealing Seal of Blood, in which case <strong>Superior Mana Oil</strong> (+14 MP5) is the better trade.
+        <strong>Wizard Oil: yes &mdash; unless your party runs Windfury Totem.</strong> It&rsquo;s a self-applied weapon coat worth ~21 TPS for one consumable per hour, and it <em>stacks on top of Wrath of Air</em>. But it shares your weapon slot with the Windfury Totem buff, so in a <em>Windfury</em> party it&rsquo;s oil <strong>or</strong> the totem, not both &mdash; and the totem (~65 TPS) wins, so you skip the oil there. (Don&rsquo;t reach for <strong>Superior Mana Oil</strong> instead &mdash; even when your <em>seal</em> doesn&rsquo;t scale with spell power, everything else in your kit does, so Wizard Oil is always the better weapon coat for a threat tank.)
     </div>
 
     <div class="verdict">
-        <strong>Air totem: it's close, but lean WoA in raids.</strong>
+        <strong>Air totem: lean WoA &mdash; and it&rsquo;s not as close as the raw totem numbers suggest.</strong>
         <ul>
-            <li><strong>Imp WF</strong> (~65 TPS) ties <strong>Imp WoA</strong> (~78 TPS at threat, but only ~32 DPS). For raw threat per second, <strong>Imp WoA edges out Imp WF</strong> in the SoR rotation.</li>
+            <li>Totem-vs-totem, <strong>Imp WoA (~78 TPS)</strong> already edges <strong>Imp WF (~65 TPS)</strong> in the SoR rotation. But the real gap is bigger: WoA <em>lets you keep your Wizard Oil</em> (+21 TPS), while a Windfury party means running un-oiled (a coat wipes the WF buff). So the package comparison is <strong>~99 TPS (WoA + Oil) vs ~65 TPS (WF, no oil)</strong> &mdash; about a ~34 TPS swing.</li>
             <li>WF is strictly party-local melee. WoA's value is shared by other casters in the party (healing paladin, ele shaman, mage in melee group, etc.), so it has higher <em>raid utility</em>.</li>
             <li>WF's threat is <em>bursty</em>. A 9s gap with no proc, then a 582-threat spike. Bad for taunt-races where TPS averages don't matter, only the floor.</li>
-            <li>If you swap to <strong>Seal of Blood</strong> (Horde, on physical bosses where SoB outdamages SoR), <strong>WF flips ahead</strong>: WoA loses scaling on the SoB proc itself (0 SP coef), while WF still gives the extra swing.</li>
+            <li><strong>Seal of Blood doesn&rsquo;t change this.</strong> SoB is only used to land a single big <em>Judgement of Blood</em> on the pull (the highest-threat opener) &mdash; you&rsquo;re back on Seal of Righteousness for the entire sustained fight. So the comparison always runs under SoR, where WoA + Oil leads. (Even the on-pull JoB carries a 0.43 spell-power coefficient, so WoA and Wizard Oil still feed it.)</li>
         </ul>
     </div>
 
     <div class="verdict">
         <strong>Default party setup for a Prot Paladin:</strong>
         <ol>
-            <li>1 Enhancement shaman in the melee party with <strong>Windfury Totem + Strength of Earth</strong> &mdash; Imp WF benefits the whole melee group, you piggyback for ~65 TPS.</li>
-            <li>If no Enhancement is available, request <strong>Wrath of Air Totem</strong> from any Elemental/Resto shaman &mdash; ~78 TPS with Imp WoA, only slightly behind Imp WF, and helps any caster in your party too.</li>
-            <li>Either way, <strong>always coat with Superior Wizard Oil</strong> for the +21 TPS on top of whichever totem you get.</li>
+            <li><strong>For your personal threat, Wrath of Air is the pick</strong> &mdash; ~78 TPS from Imp WoA <em>plus</em> the ~21 TPS from the Wizard Oil it lets you keep = <strong>~99 TPS</strong>. Request WoA from any Elemental/Resto shaman in your party and coat with Superior Wizard Oil.</li>
+            <li><strong>If a Windfury party is better for the raid</strong> (an Enhancement shaman dropping Imp WF for a stacked melee group), you piggyback for ~65 TPS &mdash; but go un-oiled, since any coat you apply just wipes the WF buff. Don&rsquo;t waste oil charges in a Windfury party.</li>
+            <li>Wrath of Air also helps every caster in your party (healing paladin, ele shaman, mage), so it usually wins on raid utility too &mdash; unless the melee stack makes Windfury the group&rsquo;s clear choice.</li>
         </ol>
     </div>
 
@@ -609,8 +666,8 @@ For comparison (same 60s window):
 
     <h2>One-Line Bottom Line</h2>
     <div class="tip" style="font-size:1.05em;">
-        <strong>Raid rotation with SoR:</strong> <span class="gain-good">Imp WoA &asymp; Imp WF &asymp; +65&ndash;78 TPS</span>, <span class="gain-good">Wizard Oil &asymp; +21 TPS</span>. <br>
-        <strong>Bring all you can.</strong> Wizard Oil + whichever Air totem your shaman drops &mdash; that's your full threat-amp from this category.
+        <strong>Raid rotation with SoR:</strong> <span class="gain-good">WoA + Wizard Oil &asymp; +99 TPS (they stack)</span> beats <span class="gain-mid">Windfury alone &asymp; +65 TPS (run un-oiled)</span>. <br>
+        <strong>You can&rsquo;t bring all three.</strong> Windfury Totem and Wizard Oil share your weapon slot &mdash; so it&rsquo;s <strong>Wrath of Air + Wizard Oil</strong> for max personal threat, or Windfury (no oil) if the raid needs it for the melee group. The one exception: a shaman <strong>twisting</strong> WF/WoA stacks both air effects on you for <span class="gain-good">~122 TPS</span> &mdash; the true ceiling, but a heavy ask.
     </div>
 
 </div>
@@ -631,27 +688,30 @@ For comparison (same 60s window):
     const WOA_TPS = 65;     // base Wrath of Air
     const IMPWOA_TPS = 78;  // 2/2 improved
     const OIL_TPS = 21;
+    const WOAOIL_TPS = 99;      // Imp WoA + Wizard Oil stacked (the realistic package)
+    const WOAOIL_BASE_TPS = 86; // base WoA + Wizard Oil stacked (no Imp WoA talent)
 
     // WF: 582 threat per proc, one proc every 9s (Imp WF)
     const WF_PROC = 582;
     const WF_INTERVAL = 9;
     const WF_PROC_TIMES = [9, 18, 27, 36, 45, 54];
 
-    const woa = [], impwoa = [], oil = [], wf = [], twist = [];
+    const woa = [], impwoa = [], oil = [], wf = [], twist = [], woaOil = [], woaOilBase = [];
     let wfCum = 0;
     let nextProcIdx = 0;
 
-    // Twist cycle: 10s WF, 10s WoA, repeating. WF active during [0,10), [20,30), [40,50).
-    // During WF window: flat slope + 1 expected proc placed at midpoint (t=5, 25, 45).
-    // During WoA window: 65 TPS slope (base WoA, since Enh shaman with Imp WF won't have Imp WoA).
-    const TWIST_WOA_TPS = 65;
-    const TWIST_WF_PROC_TIMES = [5, 25, 45];
+    // TBC twist: the WF weapon buff persists through the totem swap, so it OVERLAPS WoA.
+    // WoA is the resident totem (~88% uptime, down only for the brief WF-refresh GCD);
+    // the WF buff stays refreshed (~100%), so its procs land throughout, same times as the WF line.
+    const TWIST_WOA_TPS = 65 * 0.88;  // base WoA (Enh shaman, no Imp WoA) at ~88% uptime
     let twistCum = 0;
     let twistProcIdx = 0;
     for (let t = 0; t <= T_END; t++) {
         woa.push(t * WOA_TPS);
         impwoa.push(t * IMPWOA_TPS);
         oil.push(t * OIL_TPS);
+        woaOil.push(t * WOAOIL_TPS);
+        woaOilBase.push(t * WOAOIL_BASE_TPS);
 
         if (nextProcIdx < WF_PROC_TIMES.length && t >= WF_PROC_TIMES[nextProcIdx]) {
             wfCum += WF_PROC;
@@ -659,21 +719,10 @@ For comparison (same 60s window):
         }
         wf.push(wfCum);
 
-        // twist: figure out which window t is in
-        const cyclePos = t % 20;
-        if (cyclePos === 0 && t > 0) {
-            // entered WF window — no continuous gain this second
-        }
-        // Add continuous WoA TPS during WoA window: cyclePos in [10, 20)
-        // We approximate per-second increments
-        if (t > 0) {
-            const prevPos = (t - 1) % 20;
-            if (prevPos >= 10 && prevPos < 20) {
-                twistCum += TWIST_WOA_TPS;  // each second of WoA window adds 65
-            }
-        }
-        // Add WF procs at the placed midpoints
-        if (twistProcIdx < TWIST_WF_PROC_TIMES.length && t >= TWIST_WF_PROC_TIMES[twistProcIdx]) {
+        // twist: continuous WoA contribution every second (it's the resident totem)
+        if (t > 0) twistCum += TWIST_WOA_TPS;
+        // plus the WF procs, which keep landing because the WF buff stays refreshed
+        if (twistProcIdx < WF_PROC_TIMES.length && t >= WF_PROC_TIMES[twistProcIdx]) {
             twistCum += WF_PROC;
             twistProcIdx++;
         }
@@ -685,11 +734,13 @@ For comparison (same 60s window):
         data: {
             labels: labels,
             datasets: [
-                { label: 'Imp Wrath of Air (+121 SP)', data: impwoa, borderColor: '#58a6ff', borderWidth: 3, fill: false, pointRadius: 0, tension: 0 },
-                { label: 'Wrath of Air (+101 SP)',     data: woa,    borderColor: '#a8d8ff', borderWidth: 2, fill: false, pointRadius: 0, tension: 0, borderDash: [6,3] },
-                { label: 'Imp Windfury Totem',         data: wf,     borderColor: '#f0a500', borderWidth: 3, fill: false, pointRadius: 4, stepped: 'after' },
-                { label: 'Twist: WF + base WoA (10s/10s)', data: twist, borderColor: '#a78bfa', borderWidth: 2.5, fill: false, pointRadius: 0, tension: 0 },
-                { label: 'Superior Wizard Oil',        data: oil,    borderColor: '#7ee787', borderWidth: 2.5, fill: false, pointRadius: 0, tension: 0 }
+                { label: 'Twist: WF + WoA overlap (no oil)', data: twist, borderColor: '#c77dff', borderWidth: 3, fill: false, pointRadius: 0, tension: 0 },
+                { label: 'Imp WoA + Wizard Oil (stacks)', data: woaOil, borderColor: '#2ee06a', borderWidth: 4, fill: false, pointRadius: 0, tension: 0 },
+                { label: 'WoA + Wizard Oil (base, stacks)', data: woaOilBase, borderColor: '#2ee06a', borderWidth: 2.5, fill: false, pointRadius: 0, tension: 0, borderDash: [6,4] },
+                { label: 'Imp Wrath of Air (+121 SP)', data: impwoa, borderColor: '#1f8fff', borderWidth: 3, fill: false, pointRadius: 0, tension: 0 },
+                { label: 'Wrath of Air (+101 SP)',     data: woa,    borderColor: '#f0f6fc', borderWidth: 2, fill: false, pointRadius: 0, tension: 0, borderDash: [8,4] },
+                { label: 'Imp Windfury Totem',         data: wf,     borderColor: '#ff9500', borderWidth: 3, fill: false, pointRadius: 4, stepped: 'after' },
+                { label: 'Superior Wizard Oil (alone)', data: oil,    borderColor: '#ff4d8d', borderWidth: 2, fill: false, pointRadius: 0, tension: 0, borderDash: [4,4] }
             ]
         },
         options: {
@@ -707,13 +758,15 @@ For comparison (same 60s window):
     });
 
     document.getElementById('chartNote').textContent =
-        'After 60s — Imp WoA: ' + impwoa[60].toLocaleString() + ' threat | ' +
+        'After 60s — Imp WoA + Oil: ' + woaOil[60].toLocaleString() + ' threat | ' +
+        'WoA + Oil (base): ' + woaOilBase[60].toLocaleString() + ' | ' +
+        'Imp WoA: ' + impwoa[60].toLocaleString() + ' | ' +
         'WoA: ' + woa[60].toLocaleString() + ' | ' +
-        'Imp WF: ' + wf[60].toLocaleString() + ' | ' +
+        'Imp WF (no oil): ' + wf[60].toLocaleString() + ' | ' +
         'Twist (WF+base WoA): ' + twist[60].toLocaleString() + ' | ' +
-        'Wizard Oil: ' + oil[60].toLocaleString() + '. ' +
-        'Twist line: slope = 0 during WF windows (with a spike at t=5,25,45), slope = 65 TPS during WoA windows. ' +
-        'Notice the twist line ends ~equal to base WoA alone — twisting trades smooth for choppy without gaining net threat.';
+        'Wizard Oil alone: ' + oil[60].toLocaleString() + '. ' +
+        'The twist line ends highest — in TBC the WF weapon buff persists through the swap, so its procs overlap the live WoA aura and the two air-totem effects stack on you. ' +
+        'Wizard Oil stacks onto WoA (green line) but can never sit alongside the Windfury buff — same weapon slot.';
 })();
 </script>
 </body>
