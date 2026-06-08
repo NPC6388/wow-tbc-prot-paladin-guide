@@ -637,6 +637,7 @@
                         <li><a href="#avengers-build">Avenger's Shield Build (0/43/18)</a></li>
                         <li><a href="#sanctity-build">Sanctity Build (0/38/23)</a></li>
                         <li><a href="#build-comparison">Build Comparison</a></li>
+                        <li><a href="#build-tps">Build TPS Comparison</a></li>
                     </ul>
                 </li>
                 <li><a href="#expertise-vs-sanctity">Combat Expertise vs Improved Sanctity Aura</a></li>
@@ -1377,7 +1378,7 @@
                                 afterBody: function(context) {
                                     const idx = context[0].dataIndex;
                                     const notes = [
-                                        '46 Holy dmg × 1.9 RF per block + 80 flat DR per hit.\nAlso returns mana on block/dodge/parry.\nBest overall tank blessing.',
+                                        '46 Holy dmg × 1.9 RF per block + 80 flat DR per hit.\nNo mana return in TBC (that is a WotLK addition).\nBest overall tank blessing.',
                                         '+10% all stats. DPPS shown is dodge only.\nReal value: +~800 HP from Stamina (+10% base).\nAlmost always used alongside Sanctuary.',
                                         '+264 AP (Rank 8). Boosts auto-attacks and\nSeal of Blood procs. No mitigation value.\nBetter for DPS than for the tank.',
                                         '+41 MP5 (49 with talents). Zero threat/mitigation\nbut enables sustained Consecration usage.\nCritical on long AOE pulls and mana-starved fights.',
@@ -1412,7 +1413,7 @@
         <div class="tip">
             <strong>Blessing priority for tanks:</strong>
             <ul>
-                <li><strong>Blessing of Sanctuary</strong> is the #1 tank blessing by a wide margin. It provides <em>both</em> threat (46 Holy damage per block &times; 1.9 RF) and mitigation (-80 damage per hit), plus mana return on block/dodge/parry. <strong>Always have this active.</strong></li>
+                <li><strong>Blessing of Sanctuary</strong> is the #1 tank blessing by a wide margin. It provides <em>both</em> threat (46 Holy damage per block &times; 1.9 RF) and mitigation (-80 damage per hit). <em>(No mana return in TBC &mdash; the mana-on-avoidance component was added in WotLK.)</em> <strong>Always have this active.</strong></li>
                 <li><strong>Blessing of Kings</strong> is the #2 priority. The chart understates its value &mdash; the +10% Stamina (~800 HP at raid gear levels) is enormous for surviving boss hits. The DPPS shown is only the dodge component. In raids, you typically receive <em>both</em> Sanctuary and Kings from two different paladins.</li>
                 <li><strong>Blessing of Might</strong> (+264 AP) provides moderate threat but no survivability. Only useful as a 3rd blessing if you already have Sanctuary + Kings, or in 5-mans where threat is more important than survival.</li>
                 <li><strong>Blessing of Wisdom</strong> generates zero threat directly, but the ~41 MP5 can be the difference between maintaining Consecration uptime or running dry on long trash gauntlets. Consider it on extended AOE pulls when mana is the bottleneck.</li>
@@ -2298,7 +2299,7 @@
             <tr><td>Blessing of Kings</td><td>1/1</td><td>+10% all stats to target &mdash; strong raid buff</td></tr>
             <tr><td>Improved Righteous Fury</td><td>3/3</td><td><strong>Essential.</strong> 1.9&times; Holy threat modifier</td></tr>
             <tr><td>Anticipation</td><td>5/5</td><td>+20 defense skill &mdash; massive, reduces defense gear needed</td></tr>
-            <tr><td>Blessing of Sanctuary</td><td>1/1</td><td>Core buff &mdash; damage reduction + mana on block</td></tr>
+            <tr><td>Blessing of Sanctuary</td><td>1/1</td><td>Core buff &mdash; damage reduction + 46 Holy damage to the attacker on block (threat)</td></tr>
             <tr><td>Reckoning</td><td>5/5</td><td>Extra melee swings = more SoR procs = more threat. Strong filler for this build</td></tr>
             <tr><td>Sacred Duty</td><td>2/2</td><td>+6% stamina</td></tr>
             <tr><td>One-Handed Weapon Specialization</td><td>4/5</td><td>+8% all damage with 1H weapons (threat)</td></tr>
@@ -2343,7 +2344,7 @@
             <tr><td>Blessing of Kings</td><td>1/1</td><td><strong>+10% all stats</strong> party-wide. Funded by dropping Toughness 5/5 &rarr; 4/5 &mdash; ensures Kings coverage when you have no other paladin in the party</td></tr>
             <tr><td>Improved Righteous Fury</td><td>3/3</td><td><strong>Essential.</strong> 1.9&times; Holy threat modifier</td></tr>
             <tr><td>Anticipation</td><td>5/5</td><td>+20 defense skill &mdash; massive, reduces defense gear needed</td></tr>
-            <tr><td>Blessing of Sanctuary</td><td>1/1</td><td>Core buff &mdash; damage reduction + mana on block</td></tr>
+            <tr><td>Blessing of Sanctuary</td><td>1/1</td><td>Core buff &mdash; damage reduction + 46 Holy damage to the attacker on block (threat)</td></tr>
             <tr><td>Reckoning</td><td>5/5</td><td>Extra melee swings = more SoR procs = more threat</td></tr>
             <tr><td>Sacred Duty</td><td>2/2</td><td>+6% stamina</td></tr>
             <tr><td>One-Handed Weapon Specialization</td><td>3/5</td><td>+6% all damage with 1H weapons (threat)</td></tr>
@@ -2401,6 +2402,18 @@
         <div class="warning">
             <strong>Mandatory Talents (Never Drop):</strong> Benediction 5/5, Improved Righteous Fury 3/3, Anticipation 5/5, Holy Shield 1/1, Improved Holy Shield 2/2, Combat Expertise (5/5, or 3/5 in the Sanctity build &mdash; see <a href="#expertise-vs-sanctity">Combat Expertise vs Improved Sanctity Aura</a>), Precision 3/3, Redoubt 5/5.
         </div>
+
+        <!-- ============================================================ -->
+        <!-- BUILD TPS COMPARISON CHART -->
+        <!-- ============================================================ -->
+        <h3 id="build-tps">Build TPS Comparison</h3>
+
+        <p>The two builds, run side by side under a <strong>single identical rotation</strong> &mdash; <span style="color:#ff9bd1;">Seal of Blood opener + Ret-supplied Judgement of the Crusader at 1s</span> &mdash; on the same <a href="#guide-assumptions">reference gear</a> at the top of this guide. The chart traces <strong>cumulative threat over a full 5-minute fight</strong>; nothing changes between the two lines except the talents, so the gap is purely the threat value of the talent choices: the Sanctity build trades 1H Weapon Spec, 2 Expertise, and Avenger&rsquo;s Shield for <strong>Sanctity Aura (+10% Holy)</strong> and <strong>Improved Sanctity Aura (+2% all damage)</strong>. Avenger&rsquo;s leads only at the very start (its on-pull Avenger&rsquo;s Shield hit, plus a small bump on every 30s recast) before Sanctity overtakes it at the marked <span style="color:#7ee787;">crossover</span> and pulls away.</p>
+
+        <div class="chart-container">
+            <canvas id="buildTpsChart" width="900" height="500"></canvas>
+        </div>
+        <div id="buildTpsChartNote" class="mana-warning"></div>
 
         <!-- ============================================================ -->
         <!-- COMBAT EXPERTISE VS IMPROVED SANCTITY AURA -->
@@ -4840,6 +4853,14 @@ For comparison (same 60s window, best realistic non-twist packages):
         // Holy ability (procs, judges, Consec, HS, Exo, HW) amplified for the rest of the fight.
         // sorOpener: pure Seal of Righteousness from the pull — SoR procs + Judgement of
         // Righteousness every 10s, re-sealing SoR (no SoC stacking, no DoT).
+        // ── Build modifiers (default to no-op so every existing call is unchanged) ──
+        // dmgMul:    flat multiplier on every threat term (1H Weapon Spec, Sanctity Aura,
+        //            Improved Sanctity Aura — all "% damage you deal" effects).
+        // meleeLand: override the melee land rate (Combat Expertise → boss dodge).
+        // hasAS:     false drops the t=0 Avenger's Shield (the Sanctity build lacks the talent).
+        const DM = cfg.dmgMul || 1;
+        const ML = cfg.meleeLand || MELEE_LAND;
+        const D = cfg.dur || DUR; // sim length (default 20s AW window); AW itself still only lasts AW_DUR
         const times = [], threats = [];
         let cum = 0, stacks = 0, activeSeal = cfg.sobOpener ? 'sob' : (cfg.jotcOpener ? 'sotc' : (cfg.sorOpener ? 'sor' : 'soc'));
         let jotcApplied = false, debuffActive = false;
@@ -4860,19 +4881,20 @@ For comparison (same 60s window, best realistic non-twist packages):
         let jowPending = false; // true when SoW is sealed, waiting to judge
         let nextAutoBase = 3.0; // first auto-attack only once the boss reaches melee — after the ranged AS pull and the first (ranged) judge
         let gcdFree = 0; // when next GCD is available
+        let nextAS = 30; // Avenger's Shield recast (30s CD) after the t=0 pull cast — Avenger's build only; first recast at 30s so 20s sims are unaffected
 
         // Pre-compute auto times
         const autos = [];
-        for (let a = nextAutoBase; a <= DUR; a += WS) autos.push(Math.round(a * 100) / 100);
+        for (let a = nextAutoBase; a <= D; a += WS) autos.push(Math.round(a * 100) / 100);
 
         // AW active 0-20
         function awMul(t) { return t >= 0 && t < AW_DUR ? AW : 1; }
 
-        // Avenger's Shield at t=0 (spell hit table)
-        cum += AS * awMul(0) * SPELL_LAND;
+        // Avenger's Shield at t=0 (spell hit table) — Avenger's build only (hasAS !== false)
+        cum += (cfg.hasAS === false ? 0 : AS) * awMul(0) * SPELL_LAND * DM;
         gcdFree = GCD;
 
-        for (let ti = 0; ti <= DUR; ti += STEP) {
+        for (let ti = 0; ti <= D; ti += STEP) {
             const t = Math.round(ti * 100) / 100;
             const aw = awMul(t);
             if (cfg.retJotc && t >= 1.0 && !debuffActive) debuffActive = true; // Ret paladin applies JotC at 1s — amplifies everything, no judge of yours spent on it
@@ -4881,9 +4903,9 @@ For comparison (same 60s window, best realistic non-twist packages):
             const isAuto = autos.some(a => Math.abs(a - t) < 0.01);
             if (isAuto) {
                 if (activeSeal === 'sob') {
-                    cum += SOB_PROC * aw * MELEE_LAND;
+                    cum += SOB_PROC * aw * ML * DM;
                 } else if (activeSeal === 'sor') {
-                    cum += (SOR_PER_SWING + (debuffActive ? JOTC_AMP : 0)) * aw * MELEE_LAND;
+                    cum += (SOR_PER_SWING + (debuffActive ? JOTC_AMP : 0)) * aw * ML * DM;
                 }
                 // SoC stacking on melee with SoC active (~70% chance per swing)
                 if (activeSeal === 'soc') {
@@ -4901,17 +4923,17 @@ For comparison (same 60s window, best realistic non-twist packages):
                 if (lastStackRefresh >= 0 && (t - lastStackRefresh) > STACK_DUR) {
                     stacks = 0; stackFloat = 0; // stacks expired!
                 } else {
-                    cum += SOC_DOT_TPS_PS * stacks * STEP * aw;
+                    cum += SOC_DOT_TPS_PS * stacks * STEP * aw * DM;
                 }
             }
 
             // Holy Shield blocks (passive, estimated) — blocks can't miss (triggered by boss hit)
             // ~3 blocks per 10s CD; each block is a Holy hit, amplified by the JotC debuff
-            cum += (HS_BLK + (debuffActive ? JOTC_AMP : 0)) * (HS_BLOCKS_PER_8S / HSCD) * STEP * aw;
+            cum += (HS_BLK + (debuffActive ? JOTC_AMP : 0)) * (HS_BLOCKS_PER_8S / HSCD) * STEP * aw * DM;
 
             // Consecration ticking (each tick is a Holy hit, amplified by the JotC debuff)
             if (t >= consecActive && t < consecActive + CCD) {
-                cum += ((CONSEC / CCD) + (debuffActive ? JOTC_AMP : 0)) * STEP * (awMul(consecActive)); // use AW at cast time
+                cum += ((CONSEC / CCD) + (debuffActive ? JOTC_AMP : 0)) * STEP * (awMul(consecActive)) * DM; // use AW at cast time
             }
 
             // GCD-based abilities
@@ -4934,7 +4956,7 @@ For comparison (same 60s window, best realistic non-twist packages):
                         activeSeal = 'sow'; // no proc/stacking from autos during this GCD
                         gcdFree = t + GCD;
                     } else if (cfg.jotcOpener && !jotcApplied) {
-                        cum += JOTC_DIRECT * aw * SPELL_LAND; // JotC: trivial direct hit, applies permanent +219 debuff
+                        cum += JOTC_DIRECT * aw * SPELL_LAND * DM; // JotC: trivial direct hit, applies permanent +219 debuff
                         jotcApplied = true;
                         debuffActive = true;
                         firstJudgeDone = true;
@@ -4942,26 +4964,26 @@ For comparison (same 60s window, best realistic non-twist packages):
                         nextJudge = t + JCD;
                         gcdFree = t + GCD;
                     } else if (!firstJudgeDone && cfg.sobOpener) {
-                        cum += JOB * aw * SPELL_LAND; // Judge Blood (spell hit table)
+                        cum += JOB * aw * SPELL_LAND * DM; // Judge Blood (spell hit table)
                         firstJudgeDone = true;
                         activeSeal = 'none'; // consumed
                         nextJudge = t + JCD;
                         gcdFree = t + GCD;
                     } else if (cfg.jotcSecond && !jotcApplied) {
-                        cum += JOTC_DIRECT * aw * SPELL_LAND; // 2nd judge = JotC: applies the permanent +219 debuff after the SoB snap (recommended hybrid)
+                        cum += JOTC_DIRECT * aw * SPELL_LAND * DM; // 2nd judge = JotC: applies the permanent +219 debuff after the SoB snap (recommended hybrid)
                         jotcApplied = true;
                         debuffActive = true;
                         activeSeal = 'none'; // consumed → re-seal SoC next GCD
                         nextJudge = t + JCD;
                         gcdFree = t + GCD;
                     } else if (cfg.sorOpener) {
-                        cum += JOR_PER_JUDGE * aw * SPELL_LAND; // Judgement of Righteousness
+                        cum += JOR_PER_JUDGE * aw * SPELL_LAND * DM; // Judgement of Righteousness
                         firstJudgeDone = true;
                         activeSeal = 'none'; // consumed → re-seal SoR next GCD
                         nextJudge = t + JCD;
                         gcdFree = t + GCD;
                     } else {
-                        cum += (jocPerJudge(stacks) + (debuffActive ? JOTC_AMP : 0)) * aw * SPELL_LAND;
+                        cum += (jocPerJudge(stacks) + (debuffActive ? JOTC_AMP : 0)) * aw * SPELL_LAND * DM;
                         firstJudgeDone = true;
                         activeSeal = 'none'; // consumed
                         nextJudge = t + JCD;
@@ -4975,13 +4997,13 @@ For comparison (same 60s window, best realistic non-twist packages):
                 }
                 // Exorcism (spell hit table)
                 else if (cfg.demon && t >= nextExo - 0.05) {
-                    cum += (EXO + (debuffActive ? JOTC_AMP : 0)) * aw * SPELL_LAND;
+                    cum += (EXO + (debuffActive ? JOTC_AMP : 0)) * aw * SPELL_LAND * DM;
                     nextExo = t + 15;
                     gcdFree = t + GCD;
                 }
                 // Holy Wrath (spell hit table)
                 else if (cfg.demon && t >= nextHW - 0.05 && nextHW < 999) {
-                    cum += (HW + (debuffActive ? JOTC_AMP : 0)) * aw * SPELL_LAND;
+                    cum += (HW + (debuffActive ? JOTC_AMP : 0)) * aw * SPELL_LAND * DM;
                     nextHW = t + 60;
                     gcdFree = t + 2.0; // 2s cast
                 }
@@ -4995,6 +5017,12 @@ For comparison (same 60s window, best realistic non-twist packages):
                 else if (t >= nextConsec - 0.05 && (t >= consecActive + CCD || consecActive < 0)) {
                     consecActive = t;
                     nextConsec = t + CCD;
+                    gcdFree = t + GCD;
+                }
+                // Avenger's Shield recast on CD (Avenger's build only; 30s CD after the pull cast)
+                else if (cfg.hasAS !== false && t >= nextAS - 0.05) {
+                    cum += AS * aw * SPELL_LAND * DM;
+                    nextAS = t + 30;
                     gcdFree = t + GCD;
                 }
                 // Seal swap logic: at 5 stacks, swap to SoR; swap back 9s before expiry
@@ -5144,6 +5172,128 @@ For comparison (same 60s window, best realistic non-twist packages):
         '&nbsp;&nbsp;<span style="color:#7ee787;">SoR opener:</span> <strong>' + f2d.toLocaleString() + '</strong> &mdash; no ramp or DoT, just steady SoR procs + JoR.<br>' +
         '&nbsp;&nbsp;<span style="color:#ffd54f;">SoB opener:</span> <strong>' + f2b.toLocaleString() + '</strong> &mdash; JoB snap, then a slow SoC ramp.<br>' +
         '&nbsp;&nbsp;<span style="color:#b388ff;">SoC opener:</span> <strong>' + f2a.toLocaleString() + '</strong> &mdash; weakest, with a 0-stack opener judge and the slowest ramp.';
+
+    // ============================================================
+    // BUILDS SECTION: cumulative threat by build — one rotation
+    // Same gear, same engine as sim1f above (SoB + Ret JotC @ 1s). The only
+    // inputs that change are the talent deltas between the two guide builds:
+    //   Avenger's (0/43/18): 4/5 1H Weapon Spec (+8% dmg), 5/5 Combat Expertise
+    //     (5 exp → 5.25% boss dodge → 94% melee land), HAS Avenger's Shield,
+    //     no Sanctity Aura.
+    //   Sanctity (0/38/23):  3/5 1H Weapon Spec (+6% dmg) × Sanctity Aura (+10%
+    //     Holy) × 2/2 Imp. Sanctity (+2% all) = ×1.06·1.10·1.02 on every term;
+    //     3/5 Combat Expertise (3 exp → 5.75% boss dodge → 93.5% melee land);
+    //     NO Avenger's Shield.
+    // A Ret paladin in a different party supplies the +219 JotC from 1s, so
+    // every judge stays on Corruption and only the Sanctity build brings the
+    // aura to your own group.
+    // ============================================================
+    const BUILD_DUR = 300; // 5-minute fight
+    const buildAvengers = simulate({ sobOpener: true, demon: false, retJotc: true,
+        dmgMul: 1.08, meleeLand: 0.94, hasAS: true, dur: BUILD_DUR });
+    const buildSanctity = simulate({ sobOpener: true, demon: false, retJotc: true,
+        dmgMul: 1.06 * 1.10 * 1.02, meleeLand: 0.935, hasAS: false, dur: BUILD_DUR });
+    const bAvFinal = buildAvengers.threats[buildAvengers.threats.length - 1];
+    const bSaFinal = buildSanctity.threats[buildSanctity.threats.length - 1];
+    const bDeltaPct = (bSaFinal / bAvFinal - 1) * 100;
+
+    // Durable crossover: the last instant Avenger's is still ahead — after this,
+    // Sanctity leads for the rest of the fight. (Avenger's leads early off its
+    // on-pull Avenger's Shield hit, and gets a small bump every 30s recast.)
+    const _av = buildAvengers.threats, _sa = buildSanctity.threats, _tm = buildAvengers.times;
+    let _crossIdx = 0;
+    for (let i = 0; i < _tm.length; i++) { if (_av[i] >= _sa[i]) _crossIdx = i; }
+    const buildCrossT = _tm[Math.min(_crossIdx + 1, _tm.length - 1)];
+
+    // Vertical dashed line + label marking the crossover
+    const buildCrossPlugin = {
+        id: 'buildCross',
+        afterDatasetsDraw: function(chart) {
+            const xs = chart.scales.x, ys = chart.scales.y, ctx = chart.ctx;
+            const px = xs.getPixelForValue(buildCrossT);
+            ctx.save();
+            ctx.strokeStyle = '#7ee787';
+            ctx.setLineDash([6, 4]);
+            ctx.lineWidth = 1.5;
+            ctx.beginPath(); ctx.moveTo(px, ys.top); ctx.lineTo(px, ys.bottom); ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle = '#7ee787';
+            ctx.font = 'bold 12px sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Sanctity overtakes @ ' + buildCrossT.toFixed(0) + 's', px + 6, ys.top + 16);
+            ctx.restore();
+        }
+    };
+
+    new Chart(document.getElementById('buildTpsChart').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: buildAvengers.times,
+            datasets: [
+                { label: 'Sanctity (0/38/23)', data: buildSanctity.threats,
+                  borderColor: '#a370ff', borderWidth: 2.5, fill: false, pointRadius: 0, tension: 0.1 },
+                { label: "Avenger's Shield (0/43/18)", data: buildAvengers.threats,
+                  borderColor: '#f48c06', borderWidth: 2.5, fill: false, pointRadius: 0, tension: 0.1 }
+            ]
+        },
+        options: {
+            responsive: true,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                title: { display: true, text: 'Build Comparison — Cumulative Threat over 5 Minutes (SoB + Ret JotC @ 1s)',
+                    color: '#e6edf3', font: { size: 14, weight: 'bold' } },
+                legend: { labels: { color: '#e6edf3', font: { size: 12 } } },
+                tooltip: {
+                    itemSort: function(a, b) { return b.parsed.y - a.parsed.y; },
+                    callbacks: {
+                        label: function(ctx) { return ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString(); },
+                        afterBody: function(ctx) {
+                            if (ctx.length < 2) return '';
+                            var d = Math.abs(ctx[0].parsed.y - ctx[1].parsed.y);
+                            var lead = ctx[0].parsed.y >= ctx[1].parsed.y ? ctx[0].dataset.label : ctx[1].dataset.label;
+                            return lead.split(' (')[0] + ' ahead by ' + d.toLocaleString();
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    type: 'linear',
+                    title: { display: true, text: 'Time (seconds)', color: '#e6edf3' },
+                    ticks: { color: '#8b949e', stepSize: 30, callback: function(v) { return v % 60 === 0 ? v + 's' : ''; } },
+                    grid: { color: 'rgba(139,148,158,0.15)' }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: 'Cumulative Threat', color: '#e6edf3' },
+                    ticks: { color: '#8b949e', callback: function(v) { return v.toLocaleString(); } },
+                    grid: { color: 'rgba(139,148,158,0.15)' }
+                }
+            }
+        },
+        plugins: [buildCrossPlugin]
+    });
+
+    document.getElementById('buildTpsChartNote').innerHTML =
+        '<strong>Same gear, same rotation &mdash; only the talents differ.</strong> Both builds run the identical ' +
+        '<span style="color:#ff9bd1;">SoB + Ret JotC @ 1s</span> rotation on the guide’s reference profile (709 SP, ' +
+        '41.1 DPS / 1.80 speed, 1.9&times; RF) over a <strong>5-minute fight</strong>. A Ret paladin in a different party keeps the ' +
+        '+219 debuff up from 1s; Avenging Wrath covers only the first 20s. The Avenger’s build recasts Avenger’s Shield every 30s ' +
+        '(its small periodic bumps), which the Sanctity build can’t.<br>' +
+        '&nbsp;&nbsp;<span style="color:#7ee787;"><strong>Crossover: Sanctity overtakes Avenger’s at ~' + buildCrossT.toFixed(0) + 's</strong></span> ' +
+        'and never trails again &mdash; Avenger’s only leads at the very start, riding its on-pull Avenger’s Shield hit.<br>' +
+        '&nbsp;&nbsp;<span style="color:#a370ff;">Sanctity (0/38/23):</span> <strong>' + bSaFinal.toLocaleString() + '</strong> ' +
+        'cumulative threat at 5 min (' + (bSaFinal / BUILD_DUR).toFixed(0) + ' avg TPS) &mdash; leads by <strong>' +
+        (bSaFinal - bAvFinal).toLocaleString() + ' threat (+' + bDeltaPct.toFixed(1) + '%)</strong>.<br>' +
+        '&nbsp;&nbsp;<span style="color:#f48c06;">Avenger’s Shield (0/43/18):</span> <strong>' + bAvFinal.toLocaleString() + '</strong> ' +
+        'cumulative threat at 5 min (' + (bAvFinal / BUILD_DUR).toFixed(0) + ' avg TPS).<br><br>' +
+        '<strong>Why Sanctity pulls away over a full fight:</strong> Sanctity Aura’s <strong>+10% Holy</strong> and Improved ' +
+        'Sanctity’s <strong>+2% all damage</strong> apply to <em>every</em> threat source you have &mdash; seal procs, judgements, ' +
+        'Consecration, and Holy Shield are all Holy &mdash; a permanent ~10% throughput edge that compounds for the whole fight, ' +
+        'easily outpacing the Sanctity build’s lower 1H Weapon Spec (+6% vs +8%), its 2 fewer Expertise (~0.5% more boss dodge), and ' +
+        'the Avenger’s build’s periodic Avenger’s Shield recasts. The Avenger’s build’s real edge is <strong>utility</strong> ' +
+        '&mdash; the ranged AS pull, daze, and AOE &mdash; not single-target TPS. See ' +
+        '<a href="#expertise-vs-sanctity" style="color:#58a6ff;">Combat Expertise vs Improved Sanctity Aura</a>.';
 
     // ============================================================
     // SECTION 2C: 5-MINUTE SEAL+JUDGEMENT TPS COMPARISON
