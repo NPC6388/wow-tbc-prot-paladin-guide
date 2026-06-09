@@ -638,14 +638,11 @@
                         <li><a href="#sanctity-build">Sanctity Build (0/38/23)</a></li>
                         <li><a href="#build-comparison">Build Comparison</a></li>
                         <li><a href="#build-tps">Build TPS Comparison</a></li>
+                        <li><a href="#talent-tradeoffs">Talent Trade-off Deep-Dive (per-point math)</a></li>
                     </ul>
                 </li>
                 <li><a href="#expertise-vs-sanctity">Combat Expertise vs Improved Sanctity Aura</a></li>
-                <li><a href="#threat-vs-survivability-talents">Threat vs Survivability Talents (3 Specs)</a>
-                    <ul>
-                        <li><a href="sanctity_conviction_vs_impsotc.html">&#8599; Sanctity Talent Trade-offs (interactive per-point math)</a></li>
-                    </ul>
-                </li>
+                <li><a href="#threat-vs-survivability-talents">Threat vs Survivability Talents (3 Specs)</a></li>
                 <li><a href="#consumables">Consumables</a></li>
                 <li><a href="#party-buffs">Party Buffs (WoA vs Windfury vs Wizard Oil)</a></li>
                 <li><a href="#engineering">Engineering</a></li>
@@ -2360,7 +2357,7 @@
 
         <div class="aoe-tank">
             <h4>Sanctity Build &mdash; Max Threat Raid without Ret Paladin in your party (0/38/23)</h4>
-            <p>The <strong>max-threat</strong> build for raids where no Retribution paladin is in your party. It drops <strong>Avenger's Shield</strong> and most of <strong>Combat Expertise</strong> to fund deep Retribution &mdash; <strong>Sanctity Aura</strong> (+10% Holy to your whole party), <strong>2/2 Improved Sanctity Aura</strong> (+2% all damage), and <strong>3/3 Improved Seal of the Crusader</strong> (+3% crit on the boss for your entire raid, all attacks) &mdash; and maxes <strong>One-Handed Weapon Specialization (5/5, +10% all damage)</strong>, the best raw-threat talent. <strong>Combat Expertise sits at 1/5</strong>: per the <a href="sanctity_conviction_vs_impsotc.html">talent deep-dive</a> it's ~0 threat, so its points go into 1H Weapon Spec instead. <strong>Blessing of Kings</strong> stays in (funded by Toughness 4/5), so you don't need another paladin to cover it. The cost is thinner effective health and less parry-haste protection &mdash; raise Combat Expertise back up on a punishing progression hit. Full talent sheets and the survivability-leaning alternatives are in <a href="#threat-vs-survivability-talents">Threat vs Survivability Talents</a> below; the Improved-Sanctity funding trade is detailed under <a href="#expertise-vs-sanctity">Combat Expertise vs Improved Sanctity Aura</a>.</p>
+            <p>The <strong>max-threat</strong> build for raids where no Retribution paladin is in your party. It drops <strong>Avenger's Shield</strong> and most of <strong>Combat Expertise</strong> to fund deep Retribution &mdash; <strong>Sanctity Aura</strong> (+10% Holy to your whole party), <strong>2/2 Improved Sanctity Aura</strong> (+2% all damage), and <strong>3/3 Improved Seal of the Crusader</strong> (+3% crit on the boss for your entire raid, all attacks) &mdash; and maxes <strong>One-Handed Weapon Specialization (5/5, +10% all damage)</strong>, the best raw-threat talent. <strong>Combat Expertise sits at 1/5</strong>: per the <a href="#talent-tradeoffs">talent deep-dive</a> it's ~0 threat, so its points go into 1H Weapon Spec instead. <strong>Blessing of Kings</strong> stays in (funded by Toughness 4/5), so you don't need another paladin to cover it. The cost is thinner effective health and less parry-haste protection &mdash; raise Combat Expertise back up on a punishing progression hit. Full talent sheets and the survivability-leaning alternatives are in <a href="#threat-vs-survivability-talents">Threat vs Survivability Talents</a> below; the Improved-Sanctity funding trade is detailed under <a href="#expertise-vs-sanctity">Combat Expertise vs Improved Sanctity Aura</a>.</p>
             <p><strong>Why no Improved Judgement?</strong> Dropping Judgement to an 8-second cooldown desyncs it from the steady-state 969 cadence (Holy Shield / Consecration on their cooldowns), so the 2 points go into <strong>Improved Seal of the Crusader</strong> instead &mdash; a raid-wide threat and DPS gain that doesn't disturb the rotation.</p>
             <p><strong>Talent Calculator:</strong> <a href="https://www.wowhead.com/tbc/talent-calc/paladin/-053041305000015252101-050350103003012" style="color: #58a6ff;">View on WoWHead</a></p>
         </div>
@@ -2381,10 +2378,10 @@
             <tr><td>Blessing of Sanctuary</td><td>1/1</td><td>Core buff &mdash; damage reduction + 46 Holy damage to the attacker on block (threat)</td></tr>
             <tr><td>Reckoning</td><td>5/5</td><td>Extra melee swings = more SoR procs = more threat</td></tr>
             <tr><td>Sacred Duty</td><td>2/2</td><td>+6% stamina</td></tr>
-            <tr><td>One-Handed Weapon Specialization</td><td>5/5</td><td><strong>+10% all damage</strong> with 1H weapons &mdash; the top raw-threat talent (~+27 TPS per rank; <a href="sanctity_conviction_vs_impsotc.html">why</a>)</td></tr>
+            <tr><td>One-Handed Weapon Specialization</td><td>5/5</td><td><strong>+10% all damage</strong> with 1H weapons &mdash; the top raw-threat talent (~+27 TPS per rank; <a href="#talent-tradeoffs">why</a>)</td></tr>
             <tr><td>Improved Holy Shield</td><td>2/2</td><td>8 charges instead of 4 + increased Holy Shield damage</td></tr>
             <tr><td>Holy Shield</td><td>1/1</td><td><strong>Core ability.</strong> Required for uncrushable</td></tr>
-            <tr><td>Combat Expertise</td><td>1/5</td><td>+1 expertise, +2% stamina &mdash; trimmed to fund Improved Sanctity Aura and max 1H Weapon Spec. It's ~0 threat (a survivability talent &mdash; <a href="sanctity_conviction_vs_impsotc.html">why</a>); raise it on progression where you want the EH/parry-haste back</td></tr>
+            <tr><td>Combat Expertise</td><td>1/5</td><td>+1 expertise, +2% stamina &mdash; trimmed to fund Improved Sanctity Aura and max 1H Weapon Spec. It's ~0 threat (a survivability talent &mdash; <a href="#talent-tradeoffs">why</a>); raise it on progression where you want the EH/parry-haste back</td></tr>
         </table>
 
         <h4>Retribution Tree (23 points)</h4>
@@ -2393,7 +2390,7 @@
             <tr><td>Benediction</td><td>5/5</td><td><strong>Essential.</strong> -15% mana cost on instant spells (Consecration, HS)</td></tr>
             <tr><td>Improved Seal of the Crusader</td><td>3/3</td><td><strong>+3% chance for the target to be critically hit</strong> by all attackers, melee and spell (a raid-wide DPS &amp; threat boost on the boss). In TBC 2.3+ this is the talent's <em>only</em> effect &mdash; it does not change the +219 JotC Holy-damage debuff. Replaces Improved Judgement, whose 8s CD desyncs the 969 rotation</td></tr>
             <tr><td>Deflection</td><td>5/5</td><td>+5% parry chance &mdash; avoidance and crush immunity contribution</td></tr>
-            <tr><td>Conviction</td><td>1/5</td><td>+1% melee crit &mdash; trimmed to 1/5 to max Improved Seal of the Crusader, whose spell crit feeds your judgements (Conviction is melee-only; <a href="sanctity_conviction_vs_impsotc.html">why</a>)</td></tr>
+            <tr><td>Conviction</td><td>1/5</td><td>+1% melee crit &mdash; trimmed to 1/5 to max Improved Seal of the Crusader, whose spell crit feeds your judgements (Conviction is melee-only; <a href="#talent-tradeoffs">why</a>)</td></tr>
             <tr><td>Pursuit of Justice</td><td>3/3</td><td>+15% movement speed &mdash; huge quality of life for positioning</td></tr>
             <tr><td>Crusade</td><td>3/3</td><td>+3% damage to Humanoids, Demons, Undead, Elementals (covers most raid content)</td></tr>
             <tr><td>Sanctity Aura</td><td>1/1</td><td><strong>+10% Holy damage to entire party.</strong> Boosts your threat and other paladins' damage</td></tr>
@@ -2441,7 +2438,7 @@
             <strong>&#9876; Talent deep-dives:</strong>
             <ul style="margin:6px 0 0;">
                 <li><a href="#threat-vs-survivability-talents" style="color:#58a6ff;"><strong>Threat vs Survivability Talents &amp; 3 Specs</strong></a> &mdash; every threat and every survivability talent rated, the non-negotiable tanking core, and ready-to-apply <strong>max-threat / balanced / max-survivability</strong> specs with full point-by-point sheets and one-click talent-calculator links (<em>section below</em>).</li>
-                <li><a href="sanctity_conviction_vs_impsotc.html" style="color:#58a6ff;"><strong>Sanctity Talent Trade-offs</strong></a> &mdash; the per-point TPS math on <em>Conviction vs Improved Seal of the Crusader</em> and <em>One-Handed Weapon Specialization vs Combat Expertise</em>, computed live from this guide's spell-power coefficients.</li>
+                <li><a href="#talent-tradeoffs" style="color:#58a6ff;"><strong>Sanctity Talent Trade-offs</strong></a> &mdash; the per-point TPS math on <em>Conviction vs Improved Seal of the Crusader</em> and <em>One-Handed Weapon Specialization vs Combat Expertise</em>, computed live from this guide's spell-power coefficients.</li>
             </ul>
         </div>
 
@@ -2450,12 +2447,99 @@
         <!-- ============================================================ -->
         <h3 id="build-tps">Build TPS Comparison</h3>
 
-        <p>The two builds, run side by side under a <strong>single identical rotation</strong> &mdash; <span style="color:#ff9bd1;">Seal of Righteousness opener + Ret-supplied Judgement of the Crusader at 1s</span> &mdash; on the same <a href="#guide-assumptions">reference gear</a> at the top of this guide. The chart traces <strong>cumulative threat over a full 5-minute fight</strong>; nothing changes between the two lines except the talents, so the gap is purely the threat value of the talent choices: the Sanctity build trades 1H Weapon Spec, 2 Expertise, and Avenger&rsquo;s Shield for <strong>Sanctity Aura (+10% Holy)</strong> and <strong>Improved Sanctity Aura (+2% all damage)</strong>. Avenger&rsquo;s leads only at the very start (its on-pull Avenger&rsquo;s Shield hit, plus a small bump on every 30s recast) before Sanctity overtakes it at the marked <span style="color:#7ee787;">crossover</span> and pulls away.</p>
+        <p>The two builds, run side by side under a <strong>single identical rotation</strong> &mdash; <span style="color:#ff9bd1;">Seal of Righteousness opener + Ret-supplied Judgement of the Crusader at 1s</span> &mdash; on the same <a href="#guide-assumptions">reference gear</a> at the top of this guide. The chart traces <strong>cumulative threat over a full 5-minute fight</strong>; nothing changes between the two lines except the talents, so the gap is purely the threat value of the talent choices: the Sanctity build trades Avenger&rsquo;s Shield and most of Combat Expertise for <strong>Sanctity Aura (+10% Holy)</strong>, <strong>Improved Sanctity Aura (+2% all damage)</strong>, <strong>3/3 Improved Seal of the Crusader</strong>, and <strong>maxed 1H Weapon Spec (5/5)</strong>. Avenger&rsquo;s leads only at the very start (its on-pull Avenger&rsquo;s Shield hit, plus a small bump on every 30s recast) before Sanctity overtakes it at the marked <span style="color:#7ee787;">crossover</span> and pulls away.</p>
 
         <div class="chart-container">
             <canvas id="buildTpsChart" width="900" height="500"></canvas>
         </div>
         <div id="buildTpsChartNote" class="mana-warning"></div>
+
+        <details class="rotation-frame" id="talent-tradeoffs" style="margin-top:1.4em;">
+            <summary style="cursor:pointer; font-weight:bold; color:#58a6ff;">&#9656; Talent trade-off deep-dive: Conviction vs Improved SotC, and 1H Weapon Spec vs Combat Expertise (per-point math)</summary>
+            <div style="padding:10px 4px 4px;">
+                <p>The two close calls behind the max-threat Sanctity tuning above, computed live from this guide's spell-power coefficients. Single-target boss, Judgement of the Crusader maintained.</p>
+
+                <h4 style="color:#7ee787;">Part 1 &mdash; Conviction vs Improved Seal of the Crusader</h4>
+                <p><span style="color:#ffd54f;font-weight:bold;">Config A</span> = 2/5 Conviction + 2/3 Imp SotC &nbsp;vs&nbsp; <span style="color:#7ee787;font-weight:bold;">Config B</span> = 1/5 Conviction + 3/3 Imp SotC (move 1 point). The two talents grant <em>different</em> crit:</p>
+                <table class="combat-table">
+                    <tr><th>Talent</th><th>Gives</th><th>Applies to</th></tr>
+                    <tr><td><strong>Conviction</strong> (1%/rank)</td><td><strong>Melee</strong> crit only</td><td>Your melee swings, against any target &mdash; <em>not</em> spell crit.</td></tr>
+                    <tr><td><strong>Improved SotC</strong> (1%/rank)</td><td><strong>+crit-to-be-hit</strong> on the JotC target</td><td>All attacks, <strong>melee + spell</strong>, vs the boss &mdash; including your spell-crit judgements. (TBC 2.3+: purely this debuff; the +219 is unchanged.)</td></tr>
+                </table>
+                <table class="combat-table">
+                    <tr><th>Crit vs the boss (JotC up)</th><th><span style="color:#ffd54f;">Config A</span></th><th><span style="color:#7ee787;">Config B</span></th><th>Difference</th></tr>
+                    <tr><td><strong>Melee</strong> crit (autos, JoB)</td><td>+2 (Conv) +2 (ImpSotC) = <strong>+4%</strong></td><td>+1 (Conv) +3 (ImpSotC) = <strong>+4%</strong></td><td style="color:#8b949e;">identical</td></tr>
+                    <tr><td><strong>Spell</strong> crit (judgements, Exo, HoW)</td><td>+2% (ImpSotC only)</td><td>+3% (ImpSotC only)</td><td style="color:#7ee787;"><strong>+1% for Config B</strong></td></tr>
+                </table>
+                <p>Conviction can't help spell crit, so the entire personal-threat difference is <strong>+1% spell crit</strong> on your crit-able Holy abilities (Consecration, Holy Shield, the SoR proc and SoC DoT can't crit; Sanctity has no Avenger's Shield):</p>
+                <div class="formula" id="cviFormula"></div>
+                <table class="combat-table" id="cviDeltaTable">
+                    <tr><th>Ability (JotC up)</th><th>Landed hit (with +219)</th><th>CD</th><th style="color:#7ee787;">+TPS for Config B</th></tr>
+                </table>
+                <div class="chart-container"><canvas id="cviDeltaChart" width="760" height="300"></canvas></div>
+                <div class="tip" id="cviTotals"></div>
+                <div class="verdict" id="cviVerdict"></div>
+                <div class="warning"><strong>The one case for Config A (more Conviction):</strong> Conviction's melee crit works on <em>every</em> target and before JotC lands, while Imp SotC only helps against the one JotC'd mob. On heavy <strong>multi-target / AOE</strong> the extra Conviction point claws a little back on your auto-attacks &mdash; still small (autos are a minor share of prot threat), but it's the only spot A is ahead. On a sustained single boss, B wins.</div>
+
+                <h4 style="color:#7ee787;">Part 2 &mdash; One-Handed Weapon Specialization vs Combat Expertise</h4>
+                <p>Unlike Part 1, this one isn't close:</p>
+                <table class="combat-table">
+                    <tr><th>Talent</th><th>Gives</th><th>Threat reach</th></tr>
+                    <tr><td><strong>1H Weapon Spec</strong> (2%/rank)</td><td>+2% to <strong>all</strong> damage</td><td>Multiplies your <em>entire</em> threat &mdash; Consec, Holy Shield, judgements, seal procs, the SoC DoT.</td></tr>
+                    <tr><td><strong>Combat Expertise</strong> (+1 exp, +2% Sta /rank)</td><td>&minus;0.25% boss <strong>dodge &amp; parry</strong>, +2% Stamina</td><td>Expertise only un-dodges the <strong>melee-table</strong> slice (autos + seal procs). Judgements, Consec, Holy Shield, SoC DoT can't be dodged.</td></tr>
+                </table>
+                <p>Running this guide's reference Sanctity sim (~1,428 TPS), one point each way is worth:</p>
+                <table class="combat-table">
+                    <tr><th>Move</th><th>Threat change</th><th>Other effects</th></tr>
+                    <tr><td><span style="color:#7ee787;">+1 rank 1H Weapon Spec</span></td><td style="color:#7ee787;"><strong>+27 TPS</strong> (~+1.9%)</td><td style="color:#8b949e;">none</td></tr>
+                    <tr><td><span style="color:#ffd54f;">+1 rank Combat Expertise</span></td><td style="color:#8b949e;"><strong>~+0 TPS</strong></td><td>+2% Stamina (~250&ndash;280 HP) &amp; &minus;0.25% boss parry (parry-haste safety)</td></tr>
+                </table>
+                <div class="chart-container"><canvas id="cviCeChart" width="620" height="240"></canvas></div>
+                <p><strong>Why Combat Expertise is ~0 threat:</strong> almost none of a prot paladin's threat is dodgeable &mdash; the big sources are spells, block-triggers, or an already-applied debuff. The only dodgeable threat is auto-attacks (physical, no Righteous Fury, tiny) and the odd SoR proc during the swap window. 1H Weapon Spec lifts <em>everything</em> by 2% instead.</p>
+                <div class="verdict"><strong>Verdict:</strong> for threat, max <strong>1H Weapon Spec before Combat Expertise</strong> (each rank ~+27 TPS vs ~0). Combat Expertise earns its keep purely on <strong>Stamina + parry-haste</strong> &mdash; keep it as a defensive floor on progression, shift it into 1H Weapon Spec on farm. This is a threat-vs-survivability dial, not a threat-vs-threat wash like Part 1.</div>
+            </div>
+            <script>
+            (function(){
+              var d = document.getElementById('talent-tradeoffs');
+              if (d && location.hash === '#talent-tradeoffs') d.open = true;
+              window.addEventListener('hashchange', function(){ if (location.hash === '#talent-tradeoffs' && d) d.open = true; });
+
+              var SP=709, RF=1.9, HIT=0.8811, JOTC=219;
+              var critA=0.11, critB=0.12, dCrit=(1+critB*0.5)-(1+critA*0.5); // 0.005
+              var abilities=[['Judgement of Corruption (5 stk)',605,0.429,10,false],['Exorcism (R7)',619,0.429,15,true],['Holy Wrath (R3)',635,0.286,60,true]];
+              function landed(base,coef){ return (base + SP*coef + JOTC) * RF * HIT; }
+              var tbody=document.getElementById('cviDeltaTable'), stdDelta=0, demonExtra=0, labels=[], data=[], colors=[];
+              abilities.forEach(function(a){
+                var name=a[0], base=a[1], coef=a[2], cd=a[3], demon=a[4], L=landed(base,coef), delta=L*dCrit/cd;
+                if(demon) demonExtra+=delta; else stdDelta+=delta;
+                var r=tbody.insertRow();
+                r.innerHTML='<td>'+name+(demon?' <span style="color:#8b949e;">(demon/undead only)</span>':'')+'</td><td>'+Math.round(L).toLocaleString()+'</td><td>'+cd+'s</td><td style="color:#7ee787;">+'+delta.toFixed(2)+' TPS</td>';
+                labels.push(name.replace(/ \(.*/,'')); data.push(+delta.toFixed(3)); colors.push(demon?'rgba(255,213,79,0.85)':'rgba(126,231,135,0.85)');
+              });
+              var demonTotal=stdDelta+demonExtra;
+              document.getElementById('cviFormula').textContent =
+                '+TPS(B) = (base + SP×coef + 219) × 1.9 RF × 0.8811 hit × (0.5 × 1% crit) ÷ CD\n' +
+                'e.g. Judgement of Corruption: (605 + 709×0.429 + 219) × 1.9 × 0.8811 × 0.005 ÷ 10s = +' + (landed(605,0.429)*dCrit/10).toFixed(2) + ' TPS';
+              document.getElementById('cviTotals').innerHTML =
+                '<strong>Config B&rsquo;s personal single-target TPS edge:</strong><br>&nbsp;&nbsp;<span style="color:#7ee787;">Standard boss: <strong>+'+stdDelta.toFixed(2)+' TPS</strong></span> (Judgement of Corruption only)<br>&nbsp;&nbsp;<span style="color:#7ee787;">Demon / Undead boss: <strong>+'+demonTotal.toFixed(2)+' TPS</strong></span> (JoC + Exorcism + Holy Wrath)<br><span style="color:#8b949e;">Melee crit is identical between the configs, so auto-attacks and the low-gear JoB are unchanged.</span>';
+              document.getElementById('cviVerdict').innerHTML =
+                '<strong>Take Config B &mdash; 1/5 Conviction + 3/3 Improved Seal of the Crusader.</strong> A small but real single-target win (<span style="color:#7ee787;">+'+stdDelta.toFixed(1)+' TPS</span> standard, <span style="color:#7ee787;">+'+demonTotal.toFixed(1)+' TPS</span> demon) because the point converts melee-only Conviction crit into all-attacks crit on the boss &mdash; the crit your spell-based judgements use. It&rsquo;s also <strong>strictly better for the raid</strong>: the 3rd Imp SotC point gives every attacker on the boss +1% crit. Config A only edges ahead on heavy multi-target.';
+
+              if (typeof Chart !== 'undefined') {
+                new Chart(document.getElementById('cviDeltaChart').getContext('2d'), {
+                  type:'bar',
+                  data:{ labels:labels, datasets:[{ label:'+TPS for Config B (from the extra 1% spell crit)', data:data, backgroundColor:colors, borderColor:colors.map(function(c){return c.replace('0.85','1');}), borderWidth:1 }] },
+                  options:{ responsive:true, plugins:{ title:{ display:true, text:'Where Config B gains its TPS (per ability)', color:'#e6edf3', font:{size:13,weight:'bold'} }, legend:{ display:false } }, scales:{ x:{ ticks:{ color:'#8b949e' }, grid:{ color:'rgba(139,148,158,0.12)' } }, y:{ beginAtZero:true, title:{ display:true, text:'TPS gained (B − A)', color:'#e6edf3' }, ticks:{ color:'#8b949e' }, grid:{ color:'rgba(139,148,158,0.12)' } } } }
+                });
+                new Chart(document.getElementById('cviCeChart').getContext('2d'), {
+                  type:'bar',
+                  data:{ labels:['One-Handed Weapon Spec','Combat Expertise'], datasets:[{ label:'TPS gained per talent point', data:[27, 0.0], backgroundColor:['rgba(126,231,135,0.85)','rgba(255,213,79,0.85)'], borderColor:['rgba(126,231,135,1)','rgba(255,213,79,1)'], borderWidth:1 }] },
+                  options:{ responsive:true, plugins:{ title:{ display:true, text:'Threat per talent point (Sanctity reference sim)', color:'#e6edf3', font:{size:13,weight:'bold'} }, legend:{ display:false } }, scales:{ x:{ ticks:{ color:'#8b949e' }, grid:{ color:'rgba(139,148,158,0.12)' } }, y:{ beginAtZero:true, title:{ display:true, text:'TPS gained per rank', color:'#e6edf3' }, ticks:{ color:'#8b949e' }, grid:{ color:'rgba(139,148,158,0.12)' } } } }
+                });
+              }
+            })();
+            </script>
+        </details>
 
         <!-- ============================================================ -->
         <!-- COMBAT EXPERTISE VS IMPROVED SANCTITY AURA -->
@@ -2608,7 +2692,7 @@
         <!-- THREAT VS SURVIVABILITY TALENTS (inlined mini-guide) -->
         <!-- ============================================================ -->
         <h2 id="threat-vs-survivability-talents"><a href="#toc">Threat vs Survivability Talents</a></h2>
-        <p>Every talent that moves your threat or your survival, rated and assembled into three specs &mdash; <span style="color:#7ee787;font-weight:bold;">max threat</span>, <span style="color:#d2a8ff;font-weight:bold;">balanced</span>, and <span style="color:#58a6ff;font-weight:bold;">max survivability</span>. The per-point math behind the close calls (Conviction vs Improved SotC, 1H Weapon Spec vs Combat Expertise) lives in the interactive <a href="sanctity_conviction_vs_impsotc.html" style="color:#58a6ff;">Sanctity Talent Trade-offs</a> companion.</p>
+        <p>Every talent that moves your threat or your survival, rated and assembled into three specs &mdash; <span style="color:#7ee787;font-weight:bold;">max threat</span>, <span style="color:#d2a8ff;font-weight:bold;">balanced</span>, and <span style="color:#58a6ff;font-weight:bold;">max survivability</span>. The per-point math behind the close calls (Conviction vs Improved SotC, 1H Weapon Spec vs Combat Expertise) lives in the interactive <a href="#talent-tradeoffs" style="color:#58a6ff;">Sanctity Talent Trade-offs</a> companion.</p>
 
         <div class="warning">
             <strong>The hard constraint first:</strong> in TBC, <em>no</em> amount of threat matters if you're dead. Every tanking spec &mdash; including the max-threat one &mdash; must stay <strong>uncrittable</strong> (490 defense skill vs a level-73 boss, with <a href="#resilience-vs-defense">Anticipation</a> covering 20 of it) and <strong>uncrushable</strong> (102.4% combined avoidance + block with Holy Shield up). That fixes a shared spine of talents in all three specs below; everything else is the threat-vs-survival dial.
@@ -2620,17 +2704,17 @@
             <tr><th>Talent</th><th>Tree</th><th>Effect</th><th>Value</th></tr>
             <tr><td><strong>Improved Righteous Fury</strong> 3/3</td><td style="color:#7ee787;">Prot</td><td>Holy threat modifier <strong>1.6&times; &rarr; 1.9&times;</strong> &mdash; multiplies <em>all</em> your Holy threat, the single biggest threat talent in the game. (Also &minus;6% damage taken.)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Holy Shield</strong> + <strong>Improved Holy Shield</strong> 2/2</td><td style="color:#7ee787;">Prot</td><td>The block-nuke &mdash; ~126&ndash;130 TPS at 100% uptime, 8 charges instead of 4. (Also your crush immunity.)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;&#9733;</td></tr>
-            <tr><td><strong>One-Handed Weapon Specialization</strong> 0&ndash;5/5</td><td style="color:#7ee787;">Prot</td><td><strong>+2% to ALL damage per rank</strong> &mdash; ~<span style="color:#7ee787;">+27 TPS per rank</span> in this guide's reference sim. The best raw-threat point after the core. (<a href="sanctity_conviction_vs_impsotc.html" style="color:#58a6ff;">math</a>)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;</td></tr>
+            <tr><td><strong>One-Handed Weapon Specialization</strong> 0&ndash;5/5</td><td style="color:#7ee787;">Prot</td><td><strong>+2% to ALL damage per rank</strong> &mdash; ~<span style="color:#7ee787;">+27 TPS per rank</span> in this guide's reference sim. The best raw-threat point after the core. (<a href="#talent-tradeoffs" style="color:#58a6ff;">math</a>)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Sanctity Aura</strong> 1/1</td><td style="color:#58a6ff;">Ret</td><td>+10% Holy damage to your whole party, <em>you included</em> &mdash; a flat +10% on the Holy bulk of your threat. Needs 21 pts in Ret.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Blessing of Sanctuary</strong> 1/1</td><td style="color:#7ee787;">Prot</td><td>46 Holy to the attacker per block &times; 1.9 RF (~33 TPS) <em>and</em> flat damage reduction. Always on.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Precision</strong> 3/3</td><td style="color:#7ee787;">Prot</td><td>+3% melee / +1% spell hit. Lands more judgements, Consecrations and seal procs &mdash; threat <em>consistency</em> and partial spell-hit toward the cap.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;</td></tr>
-            <tr><td><strong>Improved Seal of the Crusader</strong> 0&ndash;3/3</td><td style="color:#58a6ff;">Ret</td><td>+1%/rank crit-to-be-hit on the JotC target for <strong>all attackers, melee + spell</strong> (raid-wide). Boosts your spell-crit judgements. (<a href="sanctity_conviction_vs_impsotc.html" style="color:#58a6ff;">vs Conviction</a>)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;</td></tr>
+            <tr><td><strong>Improved Seal of the Crusader</strong> 0&ndash;3/3</td><td style="color:#58a6ff;">Ret</td><td>+1%/rank crit-to-be-hit on the JotC target for <strong>all attackers, melee + spell</strong> (raid-wide). Boosts your spell-crit judgements. (<a href="#talent-tradeoffs" style="color:#58a6ff;">vs Conviction</a>)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Sanctified Seals</strong> 3/3</td><td style="color:#58a6ff;">Ret</td><td>+3% crit with <em>both</em> spells and melee. The +3% <strong>spell</strong> crit is the part that matters &mdash; it feeds your judgements (unlike Conviction).</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Crusade</strong> 3/3</td><td style="color:#58a6ff;">Ret</td><td>+3% damage to Humanoids / Demons / Undead / Elementals &mdash; nearly every Outland boss. Flat threat multiplier on covered targets.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Avenger's Shield</strong> 1/1</td><td style="color:#7ee787;">Prot</td><td>Ranged pull, 3 targets, 6s daze, big per-cast threat. Best for <strong>AOE / pulls</strong>; 30s CD so modest in sustained single-target. 41-pt Prot talent.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Improved Sanctity Aura</strong> 2/2</td><td style="color:#58a6ff;">Ret</td><td>+2% to <em>all</em> damage (physical + every magic school) for the party, you included. Small personal threat, real party DPS.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;</td></tr>
             <tr><td><strong>Benediction</strong> 5/5</td><td style="color:#58a6ff;">Ret</td><td>&minus;15% seal/judgement (and instant-spell) mana cost. No direct threat, but it's what lets you <em>run</em> Consecration + Holy Shield all fight. Mandatory.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;</td></tr>
-            <tr><td><strong>Conviction</strong> 0&ndash;5/5</td><td style="color:#58a6ff;">Ret</td><td>+1%/rank <strong>melee</strong> crit only &mdash; doesn't touch your spell-crit judgements, so weak for the SoR/SoC rotation. (<a href="sanctity_conviction_vs_impsotc.html" style="color:#58a6ff;">why Imp SotC beats it</a>)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;</td></tr>
+            <tr><td><strong>Conviction</strong> 0&ndash;5/5</td><td style="color:#58a6ff;">Ret</td><td>+1%/rank <strong>melee</strong> crit only &mdash; doesn't touch your spell-crit judgements, so weak for the SoR/SoC rotation. (<a href="#talent-tradeoffs" style="color:#58a6ff;">why Imp SotC beats it</a>)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;</td></tr>
             <tr><td><strong>Reckoning</strong> 5/5</td><td style="color:#7ee787;">Prot</td><td>Chance on being hit for an extra melee swing &rarr; more seal procs. Minor threat; mostly tree-pathing filler.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;</td></tr>
         </table>
 
@@ -2642,7 +2726,7 @@
             <tr><td><strong>Holy Shield</strong> + <strong>Improved Holy Shield</strong></td><td style="color:#7ee787;">Prot</td><td>Crush immunity itself (blocks can't be crushing) + extra block chance/charges. Also your #1 threat ability &mdash; the talent that does both jobs.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Improved Righteous Fury</strong> 3/3</td><td style="color:#7ee787;">Prot</td><td>&minus;6% all damage taken while Righteous Fury is up (you always have it up). Free mitigation riding on the top threat talent.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Ardent Defender</strong> 5/5</td><td style="color:#7ee787;">Prot</td><td>Below 35% HP, <strong>&minus;30% damage taken</strong>. A dedicated panic button against spike damage &mdash; the headline pure-survival talent the standard builds skip.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;</td></tr>
-            <tr><td><strong>Combat Expertise</strong> 0&ndash;5/5</td><td style="color:#7ee787;">Prot</td><td>+2% Stamina &amp; +1 expertise per rank. Expertise removes boss <strong>parry</strong> (parry-haste safety) and dodge. <strong>~0 threat</strong> &mdash; a survivability talent. (<a href="sanctity_conviction_vs_impsotc.html" style="color:#58a6ff;">math</a>)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;</td></tr>
+            <tr><td><strong>Combat Expertise</strong> 0&ndash;5/5</td><td style="color:#7ee787;">Prot</td><td>+2% Stamina &amp; +1 expertise per rank. Expertise removes boss <strong>parry</strong> (parry-haste safety) and dodge. <strong>~0 threat</strong> &mdash; a survivability talent. (<a href="#talent-tradeoffs" style="color:#58a6ff;">math</a>)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Toughness</strong> 5/5</td><td style="color:#7ee787;">Prot</td><td>+10% armor from items &mdash; flat physical mitigation across the whole fight.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Deflection</strong> 5/5</td><td style="color:#58a6ff;">Ret</td><td>+5% parry &mdash; pure avoidance, and it counts toward the 102.4% uncrushable wall. Cheapest deep-Ret defensive.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Blessing of Sanctuary</strong> 1/1</td><td style="color:#7ee787;">Prot</td><td>Flat damage reduction per hit (up to ~80) on top of its threat. Always-on mitigation.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;</td></tr>
