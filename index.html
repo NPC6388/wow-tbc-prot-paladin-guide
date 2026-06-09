@@ -5275,38 +5275,46 @@ For comparison (same 60s window, best realistic non-twist packages):
                 afterDraw: function(chart) {
                     var ctx = chart.ctx;
                     var xScale = chart.scales.x, yScale = chart.scales.y;
-                    function drawVline(x, label, color, dashed, yOffset) {
-                        var px = xScale.getPixelForValue(x);
+
+                    // Reference lines in chronological order (top to bottom in the call-out stack).
+                    var lines = [{ x: fiveStackT, label: '5 stacks', color: '#8b949e', dashed: true }];
+                    if (crossRetJotCvsSoR  !== null) lines.push({ x: crossRetJotCvsSoR,  label: 'Ret JotC > SoR @ ' + crossRetJotCvsSoR.toFixed(0)  + 's', color: '#58a6ff' });
+                    if (crossSwapJotCvsSoR !== null) lines.push({ x: crossSwapJotCvsSoR, label: 'Swap+JotC (self) > SoR @ ' + crossSwapJotCvsSoR.toFixed(0) + 's', color: '#d2a8ff' });
+                    if (crossSwapvsSoR     !== null) lines.push({ x: crossSwapvsSoR,     label: 'Swap > SoR @ ' + crossSwapvsSoR.toFixed(0)     + 's', color: '#b388ff' });
+                    if (crossSoCvsSoR      !== null) lines.push({ x: crossSoCvsSoR,      label: 'SoC > SoR @ ' + crossSoCvsSoR.toFixed(0)      + 's', color: '#f0a500' });
+
+                    // Full-height reference lines.
+                    lines.forEach(function(L) {
+                        var px = xScale.getPixelForValue(L.x);
                         ctx.save();
-                        ctx.strokeStyle = color;
-                        ctx.lineWidth = 1.5;
-                        if (dashed) ctx.setLineDash([5, 4]);
-                        ctx.beginPath();
-                        ctx.moveTo(px, yScale.top);
-                        ctx.lineTo(px, yScale.bottom);
-                        ctx.stroke();
-                        ctx.setLineDash([]);
-                        ctx.fillStyle = color;
-                        ctx.font = '11px sans-serif';
-                        // right-justify labels near the right edge so they read back into the chart instead of overflowing
-                        var nearRight = px > xScale.left + (xScale.right - xScale.left) * 0.7;
-                        ctx.textAlign = nearRight ? 'right' : 'left';
-                        ctx.fillText(label, px + (nearRight ? -4 : 4), yScale.top + 14 + (yOffset || 0));
+                        ctx.strokeStyle = L.color; ctx.lineWidth = 1.5;
+                        if (L.dashed) ctx.setLineDash([5, 4]);
+                        ctx.beginPath(); ctx.moveTo(px, yScale.top); ctx.lineTo(px, yScale.bottom); ctx.stroke();
                         ctx.restore();
-                    }
-                    drawVline(fiveStackT, '5 stacks', '#8b949e', true, 0);
-                    if (crossSwapvsSoR !== null) {
-                        drawVline(crossSwapvsSoR, 'Swap > SoR @ ' + crossSwapvsSoR.toFixed(1) + 's', '#b388ff', false, 15);
-                    }
-                    if (crossSoCvsSoR !== null) {
-                        drawVline(crossSoCvsSoR, 'SoC > SoR @ ' + crossSoCvsSoR.toFixed(1) + 's', '#f0a500', false, 30);
-                    }
-                    if (crossSwapJotCvsSoR !== null) {
-                        drawVline(crossSwapJotCvsSoR, 'Swap+JotC (self) > SoR @ ' + crossSwapJotCvsSoR.toFixed(1) + 's', '#d2a8ff', false, 45);
-                    }
-                    if (crossRetJotCvsSoR !== null) {
-                        drawVline(crossRetJotCvsSoR, 'Ret JotC > SoR @ ' + crossRetJotCvsSoR.toFixed(1) + 's', '#58a6ff', false, 60);
-                    }
+                    });
+
+                    // Park each label in the clear band (so no reference line passes through the text),
+                    // and connect it to its line with a thin call-out leader + a dot on the line.
+                    var labelX = xScale.left + (xScale.right - xScale.left) * 0.40;
+                    ctx.save();
+                    ctx.font = '11px sans-serif';
+                    ctx.textAlign = 'left';
+                    ctx.textBaseline = 'middle';
+                    lines.forEach(function(L, i) {
+                        var px = xScale.getPixelForValue(L.x);
+                        var ly = yScale.top + 12 + i * 16;
+                        var w = ctx.measureText(L.label).width;
+                        ctx.setLineDash([]);
+                        ctx.strokeStyle = L.color; ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        if (px <= labelX) { ctx.moveTo(px, ly); ctx.lineTo(labelX - 5, ly); }
+                        else { ctx.moveTo(labelX + w + 5, ly); ctx.lineTo(px, ly); }
+                        ctx.stroke();
+                        ctx.fillStyle = L.color;
+                        ctx.beginPath(); ctx.arc(px, ly, 2, 0, Math.PI * 2); ctx.fill();
+                        ctx.fillText(L.label, labelX, ly);
+                    });
+                    ctx.restore();
                 }
             }]
         });
