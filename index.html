@@ -2155,11 +2155,12 @@
                 <th>Cum. SoC</th>
                 <th>Cum. Swap</th>
                 <th style="color:#d2a8ff;">Cum. Swap+JotC (self) @ 2nd CD</th>
+                <th style="color:#58a6ff;">Cum. Swap+Ret JotC @ 1s</th>
             </tr>
             <tbody id="stackTable"></tbody>
         </table>
         </div>
-        <p style="color: #8b949e; font-size: 0.85em;"><strong>Time</strong> = expected time to reach each stack level from first SoC auto (1.8s weapon, ~70% proc rate). <strong>Cum. SoC</strong> = pure SoC (no swap), <strong>Cum. SoR</strong> = pure SoR, <strong>Cum. Swap</strong> = seal swap (SoC → JSoC → SoR → SoC → JSoC), <strong style="color:#d2a8ff;">Cum. Swap+JotC (self)</strong> = the same swap but <em>your own</em> 2nd judge is Judgement of the Crusader, so every later SoR proc and judge is amplified by +219. All cumulatives sourced from the same discrete-event simulation as the timeline graph above. Cumulative columns are <span style="color:#7ee787;">green</span> while ahead of pure SoR and <span style="color:#f85149;">red</span> while behind; the <strong>highlighted row</strong> marks where the <span style="color:#b388ff;">seal swap (~50s)</span> first overtakes pure SoR. With the corrected 0.728 JoR coefficient, <span style="color:#f0a500;">pure SoC</span> doesn’t overtake pure SoR until <strong>~180s</strong> &mdash; beyond this ramp-focused table, so see the cumulative-threat chart above.</p>
+        <p style="color: #8b949e; font-size: 0.85em;"><strong>Time</strong> = expected time to reach each stack level from first SoC auto (1.8s weapon, ~70% proc rate). <strong>Cum. SoC</strong> = pure SoC (no swap), <strong>Cum. SoR</strong> = pure SoR, <strong>Cum. Swap</strong> = seal swap (SoC → JSoC → SoR → SoC → JSoC), <strong style="color:#d2a8ff;">Cum. Swap+JotC (self)</strong> = the same swap but <em>your own</em> 2nd judge is Judgement of the Crusader, so every later SoR proc and judge is amplified by +219. <strong style="color:#58a6ff;">Cum. Swap+Ret JotC</strong> = the same swap but a <em>Ret paladin</em> supplies Judgement of the Crusader from 1s, so the +219 is up almost from the pull and none of your own judges is spent on it. All cumulatives sourced from the same discrete-event simulation as the timeline graph above. Cumulative columns are <span style="color:#7ee787;">green</span> while ahead of pure SoR and <span style="color:#f85149;">red</span> while behind; the <strong>highlighted row</strong> marks where the <span style="color:#b388ff;">seal swap (~50s)</span> first overtakes pure SoR. With the corrected 0.728 JoR coefficient, <span style="color:#f0a500;">pure SoC</span> doesn’t overtake pure SoR until <strong>~180s</strong> &mdash; beyond this ramp-focused table, so see the cumulative-threat chart above.</p>
     </details>
 
     <!-- ============================================================ -->
@@ -5102,6 +5103,7 @@ For comparison (same 60s window, best realistic non-twist packages):
         const cumSoR  = simCumAt(sealSimSoR,  t);
         const cumSwap = simCumAt(sealSimSwap, t);
         const cumSwapJotC = simCumAt(sealSimSwapJotC, t);
+        const cumSwapRetJotC = simCumAt(sealSimSwapRetJotC, t);
 
         const dot = (SOC_DOT_TPS_PS * s).toFixed(0);
         const socT = socTotalTPS(s).toFixed(0);
@@ -5113,10 +5115,12 @@ For comparison (same 60s window, best realistic non-twist packages):
         const cumSoRStr  = Math.round(cumSoR).toLocaleString();
         const cumSwapStr = Math.round(cumSwap).toLocaleString();
         const cumSwapJotCStr = Math.round(cumSwapJotC).toLocaleString();
+        const cumSwapRetJotCStr = Math.round(cumSwapRetJotC).toLocaleString();
         const socColor   = cumSoC  >= cumSoR ? '#7ee787' : '#f85149';
         const swapColor  = cumSwap >= cumSoR ? '#7ee787' : '#f85149';
         const swapJotCColor = cumSwapJotC >= cumSoR ? '#7ee787' : '#f85149';
-        stBody.innerHTML += '<tr><td>' + timeStr + '</td><td>' + SOR_TPS + '</td><td>' + Math.round(JOR_PER_JUDGE / JCD) + '</td><td><strong>' + sorT + '</strong></td><td>' + s + '</td><td>' + dot + '</td><td><strong>' + socT + '</strong></td><td>' + cumSoRStr + '</td><td style="color:' + socColor + ';">' + cumSoCStr + '</td><td style="color:' + swapColor + ';">' + cumSwapStr + '</td><td style="color:' + swapJotCColor + ';">' + cumSwapJotCStr + '</td></tr>';
+        const swapRetJotCColor = cumSwapRetJotC >= cumSoR ? '#7ee787' : '#f85149';
+        stBody.innerHTML += '<tr><td>' + timeStr + '</td><td>' + SOR_TPS + '</td><td>' + Math.round(JOR_PER_JUDGE / JCD) + '</td><td><strong>' + sorT + '</strong></td><td>' + s + '</td><td>' + dot + '</td><td><strong>' + socT + '</strong></td><td>' + cumSoRStr + '</td><td style="color:' + socColor + ';">' + cumSoCStr + '</td><td style="color:' + swapColor + ';">' + cumSwapStr + '</td><td style="color:' + swapJotCColor + ';">' + cumSwapJotCStr + '</td><td style="color:' + swapRetJotCColor + ';">' + cumSwapRetJotCStr + '</td></tr>';
     }
 
     // Cumulative crossover times: the first instant each SoC variant's running
@@ -5145,6 +5149,7 @@ For comparison (same 60s window, best realistic non-twist packages):
         var cumSoR2  = simCumAt(sealSimSoR,  swapT);
         var cumSwap2 = simCumAt(sealSimSwap, swapT);
         var cumSwapJotC2 = simCumAt(sealSimSwapJotC, swapT);
+        var cumSwapRetJotC2 = simCumAt(sealSimSwapRetJotC, swapT);
 
         // Highlight rows where a crossover just happened
         var swapJustCrossed = !swapCrossDone && cumSwap2 > cumSoR2;
@@ -5159,6 +5164,7 @@ For comparison (same 60s window, best realistic non-twist packages):
         var socColor2  = cumSoC2  >= cumSoR2 ? '#7ee787' : '#f85149';
         var swapColor2 = cumSwap2 >= cumSoR2 ? '#7ee787' : '#f85149';
         var swapJotCColor2 = cumSwapJotC2 >= cumSoR2 ? '#7ee787' : '#f85149';
+        var swapRetJotCColor2 = cumSwapRetJotC2 >= cumSoR2 ? '#7ee787' : '#f85149';
 
         stBody.innerHTML += '<tr style="' + rowBg + '">' +
             '<td>' + swapT.toFixed(1) + 's</td>' +
@@ -5171,7 +5177,8 @@ For comparison (same 60s window, best realistic non-twist packages):
             '<td>' + Math.round(cumSoR2).toLocaleString() + '</td>' +
             '<td style="color:' + socColor2 + ';">' + Math.round(cumSoC2).toLocaleString() + '</td>' +
             '<td style="color:' + swapColor2 + ';">' + Math.round(cumSwap2).toLocaleString() + '</td>' +
-            '<td style="color:' + swapJotCColor2 + ';">' + Math.round(cumSwapJotC2).toLocaleString() + '</td></tr>';
+            '<td style="color:' + swapJotCColor2 + ';">' + Math.round(cumSwapJotC2).toLocaleString() + '</td>' +
+            '<td style="color:' + swapRetJotCColor2 + ';">' + Math.round(cumSwapRetJotC2).toLocaleString() + '</td></tr>';
     }
     document.getElementById('crossoverTip').innerHTML = '<strong>SoC surpasses SoR at ' + crossStack + ' stacks</strong> (' + socTotalTPS(crossStack).toFixed(0) + ' vs ' + SOR_TOTAL_TPS.toFixed(0) + ' TPS). At 5 stacks with SoR swap, you get <strong>~' + Math.round(SOC_DOT_TPS_PS * 5 + SOR_TPS) + ' active TPS</strong> from seals (DoT + SoR procs combined).' +
         '<br><br>That is the <em>instantaneous TPS</em> crossover. On <strong>cumulative</strong> threat from a cold open (paying the stack ramp), SoR’s no-ramp head start keeps it ahead far longer — and with the corrected <strong>0.728 JoR coefficient</strong> the SoR line is higher, pushing the crossover out further: the seal swap’s running total only overtakes pure SoR at <strong>~' + (swapCrossTime !== null ? swapCrossTime.toFixed(0) : '50') + 's</strong> (the highlighted row in the detailed table below), and <strong>pure SoC</strong> (no swap) doesn’t catch pure SoR until <strong>~' + (socCrossTime !== null ? socCrossTime.toFixed(0) : '180') + 's</strong> — see the cumulative-threat chart above.';
