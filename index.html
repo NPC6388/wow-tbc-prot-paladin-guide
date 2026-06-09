@@ -2106,7 +2106,7 @@
         </table>
 
         <div class="mana-warning">
-            <strong>Key Principle:</strong> Holy Shield and Judgement are always worth casting. Consecration is the first ability you cut when mana is tight. On fights where mana is the limiting factor, plan your Super Mana Potion and Dark Rune usage <em>proactively</em> (at 50% mana, not 5%).
+            <strong>Key Principle:</strong> Holy Shield and Judgement are always worth casting. Consecration is the first ability you cut when mana is tight. On fights where mana is the limiting factor, plan your Super Mana Potion and Dark Rune usage <em>proactively</em> (around 70% mana, not 5%). At ~70% your missing mana is roughly a full Super Mana Potion, so you bank the whole pot without overflow <em>and</em> never get caught on the floor &mdash; waiting until you're nearly dry risks a stretch with no Consecration (or a death) before it comes back up.
         </div>
 
         <!-- ============================================================ -->
@@ -2154,12 +2154,12 @@
                 <th>Cum. SoR</th>
                 <th>Cum. SoC</th>
                 <th>Cum. Swap</th>
-                <th style="color:#d2a8ff;">Cum. Swap+Ret JotC @ 2nd CD</th>
+                <th style="color:#d2a8ff;">Cum. Swap+JotC (self) @ 2nd CD</th>
             </tr>
             <tbody id="stackTable"></tbody>
         </table>
         </div>
-        <p style="color: #8b949e; font-size: 0.85em;"><strong>Time</strong> = expected time to reach each stack level from first SoC auto (1.8s weapon, ~70% proc rate). <strong>Cum. SoC</strong> = pure SoC (no swap), <strong>Cum. SoR</strong> = pure SoR, <strong>Cum. Swap</strong> = seal swap (SoC → JSoC → SoR → SoC → JSoC), <strong style="color:#d2a8ff;">Cum. Swap+Ret JotC</strong> = the same swap but the 2nd judge is Judgement of the Crusader, so every later SoR proc and judge is amplified by +219. All cumulatives sourced from the same discrete-event simulation as the timeline graph above. Cumulative columns are <span style="color:#7ee787;">green</span> while ahead of pure SoR and <span style="color:#f85149;">red</span> while behind; the <strong>highlighted row</strong> marks where the <span style="color:#b388ff;">seal swap (~50s)</span> first overtakes pure SoR. With the corrected 0.728 JoR coefficient, <span style="color:#f0a500;">pure SoC</span> doesn’t overtake pure SoR until <strong>~180s</strong> &mdash; beyond this ramp-focused table, so see the cumulative-threat chart above.</p>
+        <p style="color: #8b949e; font-size: 0.85em;"><strong>Time</strong> = expected time to reach each stack level from first SoC auto (1.8s weapon, ~70% proc rate). <strong>Cum. SoC</strong> = pure SoC (no swap), <strong>Cum. SoR</strong> = pure SoR, <strong>Cum. Swap</strong> = seal swap (SoC → JSoC → SoR → SoC → JSoC), <strong style="color:#d2a8ff;">Cum. Swap+JotC (self)</strong> = the same swap but <em>your own</em> 2nd judge is Judgement of the Crusader, so every later SoR proc and judge is amplified by +219. All cumulatives sourced from the same discrete-event simulation as the timeline graph above. Cumulative columns are <span style="color:#7ee787;">green</span> while ahead of pure SoR and <span style="color:#f85149;">red</span> while behind; the <strong>highlighted row</strong> marks where the <span style="color:#b388ff;">seal swap (~50s)</span> first overtakes pure SoR. With the corrected 0.728 JoR coefficient, <span style="color:#f0a500;">pure SoC</span> doesn’t overtake pure SoR until <strong>~180s</strong> &mdash; beyond this ramp-focused table, so see the cumulative-threat chart above.</p>
     </details>
 
     <!-- ============================================================ -->
@@ -5298,7 +5298,7 @@ For comparison (same 60s window, best realistic non-twist packages):
                         drawVline(crossSoCvsSoR, 'SoC > SoR @ ' + crossSoCvsSoR.toFixed(1) + 's', '#f0a500', false, 30);
                     }
                     if (crossSwapJotCvsSoR !== null) {
-                        drawVline(crossSwapJotCvsSoR, 'Swap+Ret JotC > SoR @ ' + crossSwapJotCvsSoR.toFixed(1) + 's', '#d2a8ff', false, 45);
+                        drawVline(crossSwapJotCvsSoR, 'Swap+JotC (self) > SoR @ ' + crossSwapJotCvsSoR.toFixed(1) + 's', '#d2a8ff', false, 45);
                     }
                     if (crossRetJotCvsSoR !== null) {
                         drawVline(crossRetJotCvsSoR, 'Ret JotC > SoR @ ' + crossRetJotCvsSoR.toFixed(1) + 's', '#58a6ff', false, 60);
@@ -6206,7 +6206,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             { label: 'Pure SoC',  data: seriesSoC,  color: '#f0a500' },
             { label: 'Pure SoR',  data: seriesSoR,  color: '#7ee787' },
             { label: 'Seal Swap', data: seriesSwap, color: '#b388ff' },
-            { label: 'Seal Swap + Ret JotC', data: seriesSwapJotC, color: '#d2a8ff' }
+            { label: 'Seal Swap + JotC', data: seriesSwapJotC, color: '#d2a8ff' }
         ].sort(function(a, b) { return b.data[b.data.length - 1] - a.data[a.data.length - 1]; });
 
         // Y-axis auto-fit across the full SP sweep
@@ -6289,15 +6289,15 @@ For comparison (same 60s window, best realistic non-twist packages):
 
         document.getElementById('chartSealScalingNote').innerHTML =
             '<strong>Steady-state TPS at key SP levels:</strong><br>' +
-            '&nbsp;&nbsp;SP=0: SoC <strong>' + tpsAt(seriesSoC, 0).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 0).toFixed(1) + '</strong> &middot; Swap <strong>' + tpsAt(seriesSwap, 0).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Swap+Ret JotC <strong>' + tpsAt(seriesSwapJotC, 0).toFixed(1) + '</strong></span><br>' +
-            '&nbsp;&nbsp;SP=400: SoC <strong>' + tpsAt(seriesSoC, 400).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 400).toFixed(1) + '</strong> &middot; Swap <strong>' + tpsAt(seriesSwap, 400).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Swap+Ret JotC <strong>' + tpsAt(seriesSwapJotC, 400).toFixed(1) + '</strong></span><br>' +
-            '&nbsp;&nbsp;SP=800: SoC <strong>' + tpsAt(seriesSoC, 800).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 800).toFixed(1) + '</strong> &middot; Swap <strong>' + tpsAt(seriesSwap, 800).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Swap+Ret JotC <strong>' + tpsAt(seriesSwapJotC, 800).toFixed(1) + '</strong></span><br>' +
-            '&nbsp;&nbsp;SP=1200: SoC <strong>' + tpsAt(seriesSoC, 1200).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 1200).toFixed(1) + '</strong> &middot; Swap <strong>' + tpsAt(seriesSwap, 1200).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Swap+Ret JotC <strong>' + tpsAt(seriesSwapJotC, 1200).toFixed(1) + '</strong></span><br><br>' +
+            '&nbsp;&nbsp;SP=0: SoC <strong>' + tpsAt(seriesSoC, 0).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 0).toFixed(1) + '</strong> &middot; Swap <strong>' + tpsAt(seriesSwap, 0).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Swap+JotC <strong>' + tpsAt(seriesSwapJotC, 0).toFixed(1) + '</strong></span><br>' +
+            '&nbsp;&nbsp;SP=400: SoC <strong>' + tpsAt(seriesSoC, 400).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 400).toFixed(1) + '</strong> &middot; Swap <strong>' + tpsAt(seriesSwap, 400).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Swap+JotC <strong>' + tpsAt(seriesSwapJotC, 400).toFixed(1) + '</strong></span><br>' +
+            '&nbsp;&nbsp;SP=800: SoC <strong>' + tpsAt(seriesSoC, 800).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 800).toFixed(1) + '</strong> &middot; Swap <strong>' + tpsAt(seriesSwap, 800).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Swap+JotC <strong>' + tpsAt(seriesSwapJotC, 800).toFixed(1) + '</strong></span><br>' +
+            '&nbsp;&nbsp;SP=1200: SoC <strong>' + tpsAt(seriesSoC, 1200).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 1200).toFixed(1) + '</strong> &middot; Swap <strong>' + tpsAt(seriesSwap, 1200).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Swap+JotC <strong>' + tpsAt(seriesSwapJotC, 1200).toFixed(1) + '</strong></span><br><br>' +
             '<strong>Per-100-SP gain (slope across the full sweep):</strong> ' +
             'SoC <strong>+' + ((seriesSoC[seriesSoC.length-1]   - seriesSoC[0])   / (SP_MAX/100)).toFixed(1) + ' TPS/100 SP</strong> &middot; ' +
             'SoR <strong>+' + ((seriesSoR[seriesSoR.length-1]   - seriesSoR[0])   / (SP_MAX/100)).toFixed(1) + ' TPS/100 SP</strong> &middot; ' +
             'Swap <strong>+' + ((seriesSwap[seriesSwap.length-1] - seriesSwap[0]) / (SP_MAX/100)).toFixed(1) + ' TPS/100 SP</strong> &middot; ' +
-            'Swap+Ret JotC <strong>+' + ((seriesSwapJotC[seriesSwapJotC.length-1] - seriesSwapJotC[0]) / (SP_MAX/100)).toFixed(1) + ' TPS/100 SP</strong><br><br>' +
+            'Swap+JotC <strong>+' + ((seriesSwapJotC[seriesSwapJotC.length-1] - seriesSwapJotC[0]) / (SP_MAX/100)).toFixed(1) + ' TPS/100 SP</strong><br><br>' +
             '<strong>Read the chart:</strong> if two lines start far apart at SP=0 but converge as SP rises, the lower one is catching up (scales harder). If they fan out, the upper one is widening its lead (scales harder). The slope of each line is its TPS-per-SP &mdash; steeper = scales harder. <span style="color:#d2a8ff;">Seal Swap + JotC</span> rides a flat +219-per-hit boost above the plain swap; since that bonus does <em>not</em> scale with SP, the two lines run parallel and the gap shrinks in relative terms as gear improves.';
     })();
 
