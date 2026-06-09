@@ -514,6 +514,53 @@
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
         }
+
+        /* GCD timeline graphic (Combat Rotations) */
+        .gcd-timeline {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 18px 15px 12px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .gcd-track {
+            display: flex;
+            gap: 4px;
+            min-width: 640px;
+        }
+        .gcd-cell {
+            flex: 1;
+            min-width: 64px;
+            border-radius: 4px;
+            padding: 8px 4px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.2;
+        }
+        .gcd-cell .gcd-time {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.8);
+            margin-top: 3px;
+        }
+        .gcd-hs   { background: linear-gradient(135deg,#1f6feb,#1a4d9e); }   /* Holy Shield - blue */
+        .gcd-cons { background: linear-gradient(135deg,#2a9d4a,#1e7a36); }   /* Consecration - green */
+        .gcd-judge{ background: linear-gradient(135deg,#8e44ad,#5b2c6f); }   /* Judgement - purple */
+        .gcd-fill { background: #21262d; color: #8b949e; }                  /* open GCD / auto */
+        .gcd-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: #8b949e;
+        }
+        .gcd-legend span { display: inline-flex; align-items: center; gap: 6px; }
+        .gcd-swatch { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
     </style>
 </head>
 <body>
@@ -801,6 +848,8 @@
         <!-- ============================================================ -->
         <h2 id="combat-mechanics"><a href="#toc">Combat Mechanics</a></h2>
 
+        <p>The foundations every other section builds on: how paladin threat is generated and amplified by Righteous Fury, which seals, auras, and blessings to run, the single-roll combat table behind crit/crush immunity, block mechanics, mana, and your tanking cooldowns. Charts lead each subsection; the per-ability math sits in the collapsible breakdowns.</p>
+
         <!-- THREAT SYSTEM -->
         <h3 id="threat-system">Threat System &amp; Formulas</h3>
 
@@ -815,6 +864,8 @@
             <strong>Warning:</strong> Righteous Fury is a Magic buff and can be dispelled. If it gets removed, reapply immediately. Always check that RF is active before every pull.
         </div>
 
+        <details class="rotation-frame">
+        <summary>Paladin Ability Threat Values &mdash; per-ability table &amp; worked example</summary>
         <h4>Paladin Ability Threat Values</h4>
         <table class="combat-table">
             <tr>
@@ -940,9 +991,10 @@
             Judgement of Blood: (310 + 709&times;0.43) &times; 1.9 = (310 + 304.9) &times; 1.9 = <strong>1,168 threat</strong><br>
             Judgement of Righteousness: (208 + 709&times;0.728) &times; 1.9 = (208 + 516.2) &times; 1.9 = <strong>1,376 threat</strong>
         </div>
+        </details>
 
         <h4>Seal TPS Comparison</h4>
-        <p>Not all seals are created equal. The three charts below compare the <strong>threat per second</strong> contribution from each seal: the passive proc component (seal active on melee swings), the Judgement component (amortized over a 10-second Judgement cooldown), and their <strong>combined total</strong> &mdash; plus the SoC&rarr;SoR seal-swap rotation. All three share the same y-axis for direct visual comparison. Assumes 709 spell power, 41 DPS / 1.8 speed weapon (spell power weapon), 1.9&times; Righteous Fury, 10% melee crit, 10% spell crit, <strong>2pc Justicar Armor (+10% SoR/SoV/SoC seal damage)</strong>. <strong>Crit matters:</strong> Seal of Blood procs crit at 2&times; using melee crit, while Seal of Righteousness procs <em>cannot crit at all</em>. Judgement of Blood crits at 2&times; (melee crit); Judgement of Righteousness crits at 1.5&times; (spell crit). <strong>Note:</strong> With a spell power weapon (low DPS), SoR dominates active procs because it scales with spell power. SoB/SoCommand active procs are weak because they scale with weapon damage. The 2pc T4 Justicar bonus boosts SoR proc and SoV/SoC DoT damage by 10% (Judgements are not affected by the bonus).</p>
+        <p>Not all seals are created equal. The three charts below compare each seal's <strong>threat per second</strong>: the passive proc component (seal active on melee swings), the Judgement component (amortized over its 10-second cooldown), their <strong>combined total</strong>, and the SoC&rarr;SoR seal-swap rotation &mdash; all on a shared y-axis for direct comparison.</p>
 
         <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin: 1em auto; max-width: 1350px;">
             <div style="flex: 1; min-width: 280px; max-width: 430px;">
@@ -1209,6 +1261,9 @@
             </ul>
         </div>
 
+        <details class="rotation-frame">
+        <summary>Seal TPS assumptions &amp; crit mechanics</summary>
+        <p>Assumes 709 spell power, 41 DPS / 1.8 speed weapon (spell power weapon), 1.9&times; Righteous Fury, 10% melee crit, 10% spell crit, <strong>2pc Justicar Armor (+10% SoR/SoV/SoC seal damage)</strong>. <strong>Crit matters:</strong> Seal of Blood procs crit at 2&times; using melee crit, while Seal of Righteousness procs <em>cannot crit at all</em>. Judgement of Blood crits at 2&times; (melee crit); Judgement of Righteousness crits at 1.5&times; (spell crit). <strong>Note:</strong> With a spell power weapon (low DPS), SoR dominates active procs because it scales with spell power. SoB/SoCommand active procs are weak because they scale with weapon damage. The 2pc T4 Justicar bonus boosts SoR proc and SoV/SoC DoT damage by 10% (Judgements are not affected by the bonus).</p>
         <table class="combat-table">
             <caption style="text-align: left; font-weight: bold; margin-bottom: 0.5em;">Seal &amp; Judgement Crit Mechanics (TBC 2.4.3)</caption>
             <tr><th>Ability</th><th>Can Crit?</th><th>Crit Type</th><th>Multiplier</th></tr>
@@ -1220,6 +1275,7 @@
             <tr><td>Judgement of Vengeance / Corruption</td><td style="color: #7ee787;">Yes</td><td>Spell crit</td><td>1.5&times;</td></tr>
         </table>
         <p style="color: #8b949e; font-size: 0.9em;">Sources: <a href="https://www.cgalliance.org/forums/threads/tbc-pally-info.17961/" style="color: #58a6ff;">Kalgan Q&amp;A (CGAlliance)</a>, <a href="https://www.wowhead.com/tbc/spell=31892/seal-of-blood" style="color: #58a6ff;">Wowhead TBC &mdash; Seal of Blood</a>, <a href="https://github.com/Atlantiss/NetherwingBugtracker/issues/6507" style="color: #58a6ff;">Netherwing Bugtracker #6507</a></p>
+        </details>
 
         <h4>Aura Comparison: Threat vs Mitigation</h4>
         <p>You can only have <strong>one aura active</strong> at a time &mdash; choosing the right one is a core tanking decision. The chart below compares each aura's <strong>threat generation</strong> (TPS) and <strong>damage prevention</strong> (DPPS &mdash; damage prevented per second) for both AOE and single-target scenarios. Assumes 709 SP, 41.1 DPS / 1.80 speed 1H, 5/5 Improved Devotion Aura, ~15,140 base armor, Righteous Fury active.</p>
@@ -1681,6 +1737,52 @@
         <!-- ============================================================ -->
         <h2 id="stat-priorities"><a href="#toc">Stat Priorities</a></h2>
 
+        <p>Survival stats gate everything (uncrittable, then uncrushable); past that gate, <strong>threat-per-point</strong> is what you optimize. The chart below ranks the throughput stats by their estimated TPS value per point, then the priority list and per-role refinements follow.</p>
+
+        <div class="chart-container" style="max-width:760px; margin:1.2em auto;">
+            <canvas id="statValueChart" height="300"></canvas>
+        </div>
+        <p style="color:#8b949e; font-size:0.85em;">Bars are the <strong>midpoint of the TPS-per-point ranges</strong> in the <a href="#sp-vs-ap-analysis">Spell Power vs Physical Stats</a> table below (e.g. Spell Power 1.2&ndash;1.5 &rarr; 1.35). Hit and Expertise values apply <em>only until their caps</em> &mdash; below the cap they are among the strongest threat stats; at cap they are worth zero. &ldquo;Strength&rdquo; is per point of Strength (= 2 attack power). Defensive ratings (Defense, Block, Dodge, Parry, Resilience) are survival stats, not threat stats, so they are not plotted here &mdash; see the Stat Conversions table for their rating costs.</p>
+        <script>
+        (function(){
+            var el = document.getElementById('statValueChart');
+            if (!el || typeof Chart === 'undefined') return;
+            new Chart(el.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Spell Hit\n(below cap)','Spell Power','Expertise\n(below cap)','Strength\n(= 2 AP)'],
+                    datasets: [{
+                        label: 'Estimated TPS per point (range midpoint)',
+                        data: [1.5, 1.35, 1.0, 0.6],
+                        backgroundColor: ['rgba(88,166,255,0.85)','rgba(126,231,135,0.85)','rgba(210,168,255,0.85)','rgba(240,165,0,0.85)'],
+                        borderColor: ['rgba(88,166,255,1)','rgba(126,231,135,1)','rgba(210,168,255,1)','rgba(240,165,0,1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: { display: true, text: 'Threat Value Per Point (Throughput Stats)', color: '#e6edf3', font: { size: 15, weight: 'bold' } },
+                        legend: { labels: { color: '#e6edf3' } },
+                        tooltip: { callbacks: { afterBody: function(c){
+                            var notes = [
+                                'Guide range: ~1.0–2.0 TPS until the spell-hit cap. Zero once capped.',
+                                'Guide range: ~1.2–1.5 TPS. Scales Consec, Judgement, Holy Shield, Avenger’s Shield, SoR.',
+                                'Guide range: ~0.8–1.2 TPS until the dodge/parry cap. Prevents dodged seal procs.',
+                                'Guide range: ~0.5–0.7 TPS per Strength (= 2 AP). Scales autos, SoB, block value.'
+                            ];
+                            return notes[c[0].dataIndex];
+                        } } }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#8b949e' }, grid: { color: 'rgba(139,148,158,0.12)' } },
+                        y: { beginAtZero: true, title: { display: true, text: 'TPS per point', color: '#e6edf3' }, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139,148,158,0.12)' } }
+                    }
+                }
+            });
+        })();
+        </script>
+
         <p>The general stat-priority order for a Prot Paladin, from most to least important:</p>
         <ol>
             <li><strong>Become uncrittable &mdash; the hard gate.</strong> A boss critical strike can land before a heal arrives (and a crush stacked behind it can chain into a death), so removing crits from the attack table is mandatory <em>before</em> any other stat matters. Nothing below this line is worth a single point until you are crit-immune.
@@ -1913,6 +2015,29 @@
         <!-- ============================================================ -->
         <h2 id="rotations"><a href="#toc">Combat Rotations</a></h2>
 
+        <p>Both the AOE and single-target loops are built on the same priority cadence: <strong>Holy Shield and Consecration on cooldown, Judgement on cooldown with a re-seal</strong>, filling the gaps with auto-attacks. The timeline below shows one cycle on the 1.5-second GCD; the per-scenario pull sequences and the full single-target threat math follow.</p>
+
+        <div class="gcd-timeline">
+            <div style="color:#8b949e; font-size:0.85em; margin-bottom:10px;"><strong style="color:#e6edf3;">Steady-state GCD cadence</strong> &mdash; one 12-second cycle (8 &times; 1.5s GCDs). Priorities from the loops below: Holy Shield &amp; Consecration on cooldown, Judgement on cooldown (re-seal in the same press).</div>
+            <div class="gcd-track">
+                <div class="gcd-cell gcd-hs">Holy Shield<span class="gcd-time">0.0s</span></div>
+                <div class="gcd-cell gcd-cons">Consecration<span class="gcd-time">1.5s</span></div>
+                <div class="gcd-cell gcd-judge">Judgement<br>+ re-seal<span class="gcd-time">3.0s</span></div>
+                <div class="gcd-cell gcd-fill">auto<span class="gcd-time">4.5s</span></div>
+                <div class="gcd-cell gcd-fill">auto<span class="gcd-time">6.0s</span></div>
+                <div class="gcd-cell gcd-fill">auto<span class="gcd-time">7.5s</span></div>
+                <div class="gcd-cell gcd-hs">Holy Shield<span class="gcd-time">8.0s</span></div>
+                <div class="gcd-cell gcd-cons">Consecration<span class="gcd-time">9.5s</span></div>
+            </div>
+            <div class="gcd-legend">
+                <span><span class="gcd-swatch gcd-hs"></span>Holy Shield &mdash; on CD, 100% uptime (threat + crush immunity)</span>
+                <span><span class="gcd-swatch gcd-cons"></span>Consecration &mdash; on CD (drop first when mana runs low)</span>
+                <span><span class="gcd-swatch gcd-judge"></span>Judgement &mdash; on CD, re-seal after every judge</span>
+                <span><span class="gcd-swatch gcd-fill"></span>open GCD / auto-attack (seal procs)</span>
+            </div>
+        </div>
+        <p style="color:#8b949e; font-size:0.85em;">Cadence and cooldowns mirror the <a href="#boss-rotation">Boss Core Loop</a> and <a href="#aoe-rotation">Sustained AOE Priority</a> below (Holy Shield &amp; Consecration ~8s, Judgement ~8&ndash;10s). On Demon/Undead pulls, Exorcism / Holy Wrath fill the open GCDs; on the Avenger's Shield build, Avenger's Shield fills one when off cooldown.</p>
+
         <h3 id="aoe-rotation">AOE Tanking Rotation (Trash &amp; Heroics)</h3>
 
         <h4>Pull Sequence</h4>
@@ -1994,6 +2119,10 @@
         <h2 id="seal-threat-analysis"><a href="#toc">Seal &amp; Judgement Threat Analysis</a></h2>
         <p>Deep threat modeling for the seal &amp; judgement layer of the Prot Paladin rotation &mdash; when Seal of Corruption overtakes Seal of Righteousness, the SoC&rarr;SoR swap, Judgement of the Crusader (self vs Ret-supplied), opener choice over the Avenging Wrath window, and sustained-rotation guidance. All charts are interactive (hover for values). Numbers use the <a href="#guide-assumptions" style="color:#58a6ff;">gear assumptions at the top of the guide</a> (709 spell power, 2pc/4pc Justicar, level 73 boss).</p>
 
+        <div class="verdict">
+            <strong>Bottom line:</strong> On a single target you can sit on, the <strong>SoC&rarr;SoR seal swap</strong> wins &mdash; build Seal of Corruption to 5 stacks, then ride Seal of Righteousness procs on top of the ticking DoT. Open with a <strong>Seal of Righteousness &rarr; Judgement of Righteousness snap</strong> (biggest opening threat at raid spell power), put <strong>Judgement of the Crusader</strong> on the 2nd judge for a permanent +219 Holy amplifier, then judge Corruption every cycle. For multi-target or frequent target swaps, stay in pure SoR &mdash; SoC's stacks reset on a swap. The charts below show the per-second, cumulative, and gear-scaling math behind each call; full per-step rules are in the collapsible breakdowns.
+        </div>
+
     <!-- ============================================================ -->
     <!-- SECTION 1: CROSSOVER ANALYSIS -->
     <!-- ============================================================ -->
@@ -2049,6 +2178,9 @@
         vs. pure SoR: ~<span id="sorTpsDisplay2"></span> TPS (no DoT)
     </div>
 
+    <details class="rotation-frame">
+    <summary>Stack maintenance, swap cycle &amp; Judgement of Wisdom rules</summary>
+
     <h4>Stack Maintenance: When to Swap Back</h4>
 
     <p>Corruption stacks last <strong>15 seconds</strong> from the last melee hit with SoC active. If you switch to SoR, the timer keeps counting down. To guarantee stacks don't fall off, <strong>switch back to Seal of Corruption ~9 seconds before the stacks expire</strong> (i.e., after ~6 seconds on SoR). Your next melee hit with SoC active refreshes the 15-second timer.</p>
@@ -2092,6 +2224,7 @@
     <div class="mana-warning">
         <strong>Mana cost:</strong> Each seal swap costs a GCD + ~210 mana. With two swaps per judge cycle (~10s), that's ~420 extra mana per cycle and 2 GCDs. Factor this into mana management on long fights. JoW debuff helps offset this.
     </div>
+    </details>
 
     <!-- ============================================================ -->
     <!-- SECTION 2C: 5-MINUTE SEAL+JUDGEMENT TPS COMPARISON -->
@@ -2100,6 +2233,8 @@
 
     <p>Long-term seal+judgement-only comparison over a full 5 minute fight. All rotations use the single-GCD <strong>judge macro</strong> (one GCD fires Judgement and re-seals in the same press). Opener, Avenging Wrath, Consecration, Holy Shield, Avenger's Shield, and all other abilities are <strong>excluded</strong> &mdash; this isolates the contribution of seal procs, the SoC DoT, and judgements themselves.</p>
 
+    <details class="rotation-frame">
+        <summary>Rotation definitions &amp; simulation assumptions</summary>
     <ul>
         <li><span style="color:#f0a500;"><strong>Pure SoC &mdash; SoC &rarr; JSoC &rarr; SoC</strong></span>: Seal of Corruption only. Build 5 stacks, judge fires JoC at current stacks, macro re-seals SoC, next melee refreshes the 15s stack timer. Threat = 5-stack DoT ticking + JoC every 10s.</li>
         <li><span style="color:#7ee787;"><strong>Pure SoR &mdash; SoR &rarr; JSoR &rarr; SoR</strong></span>: Seal of Righteousness only. Macro variant re-seals SoR. Threat = per-swing SoR proc + JoR every 10s.</li>
@@ -2110,6 +2245,7 @@
     <div class="assumptions">
         All simulations start in <strong>steady state</strong>: 5 SoC stacks pre-applied where applicable and the first judgement fires at t=0. Seal swaps in the swap rotations each consume one 1.5s GCD (cost reflected in the simulation). Hit/crit/SP unchanged from the rest of this guide (709 SP, 94% melee land, 88.11% spell land, 2pc Justicar &times;1.10 on SoR procs and SoC DoT, Righteous Fury &times;1.9, JoC and JoR include the &times;1.05 average spell crit bonus). No Avenging Wrath, no Consec/HS/AS/Exo/HoW. The <span style="color:#d2a8ff;">Seal Swap + JotC</span> line adds only the debuff's effect on seals and judgements &mdash; its larger amplification of Consecration and Holy Shield is excluded here, so it is conservative.
     </div>
+    </details>
 
     <h4>Running Average TPS</h4>
     <p>Cumulative threat divided by elapsed time. Each line converges to its rotation's steady-state TPS within ~10&ndash;15 seconds.</p>
@@ -2131,6 +2267,8 @@
 
     <p>A second-by-second view of four seal strategies, showing <strong>cumulative threat from seals and judgements only</strong> (Consecration, Holy Shield, and Avenger's Shield are shared across all rotations and omitted). Judgement threat appears as a <strong>discrete spike at the exact cast time</strong>, not averaged as TPS. The two JotC variants apply the <strong>+219 Holy debuff at the 2nd judgement</strong>; this chart counts the debuff's amplification of the SoR procs and judgements shown here (each amplified Holy hit gains +219&times;1.9 RF), but <em>not</em> its larger effect on the omitted Consecration and Holy Shield &mdash; so the JotC lines are conservative.</p>
 
+    <details class="rotation-frame">
+        <summary>Rotation definitions for this chart</summary>
     <div class="assumptions">
         <strong>Rotation definitions:</strong>
         <ul style="margin: 8px 0 0; padding-left: 20px;">
@@ -2140,6 +2278,7 @@
             <li><strong style="color:#d2a8ff;">SoC + SoR Hybrid + JotC</strong> &mdash; The hybrid line above, but the <strong>2nd judge is JotC instead of JoC</strong>. It pays a one-time cost (a 5-stack JoC traded for JotC's trivial direct hit), but from then on <em>every SoR-swap proc and every judge is amplified by +219</em> &mdash; which is what lets it pull ahead of the plain hybrid after the debuff lands.</li>
         </ul>
     </div>
+    </details>
 
     <div class="chart-container">
         <canvas id="chartSealComparison" width="900" height="500"></canvas>
@@ -2183,6 +2322,9 @@
     <h4>The Snap Opener Costs No Stack Ramp</h4>
     <p>Opening with Seal of Righteousness does <strong>not</strong> delay your Seal of Corruption stacks. Judgement of Righteousness is cast at range, <em>before</em> your first melee swing; you re-seal Seal of Corruption in the same window, so your first melee auto applies Blood Corruption stack&nbsp;1 on exactly the same timeline as a pure-SoC opener. You get the JoR snap threat for free &mdash; there is no stacking penalty for opening with Seal of Righteousness, then switching to your sustained seal. (The same is true of the low-gear SoB&rarr;JoB opener.)</p>
 
+    <details class="rotation-frame">
+    <summary>Third opener: Judgement of the Crusader (debuff opener) &mdash; full math</summary>
+
     <h4>Third Opener: Judgement of the Crusader (Debuff Opener)</h4>
 
     <p>A <strong>third opener option</strong> worth considering when a co-tank/DPS handles initial aggro: open with <strong>Seal of the Crusader &rarr; Judgement of the Crusader</strong> to apply the <strong>+219 Holy damage taken</strong> debuff permanently. Auto-attacks refresh the debuff, so it only needs to be judged <strong>once</strong>. JotC itself does trivial direct threat (~71), but the debuff amplifies every subsequent Holy ability for the entire fight.</p>
@@ -2212,6 +2354,7 @@
             <li><strong>Another paladin is already keeping JotC up</strong> &mdash; you'd double-apply for no benefit. Swap to the SoR &rarr; JoR opener.</li>
         </ul>
     </div>
+    </details>
 
     <!-- ============================================================ -->
     <!-- SECTION 4C: FIGHT-LENGTH ROTATION GUIDE -->
@@ -2220,9 +2363,12 @@
 
     <p>This is the <strong>full sustained rotation</strong> used in raid, built around the hybrid opener &mdash; a <strong>Seal of Righteousness snap</strong> on the pull (Judge Righteousness for maximum opening threat at raid SP), then <strong>Judgement of the Crusader</strong> on the second judge to apply the +219 Holy debuff. Crucially, <strong>Judgement of Corruption does not overwrite JotC</strong> (see note below), so once it's up the debuff stays while you judge Corruption every cycle &mdash; amplifying every ability by +219 Holy damage. After the opener, every judge of yours is <span style="color:#7ee787;">Judgement of Corruption</span> at 5 stacks &mdash; the only exception is a judge spent on <span style="color:#58a6ff;">Judgement of Wisdom</span>, which <em>does</em> overwrite your JotC (they share the utility-judgement slot). As covered in the <strong>Judgement of Wisdom</strong> rules earlier, both JotC and JoW are ideally another paladin's job; a solo paladin keeps JotC and skips self-JoW, or sacrifices JotC for JoW on long fights where mana won't hold.</p>
 
+    <details class="rotation-frame">
+    <summary>Why JotC &amp; JoW are ideally another paladin's job</summary>
     <div class="tip">
         <strong>JotC, like JoW, is ideally another paladin's job &mdash; in any rotation.</strong> The <strong>utility judgements</strong> &mdash; Judgement of the Crusader (+219 Holy debuff), Judgement of Wisdom (mana), and Judgement of Light &mdash; share <strong>one judgement slot per paladin</strong>: judging one overwrites your own previous one, so your JoW would wipe your own JotC. Your <strong>seal-damage judgements do not use that slot</strong> &mdash; <strong>JoC and JoR never overwrite JotC or JoW</strong>, so you keep the +219 debuff up while judging Corruption every cycle. Because of this, the ideal is for a <strong>Ret paladin</strong> to supply JotC &mdash; and a <strong>Holy paladin</strong> to supply JoW &mdash; so both debuffs sit on the boss permanently and <em>every</em> one of your own judges goes to threat. The JotC-amplified figures throughout this guide assume the debuff is present; who supplies it doesn't change the threat math, only who spends the judge slot. <strong>This holds regardless of which rotation is being discussed.</strong> Solo, you can self-maintain JotC (judge Crusader once, then judge Corruption &mdash; it won't remove the debuff), but you can't <em>also</em> run JoW yourself, since JoW shares JotC's slot and overwrites it (see the Judgement of Wisdom rules above).
     </div>
+    </details>
 
     <div class="warning">
         <strong>Universal rules (all fight lengths):</strong>
@@ -2235,6 +2381,8 @@
         </ol>
     </div>
 
+    <details class="rotation-frame">
+    <summary>Seal management between judges &amp; the 4-stack judge rule</summary>
     <div class="tip">
         <strong>Seal management between judges:</strong> Judgement consumes your active seal, so you must re-seal after every judge. Your default seal is <strong>Seal of Corruption</strong> (SoC) &mdash; it builds and maintains your 5-stack DoT. Here's what happens around each judge type:
         <ul style="margin: 8px 0 0;">
@@ -2257,16 +2405,20 @@
         </ul>
         <strong style="color:#f85149;">Net: &minus;1,545 threat.</strong> Always judge on CD, even at 4 stacks. Re-seal SoC (not SoR) and keep building &mdash; you'll reach 5 before the next judge.
     </div>
+    </details>
 
     <div class="formula">
         <strong>Pre-pull (all fights):</strong> &minus;6.0s Seal of Righteousness &rarr; &minus;4.5s Holy Shield &rarr; &minus;3.0s Consecration &rarr; &minus;1.5s Avenging Wrath &rarr; 0.0s <strong>Avenger's Shield (PULL)</strong> &rarr; Judge Righteousness <em>(low gear: Seal of Blood &rarr; Judge Blood)</em>
     </div>
 
+    <details class="rotation-frame">
+    <summary>JoW mana economy (per-10-second math)</summary>
     <div class="warning">
         <strong>JoW Mana Economy:</strong> The <strong>utility judgements</strong> (Crusader, Wisdom, Light) share <strong>one slot per paladin</strong> &mdash; your damage judgements (JoC, JoR) never touch it &mdash; so judging Wisdom <strong>overwrites your own JotC</strong>. If you are the one keeping Judgement of the Crusader on the boss, <strong>your JoW wipes your own JotC</strong> &mdash; you lose the +219 amplification until you re-judge Crusader, which is exactly why a solo paladin must choose between the two. The JotC debuff only survives your JoW when a <strong>different paladin</strong> is maintaining it. Because JoC/JoR don't overwrite it, the Wisdom debuff then lasts its <strong>full judgement duration</strong> (your subsequent Corruption judges leave it intact).<br><br>
         Per <strong>10 seconds</strong> the debuff is up, your auto-attacks (~5.2 landed hits at 1.8s swing / 94% hit) each return <strong>74 mana</strong> &mdash; <strong>~386 mana returned per 10s</strong>. The one-time cost to apply JoW (Seal of Wisdom swap) is <strong>210 mana</strong> beyond your normal judge+re-seal cost.<br><br>
         <strong style="color:#7ee787;">Net mana: ~+176 in the first 10s</strong> (386 returned &minus; 210 one-time seal-swap cost), then <strong>~+386 per 10s</strong> for as long as the debuff stays up &mdash; figures are on a <strong>per-10-second basis</strong>. This is your personal gain only &mdash; every melee attacker in the raid <em>also</em> gets 74 mana per hit on the JoW-debuffed target, making it a significant raid-wide mana tool even though your personal net is modest.
     </div>
+    </details>
 
     <!-- ============================================================ -->
     <!-- SECTION 5: CUMULATIVE THREAT CHARTS -->
@@ -2305,6 +2457,8 @@
 
         <h2 id="builds"><a href="#toc">Paladin Builds</a></h2>
 
+        <p>Two proven prot builds share the same survivability core and differ only in how they spend the deep-Retribution points: <strong>Avenger's Shield (0/43/18)</strong>, the self-sufficient all-rounder with a ranged pull and Blessing of Kings, and <strong>Sanctity (0/38/23)</strong>, the max-threat raid build for parties without a Ret paladin. Full talent point sheets are in the collapsibles under each build; the TPS gap between them is charted in <a href="#build-tps">Build TPS Comparison</a>.</p>
+
         <!-- ============================================================ -->
         <!-- BUILD 1: AVENGER'S SHIELD -->
         <!-- ============================================================ -->
@@ -2321,6 +2475,8 @@
             <a href="https://www.wowhead.com/tbc/talent-calc/paladin/-0530513050000152421051-050050203003" target="_blank" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #1a1a2e, #16213e); border: 2px solid #f48c06; border-radius: 8px; color: #f48c06; font-size: 1.1em; font-weight: bold; text-decoration: none; transition: background 0.2s;">&#9876; Open Build in WoWHead Talent Calculator</a>
         </div>
 
+        <details class="rotation-frame">
+        <summary>Full talent point sheet &mdash; Avenger's Shield (0/43/18)</summary>
         <h4>Protection Tree (43 points)</h4>
         <table class="combat-table">
             <tr><th>Talent</th><th>Points</th><th>Why</th></tr>
@@ -2349,6 +2505,7 @@
             <tr><td>Pursuit of Justice</td><td>3/3</td><td>+15% movement speed &mdash; huge quality of life for positioning</td></tr>
             <tr><td>Crusade</td><td>3/3</td><td>+3% damage to Humanoids, Demons, Undead, Elementals (covers most raid content)</td></tr>
         </table>
+        </details>
 
         <!-- ============================================================ -->
         <!-- BUILD 2: SANCTITY AURA -->
@@ -2366,6 +2523,8 @@
             <a href="https://www.wowhead.com/tbc/talent-calc/paladin/-053041305000015252101-050350103003012" target="_blank" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #1a1a2e, #16213e); border: 2px solid #a370ff; border-radius: 8px; color: #a370ff; font-size: 1.1em; font-weight: bold; text-decoration: none; transition: background 0.2s;">&#9876; Open Build in WoWHead Talent Calculator</a>
         </div>
 
+        <details class="rotation-frame">
+        <summary>Full talent point sheet &mdash; Sanctity (0/38/23)</summary>
         <h4>Protection Tree (38 points)</h4>
         <table class="combat-table">
             <tr><th>Talent</th><th>Points</th><th>Why</th></tr>
@@ -2396,6 +2555,7 @@
             <tr><td>Sanctity Aura</td><td>1/1</td><td><strong>+10% Holy damage to entire party.</strong> Boosts your threat and other paladins' damage</td></tr>
             <tr><td>Improved Sanctity Aura</td><td>2/2</td><td><strong>+2% to all damage</strong> (physical + magic) for your party. Same row as Sanctity Aura; funded by trimming Combat Expertise &mdash; see <a href="#expertise-vs-sanctity">analysis</a></td></tr>
         </table>
+        </details>
 
         <!-- ============================================================ -->
         <!-- BUILD COMPARISON -->
@@ -2550,6 +2710,42 @@
             <strong>The question:</strong> In a raid, what is the net effect of running <strong>5/5 Combat Expertise + Sanctity Aura</strong> versus <strong>3/5 Combat Expertise + 2/2 Improved Sanctity Aura</strong>? Both builds keep Sanctity Aura (1/1). The only thing that changes is where 2 talent points go: dropping 2 ranks of Combat Expertise (Protection) to pick up Improved Sanctity Aura (Retribution). <em>(This isolates just the Improved-Sanctity trade. The max-threat Sanctity build trims Combat Expertise further &mdash; to 1/5 &mdash; for 1H Weapon Spec; that second trade is in <a href="#threat-vs-survivability-talents">Threat vs Survivability Talents</a> below, since Combat Expertise is ~0 threat.)</em>
         </div>
 
+        <p>Moving the 2 points from Combat Expertise to Improved Sanctity Aura (Option B) is a <strong>throughput-for-survivability</strong> trade. The chart shows the percentage swing in each direction; the verdict and full mechanics are below.</p>
+        <div class="chart-container" style="max-width:760px; margin:1.2em auto;">
+            <canvas id="ceVsSanctityChart" height="300"></canvas>
+        </div>
+        <p style="color:#8b949e; font-size:0.85em;">Percentages as stated in this section: Option B <strong>gains</strong> +2% all damage to the party (up to 4 partymates) and +2% to your own threat; it <strong>loses</strong> 4% Stamina (10%&rarr;6%) and adds +0.5% boss dodge and +0.5% boss parry (from &minus;2 Expertise). All on a percentage axis so they're directly comparable &mdash; the absolute worked example (+72 party DPS, ~350&ndash;500 HP) is in the tables below.</p>
+        <script>
+        (function(){
+            var el = document.getElementById('ceVsSanctityChart');
+            if (!el || typeof Chart === 'undefined') return;
+            new Chart(el.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['+2% party\nall damage','+2% own\nthreat','−4% Stamina\n(your HP)','+0.5% boss\ndodge','+0.5% boss\nparry'],
+                    datasets: [{
+                        label: 'Percentage change from Option B (gains positive, costs negative)',
+                        data: [2, 2, -4, -0.5, -0.5],
+                        backgroundColor: ['rgba(126,231,135,0.85)','rgba(126,231,135,0.85)','rgba(248,81,73,0.85)','rgba(240,165,0,0.85)','rgba(240,165,0,0.85)'],
+                        borderColor: ['rgba(126,231,135,1)','rgba(126,231,135,1)','rgba(248,81,73,1)','rgba(240,165,0,1)','rgba(240,165,0,1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: { display: true, text: 'Option B: 3/5 Combat Expertise + 2/2 Improved Sanctity Aura', color: '#e6edf3', font: { size: 14, weight: 'bold' } },
+                        legend: { labels: { color: '#e6edf3' } }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#8b949e', font: { size: 11 } }, grid: { color: 'rgba(139,148,158,0.12)' } },
+                        y: { title: { display: true, text: 'Percent change', color: '#e6edf3' }, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139,148,158,0.12)' } }
+                    }
+                }
+            });
+        })();
+        </script>
+
         <h3>The Two Options</h3>
 
         <p>This is a legal reallocation, and it is what <a href="#sanctity-build">this guide's Sanctity build (0/38/23)</a> now uses. Combat Expertise is the deepest Protection talent, so dropping it from 5/5 to 3/5 just lowers the tree to 38 points without breaking any prerequisite. Improved Sanctity Aura sits in the <em>same row</em> as Sanctity Aura (verified: Retribution row 4, requires 20 points, with Sanctity Aura as its prerequisite), so the 2 freed points reach it once you already have Sanctity Aura. The result is the <code>0/38/23</code> build.</p>
@@ -2698,6 +2894,22 @@
             <strong>The hard constraint first:</strong> in TBC, <em>no</em> amount of threat matters if you're dead. Every tanking spec &mdash; including the max-threat one &mdash; must stay <strong>uncrittable</strong> (490 defense skill vs a level-73 boss, with <a href="#resilience-vs-defense">Anticipation</a> covering 20 of it) and <strong>uncrushable</strong> (102.4% combined avoidance + block with Holy Shield up). That fixes a shared spine of talents in all three specs below; everything else is the threat-vs-survival dial.
         </div>
 
+        <p>The chart below indexes the three resulting specs on threat vs survivability (talents-only, same gear); the summary table and verdict beneath it give the one-line call. The full talent ratings and point-by-point sheets are in the collapsibles that follow.</p>
+        <div class="chart-container"><canvas id="specTalentChart" width="780" height="320"></canvas></div>
+        <table class="combat-table">
+            <tr><th>Spec</th><th>Split</th><th style="color:#7ee787;">Threat</th><th style="color:#58a6ff;">Survivability</th><th>Brings</th><th>Use when</th></tr>
+            <tr><td><span style="color:#7ee787;font-weight:bold;">Max Threat</span></td><td>0/38/23</td><td style="color:#7ee787;">Highest</td><td style="color:#58a6ff;">Lowest</td><td>Sanctity Aura, +10%/+2% party dmg, raid crit debuff</td><td>Farm / threat-comfortable, no Ret paladin in party</td></tr>
+            <tr><td><span style="color:#d2a8ff;font-weight:bold;">Balanced</span></td><td>0/43/18</td><td style="color:#7ee787;">High</td><td style="color:#58a6ff;">High</td><td>Kings, ranged pull (Avenger's Shield), AOE</td><td>Default &mdash; anything, especially heroics &amp; mixed content</td></tr>
+            <tr><td><span style="color:#58a6ff;font-weight:bold;">Max Survival</span></td><td>0/48/13</td><td style="color:#7ee787;">Lowest</td><td style="color:#58a6ff;">Highest</td><td>Ardent Defender, Spell Warding, max armor/stam/avoid</td><td>Hard progression / EH or magic checks</td></tr>
+        </table>
+
+        <div class="verdict">
+            <strong>Bottom line.</strong> The threat-vs-survival dial on a prot paladin is <em>narrow</em> &mdash; the 1.9&times; Righteous Fury engine, Holy Shield, and the uncrit/uncrush core are shared, so all three specs tank and all three hold threat. You're really choosing where ~36 leftover points go: <span style="color:#7ee787;font-weight:bold;">Max Threat</span> spends them on damage multipliers and accepts thinner EH; <span style="color:#d2a8ff;font-weight:bold;">Balanced</span> splits them (full survival floor <em>and</em> a ranged pull, ~90% of the threat &mdash; the default); <span style="color:#58a6ff;font-weight:bold;">Max Survival</span> spends them on Ardent Defender + mitigation depth and leans on the raid for outside threat. Most nights you want Balanced; bring Max Threat to farm and Max Survival to the wall you keep dying on.
+        </div>
+        <p style="color:#8b949e;font-size:.85em;">Threat / survivability indices in the chart are <strong>relative, talents-only</strong> estimates for the same gear (threat from the stacked damage multipliers and crit talents; survivability from stamina %, armor %, Ardent Defender, parry/block, Spell Warding). They illustrate the trade, not exact in-game numbers.</p>
+
+        <details class="rotation-frame">
+        <summary>Every threat &amp; survivability talent, rated</summary>
         <h3>Threat talents</h3>
         <p>Rated by how much threat the talent actually delivers <em>for a prot paladin</em> (&#9733; weak filler &rarr; &#9733;&#9733;&#9733;&#9733;&#9733; build-defining). Tree: <span style="color:#7ee787;font-weight:bold;">Prot</span> / <span style="color:#58a6ff;font-weight:bold;">Ret</span>.</p>
         <table class="combat-table">
@@ -2740,6 +2952,7 @@
             <strong>The non-negotiable core (all three specs keep this):</strong>
             <span style="color:#58a6ff;">Anticipation 5/5</span>, <span style="color:#58a6ff;">Redoubt 5/5</span>, <span style="color:#7ee787;">Holy Shield 1/1 + Improved Holy Shield 2/2</span>, <span style="color:#7ee787;">Improved Righteous Fury 3/3</span>, <span style="color:#7ee787;">Blessing of Sanctuary 1/1</span>, <span style="color:#7ee787;">Precision 3/3</span>, <span style="color:#7ee787;">Benediction 5/5</span> (Ret). That's ~<strong>25 points</strong> that buy uncrittable + uncrushable + the 1.9&times; threat engine + the mana to run it. The remaining ~36 points are where the three specs diverge.
         </div>
+        </details>
 
         <h3>The three specs</h3>
 
@@ -2752,7 +2965,8 @@
         <h4><span style="color:#58a6ff;">3 &mdash; Max Survivability</span> &nbsp;<span style="color:#8b949e;font-size:.85em;">0/48/13</span></h4>
         <p>Strip the Ret threat package to <strong>Benediction + Deflection</strong> and pour everything into Protection's defensive depth: <strong>Ardent Defender 5/5</strong>, <strong>Spell Warding 2/2</strong>, <strong>Shield Specialization 3/3</strong>, full Toughness/Combat Expertise/Sacred Duty. The threat <em>engine</em> still runs (Imp Righteous Fury, Holy Shield, Blessing of Sanctuary, Precision are core) &mdash; you just stop multiplying it. <strong>Verdict:</strong> for progression bosses that hit like a truck or a tight EH check; lean on a Ret paladin's Sanctity Aura + JotC to backfill threat from outside your spec.</p>
 
-        <h4>Apply it in-game &mdash; full talent sheets</h4>
+        <details class="rotation-frame">
+        <summary>Apply it in-game &mdash; full talent sheets (3 specs)</summary>
         <p>Every talent that gets points, in tree order (Holy = 0 in all three). <span style="color:#8b949e;font-size:.9em;">Point totals verified to 61; links decoded from the guide's validated builds.</span></p>
         <div style="display:flex;flex-wrap:wrap;gap:18px;">
             <div style="flex:1;min-width:270px;">
@@ -2786,20 +3000,7 @@
                 </table>
             </div>
         </div>
-
-        <h4>Side by side</h4>
-        <div class="chart-container"><canvas id="specTalentChart" width="780" height="320"></canvas></div>
-        <table class="combat-table">
-            <tr><th>Spec</th><th>Split</th><th style="color:#7ee787;">Threat</th><th style="color:#58a6ff;">Survivability</th><th>Brings</th><th>Use when</th></tr>
-            <tr><td><span style="color:#7ee787;font-weight:bold;">Max Threat</span></td><td>0/38/23</td><td style="color:#7ee787;">Highest</td><td style="color:#58a6ff;">Lowest</td><td>Sanctity Aura, +10%/+2% party dmg, raid crit debuff</td><td>Farm / threat-comfortable, no Ret paladin in party</td></tr>
-            <tr><td><span style="color:#d2a8ff;font-weight:bold;">Balanced</span></td><td>0/43/18</td><td style="color:#7ee787;">High</td><td style="color:#58a6ff;">High</td><td>Kings, ranged pull (Avenger's Shield), AOE</td><td>Default &mdash; anything, especially heroics &amp; mixed content</td></tr>
-            <tr><td><span style="color:#58a6ff;font-weight:bold;">Max Survival</span></td><td>0/48/13</td><td style="color:#7ee787;">Lowest</td><td style="color:#58a6ff;">Highest</td><td>Ardent Defender, Spell Warding, max armor/stam/avoid</td><td>Hard progression / EH or magic checks</td></tr>
-        </table>
-
-        <div class="verdict">
-            <strong>Bottom line.</strong> The threat-vs-survival dial on a prot paladin is <em>narrow</em> &mdash; the 1.9&times; Righteous Fury engine, Holy Shield, and the uncrit/uncrush core are shared, so all three specs tank and all three hold threat. You're really choosing where ~36 leftover points go: <span style="color:#7ee787;font-weight:bold;">Max Threat</span> spends them on damage multipliers and accepts thinner EH; <span style="color:#d2a8ff;font-weight:bold;">Balanced</span> splits them (full survival floor <em>and</em> a ranged pull, ~90% of the threat &mdash; the default); <span style="color:#58a6ff;font-weight:bold;">Max Survival</span> spends them on Ardent Defender + mitigation depth and leans on the raid for outside threat. Most nights you want Balanced; bring Max Threat to farm and Max Survival to the wall you keep dying on.
-        </div>
-        <p style="color:#8b949e;font-size:.85em;">Threat / survivability indices in the chart are <strong>relative, talents-only</strong> estimates for the same gear (threat from the stacked damage multipliers and crit talents; survivability from stamina %, armor %, Ardent Defender, parry/block, Spell Warding). They illustrate the trade, not exact in-game numbers.</p>
+        </details>
 
         <script>
         (function(){
@@ -2833,6 +3034,43 @@
         <!-- CONSUMABLES -->
         <!-- ============================================================ -->
         <h2 id="consumables"><a href="#toc">Consumables</a></h2>
+
+        <p>For a threat tank, the consumables that matter most are the ones that add <strong>spell power</strong> &mdash; every point is amplified 1.9&times; for Holy threat. The chart below ranks the spell-power consumables in this section by their stated bonus; the defensive consumables (armor / health / mana) are tabled below by category.</p>
+
+        <div class="chart-container" style="max-width:780px; margin:1.2em auto;">
+            <canvas id="consumableSpChart" height="320"></canvas>
+        </div>
+        <p style="color:#8b949e; font-size:0.85em;">Spell-power values as stated in the tables below: Destruction Potion +120 (15s burst, on-pull only), Flask of Blinding Light +80, Flask of Supreme Power +70, Superior Wizard Oil +42 (weapon coat &mdash; see <a href="#party-buffs">Party Buffs</a>), Adept's Elixir +24, Blackened Basilisk food +23. Destruction Potion is a 15-second pre-pot burst, not a sustained buff &mdash; shown for opener context. Defensive consumables (Flask of Fortification +500 HP, Ironshield +2,500 armor, Spicy Crawdad +30 Sta, etc.) use different units and are listed in the tables, not plotted here.</p>
+        <script>
+        (function(){
+            var el = document.getElementById('consumableSpChart');
+            if (!el || typeof Chart === 'undefined') return;
+            new Chart(el.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Destruction Potion\n(15s burst)','Flask of\nBlinding Light','Flask of\nSupreme Power','Superior\nWizard Oil','Adept’s Elixir','Blackened\nBasilisk'],
+                    datasets: [{
+                        label: 'Spell Power granted',
+                        data: [120, 80, 70, 42, 24, 23],
+                        backgroundColor: ['rgba(248,81,73,0.85)','rgba(126,231,135,0.85)','rgba(126,231,135,0.85)','rgba(126,231,135,0.85)','rgba(88,166,255,0.85)','rgba(88,166,255,0.85)'],
+                        borderColor: ['rgba(248,81,73,1)','rgba(126,231,135,1)','rgba(126,231,135,1)','rgba(126,231,135,1)','rgba(88,166,255,1)','rgba(88,166,255,1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: { display: true, text: 'Spell Power by Consumable (threat contribution)', color: '#e6edf3', font: { size: 15, weight: 'bold' } },
+                        legend: { labels: { color: '#e6edf3' } }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#8b949e', font: { size: 11 } }, grid: { color: 'rgba(139,148,158,0.12)' } },
+                        y: { beginAtZero: true, title: { display: true, text: 'Spell Power', color: '#e6edf3' }, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139,148,158,0.12)' } }
+                    }
+                }
+            });
+        })();
+        </script>
 
         <h3>Flasks</h3>
         <table class="combat-table">
@@ -2967,6 +3205,17 @@
         <div class="warning">
             <strong>The mechanic that decides this (TBC 2.4.3):</strong> Windfury Totem does not give you a stat aura &mdash; it applies a <strong>temporary weapon enhancement</strong> to every party member (the &ldquo;Windfury&rdquo; weapon buff that drives the extra-attack procs). That enhancement lives in the <em>same single weapon-enchant slot</em> as Superior Wizard Oil, sharpening stones, weightstones and Mana Oil &mdash; so <strong>Windfury Totem and Wizard Oil cannot coexist on your weapon</strong> &mdash; applying Wizard Oil <strong>overwrites the Windfury buff</strong> (and the totem won&rsquo;t re-stamp over your oil), so you run one or the other. This is the Classic/Vanilla behavior, and it <em>persists through all of TBC</em> &mdash; Windfury Totem was only reworked into a pure stat aura in <em>Wrath of the Lich King</em>. By contrast, <strong>Wrath of Air Totem is a stat aura (+spell power), not a weapon enhancement, so it stacks freely with Wizard Oil.</strong> That single difference, more than any per-second number below, is what separates the two Air totems for you.
         </div>
+
+        <h3>Visual: Cumulative Threat Over 60 Seconds</h3>
+        <p>Each curve = added threat <em>on top of your baseline rotation</em>. WoA and Wizard Oil are smooth (every Holy hit scales). Windfury is bursty &mdash; flat between procs, then a big lump. The <strong>Imp WoA + Wizard Oil</strong> line is the realistic best-case package (the two stack); the <strong>Imp Windfury</strong> line already assumes <em>no</em> oil (a coat would wipe the totem buff, so you run un-oiled). The <strong>Twist line</strong> shows the WF buff persisting through the swap, so its procs ride on top of the steady WoA slope &mdash; both at once.</p>
+
+        <div class="chart-container">
+            <canvas id="buffThreatChart" width="900" height="450"></canvas>
+        </div>
+        <div id="buffChartNote" style="font-size:0.9em; color:#8b949e; margin-top:8px;"></div>
+
+        <details class="rotation-frame">
+        <summary>Full per-buff breakdown: assumptions, per-ability tables &amp; totem-twisting math</summary>
 
         <h3>Baseline Assumptions</h3>
         <div class="assumptions">
@@ -3393,14 +3642,7 @@ For comparison (same 60s window, best realistic non-twist packages):
                 <li>If your shaman is in a different 5-man party (e.g. healer group), you get <strong>neither</strong> totem. Everything here assumes the shaman is in your party.</li>
             </ul>
         </div>
-
-        <h3>Visual: Cumulative Threat Over 60 Seconds</h3>
-        <p>Each curve = added threat <em>on top of your baseline rotation</em>. WoA and Wizard Oil are smooth (every Holy hit scales). Windfury is bursty &mdash; flat between procs, then a big lump. The <strong>Imp WoA + Wizard Oil</strong> line is the realistic best-case package (the two stack); the <strong>Imp Windfury</strong> line already assumes <em>no</em> oil (a coat would wipe the totem buff, so you run un-oiled). The <strong>Twist line</strong> shows the WF buff persisting through the swap, so its procs ride on top of the steady WoA slope &mdash; both at once.</p>
-
-        <div class="chart-container">
-            <canvas id="buffThreatChart" width="900" height="450"></canvas>
-        </div>
-        <div id="buffChartNote" style="font-size:0.9em; color:#8b949e; margin-top:8px;"></div>
+        </details>
 
         <h3>Verdict &amp; Practical Decision Tree</h3>
         <div class="verdict">
@@ -3741,6 +3983,8 @@ For comparison (same 60s window, best realistic non-twist packages):
         <!-- ============================================================ -->
         <h2 id="enchants"><a href="#toc">Enchantments</a></h2>
 
+        <p>Slot-by-slot enchant choices for a paladin tank, split between the threat (spell power) and mitigation priorities used elsewhere in this guide, plus the Aldor-vs-Scryer shoulder decision.</p>
+
         <h3 id="enchants-aoe">Enchantments by Slot</h3>
 
         <table class="combat-table">
@@ -3842,6 +4086,8 @@ For comparison (same 60s window, best realistic non-twist packages):
         <!-- ============================================================ -->
         <h2 id="gems"><a href="#toc">Gems &amp; Professions</a></h2>
 
+        <p>Meta, threat, and mitigation gem choices for socketing tank gear, plus the professions that add the most tanking value.</p>
+
         <h3>Meta Gem</h3>
         <table class="combat-table">
             <tr><th>Gem</th><th>Effect</th><th>Activation</th><th>Notes</th></tr>
@@ -3929,6 +4175,8 @@ For comparison (same 60s window, best realistic non-twist packages):
         <!-- MACROS -->
         <!-- ============================================================ -->
         <h2 id="macros"><a href="#toc">Essential Paladin Macros</a></h2>
+
+        <p>The macros that make paladin tanking practical &mdash; the mouseover taunt first, then the seal-and-judge, cooldown, and utility macros referenced throughout the rotation sections.</p>
 
         <h3>Righteous Defense (Taunt) &mdash; Most Important Macro</h3>
         <div class="code-block">
@@ -4051,6 +4299,8 @@ For comparison (same 60s window, best realistic non-twist packages):
         <!-- ADDONS -->
         <!-- ============================================================ -->
         <h2 id="addons"><a href="#toc">Essential Addons for Paladins</a></h2>
+
+        <p>The addons worth installing for a paladin tank, grouped from mandatory threat/UI tools down to quality-of-life extras.</p>
 
         <h3>Mandatory</h3>
         <table class="combat-table">
