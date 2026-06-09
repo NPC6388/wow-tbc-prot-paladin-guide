@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Threat vs Survivability Talents — TBC Prot Paladin Spec Builder</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root { color-scheme: dark; }
+  body { background:#0d1117; color:#e6edf3; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; line-height:1.6; max-width:1000px; margin:0 auto; padding:24px 18px 90px; }
+  h1 { font-size:1.6em; border-bottom:2px solid #30363d; padding-bottom:.4em; }
+  h2 { font-size:1.28em; color:#58a6ff; margin-top:1.9em; border-bottom:1px solid #21262d; padding-bottom:.25em; }
+  h3 { font-size:1.08em; margin-top:1.5em; }
+  a { color:#58a6ff; }
+  code { background:#161b22; padding:1px 5px; border-radius:4px; font-size:.92em; }
+  table { border-collapse:collapse; width:100%; margin:1em 0; font-size:.9em; }
+  th,td { border:1px solid #30363d; padding:6px 9px; text-align:left; vertical-align:top; }
+  th { background:#161b22; }
+  .box { background:#161b22; border:1px solid #30363d; border-left:4px solid #58a6ff; border-radius:6px; padding:12px 16px; margin:1.2em 0; }
+  .assume { border-left-color:#8b949e; }
+  .core { border-left-color:#d29922; background:#1c180f; }
+  .verdict { border-left-color:#2ea043; background:#0f1c12; }
+  .t { color:#7ee787; font-weight:bold; }
+  .s { color:#58a6ff; font-weight:bold; }
+  .both { color:#d2a8ff; font-weight:bold; }
+  .muted { color:#8b949e; font-size:.9em; }
+  .threat { color:#7ee787; }
+  .surv { color:#58a6ff; }
+  .star { color:#f0a500; letter-spacing:-1px; }
+  .chart-wrap { max-width:780px; margin:1.2em auto; }
+  .pill { display:inline-block; font-size:.78em; padding:1px 7px; border-radius:10px; font-weight:bold; }
+  .pt { background:#11331c; color:#7ee787; border:1px solid #2ea043; }
+  .ps { background:#10243b; color:#58a6ff; border:1px solid #1f6feb; }
+  caption { text-align:left; font-weight:bold; color:#e6edf3; margin-bottom:.3em; }
+</style>
+</head>
+<body>
+
+<h1>Threat vs Survivability: A Prot Paladin Talent Mini-Guide</h1>
+<p class="muted">Every talent that moves your threat or your survival, sorted, rated, and assembled into three specs &mdash; <span class="t">max threat</span>, <span style="color:#d2a8ff;font-weight:bold;">balanced</span>, and <span class="s">max survivability</span>. Built on the validated builds and threat math in the <a href="index.html">main guide</a>. Companion to the <a href="sanctity_conviction_vs_impsotc.html">Sanctity talent trade-off page</a>.</p>
+
+<div class="box core">
+  <strong>The hard constraint first:</strong> in TBC, <em>no</em> amount of threat matters if you're dead. Every tanking spec &mdash; including the max-threat one &mdash; must keep you <strong>uncrittable</strong> (490 defense skill vs a level-73 boss, with <a href="index.html#resilience-vs-defense">Anticipation</a> covering 20 of it) and <strong>uncrushable</strong> (102.4% combined avoidance + block with Holy Shield up). That fixes a shared spine of talents in all three specs below; everything else is the threat-vs-survival dial.
+</div>
+
+<h2>Threat talents</h2>
+<p>Rated by how much threat the talent actually delivers <em>for a prot paladin</em> (★ weak filler &rarr; ★★★★★ build-defining). Tree: <span class="pill pt">P</span> Protection, <span class="pill ps">R</span> Retribution.</p>
+<table>
+  <tr><th>Talent</th><th>Tree</th><th>Effect</th><th>Value</th></tr>
+  <tr><td><strong>Improved Righteous Fury</strong> 3/3</td><td><span class="pill pt">P</span></td><td>Holy threat modifier <strong>1.6&times; &rarr; 1.9&times;</strong>. Multiplies <em>all</em> your Holy threat &mdash; the single biggest threat talent in the game. (Also &minus;6% damage taken.)</td><td class="star">★★★★★</td></tr>
+  <tr><td><strong>Holy Shield</strong> 1/1 + <strong>Improved Holy Shield</strong> 2/2</td><td><span class="pill pt">P</span></td><td>The block-nuke. ~126&ndash;130 TPS at 100% uptime, 8 charges instead of 4. (Also your crush immunity &mdash; non-negotiable.)</td><td class="star">★★★★★</td></tr>
+  <tr><td><strong>One-Handed Weapon Specialization</strong> 0&ndash;5/5</td><td><span class="pill pt">P</span></td><td><strong>+2% to ALL damage per rank.</strong> ~<span class="threat">+27 TPS per rank</span> in the guide's reference sim &mdash; the best raw-threat point you can spend after the core. (<a href="sanctity_conviction_vs_impsotc.html">analysis</a>)</td><td class="star">★★★★</td></tr>
+  <tr><td><strong>Sanctity Aura</strong> 1/1</td><td><span class="pill ps">R</span></td><td>+10% Holy damage to your whole party &mdash; <em>including you</em>. A flat +10% on the Holy bulk of your threat. Needs 21 pts in Ret.</td><td class="star">★★★★</td></tr>
+  <tr><td><strong>Blessing of Sanctuary</strong> 1/1</td><td><span class="pill pt">P</span></td><td>46 Holy damage to the attacker per block &times; 1.9 RF (~33 TPS), <em>and</em> flat damage reduction. Always active. (Both columns.)</td><td class="star">★★★★</td></tr>
+  <tr><td><strong>Precision</strong> 3/3</td><td><span class="pill pt">P</span></td><td>+3% melee / +1% spell hit. Lands more judgements, Consecrations and seal procs &mdash; threat <em>consistency</em>, and partial spell-hit toward the 16% cap.</td><td class="star">★★★</td></tr>
+  <tr><td><strong>Improved Seal of the Crusader</strong> 0&ndash;3/3</td><td><span class="pill ps">R</span></td><td>+1%/rank crit-to-be-hit on the JotC target for <strong>all attackers, melee + spell</strong> (raid-wide). Boosts your spell-crit judgements. (<a href="sanctity_conviction_vs_impsotc.html">Conviction comparison</a>)</td><td class="star">★★★</td></tr>
+  <tr><td><strong>Sanctified Seals</strong> 3/3</td><td><span class="pill ps">R</span></td><td>+3% crit with <em>both</em> spells and melee, + seals can't be dispelled. The +3% <strong>spell</strong> crit is the part that matters &mdash; it feeds your judgements (unlike Conviction).</td><td class="star">★★★</td></tr>
+  <tr><td><strong>Crusade</strong> 3/3</td><td><span class="pill ps">R</span></td><td>+3% damage to Humanoids / Demons / Undead / Elementals &mdash; i.e. nearly every Outland boss. Flat threat multiplier on covered targets.</td><td class="star">★★★</td></tr>
+  <tr><td><strong>Avenger's Shield</strong> 1/1</td><td><span class="pill pt">P</span></td><td>Ranged pull, 3 targets, 6s daze, big per-cast threat. Best for <strong>AOE / pulls</strong>; 30s CD so modest in sustained single-target. 41-pt Prot talent.</td><td class="star">★★★</td></tr>
+  <tr><td><strong>Improved Sanctity Aura</strong> 2/2</td><td><span class="pill ps">R</span></td><td>+2% to <em>all</em> damage (physical + every magic school) for the party, you included. Small personal threat, real party DPS.</td><td class="star">★★</td></tr>
+  <tr><td><strong>Benediction</strong> 5/5</td><td><span class="pill ps">R</span></td><td>&minus;15% seal/judgement (and instant-spell) mana cost. No direct threat, but it's what lets you <em>run</em> Consecration + Holy Shield all fight. Mandatory.</td><td class="star">★★</td></tr>
+  <tr><td><strong>Conviction</strong> 0&ndash;5/5</td><td><span class="pill ps">R</span></td><td>+1%/rank <strong>melee</strong> crit only &mdash; doesn't touch your spell-crit judgements, so weak for the SoR/SoC rotation. (See <a href="sanctity_conviction_vs_impsotc.html">why Imp SotC beats it</a>.)</td><td class="star">★★</td></tr>
+  <tr><td><strong>Reckoning</strong> 5/5</td><td><span class="pill pt">P</span></td><td>Chance on being hit for an extra melee swing &rarr; more seal procs. Minor threat; mostly tree-pathing filler.</td><td class="star">★</td></tr>
+</table>
+
+<h2>Survivability talents</h2>
+<table>
+  <tr><th>Talent</th><th>Tree</th><th>Effect</th><th>Value</th></tr>
+  <tr><td><strong>Anticipation</strong> 5/5</td><td><span class="pill pt">P</span></td><td>+20 defense skill. Covers most of the 490 crit-immunity cap &mdash; frees a huge amount of defense off your gear. Non-negotiable.</td><td class="star">★★★★★</td></tr>
+  <tr><td><strong>Redoubt</strong> 5/5</td><td><span class="pill pt">P</span></td><td>On a hit taken: +30% block chance (5 blocks / 10s). The backbone of reaching <strong>uncrushable</strong> and smoothing incoming damage. Non-negotiable.</td><td class="star">★★★★★</td></tr>
+  <tr><td><strong>Holy Shield</strong> + <strong>Improved Holy Shield</strong></td><td><span class="pill pt">P</span></td><td>Crush immunity itself (blocks can't be crushing) + extra block chance/charges. Also your #1 threat ability &mdash; the talent that does both jobs.</td><td class="star">★★★★★</td></tr>
+  <tr><td><strong>Improved Righteous Fury</strong> 3/3</td><td><span class="pill pt">P</span></td><td>&minus;6% all damage taken while Righteous Fury is up (you always have it up). Free mitigation riding on the top threat talent.</td><td class="star">★★★★</td></tr>
+  <tr><td><strong>Ardent Defender</strong> 5/5</td><td><span class="pill pt">P</span></td><td>Below 35% HP, <strong>&minus;30% damage taken</strong>. A dedicated panic button against spike damage &mdash; the headline pure-survival talent the standard builds skip.</td><td class="star">★★★★</td></tr>
+  <tr><td><strong>Combat Expertise</strong> 0&ndash;5/5</td><td><span class="pill pt">P</span></td><td>+2% Stamina &amp; +1 expertise per rank. Expertise removes boss <strong>parry</strong> (parry-haste safety) and dodge. ~0 threat &mdash; this is a survivability talent. (<a href="sanctity_conviction_vs_impsotc.html">analysis</a>)</td><td class="star">★★★</td></tr>
+  <tr><td><strong>Toughness</strong> 5/5</td><td><span class="pill pt">P</span></td><td>+10% armor from items &mdash; flat physical mitigation across the whole fight.</td><td class="star">★★★</td></tr>
+  <tr><td><strong>Deflection</strong> 5/5</td><td><span class="pill ps">R</span></td><td>+5% parry &mdash; pure avoidance, and it counts toward the 102.4% uncrushable wall. Cheapest deep-Ret defensive.</td><td class="star">★★★</td></tr>
+  <tr><td><strong>Blessing of Sanctuary</strong> 1/1</td><td><span class="pill pt">P</span></td><td>Flat damage reduction per hit (up to ~80) on top of its threat. Always-on mitigation.</td><td class="star">★★★</td></tr>
+  <tr><td><strong>Sacred Duty</strong> 2/2</td><td><span class="pill pt">P</span></td><td>+6% Stamina and &minus;CD on Divine Shield / Divine Protection (a real "oh no" button).</td><td class="star">★★</td></tr>
+  <tr><td><strong>Spell Warding</strong> 2/2</td><td><span class="pill pt">P</span></td><td>&minus;4% magic damage taken. Niche &mdash; great on heavy-magic fights, dead weight on physical ones. Usually skipped.</td><td class="star">★★</td></tr>
+  <tr><td><strong>Shield Specialization</strong> 3/3</td><td><span class="pill pt">P</span></td><td>+30% block <em>value</em> &mdash; you block more damage per block. Noticeable on trash / many small hits, minor against big boss swings.</td><td class="star">★★</td></tr>
+  <tr><td><strong>Improved Devotion Aura</strong> 0&ndash;5/5</td><td><span class="pill pt">P</span></td><td>+armor from Devotion Aura. Real EH but you usually run a different aura (Sanctity/Retribution), so mostly a Holy-paladin pick. Skippable.</td><td class="star">★</td></tr>
+</table>
+
+<div class="box core">
+  <strong>The non-negotiable core (all three specs keep this):</strong>
+  <span class="surv">Anticipation 5/5</span>, <span class="surv">Redoubt 5/5</span>, <span class="threat">Holy Shield 1/1 + Improved Holy Shield 2/2</span>, <span class="threat">Improved Righteous Fury 3/3</span>, <span class="threat">Blessing of Sanctuary 1/1</span>, <span class="threat">Precision 3/3</span>, <span class="threat">Benediction 5/5</span> (Ret). That's ~<strong>25 points</strong> that buy uncrittable + uncrushable + the 1.9&times; threat engine + mana to run it. The remaining ~36 points are where the three specs diverge.
+</div>
+
+<h2>The three specs</h2>
+
+<h3><span class="t">1 &mdash; Max Threat</span> &nbsp;<span class="muted">0/38/23 (the guide's Sanctity build, tuned)</span></h3>
+<p>Take the guide's <a href="index.html#sanctity-build">Sanctity build</a> and apply the two trade-off findings: push <strong>1H Weapon Spec to 5/5</strong> and <strong>Improved Seal of the Crusader to 3/3</strong>, paid for by dropping <strong>Combat Expertise to 1/5</strong> and <strong>Conviction to 1/5</strong>. Keeps Sanctity Aura + Improved Sanctity Aura + Crusade for the damage multipliers.</p>
+<table>
+  <tr><th>vs the balanced build</th><th>Change</th></tr>
+  <tr><td class="threat">One-Handed Weapon Spec</td><td>3/5 &rarr; <strong>5/5</strong> (+4% all damage, ~+54 TPS)</td></tr>
+  <tr><td class="threat">Improved Seal of the Crusader</td><td>2/3 &rarr; <strong>3/3</strong> (+1% raid-wide crit on the boss)</td></tr>
+  <tr><td class="surv">Combat Expertise</td><td>3/5 &rarr; <strong>1/5</strong> (&minus;4% Stamina, &minus;2 expertise / parry-haste)</td></tr>
+  <tr><td>Conviction</td><td>2/5 &rarr; <strong>1/5</strong> (melee crit you don't use anyway)</td></tr>
+</table>
+<p class="muted"><strong>Push it further (glass-cannon):</strong> drop <span class="surv">Deflection 5/5 &rarr; 2/5</span> for <span class="threat">Sanctified Seals 3/3</span> &mdash; trades 3% parry for +3% <em>spell</em> crit on your judgements. Only on farm content where threat is the whole point. <strong>Verdict:</strong> highest TPS, thinnest EH; run it when healers are comfortable and you want to bury the meter.</p>
+
+<h3><span style="color:#d2a8ff;">2 &mdash; Balanced</span> &nbsp;<span class="muted">0/43/18 (the guide's Avenger's Shield build) &mdash; <a href="https://www.wowhead.com/tbc/talent-calc/paladin/-0530513050000152421051-050050203003">calculator</a></span></h3>
+<p>The all-rounder and the <strong>default recommendation</strong>. Full <strong>Combat Expertise 5/5</strong> and <strong>Toughness 5/5</strong> for the survival floor, <strong>1H Weapon Spec 4/5 + Crusade 3/3</strong> for threat, and <strong>Avenger's Shield</strong> for a ranged pull and strong AOE. Self-sufficient (brings its own Kings); doesn't depend on a raid Ret paladin for Sanctity.</p>
+<table>
+  <tr><th>Carries both sides</th><th>Detail</th></tr>
+  <tr><td class="surv">Survival</td><td>Combat Expertise 5/5, Toughness 5/5, Sacred Duty 2/2, Deflection 5/5 &mdash; full stamina/armor/parry floor</td></tr>
+  <tr><td class="threat">Threat</td><td>1H Weapon Spec 4/5, Crusade 3/3, Avenger's Shield (pull + AOE), Improved Holy Shield 2/2</td></tr>
+</table>
+<p class="muted"><strong>Verdict:</strong> ~90% of the max-threat spec's TPS with a real survival cushion and a ranged pull. If you don't have a reason to pick another, pick this.</p>
+
+<h3><span class="s">3 &mdash; Max Survivability</span> &nbsp;<span class="muted">&asymp;0/51/10 (confirm pathing in a calculator)</span></h3>
+<p>Strip the Ret threat package down to <strong>Benediction 5/5 + Deflection 5/5</strong> and pour everything into Protection's defensive depth. The threat <em>engine</em> still runs (Improved Righteous Fury, Holy Shield, Blessing of Sanctuary, Precision are all core) &mdash; you just stop multiplying it.</p>
+<table>
+  <tr><th>Added vs balanced</th><th>Why</th></tr>
+  <tr><td class="surv">Ardent Defender 5/5</td><td>&minus;30% damage below 35% HP &mdash; the clutch survival talent</td></tr>
+  <tr><td class="surv">Spell Warding 2/2</td><td>&minus;4% magic damage for caster bosses</td></tr>
+  <tr><td class="surv">Shield Specialization 3/3</td><td>+30% block value &mdash; more absorbed per block</td></tr>
+  <tr><td class="surv">Combat Expertise 5/5 + Toughness 5/5 + Sacred Duty 2/2</td><td>full stamina + armor floor kept</td></tr>
+  <tr><td>Dropped</td><td class="muted">Sanctity Aura, Improved Sanctity Aura, Crusade, Improved SotC, most of 1H Weapon Spec &mdash; the threat multipliers</td></tr>
+</table>
+<p class="muted"><strong>Verdict:</strong> for progression bosses that hit like a truck or a tight EH check. Your threat ceiling drops (no Sanctity/Crusade/1HWS), so lean on a Ret paladin's Sanctity Aura + JotC to backfill threat from outside your spec.</p>
+
+<h2>Apply it in-game &mdash; full talent sheets</h2>
+<p>Every talent that gets points, in tree order (Holy = 0 in all three). Click top-to-bottom in-game, or use the one-click calculator link. <span class="muted">Point totals verified to 61; the Balanced and Max-Threat links are decoded from the guide's own validated builds.</span></p>
+
+<div class="box assume" style="display:flex;flex-wrap:wrap;gap:18px;">
+  <div style="flex:1;min-width:280px;">
+    <h3 class="t" style="margin-top:0;">Max Threat &mdash; 0 / 38 / 23</h3>
+    <p style="margin:.2em 0 .6em;"><a href="https://www.wowhead.com/tbc/talent-calc/paladin/-053041305000015252101-050350103003012">▶ one-click calculator</a></p>
+    <table style="margin-top:0;">
+      <caption><span class="pill pt">Protection &mdash; 38</span></caption>
+      <tr><td>Redoubt</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Precision</td><td><strong>3/3</strong></td></tr>
+      <tr><td>Toughness</td><td><strong>4/5</strong></td></tr>
+      <tr><td>Blessing of Kings</td><td><strong>1/1</strong></td></tr>
+      <tr><td>Improved Righteous Fury</td><td><strong>3/3</strong></td></tr>
+      <tr><td>Anticipation</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Blessing of Sanctuary</td><td><strong>1/1</strong></td></tr>
+      <tr><td>Reckoning</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Sacred Duty</td><td><strong>2/2</strong></td></tr>
+      <tr><td class="threat">One-Handed Weapon Specialization</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Improved Holy Shield</td><td><strong>2/2</strong></td></tr>
+      <tr><td>Holy Shield</td><td><strong>1/1</strong></td></tr>
+      <tr><td>Combat Expertise</td><td><strong>1/5</strong></td></tr>
+    </table>
+    <table>
+      <caption><span class="pill ps">Retribution &mdash; 23</span></caption>
+      <tr><td>Benediction</td><td><strong>5/5</strong></td></tr>
+      <tr><td class="threat">Improved Seal of the Crusader</td><td><strong>3/3</strong></td></tr>
+      <tr><td>Deflection</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Conviction</td><td><strong>1/5</strong></td></tr>
+      <tr><td>Pursuit of Justice</td><td><strong>3/3</strong></td></tr>
+      <tr><td>Crusade</td><td><strong>3/3</strong></td></tr>
+      <tr><td class="threat">Sanctity Aura</td><td><strong>1/1</strong></td></tr>
+      <tr><td>Improved Sanctity Aura</td><td><strong>2/2</strong></td></tr>
+    </table>
+  </div>
+
+  <div style="flex:1;min-width:280px;">
+    <h3 style="margin-top:0;color:#d2a8ff;">Balanced &mdash; 0 / 43 / 18</h3>
+    <p style="margin:.2em 0 .6em;"><a href="https://www.wowhead.com/tbc/talent-calc/paladin/-0530513050000152421051-050050203003">▶ one-click calculator</a></p>
+    <table style="margin-top:0;">
+      <caption><span class="pill pt">Protection &mdash; 43</span></caption>
+      <tr><td>Redoubt</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Precision</td><td><strong>3/3</strong></td></tr>
+      <tr><td>Toughness</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Blessing of Kings</td><td><strong>1/1</strong></td></tr>
+      <tr><td>Improved Righteous Fury</td><td><strong>3/3</strong></td></tr>
+      <tr><td>Anticipation</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Blessing of Sanctuary</td><td><strong>1/1</strong></td></tr>
+      <tr><td>Reckoning</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Sacred Duty</td><td><strong>2/2</strong></td></tr>
+      <tr><td>One-Handed Weapon Specialization</td><td><strong>4/5</strong></td></tr>
+      <tr><td>Improved Holy Shield</td><td><strong>2/2</strong></td></tr>
+      <tr><td>Holy Shield</td><td><strong>1/1</strong></td></tr>
+      <tr><td>Combat Expertise</td><td><strong>5/5</strong></td></tr>
+      <tr><td class="threat">Avenger's Shield</td><td><strong>1/1</strong></td></tr>
+    </table>
+    <table>
+      <caption><span class="pill ps">Retribution &mdash; 18</span></caption>
+      <tr><td>Benediction</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Deflection</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Conviction</td><td><strong>2/5</strong></td></tr>
+      <tr><td>Pursuit of Justice</td><td><strong>3/3</strong></td></tr>
+      <tr><td>Crusade</td><td><strong>3/3</strong></td></tr>
+    </table>
+  </div>
+
+  <div style="flex:1;min-width:280px;">
+    <h3 class="s" style="margin-top:0;">Max Survival &mdash; 0 / 48 / 13</h3>
+    <p style="margin:.2em 0 .6em;"><a href="https://www.wowhead.com/tbc/talent-calc/paladin/-0530513350002102421551-050050003">▶ one-click calculator</a></p>
+    <table style="margin-top:0;">
+      <caption><span class="pill pt">Protection &mdash; 48</span></caption>
+      <tr><td>Redoubt</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Precision</td><td><strong>3/3</strong></td></tr>
+      <tr><td>Toughness</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Blessing of Kings</td><td><strong>1/1</strong></td></tr>
+      <tr><td>Improved Righteous Fury</td><td><strong>3/3</strong></td></tr>
+      <tr><td class="surv">Shield Specialization</td><td><strong>3/3</strong></td></tr>
+      <tr><td>Anticipation</td><td><strong>5/5</strong></td></tr>
+      <tr><td class="surv">Spell Warding</td><td><strong>2/2</strong></td></tr>
+      <tr><td>Blessing of Sanctuary</td><td><strong>1/1</strong></td></tr>
+      <tr><td>Sacred Duty</td><td><strong>2/2</strong></td></tr>
+      <tr><td>One-Handed Weapon Specialization</td><td><strong>4/5</strong></td></tr>
+      <tr><td>Improved Holy Shield</td><td><strong>2/2</strong></td></tr>
+      <tr><td>Holy Shield</td><td><strong>1/1</strong></td></tr>
+      <tr><td class="surv">Ardent Defender</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Combat Expertise</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Avenger's Shield</td><td><strong>1/1</strong></td></tr>
+    </table>
+    <table>
+      <caption><span class="pill ps">Retribution &mdash; 13</span></caption>
+      <tr><td>Benediction</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Deflection</td><td><strong>5/5</strong></td></tr>
+      <tr><td>Pursuit of Justice</td><td><strong>3/3</strong></td></tr>
+    </table>
+  </div>
+</div>
+
+<h2>Side by side</h2>
+<div class="chart-wrap"><canvas id="specChart" height="320"></canvas></div>
+<table>
+  <tr><th>Spec</th><th>Tree split</th><th class="threat">Threat</th><th class="surv">Survivability</th><th>Brings</th><th>Use when</th></tr>
+  <tr>
+    <td><span class="t">Max Threat</span></td><td>0/38/23</td>
+    <td class="threat">Highest</td><td class="surv">Lowest</td>
+    <td>Sanctity Aura, +10%/+2% party dmg, raid crit debuff</td>
+    <td>Farm / threat-comfortable, no Ret paladin in party</td>
+  </tr>
+  <tr>
+    <td><span style="color:#d2a8ff;font-weight:bold;">Balanced</span></td><td>0/43/18</td>
+    <td class="threat">High</td><td class="surv">High</td>
+    <td>Kings, ranged pull (Avenger's Shield), AOE</td>
+    <td>Default &mdash; anything, especially heroics &amp; mixed content</td>
+  </tr>
+  <tr>
+    <td><span class="s">Max Survival</span></td><td>&asymp;0/51/10</td>
+    <td class="threat">Lowest</td><td class="surv">Highest</td>
+    <td>Ardent Defender, Spell Warding, max armor/stam/avoid</td>
+    <td>Hard progression / EH or magic checks</td>
+  </tr>
+</table>
+
+<div class="box verdict">
+  <strong>Bottom line.</strong> The threat-vs-survival dial in a prot paladin is <em>narrow</em> &mdash; the 1.9&times; Righteous Fury engine, Holy Shield, and the uncrit/uncrush core are shared, so all three specs tank and all three hold threat. You're really choosing where ~36 leftover points go:
+  <ul style="margin:.4em 0 0;">
+    <li><span class="t">Max Threat</span> spends them on damage multipliers (Sanctity, 1H Weapon Spec 5/5, crit) and accepts thinner EH.</li>
+    <li><span style="color:#d2a8ff;font-weight:bold;">Balanced</span> splits them &mdash; full stamina/armor floor <em>and</em> a ranged pull, ~90% of the threat. <strong>The default.</strong></li>
+    <li><span class="s">Max Survival</span> spends them on Ardent Defender + mitigation depth and leans on the raid for outside threat help.</li>
+  </ul>
+  Most nights you want Balanced; bring Max Threat to farm and Max Survival to the wall you keep dying on.
+</div>
+
+<p class="muted">Threat / survivability indices below are <strong>relative, talents-only</strong> estimates for the same gear: threat from the stacked damage multipliers (1H Weapon Spec, Sanctity Aura, Improved Sanctity Aura, Crusade) and crit talents; survivability from stamina %, armor %, Ardent Defender, parry/block, and Spell Warding. They illustrate the trade, not exact in-game numbers.</p>
+
+<script>
+(function(){
+  new Chart(document.getElementById('specChart').getContext('2d'), {
+    type:'bar',
+    data:{
+      labels:['Max Threat (0/38/23)','Balanced (0/43/18)','Max Survival (≈0/51/10)'],
+      datasets:[
+        { label:'Threat index', data:[100, 88, 80], backgroundColor:'rgba(126,231,135,0.85)', borderColor:'rgba(126,231,135,1)', borderWidth:1 },
+        { label:'Survivability index', data:[78, 90, 100], backgroundColor:'rgba(88,166,255,0.85)', borderColor:'rgba(88,166,255,1)', borderWidth:1 }
+      ]
+    },
+    options:{
+      responsive:true,
+      plugins:{
+        title:{ display:true, text:'Threat vs Survivability by spec (relative, talents-only)', color:'#e6edf3', font:{size:14,weight:'bold'} },
+        subtitle:{ display:true, text:'illustrative index — same gear, core tanking talents shared across all three', color:'#8b949e', font:{size:11} },
+        legend:{ labels:{ color:'#e6edf3' } },
+        tooltip:{ callbacks:{ label:function(c){ return c.dataset.label+': '+c.parsed.y; } } }
+      },
+      scales:{
+        x:{ ticks:{ color:'#8b949e' }, grid:{ color:'rgba(139,148,158,0.12)' } },
+        y:{ beginAtZero:true, suggestedMax:110, title:{ display:true, text:'relative index', color:'#e6edf3' }, ticks:{ color:'#8b949e' }, grid:{ color:'rgba(139,148,158,0.12)' } }
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

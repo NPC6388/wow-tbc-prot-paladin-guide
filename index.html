@@ -638,6 +638,8 @@
                         <li><a href="#sanctity-build">Sanctity Build (0/38/23)</a></li>
                         <li><a href="#build-comparison">Build Comparison</a></li>
                         <li><a href="#build-tps">Build TPS Comparison</a></li>
+                        <li><a href="talent_threat_vs_survivability.html">&#8599; Threat vs Survivability Talents &amp; 3 Specs</a></li>
+                        <li><a href="sanctity_conviction_vs_impsotc.html">&#8599; Sanctity Talent Trade-offs (per-point math)</a></li>
                     </ul>
                 </li>
                 <li><a href="#expertise-vs-sanctity">Combat Expertise vs Improved Sanctity Aura</a></li>
@@ -689,7 +691,7 @@
 
         <div class="boss-tank">
             <h4>Boss Tanking &mdash; Single-Target Threat &amp; DPS</h4>
-            <p>Paladin boss threat is competitive with &mdash; and often exceeds &mdash; warrior and druid threat output. The rotation centers on maintaining <strong>Holy Shield</strong> uptime (both for threat and crush immunity), judging on cooldown, and managing mana as your primary resource. Horde's <strong>Seal of Blood</strong> gives the strongest opening Judgement (Judge Blood) for snap threat on the pull; sustained threat then comes from <strong>Seal of Corruption</strong> (single-target) or <strong>Seal of Righteousness</strong> (AOE/short fights) &mdash; see the <a href="#seal-threat-analysis" style="color:#58a6ff;">Seal &amp; Judgement Threat Analysis</a>.</p>
+            <p>Paladin boss threat is competitive with &mdash; and often exceeds &mdash; warrior and druid threat output. The rotation centers on maintaining <strong>Holy Shield</strong> uptime (both for threat and crush immunity), judging on cooldown, and managing mana as your primary resource. You open <strong>Seal of Righteousness &rarr; Judge Righteousness</strong> for snap threat on the pull (JoR's 0.728 coefficient out-snaps Judge Blood above ~400 SP; Horde's Seal of Blood is only the bigger opener below that, while leveling); sustained threat then comes from <strong>Seal of Corruption</strong> (single-target) or <strong>Seal of Righteousness</strong> (AOE/short fights) &mdash; see the <a href="#seal-threat-analysis" style="color:#58a6ff;">Seal &amp; Judgement Threat Analysis</a>.</p>
         </div>
 
         <h3>When to Use a Paladin Tank</h3>
@@ -790,8 +792,8 @@
                 <strong>Tip:</strong> Arcane Torrent does not trigger the global cooldown. You can weave it between abilities for a free silence + mana restore without losing any rotation time.
             </div>
 
-            <h4>Seal of Blood &mdash; The Horde Opener</h4>
-            <p>While not a racial ability per se, <strong>Seal of Blood</strong> is the Horde-exclusive paladin seal (Alliance gets Seal of Vengeance). Its real value for a Prot Paladin is the <strong>opening Judgement of Blood</strong> &mdash; the strongest single judge in the game (2&times; melee crit) &mdash; for maximum snap threat on the pull. Open with <strong>Seal of Blood &rarr; Judge Blood</strong>, then switch to your sustained seal (Seal of Corruption on single targets, or Seal of Righteousness for AOE and short fights). With a spell-power tanking weapon, SoB's per-swing proc is weak, so it is <strong>not worth maintaining beyond that first judge</strong>. See the <a href="#seal-threat-analysis" style="color: #58a6ff;">Seal &amp; Judgement Threat Analysis</a> for the full opener comparison.</p>
+            <h4>Seal of Blood &mdash; Horde Seal (low-gear opener only)</h4>
+            <p><strong>Seal of Blood</strong> is the Horde-exclusive paladin seal (Alliance gets Seal of Vengeance). Its one use for a Prot Paladin was the <strong>opening Judgement of Blood</strong> (2&times; melee crit) for snap threat &mdash; but with the corrected <strong>0.728 coefficient, Judgement of Righteousness out-snaps Judgement of Blood above ~400 spell power</strong>. At this guide's raid gear (709 SP) you open with <strong>Seal of Righteousness &rarr; Judge Righteousness</strong> instead: a bigger snap, no 33% self-damage, and no stacks needed. SoB's per-swing proc is weak with a spell-power weapon, so it is never maintained. <strong>SoB's only remaining niche is the pull while leveling / in early gear (below ~400 SP)</strong>, where JoB still beats JoR. See the <a href="#seal-threat-analysis" style="color: #58a6ff;">Seal &amp; Judgement Threat Analysis</a> for the full opener comparison.</p>
         </div>
 
         <!-- ============================================================ -->
@@ -872,6 +874,30 @@
                 <td>Per-swing, cannot crit; +10% from 2pc Justicar. Weapon-speed scaled (0.166 effective at 1.8s)</td>
             </tr>
             <tr>
+                <td><strong>Judgement of Righteousness</strong></td>
+                <td>208 base Holy</td>
+                <td>0.728</td>
+                <td>(208 + SP&times;0.728) &times; 1.9</td>
+                <td style="color: #7ee787; font-weight: bold;">128&ndash;138</td>
+                <td>10s CD; crits 1.5&times; (spell). High 0.728 coefficient &mdash; strongest flat Judgement at raid SP (overtakes JoB above ~400 SP). Not boosted by 2pc Justicar.</td>
+            </tr>
+            <tr>
+                <td><strong>Seal of Corruption / Vengeance</strong> (DoT)</td>
+                <td>30 per tick per stack (150/tick at 5 stk)</td>
+                <td>0.17 at 5 stk (0.034/tick/stack)</td>
+                <td>(150 + SP&times;0.17)/tick &times; 1.9 &times; 1.10, every 3s (5 stk)</td>
+                <td style="color: #7ee787; font-weight: bold;">180&ndash;188 (5 stk)</td>
+                <td>Stacking DoT, ticks every 3s for 15s; <strong>cannot crit</strong>; +10% from 2pc Justicar. Needs ~14s to ramp to 5 stacks and drops all stacks on a target swap. The single-target sustained seal.</td>
+            </tr>
+            <tr>
+                <td><strong>Judgement of Corruption / Vengeance</strong></td>
+                <td>121 per Blood Corruption stack (605 at 5 stk)</td>
+                <td>0.429</td>
+                <td>(605 + SP&times;0.429) &times; 1.9 (at 5 stk)</td>
+                <td style="color: #7ee787; font-weight: bold;">167&ndash;173 (5 stk)</td>
+                <td>10s CD; crits 1.5&times; (spell). Damage scales with Blood Corruption stacks &mdash; <strong>0 at 0 stacks</strong>, so never open with it. Not boosted by 2pc Justicar.</td>
+            </tr>
+            <tr>
                 <td><strong>Exorcism</strong> (Rank 7)</td>
                 <td>573&ndash;655 (619 avg)</td>
                 <td>0.429</td>
@@ -911,7 +937,8 @@
             Consecration (8 sec): (512 + 709&times;1.0) &times; 1.9 = (512 + 709) &times; 1.9 = <strong>2,320 threat</strong><br>
             Holy Shield (per block): (155 + 709&times;0.05) &times; 1.9 = (155 + 35.5) &times; 1.9 = <strong>362 threat</strong><br>
             Avenger's Shield (per target): (548 + 709&times;0.193) &times; 1.9 = (548 + 136.8) &times; 1.9 = <strong>1,301 threat</strong><br>
-            Judgement of Blood: (310 + 709&times;0.43) &times; 1.9 = (310 + 304.9) &times; 1.9 = <strong>1,168 threat</strong>
+            Judgement of Blood: (310 + 709&times;0.43) &times; 1.9 = (310 + 304.9) &times; 1.9 = <strong>1,168 threat</strong><br>
+            Judgement of Righteousness: (208 + 709&times;0.728) &times; 1.9 = (208 + 516.2) &times; 1.9 = <strong>1,376 threat</strong>
         </div>
 
         <h4>Seal TPS Comparison</h4>
@@ -1015,24 +1042,24 @@
             new Chart(ctxJ, {
                 type: 'bar',
                 data: {
-                    labels: ['JoV/JoC\n(5 stk)', 'JoB', 'JoCommand', 'JoR', 'JotC 3/3', 'JotC', 'JoW'],
+                    labels: ['JoV/JoC\n(5 stk)', 'JoR', 'JoB', 'JoCommand', 'JotC 3/3', 'JotC', 'JoW'],
                     datasets: [{
                         label: 'Judged TPS (Judgement / 10s CD)',
-                        data: [168, 115, 115, 80, 71, 66, 0],
+                        data: [168, 138, 115, 115, 71, 66, 0],
                         backgroundColor: [
                             'rgba(179, 136, 255, 0.85)',
+                            'rgba(126, 231, 135, 0.85)',
                             'rgba(255, 99, 132, 0.85)',
                             'rgba(255, 159, 64, 0.85)',
-                            'rgba(126, 231, 135, 0.85)',
                             'rgba(255, 206, 86, 0.85)',
                             'rgba(255, 206, 86, 0.65)',
                             'rgba(100, 100, 100, 0.5)'
                         ],
                         borderColor: [
                             'rgba(179, 136, 255, 1)',
+                            'rgba(126, 231, 135, 1)',
                             'rgba(255, 99, 132, 1)',
                             'rgba(255, 159, 64, 1)',
-                            'rgba(126, 231, 135, 1)',
                             'rgba(255, 206, 86, 1)',
                             'rgba(255, 206, 86, 1)',
                             'rgba(100, 100, 100, 1)'
@@ -1061,9 +1088,9 @@
                                 afterBody: function(context) {
                                     var notes = [
                                         'Spell crit 1.5×. Strongest judge at 5 stacks.',
+                                        'Spell crit 1.5×. Scales with SP (0.728 coef — strongest flat judge at raid SP).',
                                         'Melee crit 2×. Scales with SP. 33% self-damage.',
                                         'Melee crit 2×. Requires 11 pts Ret.',
-                                        'Spell crit 1.5×. Scales with SP.',
                                         'Debuff: +219 Holy dmg taken. +3% crit (raid-wide).',
                                         'Debuff: +219 Holy dmg taken by target.',
                                         'Zero threat — applies Wisdom debuff for mana on hit.'
@@ -1097,7 +1124,7 @@
                     labels: ['SoC+SoR\nSwap', 'Pure SoC\n(5 stk)', 'Pure\nSoR', 'SoB', 'SoCmd', 'SotC\n3/3', 'SotC'],
                     datasets: [{
                         label: 'Combined TPS (Active + Judged)',
-                        data: [519, 339, 260, 145, 128, 112, 101],
+                        data: [519, 339, 318, 145, 128, 112, 101],
                         backgroundColor: [
                             'rgba(255, 215, 0, 0.9)',
                             'rgba(179, 136, 255, 0.85)',
@@ -1141,7 +1168,7 @@
                                     var notes = [
                                         'SoR procs 180 + SoC 5-stack DoT 171 + JoC 168 = 519.\nThe seal-swap rotation: ride SoR procs while the SoC DoT ticks, judge Corruption.',
                                         'SoC 5-stack DoT 171 + JoC 168 = 339. ~10s ramp to 5 stacks.',
-                                        'SoR procs 180 + JoR 80 = 260. No ramp, no stack management.',
+                                        'SoR procs 180 + JoR 138 = 318. No ramp, no stack management.',
                                         'SoB procs 30 + JoB 115 = 145. Scales with weapon DPS.',
                                         'SoCommand procs 13 + JoCommand 115 = 128. Requires 11 pts Ret.',
                                         'SotC active 41 + JotC 71 = 112. Value is the +219 debuff, not the hit.',
@@ -1174,8 +1201,8 @@
             <strong>Key takeaways:</strong>
             <ul>
                 <li><strong>Seal of Corruption &mdash; single-target.</strong> Highest sustained single-target TPS (~339 with 2pc Justicar) at 5 stacks: a powerful DoT (171 TPS, +10% from 2pc Justicar) plus the strongest Judgement at full stacks (168 TPS). The DoT cannot crit; Judgement of Corruption can (spell crit 1.5&times;). The tradeoff is a <strong>&gt;10-second ramp-up</strong> to reach 5 stacks, and losing stacks on a target switch wipes the advantage. See the <a href="#seal-threat-analysis" style="color: #58a6ff;">Seal &amp; Judgement Threat Analysis</a> for the full rotation.</li>
-                <li><strong>Seal of Righteousness &mdash; AOE and short fights (&lt;30s).</strong> No ramp-up and no target-switch penalty, so it wins whenever you can't sit on one target long enough for SoC to stack, or the fight is too short for the ramp to pay off (~260 TPS with 2pc Justicar). Scales with spell power; the proc <strong>cannot crit</strong>, but Judgement of Righteousness can (spell crit 1.5&times;).</li>
-                <li><strong>Seal of Blood &mdash; the pull only.</strong> Its active proc is weak with a spell-power weapon (30 TPS, scales with weapon DPS), but <strong>Judgement of Blood is the strongest single Judgement</strong> (115 TPS, 2&times; melee crit). Use it <strong>only for the opening judgement on the pull</strong> for snap threat, then switch to your sustained seal &mdash; it is not worth maintaining beyond that first judge. Not boosted by 2pc Justicar.</li>
+                <li><strong>Seal of Righteousness &mdash; AOE and short fights (&lt;30s).</strong> No ramp-up and no target-switch penalty, so it wins whenever you can't sit on one target long enough for SoC to stack, or the fight is too short for the ramp to pay off (~318 TPS with 2pc Justicar). Scales with spell power; the proc <strong>cannot crit</strong>, but Judgement of Righteousness can (spell crit 1.5&times;) and carries a high 0.728 coefficient.</li>
+                <li><strong>Seal of Blood &mdash; low-gear pull only.</strong> Its active proc is weak with a spell-power weapon (30 TPS, scales with weapon DPS). <strong>Judgement of Blood</strong> (115 TPS, 2&times; melee crit) hits hard on demand, but with the corrected 0.728 coefficient it is <strong>no longer the strongest flat Judgement at raid spell power</strong> &mdash; Judgement of Righteousness (~138 TPS) overtakes it above <strong>~400 SP</strong>, while JoB still wins below that crossover (leveling / early gear) on its higher base and 2&times; crit. So at this guide's raid gear <strong>SoB/JoB is no longer used &mdash; you open with SoR &rarr; Judge Righteousness</strong>; SoB is the pull only below ~400 SP. Not boosted by 2pc Justicar.</li>
                 <li><strong>Seal of the Crusader</strong> does little direct threat (+495 AP to auto-attacks), but <strong>Judgement of the Crusader</strong> applies +219 Holy damage taken to the target for 20s, amplifying every Holy ability. With <strong>3/3 Improved</strong> it also adds +3% crit against the judged target. Ideally a Ret paladin maintains it for you &mdash; see the <a href="#seal-threat-analysis" style="color: #58a6ff;">threat-analysis section</a>.</li>
                 <li><strong>Seal of Wisdom</strong> generates zero threat but is essential for mana recovery; ideally another paladin supplies Judgement of Wisdom on the boss.</li>
                 <li><strong>Seal swap (SoC &rarr; SoR):</strong> once SoC reaches 5 stacks the DoT keeps ticking regardless of which seal is active, so you swap to <strong>SoR for per-swing procs on top of the DoT</strong>, then swap back before the stacks expire. This is the default sustained single-target rotation &mdash; full breakdown in the <a href="#seal-threat-analysis" style="color: #58a6ff;">Seal &amp; Judgement Threat Analysis</a>.</li>
@@ -1549,7 +1576,7 @@
             &nbsp;&nbsp;Consecration Rank 6: 561 mana<br>
             &nbsp;&nbsp;Holy Shield Rank 4: 153 mana<br>
             &nbsp;&nbsp;Judgement: ~150 mana<br>
-            &nbsp;&nbsp;Seal of Blood: 210 mana<br>
+            &nbsp;&nbsp;Seal: 210 mana<br>
             &nbsp;&nbsp;<strong>Total: ~1,074 mana per 8-second cycle</strong><br><br>
             At 8,000 mana: sustainable for ~60 seconds without any mana return
         </div>
@@ -1656,21 +1683,25 @@
 
         <p>The general stat-priority order for a Prot Paladin, from most to least important:</p>
         <ol>
-            <li><strong>Become uncrittable</strong>
+            <li><strong>Become uncrittable &mdash; the hard gate.</strong> A boss critical strike can land before a heal arrives (and a crush stacked behind it can chain into a death), so removing crits from the attack table is mandatory <em>before</em> any other stat matters. Nothing below this line is worth a single point until you are crit-immune.
                 <ul>
-                    <li>Defense Rating (to the crit-immunity cap)</li>
-                    <li>Resilience Rating (to top off crit immunity if Defense alone falls short)</li>
+                    <li><strong>Defense Rating</strong> &mdash; the primary route. Reach <strong>490 skill</strong> for raid bosses (level 73) or <strong>485</strong> for heroics (level 72). Every 25 skill gives 1% off crit <em>plus</em> 1% each to dodge, parry, block, and enemy miss &mdash; five benefits per point, which is why it outvalues Resilience overall.</li>
+                    <li><strong>Resilience Rating</strong> &mdash; a cheaper top-off (less rating per 1% crit removed, but it gives <em>only</em> crit reduction &mdash; no avoidance). Use it to close a small gap when Defense alone falls short, e.g. borrowing Season 1 PvP pieces for heroics. See <a href="#resilience-vs-defense">Resilience vs Defense</a>.</li>
                 </ul>
             </li>
-            <li><strong>Avoidance</strong>
+            <li><strong>Avoidance &mdash; become uncrushable, then smooth the damage.</strong> Stack avoidance until crushing blows fall off the attack table: <strong>102.4% combined dodge + parry + block + miss with Holy Shield active</strong>. Beyond that point avoidance keeps cutting the damage you take, with diminishing returns on dodge/parry.
                 <ul>
-                    <li>Block Rating</li>
-                    <li>Dodge</li>
-                    <li>Parry</li>
-                    <li>Agility</li>
+                    <li><strong>Block Rating</strong> &mdash; cheapest avoidance per point, and every block is also Holy Shield threat. Favor it for <strong>AOE</strong>, where a steady stream of smaller hits makes blocks reliable mitigation.</li>
+                    <li><strong>Dodge</strong> / <strong>Parry</strong> &mdash; full avoidance (the hit is negated entirely). Favor these for <strong>single bosses</strong>, where individual hits are large. Parry costs more rating than dodge for the same %.</li>
+                    <li><strong>Agility</strong> &mdash; a minor contributor (a little dodge plus some armor). Welcome on a piece, but never itemized for.</li>
                 </ul>
             </li>
-            <li><strong>Stamina or Spell Power</strong> &mdash; depending on the fight: Spell Power when you need threat, Stamina when you need effective health.</li>
+            <li><strong>Stamina or Spell Power &mdash; the throughput-vs-survival knob.</strong> Once you're uncrittable and uncrushable, the leftover budget swings between these two by fight:
+                <ul>
+                    <li><strong>Spell Power</strong> when threat is the bottleneck &mdash; farm content, taunt-swap fights, or any pull where the DPS is pushing you. It scales every Holy ability (Consecration, Holy Shield, Judgement, the seals).</li>
+                    <li><strong>Stamina</strong> when survival is the bottleneck &mdash; progression bosses with spike damage, where a deeper health pool buys your healers reaction time.</li>
+                </ul>
+                The per-role priorities below set the actual balance for AOE, boss-threat, and boss-mitigation situations.</li>
         </ol>
         <p style="color:#8b949e; font-size:0.9em;">The per-role priorities below refine this &mdash; AOE tanking leans the avoidance budget toward Block Rating, while boss tanking leans it toward Dodge/Parry to reach the uncrushable cap with Holy Shield active.</p>
 
@@ -1921,7 +1952,7 @@
         </div>
 
         <div class="tip">
-            <strong>The full single-target rotation lives in the <a href="#seal-threat-analysis" style="color:#58a6ff;">Seal &amp; Judgement Threat Analysis</a> section below.</strong> It covers, with interactive threat charts: the opener comparison over the Avenging Wrath window (SoB snap vs JotC vs SoR vs the SoB&rarr;JotC hybrid vs Ret-supplied JotC), the <strong>SoC&rarr;SoR seal swap</strong> at 5 stacks, when SoC overtakes SoR, Judgement of the Crusader (self vs a Ret paladin supplying it), and Judgement of Wisdom timing (ideally another paladin supplies it). That analysis supersedes the older rotation tables this section used to carry.
+            <strong>The full single-target rotation lives in the <a href="#seal-threat-analysis" style="color:#58a6ff;">Seal &amp; Judgement Threat Analysis</a> section below.</strong> It covers, with interactive threat charts: the opener comparison over the Avenging Wrath window (SoR snap vs JotC vs the SoR&rarr;JotC hybrid vs Ret-supplied JotC, with the low-gear SoB snap for reference), the <strong>SoC&rarr;SoR seal swap</strong> at 5 stacks, when SoC overtakes SoR, Judgement of the Crusader (self vs a Ret paladin supplying it), and Judgement of Wisdom timing (ideally another paladin supplies it). That analysis supersedes the older rotation tables this section used to carry.
         </div>
 
         <h4>Core Loop (every fight)</h4>
@@ -1929,7 +1960,7 @@
             <strong>Holy Shield</strong> on CD (100% uptime &mdash; threat + crush immunity) &gt; <strong>Consecration</strong> on CD (drop it first when mana runs low) &gt; <strong>Judgement</strong> on CD (re-seal after every judge) &gt; <strong>Exorcism / Holy Wrath</strong> on Demon/Undead &gt; <strong>Avenger's Shield</strong> on CD <em>(only if you run the Avenger's Shield build)</em>
         </div>
         <ul>
-            <li><strong>Opener:</strong> open with <strong>Seal of Blood &rarr; Judge Blood</strong> for snap threat on the pull, then settle into your sustained seal (Seal of Corruption single-target, Seal of Righteousness for AOE/short fights). SoB is <em>not</em> kept past that first judge.</li>
+            <li><strong>Opener:</strong> open with <strong>Seal of Righteousness &rarr; Judge Righteousness</strong> for snap threat on the pull (JoR out-snaps JoB above ~400 SP), then settle into your sustained seal (Seal of Corruption single-target, Seal of Righteousness for AOE/short fights). <em>Below ~400 SP (leveling/early gear), open with Seal of Blood &rarr; Judge Blood instead.</em></li>
             <li><strong>Sustained single-target:</strong> Seal of Corruption to 5 stacks, then the SoC&rarr;SoR swap &mdash; see the analysis section for the exact swap timing and threat math.</li>
             <li><strong>JotC and JoW are ideally another paladin's job</strong> (a Ret paladin keeps JotC up; a Holy paladin keeps JoW up), freeing all of your judges for threat. See the analysis section for the solo-paladin tradeoffs.</li>
         </ul>
@@ -1999,7 +2030,7 @@
             <tbody id="stackTable"></tbody>
         </table>
         </div>
-        <p style="color: #8b949e; font-size: 0.85em;"><strong>Time</strong> = expected time to reach each stack level from first SoC auto (1.8s weapon, ~70% proc rate). <strong>Cum. SoC</strong> = pure SoC (no swap), <strong>Cum. SoR</strong> = pure SoR, <strong>Cum. Swap</strong> = seal swap (SoC → JSoC → SoR → SoC → JSoC), <strong style="color:#d2a8ff;">Cum. Swap+Ret JotC</strong> = the same swap but the 2nd judge is Judgement of the Crusader, so every later SoR proc and judge is amplified by +219. All cumulatives sourced from the same discrete-event simulation as the timeline graph above. Cumulative columns are <span style="color:#7ee787;">green</span> while ahead of pure SoR and <span style="color:#f85149;">red</span> while behind; the <strong>highlighted rows</strong> mark where each SoC variant first overtakes pure SoR (<span style="color:#b388ff;">purple = seal swap, ~30s</span>; <span style="color:#f0a500;">gold = pure SoC, ~40s</span>; <span style="color:#d2a8ff;">light purple = swap+JotC</span>).</p>
+        <p style="color: #8b949e; font-size: 0.85em;"><strong>Time</strong> = expected time to reach each stack level from first SoC auto (1.8s weapon, ~70% proc rate). <strong>Cum. SoC</strong> = pure SoC (no swap), <strong>Cum. SoR</strong> = pure SoR, <strong>Cum. Swap</strong> = seal swap (SoC → JSoC → SoR → SoC → JSoC), <strong style="color:#d2a8ff;">Cum. Swap+Ret JotC</strong> = the same swap but the 2nd judge is Judgement of the Crusader, so every later SoR proc and judge is amplified by +219. All cumulatives sourced from the same discrete-event simulation as the timeline graph above. Cumulative columns are <span style="color:#7ee787;">green</span> while ahead of pure SoR and <span style="color:#f85149;">red</span> while behind; the <strong>highlighted row</strong> marks where the <span style="color:#b388ff;">seal swap (~50s)</span> first overtakes pure SoR. With the corrected 0.728 JoR coefficient, <span style="color:#f0a500;">pure SoC</span> doesn’t overtake pure SoR until <strong>~180s</strong> &mdash; beyond this ramp-focused table, so see the cumulative-threat chart above.</p>
     </details>
 
     <!-- ============================================================ -->
@@ -2140,7 +2171,7 @@
 
     <h4>Opener Snap Threat: Which First Judgement Actually Does Damage</h4>
 
-    <p>Since AW is pre-pull, the first Judgement is always AW-boosted &mdash; but it lands <em>at range, before your first melee swing</em>, and that timing decides which seals are even worth judging. <strong>Judgement of Corruption deals damage per Blood Corruption stack, so at 0 stacks it does nothing</strong> (it just burns the judge CD), and Judgement of the Crusader's value is the debuff it applies, not its hit. <strong>That leaves only Seal of Blood (JoB) and Seal of Righteousness (JoR) as first judges that apply real threat.</strong></p>
+    <p>Since AW is pre-pull, the first Judgement is always AW-boosted &mdash; but it lands <em>at range, before your first melee swing</em>, and that timing decides which seals are even worth judging. <strong>Judgement of Corruption deals damage per Blood Corruption stack, so at 0 stacks it does nothing</strong> (it just burns the judge CD), and Judgement of the Crusader's value is the debuff it applies, not its hit. <strong>That leaves Seal of Righteousness (JoR) and Seal of Blood (JoB) as the first judges that apply real threat &mdash; and with the 0.728 coefficient, JoR is the bigger snap at raid SP</strong> (JoB only wins below ~400 SP).</p>
 
     <h5>First Judgement Comparison (with AW active)</h5>
     <table class="combat-table">
@@ -2149,8 +2180,8 @@
     </table>
     <div id="openerVerdict" class="tip"></div>
 
-    <h4>The SoB Opener Costs No Stack Ramp</h4>
-    <p>Opening with Seal of Blood does <strong>not</strong> delay your Seal of Corruption stacks. Judgement of Blood is cast at range, <em>before</em> your first melee swing; you re-seal Seal of Corruption in the same window, so your first melee auto applies Blood Corruption stack&nbsp;1 on exactly the same timeline as a pure-SoC opener. You get the JoB snap threat for free &mdash; there is no stacking penalty for opening with Seal of Blood, then switching to your sustained seal.</p>
+    <h4>The Snap Opener Costs No Stack Ramp</h4>
+    <p>Opening with Seal of Righteousness does <strong>not</strong> delay your Seal of Corruption stacks. Judgement of Righteousness is cast at range, <em>before</em> your first melee swing; you re-seal Seal of Corruption in the same window, so your first melee auto applies Blood Corruption stack&nbsp;1 on exactly the same timeline as a pure-SoC opener. You get the JoR snap threat for free &mdash; there is no stacking penalty for opening with Seal of Righteousness, then switching to your sustained seal. (The same is true of the low-gear SoB&rarr;JoB opener.)</p>
 
     <h4>Third Opener: Judgement of the Crusader (Debuff Opener)</h4>
 
@@ -2165,7 +2196,7 @@
             <li><strong>SoC DoT ticks:</strong> The debuff adds to each Holy hit's base damage, not the DoT per-tick calculation (DoT uses snapshot math). Treat this as a minor bonus.</li>
             <li><strong>Exorcism / Holy Wrath (if Undead/Demon):</strong> +219 &times; 1.9 &times; ~1.05 crit = <strong>+437 each</strong>.</li>
         </ul>
-        <strong>The debuff is permanent</strong> (auto-attacks refresh it) &mdash; these gains compound for the entire fight, not just a 20s window. Cost: only 1 judge slot (the opener) + 92 threat instead of ~1,492 from JoB. <strong>Break-even in under 10 seconds.</strong>
+        <strong>The debuff is permanent</strong> (auto-attacks refresh it) &mdash; these gains compound for the entire fight, not just a 20s window. Cost: only 1 judge slot (the opener) + 92 threat instead of ~1,664 from JoR. <strong>Break-even in under 10 seconds.</strong>
     </div>
 
     <div class="warning">
@@ -2177,8 +2208,8 @@
         </ul>
         <strong>When NOT to use JotC opener:</strong>
         <ul>
-            <li><strong>Solo pull, no MD/ToT:</strong> JoB snap (~1,492) dominates for the first 3 seconds of threat. You need aggro RIGHT NOW.</li>
-            <li><strong>Another paladin is already keeping JotC up</strong> &mdash; you'd double-apply for no benefit. Swap to JoB opener.</li>
+            <li><strong>Solo pull, no MD/ToT:</strong> the JoR snap (~1,664) dominates for the first 3 seconds of threat. You need aggro RIGHT NOW.</li>
+            <li><strong>Another paladin is already keeping JotC up</strong> &mdash; you'd double-apply for no benefit. Swap to the SoR &rarr; JoR opener.</li>
         </ul>
     </div>
 
@@ -2187,7 +2218,7 @@
     <!-- ============================================================ -->
     <h3>Sustained Rotation Guide: Holding Max Threat</h3>
 
-    <p>This is the <strong>full sustained rotation</strong> used in raid, built around the hybrid opener &mdash; a <strong>Seal of Blood snap</strong> on the pull (Judge Blood for maximum opening threat), then <strong>Judgement of the Crusader</strong> on the second judge to apply the +219 Holy debuff. Crucially, <strong>Judgement of Corruption does not overwrite JotC</strong> (see note below), so once it's up the debuff stays while you judge Corruption every cycle &mdash; amplifying every ability by +219 Holy damage. After the opener, every judge of yours is <span style="color:#7ee787;">Judgement of Corruption</span> at 5 stacks &mdash; the only exception is a judge spent on <span style="color:#58a6ff;">Judgement of Wisdom</span>, which <em>does</em> overwrite your JotC (they share the utility-judgement slot). As covered in the <strong>Judgement of Wisdom</strong> rules earlier, both JotC and JoW are ideally another paladin's job; a solo paladin keeps JotC and skips self-JoW, or sacrifices JotC for JoW on long fights where mana won't hold.</p>
+    <p>This is the <strong>full sustained rotation</strong> used in raid, built around the hybrid opener &mdash; a <strong>Seal of Righteousness snap</strong> on the pull (Judge Righteousness for maximum opening threat at raid SP), then <strong>Judgement of the Crusader</strong> on the second judge to apply the +219 Holy debuff. Crucially, <strong>Judgement of Corruption does not overwrite JotC</strong> (see note below), so once it's up the debuff stays while you judge Corruption every cycle &mdash; amplifying every ability by +219 Holy damage. After the opener, every judge of yours is <span style="color:#7ee787;">Judgement of Corruption</span> at 5 stacks &mdash; the only exception is a judge spent on <span style="color:#58a6ff;">Judgement of Wisdom</span>, which <em>does</em> overwrite your JotC (they share the utility-judgement slot). As covered in the <strong>Judgement of Wisdom</strong> rules earlier, both JotC and JoW are ideally another paladin's job; a solo paladin keeps JotC and skips self-JoW, or sacrifices JotC for JoW on long fights where mana won't hold.</p>
 
     <div class="tip">
         <strong>JotC, like JoW, is ideally another paladin's job &mdash; in any rotation.</strong> The <strong>utility judgements</strong> &mdash; Judgement of the Crusader (+219 Holy debuff), Judgement of Wisdom (mana), and Judgement of Light &mdash; share <strong>one judgement slot per paladin</strong>: judging one overwrites your own previous one, so your JoW would wipe your own JotC. Your <strong>seal-damage judgements do not use that slot</strong> &mdash; <strong>JoC and JoR never overwrite JotC or JoW</strong>, so you keep the +219 debuff up while judging Corruption every cycle. Because of this, the ideal is for a <strong>Ret paladin</strong> to supply JotC &mdash; and a <strong>Holy paladin</strong> to supply JoW &mdash; so both debuffs sit on the boss permanently and <em>every</em> one of your own judges goes to threat. The JotC-amplified figures throughout this guide assume the debuff is present; who supplies it doesn't change the threat math, only who spends the judge slot. <strong>This holds regardless of which rotation is being discussed.</strong> Solo, you can self-maintain JotC (judge Crusader once, then judge Corruption &mdash; it won't remove the debuff), but you can't <em>also</em> run JoW yourself, since JoW shares JotC's slot and overwrites it (see the Judgement of Wisdom rules above).
@@ -2207,7 +2238,7 @@
     <div class="tip">
         <strong>Seal management between judges:</strong> Judgement consumes your active seal, so you must re-seal after every judge. Your default seal is <strong>Seal of Corruption</strong> (SoC) &mdash; it builds and maintains your 5-stack DoT. Here's what happens around each judge type:
         <ul style="margin: 8px 0 0;">
-            <li><span style="color:#f0a500;"><strong>JoB</strong></span> (opener only): SoB is already active from pre-pull &rarr; Judge Blood &rarr; <strong>re-seal SoC</strong> (macro). Start building stacks.</li>
+            <li><span style="color:#f0a500;"><strong>JoR</strong></span> (opener only): SoR is already active from pre-pull &rarr; Judge Righteousness &rarr; <strong>re-seal SoC</strong> (macro). Start building stacks. <em>(Below ~400 SP, open SoB &rarr; Judge Blood instead.)</em></li>
             <li><span style="color:#d2a8ff;"><strong>JotC</strong></span> (once only, at J2): Seal SotC <strong>1 GCD before</strong> judge CD &rarr; Judge Crusader &rarr; <strong>re-seal SoC</strong>. Costs 2 extra seals (SotC + SoC) = 420 mana beyond the judge itself. Auto-attacks refresh the debuff permanently &mdash; <strong>never needs re-judging.</strong> Your SoC stacks keep ticking from the DoT &mdash; you only lose ~1.5s of auto-attack stack refreshes.</li>
             <li><span style="color:#7ee787;"><strong>JoC</strong></span>: SoC is already active &rarr; Judge Corruption &rarr; damage scales with current stacks, <strong>stacks are preserved and timer is refreshed</strong>. If at 5 stacks: re-seal <strong>SoR</strong> to ride per-swing procs while the DoT keeps ticking at full power. If below 5 stacks: re-seal <strong>SoC</strong> to keep building. Cheapest judge (just 1 re-seal = 210 mana).</li>
             <li><span style="color:#58a6ff;"><strong>JoW</strong></span>: Seal SoW <strong>1 GCD before</strong> judge CD &rarr; Judge Wisdom &rarr; <strong>re-seal SoC</strong>. Costs 2 extra seals (SoW + SoC) = 420 mana, but the 10s JoW debuff returns ~386 mana from auto-attacks (net +176).</li>
@@ -2228,7 +2259,7 @@
     </div>
 
     <div class="formula">
-        <strong>Pre-pull (all fights):</strong> &minus;6.0s Seal of Blood &rarr; &minus;4.5s Holy Shield &rarr; &minus;3.0s Consecration &rarr; &minus;1.5s Avenging Wrath &rarr; 0.0s <strong>Avenger's Shield (PULL)</strong>
+        <strong>Pre-pull (all fights):</strong> &minus;6.0s Seal of Righteousness &rarr; &minus;4.5s Holy Shield &rarr; &minus;3.0s Consecration &rarr; &minus;1.5s Avenging Wrath &rarr; 0.0s <strong>Avenger's Shield (PULL)</strong> &rarr; Judge Righteousness <em>(low gear: Seal of Blood &rarr; Judge Blood)</em>
     </div>
 
     <div class="warning">
@@ -2242,7 +2273,7 @@
     <!-- ============================================================ -->
     <h3>Cumulative Threat Timelines (Opener Comparison)</h3>
 
-    <p>These charts simulate the <strong>total cumulative threat from all abilities</strong> over the first <strong>20 seconds &mdash; the full Avenging Wrath window</strong>, where opener choice matters most. Includes: seal procs, seal DoT, judgements, Consecration, Holy Shield (estimated ~3 blocks/10s), Avenger's Shield, Exorcism, Holy Wrath, and the SoR swap at 5 stacks. Each chart compares every opener discussed in this guide: <span style="color:#b388ff;">SoC</span>, <span style="color:#ffd54f;">SoB</span> (snap threat), <span style="color:#d2a8ff;">JotC</span> (open with Judgement of the Crusader to apply the permanent +219 Holy debuff, which then amplifies every Holy ability), <span style="color:#7ee787;">SoR</span> (pure Seal of Righteousness + Judgement of Righteousness, no ramp or DoT), the <span style="color:#58a6ff;">SoB &rarr; JotC hybrid</span> (the recommended solo opener: JoB snap on the first judge, JotC on the second), and <span style="color:#ff9bd1;">SoB + Ret JotC @ 1s</span> (a Ret paladin applies JotC at 1s, so you keep the JoB snap <em>and</em> spend every judge on Corruption). Hover for exact values. <em>Note: with a Ret paladin supplying JotC, the <span style="color:#ff9bd1;">SoB + Ret JotC</span> line is the best case &mdash; full amplification from 1s with no judge cost. Solo, the pure <span style="color:#d2a8ff;">JotC opener</span> posts a high 20s total (debuff from the first judge) but gives up the pull snap, which is why the <span style="color:#58a6ff;">SoB &rarr; JotC hybrid</span> is the practical solo recommendation.</em></p>
+    <p>These charts simulate the <strong>total cumulative threat from all abilities</strong> over the first <strong>20 seconds &mdash; the full Avenging Wrath window</strong>, where opener choice matters most. Includes: seal procs, seal DoT, judgements, Consecration, Holy Shield (estimated ~3 blocks/10s), Avenger's Shield, Exorcism, Holy Wrath, and the SoR swap at 5 stacks. Each chart compares every opener discussed in this guide: <span style="color:#b388ff;">SoC</span>, <span style="color:#ffd54f;">SoB</span> (low-gear snap threat), <span style="color:#d2a8ff;">JotC</span> (open with Judgement of the Crusader to apply the permanent +219 Holy debuff, which then amplifies every Holy ability), <span style="color:#7ee787;">SoR</span> (pure Seal of Righteousness + Judgement of Righteousness, no ramp or DoT), the <span style="color:#58a6ff;">SoR &rarr; JotC hybrid</span> (the recommended solo opener: JoR snap on the first judge, JotC on the second), and <span style="color:#ff9bd1;">SoR + Ret JotC @ 1s</span> (a Ret paladin applies JotC at 1s, so you keep the JoR snap <em>and</em> spend every judge on Corruption). Hover for exact values. <em>Note: with a Ret paladin supplying JotC, the <span style="color:#ff9bd1;">SoR + Ret JotC</span> line is the best case &mdash; full amplification from 1s with no judge cost. Solo, the pure <span style="color:#d2a8ff;">JotC opener</span> posts a high 20s total (debuff from the first judge) but gives up the pull snap, which is why the <span style="color:#58a6ff;">SoR &rarr; JotC hybrid</span> is the practical solo recommendation. The <span style="color:#ffd54f;">SoB</span> line is shown only as the low-gear (&lt;~400 SP) reference &mdash; at raid SP the JoR snap is strictly better.</em></p>
 
     <div class="chart-container">
         <canvas id="chartStandard" width="900" height="500"></canvas>
@@ -2265,7 +2296,7 @@
             <li><strong>SoR swap at 5 stacks is free threat.</strong> The DoT keeps ticking while SoR procs add TPS on top. Switch back to SoC 9s before stacks expire to maintain them.</li>
             <li><strong>Judgement of Wisdom is ideally another paladin's job.</strong> Self-cast it only if you're <em>not</em> taking enough damage for Spiritual Attunement to refund your mana, or if a Ret paladin is keeping JotC up for you (which frees your judge slots). <strong>If you're the only paladin, you choose</strong> between Judging Crusader (2nd judge &mdash; permanent +219 amplification, more threat) and Judging Wisdom (3rd judge &mdash; mana sustain), based on fight length and whether your mana holds until the boss dies.</li>
             <li><strong>AW is instant cast</strong> (1.5s GCD). Can be used pre-pull for opener burst or delayed to 5 stacks for peak-output amplification.</li>
-            <li><strong>SoB opener is recommended.</strong> Judge Blood + AW gives significantly more snap threat than a <strong>0-stack JoC</strong> &mdash; the opener judge fires at range before your first auto-attack, so a SoC opener's first judge has no stacks (see opener comparison table). The +3.6s stack delay is worth it.</li>
+            <li><strong>SoR &rarr; Judge Righteousness is the recommended opener.</strong> JoR + AW gives the most snap threat at raid SP (more than JoB, and far more than a <strong>0-stack JoC</strong>) &mdash; the opener judge fires at range before your first auto-attack, so a SoC opener's first judge has no stacks (see opener comparison table). The +3.6s stack delay is worth it. <em>(Below ~400 SP, JoB is the bigger snap &mdash; open SoB there.)</em></li>
             <li><strong>Demon/Undead bosses</strong>: Exorcism + Holy Wrath fill the ramp-up window with high threat, making the early gap smaller.</li>
             <li><strong>Target switches kill SoC.</strong> Stick with SoR for multi-target or frequent swaps.</li>
         </ul>
@@ -2403,12 +2434,20 @@
             <strong>Mandatory Talents (Never Drop):</strong> Benediction 5/5, Improved Righteous Fury 3/3, Anticipation 5/5, Holy Shield 1/1, Improved Holy Shield 2/2, Combat Expertise (5/5, or 3/5 in the Sanctity build &mdash; see <a href="#expertise-vs-sanctity">Combat Expertise vs Improved Sanctity Aura</a>), Precision 3/3, Redoubt 5/5.
         </div>
 
+        <div class="tip">
+            <strong>&#9876; Talent deep-dives (interactive pages):</strong>
+            <ul style="margin:6px 0 0;">
+                <li><a href="talent_threat_vs_survivability.html" style="color:#58a6ff;"><strong>Threat vs Survivability Talents &amp; 3 Specs</strong></a> &mdash; every threat and every survivability talent rated, the non-negotiable tanking core, and ready-to-apply <strong>max-threat / balanced / max-survivability</strong> specs with full point-by-point sheets and one-click talent-calculator links.</li>
+                <li><a href="sanctity_conviction_vs_impsotc.html" style="color:#58a6ff;"><strong>Sanctity Talent Trade-offs</strong></a> &mdash; the per-point TPS math on <em>Conviction vs Improved Seal of the Crusader</em> and <em>One-Handed Weapon Specialization vs Combat Expertise</em>, computed live from this guide's spell-power coefficients.</li>
+            </ul>
+        </div>
+
         <!-- ============================================================ -->
         <!-- BUILD TPS COMPARISON CHART -->
         <!-- ============================================================ -->
         <h3 id="build-tps">Build TPS Comparison</h3>
 
-        <p>The two builds, run side by side under a <strong>single identical rotation</strong> &mdash; <span style="color:#ff9bd1;">Seal of Blood opener + Ret-supplied Judgement of the Crusader at 1s</span> &mdash; on the same <a href="#guide-assumptions">reference gear</a> at the top of this guide. The chart traces <strong>cumulative threat over a full 5-minute fight</strong>; nothing changes between the two lines except the talents, so the gap is purely the threat value of the talent choices: the Sanctity build trades 1H Weapon Spec, 2 Expertise, and Avenger&rsquo;s Shield for <strong>Sanctity Aura (+10% Holy)</strong> and <strong>Improved Sanctity Aura (+2% all damage)</strong>. Avenger&rsquo;s leads only at the very start (its on-pull Avenger&rsquo;s Shield hit, plus a small bump on every 30s recast) before Sanctity overtakes it at the marked <span style="color:#7ee787;">crossover</span> and pulls away.</p>
+        <p>The two builds, run side by side under a <strong>single identical rotation</strong> &mdash; <span style="color:#ff9bd1;">Seal of Righteousness opener + Ret-supplied Judgement of the Crusader at 1s</span> &mdash; on the same <a href="#guide-assumptions">reference gear</a> at the top of this guide. The chart traces <strong>cumulative threat over a full 5-minute fight</strong>; nothing changes between the two lines except the talents, so the gap is purely the threat value of the talent choices: the Sanctity build trades 1H Weapon Spec, 2 Expertise, and Avenger&rsquo;s Shield for <strong>Sanctity Aura (+10% Holy)</strong> and <strong>Improved Sanctity Aura (+2% all damage)</strong>. Avenger&rsquo;s leads only at the very start (its on-pull Avenger&rsquo;s Shield hit, plus a small bump on every 30s recast) before Sanctity overtakes it at the marked <span style="color:#7ee787;">crossover</span> and pulls away.</p>
 
         <div class="chart-container">
             <canvas id="buildTpsChart" width="900" height="500"></canvas>
@@ -2769,9 +2808,9 @@
             </tr>
             <tr>
                 <td><strong>Judgement of Righteousness</strong></td>
-                <td>0.429</td>
-                <td class="gain-good">+43.3</td>
-                <td class="gain-good">+86.5</td>
+                <td>0.728</td>
+                <td class="gain-good">+73.5</td>
+                <td class="gain-good">+146.7</td>
                 <td>Spell crit 1.5&times;</td>
             </tr>
             <tr>
@@ -2864,13 +2903,13 @@
             <strong>Wrath of Air Totem Steady-State Contribution (SoR + JoR + Consec + HS rotation):</strong>
             <ul>
                 <li><strong>SoR procs:</strong> 42.2 threat &times; 0.556 procs/s = <strong>+23.5 TPS</strong></li>
-                <li><strong>JoR on 10s CD:</strong> 86.5 / 10 = <strong>+8.6 TPS</strong></li>
+                <li><strong>JoR on 10s CD:</strong> 146.7 / 10 = <strong>+14.7 TPS</strong></li>
                 <li><strong>Consec on 8s cycle:</strong> 191.9 / 8 = <strong>+24.0 TPS</strong> (if Consec kept up every cooldown)</li>
                 <li><strong>Holy Shield on 10s cycle (full 8 charges):</strong> 92.1 / 10 = <strong>+9.2 TPS</strong></li>
-                <li class="gain-good" style="font-size:1.05em;"><strong>Total added threat from WoA (101 SP): ~65 TPS</strong></li>
-                <li class="gain-good" style="font-size:1.05em;"><strong>With 2/2 Imp WoA (121 SP): ~78 TPS</strong></li>
+                <li class="gain-good" style="font-size:1.05em;"><strong>Total added threat from WoA (101 SP): ~71 TPS</strong></li>
+                <li class="gain-good" style="font-size:1.05em;"><strong>With 2/2 Imp WoA (121 SP): ~85 TPS</strong></li>
             </ul>
-            <p style="margin-top:10px;">Over a 5 minute fight: WoA adds <strong>~19,500 threat</strong> (Imp WoA: <strong>~23,400 threat</strong>). On Undead/Demon bosses with Exorcism + Holy Wrath in the rotation, add another <strong>~5&ndash;10 TPS</strong>.</p>
+            <p style="margin-top:10px;">Over a 5 minute fight: WoA adds <strong>~21,300 threat</strong> (Imp WoA: <strong>~25,500 threat</strong>). On Undead/Demon bosses with Exorcism + Holy Wrath in the rotation, add another <strong>~5&ndash;10 TPS</strong>.</p>
         </div>
 
         <h3>Windfury Totem: Per-Proc Contribution</h3>
@@ -2930,7 +2969,7 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
                 <th>+ Threat</th>
             </tr>
             <tr><td>Seal of Righteousness (proc)</td><td>0.20</td><td class="gain-good">+9.2</td><td class="gain-good">+17.6</td></tr>
-            <tr><td>Judgement of Righteousness</td><td>0.429</td><td class="gain-good">+18.0</td><td class="gain-good">+35.9</td></tr>
+            <tr><td>Judgement of Righteousness</td><td>0.728</td><td class="gain-good">+30.6</td><td class="gain-good">+61.0</td></tr>
             <tr><td>SoC DoT (per tick, 5 stacks)</td><td>0.17</td><td class="gain-good">+7.9</td><td class="gain-good">+14.9</td></tr>
             <tr><td>Consecration (full 8s)</td><td>1.000</td><td class="gain-good">+42.0</td><td class="gain-good">+79.8</td></tr>
             <tr><td>Holy Shield (full 8 blocks)</td><td>0.40</td><td class="gain-good">+16.8</td><td class="gain-good">+38.3</td></tr>
@@ -2939,7 +2978,7 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
         </table>
 
         <div class="tip">
-            <strong>Wizard Oil Steady-State Contribution:</strong> ~21 TPS (SoR + JoR + Consec + HS). With SoC stacks, add ~5 TPS. It&rsquo;s worth it regardless of seal &mdash; Consecration, Holy Shield, the Judgements and Avenger&rsquo;s Shield all scale with spell damage no matter which seal you&rsquo;re running, so <strong>Superior Wizard Oil always beats Superior Mana Oil for a threat tank.</strong>
+            <strong>Wizard Oil Steady-State Contribution:</strong> ~23 TPS (SoR + JoR + Consec + HS). With SoC stacks, add ~5 TPS. It&rsquo;s worth it regardless of seal &mdash; Consecration, Holy Shield, the Judgements and Avenger&rsquo;s Shield all scale with spell damage no matter which seal you&rsquo;re running, so <strong>Superior Wizard Oil always beats Superior Mana Oil for a threat tank.</strong>
         </div>
 
         <h3>Combining Buffs: The Real Choice Is &ldquo;WoA + Oil&rdquo; vs &ldquo;Windfury Alone&rdquo;</h3>
@@ -2956,19 +2995,19 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
                 <td><span class="legend-pill pill-woa">WoA</span> + <span class="legend-pill pill-oil">Oil</span> <strong>(stacks)</strong></td>
                 <td>Imp WoA stat aura <em>and</em> Wizard Oil on your weapon &mdash; both apply at once</td>
                 <td><strong>121 + 42 = 163 SP</strong></td>
-                <td class="gain-good">~78 + ~21 = <strong>~99 TPS</strong></td>
+                <td class="gain-good">~85 + ~23 = <strong>~108 TPS</strong></td>
             </tr>
             <tr>
                 <td><span class="legend-pill pill-woa">WoA</span> + <span class="legend-pill pill-oil">Oil</span> (base WoA)</td>
                 <td>Non-Imp WoA + Wizard Oil</td>
                 <td>101 + 42 = 143 SP</td>
-                <td class="gain-good">~65 + ~21 = <strong>~86 TPS</strong></td>
+                <td class="gain-good">~71 + ~23 = <strong>~94 TPS</strong></td>
             </tr>
             <tr class="summary-row">
                 <td><span class="legend-pill pill-woa">WoA</span> + <span class="legend-pill pill-wf">WF</span> via <strong>totem twisting</strong> (no Oil)</td>
                 <td>A dedicated twisting shaman keeps both air-totem effects up at once &mdash; the WF weapon buff persists through the swap (TBC mechanic). Still no oil.</td>
                 <td>101 SP (base WoA) + WF procs</td>
-                <td class="gain-good"><strong>~122 TPS</strong> &mdash; best case (see Twisting)</td>
+                <td class="gain-good"><strong>~128 TPS</strong> &mdash; best case (see Twisting)</td>
             </tr>
             <tr>
                 <td><span class="legend-pill pill-wf">WF</span> alone <strong>(no Oil)</strong></td>
@@ -2983,7 +3022,7 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
         </table>
 
         <div class="verdict">
-            <strong>Net result:</strong> the honest comparison isn&rsquo;t &ldquo;WoA ~78 vs WF ~65.&rdquo; It&rsquo;s <span class="gain-good">WoA + Oil &asymp; ~99 TPS</span> vs <span class="gain-mid">WF &asymp; ~65 TPS</span>, because choosing Windfury <em>costs</em> you the ~21 TPS of Wizard Oil you&rsquo;d otherwise keep. That turns a slim totem-vs-totem edge into a <strong>~34 TPS advantage for the WoA package</strong> in the SoR rotation. WF only claws it back when its <em>melee</em> value to you plus its value to the rest of your melee party outweighs that gap &mdash; a party-DPS argument, not a personal-threat one. The <em>only</em> thing that beats WoA + Oil for you is <strong>totem twisting</strong> (~122 TPS), which stacks both air-totem effects &mdash; see the <a href="#twisting">Totem Twisting</a> section below.
+            <strong>Net result:</strong> the honest comparison isn&rsquo;t &ldquo;WoA ~85 vs WF ~65.&rdquo; It&rsquo;s <span class="gain-good">WoA + Oil &asymp; ~108 TPS</span> vs <span class="gain-mid">WF &asymp; ~65 TPS</span>, because choosing Windfury <em>costs</em> you the ~23 TPS of Wizard Oil you&rsquo;d otherwise keep. That turns a slim totem-vs-totem edge into a <strong>~43 TPS advantage for the WoA package</strong> in the SoR rotation. WF only claws it back when its <em>melee</em> value to you plus its value to the rest of your melee party outweighs that gap &mdash; a party-DPS argument, not a personal-threat one. The <em>only</em> thing that beats WoA + Oil for you is <strong>totem twisting</strong> (~128 TPS), which stacks both air-totem effects &mdash; see the <a href="#twisting">Totem Twisting</a> section below.
         </div>
 
         <div class="warning">
@@ -3005,24 +3044,24 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
             <tr>
                 <td><span class="legend-pill pill-oil">Oil</span><strong>Superior Wizard Oil</strong></td>
                 <td>~11 DPS</td>
-                <td class="gain-mid">~21 TPS</td>
-                <td>~6,300</td>
+                <td class="gain-mid">~23 TPS</td>
+                <td>~6,900</td>
                 <td>All Holy abilities</td>
                 <td>Mana Oil, stones, <strong>WF Totem buff</strong></td>
             </tr>
             <tr>
                 <td><span class="legend-pill pill-woa">WoA</span><strong>Wrath of Air Totem</strong></td>
                 <td>~26 DPS</td>
-                <td class="gain-good">~65 TPS</td>
-                <td>~19,500</td>
+                <td class="gain-good">~71 TPS</td>
+                <td>~21,300</td>
                 <td>All Holy abilities</td>
                 <td>Windfury (Air totem slot)</td>
             </tr>
             <tr>
                 <td><span class="legend-pill pill-woa">WoA</span><strong>Imp Wrath of Air (2/2)</strong></td>
                 <td>~32 DPS</td>
-                <td class="gain-good">~78 TPS</td>
-                <td>~23,400</td>
+                <td class="gain-good">~85 TPS</td>
+                <td>~25,500</td>
                 <td>All Holy abilities</td>
                 <td>Windfury (Air totem slot)</td>
             </tr>
@@ -3056,15 +3095,15 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
 
         <div class="formula" style="white-space:pre; overflow-x:auto;"><strong>Expected gains per 60s twist (Enhancement shaman: Imp WF + base WoA):</strong>
   WF weapon buff   ~100% &times; 65 TPS (Imp WF procs + their SoR procs)  = ~65 TPS
-  WoA aura          ~88% &times; 65 TPS (base WoA &mdash; Enh has no Imp WoA)  = ~57 TPS
+  WoA aura          ~88% &times; 71 TPS (base WoA &mdash; Enh has no Imp WoA)  = ~63 TPS
   Wizard Oil        0 (run un-oiled; a coat would wipe the WF buff)     =   0 TPS
-  Combined twist                                                        = ~122 TPS   (~7,300 / 60s)
+  Combined twist                                                        = ~128 TPS   (~7,700 / 60s)
 
 For comparison (same 60s window, best realistic non-twist packages):
-  Imp WoA + Wizard Oil   99 &times; 60   = 5,940   (Ele/Resto shaman + your oil, they stack)
-  Base WoA + Wizard Oil  86 &times; 60   = 5,160
+  Imp WoA + Wizard Oil   108 &times; 60  = 6,480   (Ele/Resto shaman + your oil, they stack)
+  Base WoA + Wizard Oil  94 &times; 60   = 5,640
   Imp WF alone (no oil)  65 &times; 60   = 3,900   (run un-oiled; oil wipes WF)
-  Imp WoA alone (no oil) 78 &times; 60   = 4,680</div>
+  Imp WoA alone (no oil) 85 &times; 60   = 5,100</div>
 
         <h4>The Result</h4>
         <table class="combat-table">
@@ -3076,26 +3115,26 @@ For comparison (same 60s window, best realistic non-twist packages):
             </tr>
             <tr class="summary-row">
                 <td><strong>Twisting: WF + WoA</strong> (dedicated shaman, no oil)</td>
-                <td class="gain-good">~122</td>
-                <td class="gain-good">~7,300</td>
+                <td class="gain-good">~128</td>
+                <td class="gain-good">~7,700</td>
                 <td>Best case &mdash; persisting WF buff overlaps the live WoA aura</td>
             </tr>
             <tr>
                 <td><strong>Imp WoA + Wizard Oil</strong> (Ele/Resto shaman)</td>
-                <td class="gain-good">~99</td>
-                <td class="gain-good">~5,940</td>
+                <td class="gain-good">~108</td>
+                <td class="gain-good">~6,480</td>
                 <td>Best you can do without a twisting shaman &mdash; the two stack</td>
             </tr>
             <tr>
                 <td><strong>Base WoA + Wizard Oil</strong></td>
-                <td class="gain-mid">~86</td>
-                <td class="gain-mid">~5,160</td>
+                <td class="gain-mid">~94</td>
+                <td class="gain-mid">~5,640</td>
                 <td>No Imp WoA talent on the shaman</td>
             </tr>
             <tr>
                 <td><strong>Imp WoA alone</strong> (no oil)</td>
-                <td class="gain-mid">~78</td>
-                <td class="gain-mid">~4,680</td>
+                <td class="gain-mid">~85</td>
+                <td class="gain-mid">~5,100</td>
                 <td>If you skip oil for some reason</td>
             </tr>
             <tr>
@@ -3107,22 +3146,22 @@ For comparison (same 60s window, best realistic non-twist packages):
         </table>
 
         <div class="verdict">
-            <strong>For the Prot Paladin&rsquo;s threat, a real twist is the best case &mdash; if you can get it.</strong> Because the Windfury weapon buff persists through the totem swap, a dedicated twisting shaman gives you WoA <em>and</em> WF at the same time (~122 TPS), clearly ahead of any single-totem package. The catch is cost &mdash; twisting is essentially <strong>all the shaman does</strong>:
+            <strong>For the Prot Paladin&rsquo;s threat, a real twist is the best case &mdash; if you can get it.</strong> Because the Windfury weapon buff persists through the totem swap, a dedicated twisting shaman gives you WoA <em>and</em> WF at the same time (~128 TPS), clearly ahead of any single-totem package. The catch is cost &mdash; twisting is essentially <strong>all the shaman does</strong>:
             <ul>
                 <li>It eats ~190 mana per drop and near-constant GCDs &mdash; a Resto shaman who&rsquo;s also healing can&rsquo;t sustain it. Realistically only an Enhancement shaman (already meleeing in your group) twists.</li>
                 <li>An Enhancement twister has Imp WF but <em>not</em> Imp WoA, so your WoA portion is the base 101 SP value, not 121.</li>
                 <li>You forfeit Wizard Oil regardless &mdash; any coat you apply would wipe the WF buff, so you run un-oiled all fight.</li>
             </ul>
-            <strong>Bottom line for you, the tank:</strong> if a shaman is already twisting WF/WoA for the melee group, you&rsquo;re the incidental big winner (~122 TPS). Don&rsquo;t <em>demand</em> a twist purely for your own threat &mdash; it&rsquo;s a heavy ask. Without one, <strong>WoA + Wizard Oil (~99 TPS)</strong> is your reliable best.
+            <strong>Bottom line for you, the tank:</strong> if a shaman is already twisting WF/WoA for the melee group, you&rsquo;re the incidental big winner (~128 TPS). Don&rsquo;t <em>demand</em> a twist purely for your own threat &mdash; it&rsquo;s a heavy ask. Without one, <strong>WoA + Wizard Oil (~108 TPS)</strong> is your reliable best.
         </div>
 
         <div class="warning">
             <strong>Caveats on the twist model:</strong>
             <ul>
-                <li>The ~122 TPS figure is an idealized, well-executed twist. A sloppy or part-time twist lands somewhere between this and single-totem values.</li>
+                <li>The ~128 TPS figure is an idealized, well-executed twist. A sloppy or part-time twist lands somewhere between this and single-totem values.</li>
                 <li>Twisting relies on the WF weapon buff&rsquo;s carry-over lasting long enough to cover each WoA window. If the shaman lets it lapse, WF uptime drops and the procs go with it.</li>
                 <li>WF procs are random &mdash; the 0.111 procs/s rate is an expected value; any given 10s window might land 0 or 2.</li>
-                <li>Twisting forfeits your Wizard Oil entirely &mdash; you must run un-oiled so the WF buff stays up (a coat would wipe it). That cost is already baked into the ~122 TPS above.</li>
+                <li>Twisting forfeits your Wizard Oil entirely &mdash; you must run un-oiled so the WF buff stays up (a coat would wipe it). That cost is already baked into the ~128 TPS above.</li>
                 <li>If your shaman is in a different 5-man party (e.g. healer group), you get <strong>neither</strong> totem. Everything here assumes the shaman is in your party.</li>
             </ul>
         </div>
@@ -3137,23 +3176,23 @@ For comparison (same 60s window, best realistic non-twist packages):
 
         <h3>Verdict &amp; Practical Decision Tree</h3>
         <div class="verdict">
-            <strong>Wizard Oil: yes &mdash; unless your party runs Windfury Totem.</strong> It&rsquo;s a self-applied weapon coat worth ~21 TPS for one consumable per hour, and it <em>stacks on top of Wrath of Air</em>. But it shares your weapon slot with the Windfury Totem buff, so in a <em>Windfury</em> party it&rsquo;s oil <strong>or</strong> the totem, not both &mdash; and the totem (~65 TPS) wins, so you skip the oil there. (Don&rsquo;t reach for <strong>Superior Mana Oil</strong> instead &mdash; even when your <em>seal</em> doesn&rsquo;t scale with spell power, everything else in your kit does, so Wizard Oil is always the better weapon coat for a threat tank.)
+            <strong>Wizard Oil: yes &mdash; unless your party runs Windfury Totem.</strong> It&rsquo;s a self-applied weapon coat worth ~23 TPS for one consumable per hour, and it <em>stacks on top of Wrath of Air</em>. But it shares your weapon slot with the Windfury Totem buff, so in a <em>Windfury</em> party it&rsquo;s oil <strong>or</strong> the totem, not both &mdash; and the totem (~65 TPS) wins, so you skip the oil there. (Don&rsquo;t reach for <strong>Superior Mana Oil</strong> instead &mdash; even when your <em>seal</em> doesn&rsquo;t scale with spell power, everything else in your kit does, so Wizard Oil is always the better weapon coat for a threat tank.)
         </div>
 
         <div class="verdict">
             <strong>Air totem: lean WoA &mdash; and it&rsquo;s not as close as the raw totem numbers suggest.</strong>
             <ul>
-                <li>Totem-vs-totem, <strong>Imp WoA (~78 TPS)</strong> already edges <strong>Imp WF (~65 TPS)</strong> in the SoR rotation. But the real gap is bigger: WoA <em>lets you keep your Wizard Oil</em> (+21 TPS), while a Windfury party means running un-oiled (a coat wipes the WF buff). So the package comparison is <strong>~99 TPS (WoA + Oil) vs ~65 TPS (WF, no oil)</strong> &mdash; about a ~34 TPS swing.</li>
+                <li>Totem-vs-totem, <strong>Imp WoA (~85 TPS)</strong> already edges <strong>Imp WF (~65 TPS)</strong> in the SoR rotation. But the real gap is bigger: WoA <em>lets you keep your Wizard Oil</em> (+23 TPS), while a Windfury party means running un-oiled (a coat wipes the WF buff). So the package comparison is <strong>~108 TPS (WoA + Oil) vs ~65 TPS (WF, no oil)</strong> &mdash; about a ~43 TPS swing.</li>
                 <li>WF is strictly party-local melee. WoA's value is shared by other casters in the party (healing paladin, ele shaman, mage in melee group, etc.), so it has higher <em>raid utility</em>.</li>
                 <li>WF's threat is <em>bursty</em>. A 9s gap with no proc, then a 582-threat spike. Bad for taunt-races where TPS averages don't matter, only the floor.</li>
-                <li><strong>Seal of Blood doesn&rsquo;t change this.</strong> SoB is only used to land a single big <em>Judgement of Blood</em> on the pull (the highest-threat opener) &mdash; you&rsquo;re back on Seal of Righteousness for the entire sustained fight. So the comparison always runs under SoR, where WoA + Oil leads. (Even the on-pull JoB carries a 0.43 spell-power coefficient, so WoA and Wizard Oil still feed it.)</li>
+                <li><strong>The opener doesn&rsquo;t change this.</strong> At raid spell power you open <em>Seal of Righteousness &rarr; Judge Righteousness</em> (JoR out-snaps JoB above ~400 SP), then run your sustained seal for the rest of the fight. So the comparison always runs under SoR, where WoA + Oil leads. (The on-pull JoR carries a 0.728 spell-power coefficient, so WoA and Wizard Oil feed it too.)</li>
             </ul>
         </div>
 
         <div class="verdict">
             <strong>Default party setup for a Prot Paladin:</strong>
             <ol>
-                <li><strong>For your personal threat, Wrath of Air is the pick</strong> &mdash; ~78 TPS from Imp WoA <em>plus</em> the ~21 TPS from the Wizard Oil it lets you keep = <strong>~99 TPS</strong>. Request WoA from any Elemental/Resto shaman in your party and coat with Superior Wizard Oil.</li>
+                <li><strong>For your personal threat, Wrath of Air is the pick</strong> &mdash; ~85 TPS from Imp WoA <em>plus</em> the ~23 TPS from the Wizard Oil it lets you keep = <strong>~108 TPS</strong>. Request WoA from any Elemental/Resto shaman in your party and coat with Superior Wizard Oil.</li>
                 <li><strong>If a Windfury party is better for the raid</strong> (an Enhancement shaman dropping Imp WF for a stacked melee group), you piggyback for ~65 TPS &mdash; but go un-oiled, since any coat you apply just wipes the WF buff. Don&rsquo;t waste oil charges in a Windfury party.</li>
                 <li>Wrath of Air also helps every caster in your party (healing paladin, ele shaman, mage), so it usually wins on raid utility too &mdash; unless the melee stack makes Windfury the group&rsquo;s clear choice.</li>
             </ol>
@@ -3172,8 +3211,8 @@ For comparison (same 60s window, best realistic non-twist packages):
 
         <h4>One-Line Bottom Line</h4>
         <div class="tip" style="font-size:1.05em;">
-            <strong>Raid rotation with SoR:</strong> <span class="gain-good">WoA + Wizard Oil &asymp; +99 TPS (they stack)</span> beats <span class="gain-mid">Windfury alone &asymp; +65 TPS (run un-oiled)</span>. <br>
-            <strong>You can&rsquo;t bring all three.</strong> Windfury Totem and Wizard Oil share your weapon slot &mdash; so it&rsquo;s <strong>Wrath of Air + Wizard Oil</strong> for max personal threat, or Windfury (no oil) if the raid needs it for the melee group. The one exception: a shaman <strong>twisting</strong> WF/WoA stacks both air effects on you for <span class="gain-good">~122 TPS</span> &mdash; the true ceiling, but a heavy ask.
+            <strong>Raid rotation with SoR:</strong> <span class="gain-good">WoA + Wizard Oil &asymp; +108 TPS (they stack)</span> beats <span class="gain-mid">Windfury alone &asymp; +65 TPS (run un-oiled)</span>. <br>
+            <strong>You can&rsquo;t bring all three.</strong> Windfury Totem and Wizard Oil share your weapon slot &mdash; so it&rsquo;s <strong>Wrath of Air + Wizard Oil</strong> for max personal threat, or Windfury (no oil) if the raid needs it for the melee group. The one exception: a shaman <strong>twisting</strong> WF/WoA stacks both air effects on you for <span class="gain-good">~128 TPS</span> &mdash; the true ceiling, but a heavy ask.
         </div>
 
         <script>
@@ -3182,11 +3221,11 @@ For comparison (same 60s window, best realistic non-twist packages):
             const labels = [];
             for (let t = 0; t <= T_END; t++) labels.push(t + 's');
 
-            const WOA_TPS = 65;     // base Wrath of Air
-            const IMPWOA_TPS = 78;  // 2/2 improved
-            const OIL_TPS = 21;
-            const WOAOIL_TPS = 99;      // Imp WoA + Wizard Oil stacked (the realistic package)
-            const WOAOIL_BASE_TPS = 86; // base WoA + Wizard Oil stacked (no Imp WoA talent)
+            const WOA_TPS = 71;     // base Wrath of Air
+            const IMPWOA_TPS = 85;  // 2/2 improved
+            const OIL_TPS = 23;
+            const WOAOIL_TPS = 108;     // Imp WoA + Wizard Oil stacked (the realistic package)
+            const WOAOIL_BASE_TPS = 94; // base WoA + Wizard Oil stacked (no Imp WoA talent)
 
             const WF_PROC = 582;
             const WF_PROC_TIMES = [9, 18, 27, 36, 45, 54];
@@ -3196,7 +3235,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             let nextProcIdx = 0;
 
             // TBC twist: the WF weapon buff persists through the totem swap, so it OVERLAPS WoA.
-            const TWIST_WOA_TPS = 65 * 0.88;  // base WoA (Enh shaman, no Imp WoA) at ~88% uptime
+            const TWIST_WOA_TPS = 71 * 0.88;  // base WoA (Enh shaman, no Imp WoA) at ~88% uptime
             let twistCum = 0;
             let twistProcIdx = 0;
             for (let t = 0; t <= T_END; t++) {
@@ -3690,7 +3729,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             #showtooltip<br>
             /cast [mod:shift] Seal of Wisdom; [mod:ctrl] Seal of Righteousness; [mod:alt] Seal of Blood; Seal of Corruption
         </div>
-        <p>Default: Seal of Corruption (sustained single-target threat). Ctrl: Seal of Righteousness (AOE / short fights). Shift: Seal of Wisdom (mana recovery). Alt: Seal of Blood (pull opener &mdash; Judge Blood for snap threat).</p>
+        <p>Default: Seal of Corruption (sustained single-target threat). Ctrl: Seal of Righteousness (<strong>raid pull opener &mdash; Judge Righteousness for snap threat</strong>, plus AOE / short fights). Shift: Seal of Wisdom (mana recovery). Alt: Seal of Blood (<strong>low-gear pull opener only</strong>, below ~400 SP &mdash; Judge Blood).</p>
 
         <h3>Avenging Wrath + Notification</h3>
         <div class="code-block">
@@ -4109,7 +4148,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             <tr>
                 <td><strong>Seal of Vengeance / Corruption (DoT)</strong></td>
                 <td>0.034 per tick per stack</td>
-                <td><a href="https://warcraft.wiki.gg/wiki/Talk:Spell_power_coefficient">Warcraft Wiki Talk:Spell_power_coefficient</a> &mdash; empirical testing (0.0341&ndash;0.0345 per tick per stack). Base 10 damage per tick per stack. DoT cannot crit.</td>
+                <td><a href="https://warcraft.wiki.gg/wiki/Talk:Spell_power_coefficient">Warcraft Wiki Talk:Spell_power_coefficient</a> &mdash; empirical testing (0.0341&ndash;0.0345 per tick per stack &rarr; 0.17 per tick at 5 stacks). Base <strong>30 per tick per stack</strong> (= 10 DPS per stack; 150/tick = 50 DPS at 5 stacks), ticks every 3s for 15s. Cross-checked vs <a href="https://wowwiki-archive.fandom.com/wiki/Blood_Corruption">WoWWiki &mdash; Blood Corruption</a> ("150 every 3s at 5 stacks; +17% spell damage"). DoT cannot crit; +10% from 2pc Justicar.</td>
             </tr>
             <tr>
                 <td><strong>Judgement of Vengeance / Corruption</strong></td>
@@ -4397,9 +4436,9 @@ For comparison (same 60s window, best realistic non-twist packages):
     const SOR_COEFF = 0.2;
     const SOR_PER_SWING = Math.round((SOR_BASE_PER_SWING + SP * SOR_COEFF) * RF * JUSTICAR_2P);
     const SOR_TPS = Math.round(SOR_PER_SWING / WS);
-    // JoR: (base + SP*0.429) * RF * (1 + spellCrit*0.5). Base ~162 at rank 7. NOT affected by 2pc Justicar.
-    const JOR_BASE = 162;
-    const JOR_PER_JUDGE = Math.round((JOR_BASE + SP * 0.429) * RF * (1 + SC * 0.5));
+    // JoR: (base + SP*0.728) * RF * (1 + spellCrit*0.5). Base 208 at rank 9 (Wowhead TBC: "Value 208, SP mod 0.728"). NOT affected by 2pc Justicar.
+    const JOR_BASE = 208;
+    const JOR_PER_JUDGE = Math.round((JOR_BASE + SP * 0.728) * RF * (1 + SC * 0.5));
 
     // Seal of Corruption — DoT IS affected by 2pc Justicar (+10%).
     const SOC_DOT_DPS_PS = 10 + SP * 0.034 / 3;
@@ -4446,7 +4485,7 @@ For comparison (same 60s window, best realistic non-twist packages):
     // Seal Swap + JotC = the swap, but the 2nd judge is JotC (permanent debuff),
     // amplifying every later SoR proc and judge by +219×RF.
     // ============================================================
-    const SEAL_SIM_DUR = 60, SEAL_SIM_STEP = 0.1, SEAL_SIM_SOR_STAY = 5.0;
+    const SEAL_SIM_DUR = 240, SEAL_SIM_STEP = 0.1, SEAL_SIM_SOR_STAY = 5.0;
     function runSealSim(strategy) {
         var isSwap = (strategy === 'seal-swap' || strategy === 'seal-swap-jotc' || strategy === 'seal-swap-ret-jotc');
         var isJotC = (strategy === 'seal-swap-jotc');
@@ -4605,16 +4644,17 @@ For comparison (same 60s window, best realistic non-twist packages):
         }
         return null;
     }
-    var swapCrossTime = firstCrossTime(sealSimSwap, sealSimSoR); // ~30s
-    var socCrossTime  = firstCrossTime(sealSimSoC,  sealSimSoR); // ~40s
+    var swapCrossTime = firstCrossTime(sealSimSwap, sealSimSoR); // ~50s (0.728 JoR)
+    var socCrossTime  = firstCrossTime(sealSimSoC,  sealSimSoR); // ~182s (0.728 JoR)
 
-    // Phase 2: After 5 stacks. Iterate at 1.8s auto intervals until pure SoC's
-    // cumulative total has overtaken SoR (the later of the two crossovers, ~40s),
-    // plus a couple of rows for context. Capped at the 60s sim range. Both
-    // crossover rows are highlighted and explicitly labelled in the Verdict cell.
+    // Phase 2: After 5 stacks. Iterate at 1.8s auto intervals until just past the
+    // seal-swap cumulative crossover (~50s). Pure SoC's cumulative crossover is now
+    // much later (~180s with the 0.728 JoR coefficient) — too far out for this
+    // ramp-focused table, so it is shown in the cumulative-threat chart above instead.
+    // The swap crossover row is highlighted and labelled in the Verdict cell.
     var swapT = stackTimes[5];
     var swapCrossDone = false, socCrossDone = false;
-    var tableEnd = Math.min(60, (socCrossTime !== null ? socCrossTime : 42) + 2 * WS);
+    var tableEnd = Math.min(SEAL_SIM_DUR, (swapCrossTime !== null ? swapCrossTime : 50) + 3 * WS);
     while (swapT < tableEnd) {
         swapT = +(swapT + WS).toFixed(1);
         var cumSoC2  = simCumAt(sealSimSoC,  swapT);
@@ -4650,7 +4690,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             '<td style="color:' + swapJotCColor2 + ';">' + Math.round(cumSwapJotC2).toLocaleString() + '</td></tr>';
     }
     document.getElementById('crossoverTip').innerHTML = '<strong>SoC surpasses SoR at ' + crossStack + ' stacks</strong> (' + socTotalTPS(crossStack).toFixed(0) + ' vs ' + SOR_TOTAL_TPS.toFixed(0) + ' TPS). At 5 stacks with SoR swap, you get <strong>~' + Math.round(SOC_DOT_TPS_PS * 5 + SOR_TPS) + ' active TPS</strong> from seals (DoT + SoR procs combined).' +
-        '<br><br>That is the <em>instantaneous TPS</em> crossover. On <strong>cumulative</strong> threat from a cold open (paying the stack ramp), SoR’s no-ramp head start keeps it ahead far longer: the seal swap’s running total only overtakes pure SoR at <strong>~' + (swapCrossTime !== null ? swapCrossTime.toFixed(0) : '30') + 's</strong>, and <strong>pure SoC</strong> (no swap) doesn’t catch pure SoR until <strong>~' + (socCrossTime !== null ? socCrossTime.toFixed(0) : '40') + 's</strong> — the two highlighted rows in the detailed table below.';
+        '<br><br>That is the <em>instantaneous TPS</em> crossover. On <strong>cumulative</strong> threat from a cold open (paying the stack ramp), SoR’s no-ramp head start keeps it ahead far longer — and with the corrected <strong>0.728 JoR coefficient</strong> the SoR line is higher, pushing the crossover out further: the seal swap’s running total only overtakes pure SoR at <strong>~' + (swapCrossTime !== null ? swapCrossTime.toFixed(0) : '50') + 's</strong> (the highlighted row in the detailed table below), and <strong>pure SoC</strong> (no swap) doesn’t catch pure SoR until <strong>~' + (socCrossTime !== null ? socCrossTime.toFixed(0) : '180') + 's</strong> — see the cumulative-threat chart above.';
 
     // ============================================================
     // SoC ramp-up vs SoR steady — cumulative threat timeline.
@@ -4708,7 +4748,7 @@ For comparison (same 60s window, best realistic non-twist packages):
                 responsive: true,
                 interaction: { mode: 'index', intersect: false },
                 plugins: {
-                    title: { display: true, text: 'When Does SoC Overtake SoR? (60s, 1.8s weapon, 70% stack rate)', color: '#e6edf3', font: { size: 14, weight: 'bold' } },
+                    title: { display: true, text: 'When Does SoC Overtake SoR? (240s, 1.8s weapon, 70% stack rate)', color: '#e6edf3', font: { size: 14, weight: 'bold' } },
                     legend: { labels: { color: '#e6edf3', font: { size: 11 } } },
                     tooltip: {
                         itemSort: function(a, b) { return b.parsed.y - a.parsed.y; },
@@ -4732,7 +4772,7 @@ For comparison (same 60s window, best realistic non-twist packages):
                     x: {
                         type: 'linear',
                         title: { display: true, text: 'Time (seconds)', color: '#e6edf3' },
-                        ticks: { color: '#8b949e', stepSize: 10, callback: function(v) { return v % 10 === 0 ? v + 's' : ''; } },
+                        ticks: { color: '#8b949e', stepSize: 30, callback: function(v) { return v % 30 === 0 ? v + 's' : ''; } },
                         grid: { color: 'rgba(139,148,158,0.15)' }
                     },
                     y: {
@@ -4797,7 +4837,7 @@ For comparison (same 60s window, best realistic non-twist packages):
         function crossMsg(label, color, t) {
             return t !== null
                 ? '<strong>' + label + ' overtakes SoR at <span style="color:' + color + ';">~' + t.toFixed(1) + 's</span></strong>'
-                : '<strong>' + label + ' has not yet overtaken SoR by 60s</strong>';
+                : '<strong>' + label + ' has not yet overtaken SoR by ' + SEAL_SIM_DUR + 's</strong>';
         }
 
         document.getElementById('chartSocCatchupNote').innerHTML =
@@ -4807,7 +4847,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             crossMsg('Seal Swap + JotC (self)', '#d2a8ff', crossSwapJotCvsSoR) + '. ' +
             crossMsg('Seal Swap',  '#b388ff', crossSwapvsSoR) + '. ' +
             crossMsg('Pure SoC',   '#f0a500', crossSoCvsSoR) + '.<br><br>' +
-            '<strong>Cumulative threat at 60s:</strong><br>' +
+            '<strong>Cumulative threat at ' + SEAL_SIM_DUR + 's:</strong><br>' +
             '&nbsp;&nbsp;<span style="color:#f0a500;">Pure SoC</span>: <strong>' + Math.round(socFinal).toLocaleString() + '</strong><br>' +
             '&nbsp;&nbsp;<span style="color:#7ee787;">Pure SoR</span>: <strong>' + Math.round(sorFinal).toLocaleString() + '</strong><br>' +
             '&nbsp;&nbsp;<span style="color:#b388ff;">Seal Swap</span>: <strong>' + Math.round(swapFinal).toLocaleString() + '</strong> (' +
@@ -4832,12 +4872,12 @@ For comparison (same 60s window, best realistic non-twist packages):
     const JOR_AW   = Math.round(JOR_PER_JUDGE * AW);
     const JOTC0_AW = Math.round(JOTC_DIRECT * AW);
     document.getElementById('openerCompare').innerHTML =
-        '<tr><td style="color:#7ee787;"><strong>SoB opener</strong></td><td>Seal of Blood</td><td>Judgement of Blood</td><td class="threat-cell">' + JOB_AW.toLocaleString() + '</td><td>Highest snap. Full-power JoB + AW, plus a SoB proc (~' + SOB_PROC + ') on the first swing.</td></tr>' +
-        '<tr><td style="color:#7ee787;"><strong>SoR opener</strong></td><td>Seal of Righteousness</td><td>Judgement of Righteousness</td><td class="threat-cell">' + JOR_AW.toLocaleString() + '</td><td>Strong stackless threat &mdash; JoR is a flat nuke, so it doesn&rsquo;t need any stacks up.</td></tr>' +
+        '<tr><td style="color:#7ee787;"><strong>SoR opener</strong></td><td>Seal of Righteousness</td><td>Judgement of Righteousness</td><td class="threat-cell">' + JOR_AW.toLocaleString() + '</td><td><strong>Highest snap.</strong> Full-power JoR + AW &mdash; the 0.728 coefficient makes it the biggest opening judge at raid SP, with no self-damage and no stacks needed.</td></tr>' +
+        '<tr><td><strong>SoB opener</strong> <span style="color:#8b949e;">(low-gear)</span></td><td>Seal of Blood</td><td>Judgement of Blood</td><td class="threat-cell">' + JOB_AW.toLocaleString() + '</td><td>JoB + AW, plus a SoB proc (~' + SOB_PROC + ') on the first swing. <strong>Only the bigger snap below ~400 SP</strong> (leveling / early gear); at this guide&rsquo;s 709 SP, JoR beats it.</td></tr>' +
         '<tr><td style="color:#f85149;"><strong>SoC opener</strong></td><td>Seal of Corruption</td><td>JoC (0 stacks)</td><td class="threat-cell">0</td><td><strong>Wasted.</strong> JoC deals damage <em>per Blood Corruption stack</em>, and the opener judge fires at range before your first melee swing &mdash; 0 stacks up means 0 damage, burning the 10s judge CD.</td></tr>' +
         '<tr><td style="color:#d2a8ff;"><strong>JotC opener</strong></td><td>Seal of the Crusader</td><td>Judgement of the Crusader</td><td class="threat-cell">' + JOTC0_AW.toLocaleString() + '</td><td>Negligible <em>direct</em> threat &mdash; the value is the permanent +219 Holy debuff it applies, not the hit.</td></tr>';
     document.getElementById('openerVerdict').innerHTML =
-        '<strong>Only Seal of Blood and Seal of Righteousness apply meaningful threat on the first judgement.</strong> It lands at range, before any Blood Corruption stacks (so JoC does 0) and before a debuff can amplify anything. <strong>JoB is the biggest snap</strong> &mdash; ' + JOB_AW.toLocaleString() + ' + ~' + SOB_PROC + ' from the SoB proc &asymp; <strong>~' + (JOB_AW + SOB_PROC).toLocaleString() + ' in the first 3 seconds</strong>; <strong>JoR (' + JOR_AW.toLocaleString() + ')</strong> is the stackless runner-up. A SoC opener wastes the judge entirely; a JotC opener trades the snap for the debuff.';
+        '<strong>Seal of Righteousness and Seal of Blood are the only seals that apply meaningful threat on the first judgement.</strong> It lands at range, before any Blood Corruption stacks (so JoC does 0) and before a debuff can amplify anything. <strong>JoR is the biggest snap</strong> at this guide&rsquo;s gear &mdash; <strong>' + JOR_AW.toLocaleString() + ' in the first 3 seconds</strong>, with no self-damage. JoB (' + (JOB_AW + SOB_PROC).toLocaleString() + ' incl. the SoB proc) only overtakes it below <strong>~400 SP</strong>. A SoC opener wastes the judge entirely; a JotC opener trades the snap for the debuff.';
 
     // ============================================================
     // SECTION 5: CUMULATIVE THREAT SIMULATION CHARTS
@@ -4862,7 +4902,7 @@ For comparison (same 60s window, best realistic non-twist packages):
         const ML = cfg.meleeLand || MELEE_LAND;
         const D = cfg.dur || DUR; // sim length (default 20s AW window); AW itself still only lasts AW_DUR
         const times = [], threats = [];
-        let cum = 0, stacks = 0, activeSeal = cfg.sobOpener ? 'sob' : (cfg.jotcOpener ? 'sotc' : (cfg.sorOpener ? 'sor' : 'soc'));
+        let cum = 0, stacks = 0, activeSeal = cfg.sobOpener ? 'sob' : (cfg.sorSnap ? 'sor' : (cfg.jotcOpener ? 'sotc' : (cfg.sorOpener ? 'sor' : 'soc')));
         let jotcApplied = false, debuffActive = false;
         let lastStackRefresh = -99; // time of last SoC melee hit (for stack expiry)
         let stackFloat = 0; // expected fractional stacks (SOC_STACK_RATE per swing)
@@ -4964,13 +5004,19 @@ For comparison (same 60s window, best realistic non-twist packages):
                         nextJudge = t + JCD;
                         gcdFree = t + GCD;
                     } else if (!firstJudgeDone && cfg.sobOpener) {
-                        cum += JOB * aw * SPELL_LAND * DM; // Judge Blood (spell hit table)
+                        cum += JOB * aw * SPELL_LAND * DM; // Judge Blood — low-gear snap opener (<~400 SP); JoR wins above that
                         firstJudgeDone = true;
                         activeSeal = 'none'; // consumed
                         nextJudge = t + JCD;
                         gcdFree = t + GCD;
+                    } else if (!firstJudgeDone && cfg.sorSnap) {
+                        cum += JOR_PER_JUDGE * aw * SPELL_LAND * DM; // Judge Righteousness — snap opener (JoR > JoB at raid SP), then re-seal SoC to stack
+                        firstJudgeDone = true;
+                        activeSeal = 'none'; // consumed → re-seal SoC next GCD
+                        nextJudge = t + JCD;
+                        gcdFree = t + GCD;
                     } else if (cfg.jotcSecond && !jotcApplied) {
-                        cum += JOTC_DIRECT * aw * SPELL_LAND * DM; // 2nd judge = JotC: applies the permanent +219 debuff after the SoB snap (recommended hybrid)
+                        cum += JOTC_DIRECT * aw * SPELL_LAND * DM; // 2nd judge = JotC: applies the permanent +219 debuff after the JoR snap (recommended hybrid)
                         jotcApplied = true;
                         debuffActive = true;
                         activeSeal = 'none'; // consumed → re-seal SoC next GCD
@@ -5048,14 +5094,14 @@ For comparison (same 60s window, best realistic non-twist packages):
     const sim1b = simulate({ sobOpener: true, demon: false });
     const sim1c = simulate({ sobOpener: false, demon: false, jotcOpener: true });
     const sim1d = simulate({ sobOpener: false, demon: false, sorOpener: true });
-    const sim1e = simulate({ sobOpener: true, demon: false, jotcSecond: true });
-    const sim1f = simulate({ sobOpener: true, demon: false, retJotc: true });
+    const sim1e = simulate({ sorSnap: true, demon: false, jotcSecond: true });
+    const sim1f = simulate({ sorSnap: true, demon: false, retJotc: true });
     const sim2a = simulate({ sobOpener: false, demon: true });
     const sim2b = simulate({ sobOpener: true, demon: true });
     const sim2c = simulate({ sobOpener: false, demon: true, jotcOpener: true });
     const sim2d = simulate({ sobOpener: false, demon: true, sorOpener: true });
-    const sim2e = simulate({ sobOpener: true, demon: true, jotcSecond: true });
-    const sim2f = simulate({ sobOpener: true, demon: true, retJotc: true });
+    const sim2e = simulate({ sorSnap: true, demon: true, jotcSecond: true });
+    const sim2f = simulate({ sorSnap: true, demon: true, retJotc: true });
 
     // Sort a makeChart dataset list by final (≈60s/40s) threat, descending, so the
     // legend lists the highest-threat line first.
@@ -5126,20 +5172,20 @@ For comparison (same 60s window, best realistic non-twist packages):
 
     makeChart('chartStandard', 'Standard Boss: Cumulative Threat over AW Window (all openers)', sortByFinalThreat([
         { label: 'SoC Opener', times: sim1a.times, threats: sim1a.threats, color: '#b388ff' },
-        { label: 'SoB Opener', times: sim1b.times, threats: sim1b.threats, color: '#ffd54f' },
+        { label: 'SoB Opener (low-gear)', times: sim1b.times, threats: sim1b.threats, color: '#ffd54f' },
         { label: 'JotC Opener', times: sim1c.times, threats: sim1c.threats, color: '#d2a8ff' },
         { label: 'SoR Opener', times: sim1d.times, threats: sim1d.threats, color: '#7ee787' },
-        { label: 'SoB → JotC (recommended)', times: sim1e.times, threats: sim1e.threats, color: '#58a6ff' },
-        { label: 'SoB + Ret JotC @ 1s', times: sim1f.times, threats: sim1f.threats, color: '#ff9bd1' }
+        { label: 'SoR → JotC (recommended)', times: sim1e.times, threats: sim1e.threats, color: '#58a6ff' },
+        { label: 'SoR + Ret JotC @ 1s', times: sim1f.times, threats: sim1f.threats, color: '#ff9bd1' }
     ]));
 
     makeChart('chartDemon', 'Demon/Undead Boss: Cumulative Threat over AW Window (all openers)', sortByFinalThreat([
         { label: 'SoC Opener', times: sim2a.times, threats: sim2a.threats, color: '#b388ff' },
-        { label: 'SoB Opener', times: sim2b.times, threats: sim2b.threats, color: '#ffd54f' },
+        { label: 'SoB Opener (low-gear)', times: sim2b.times, threats: sim2b.threats, color: '#ffd54f' },
         { label: 'JotC Opener', times: sim2c.times, threats: sim2c.threats, color: '#d2a8ff' },
         { label: 'SoR Opener', times: sim2d.times, threats: sim2d.threats, color: '#7ee787' },
-        { label: 'SoB → JotC (recommended)', times: sim2e.times, threats: sim2e.threats, color: '#58a6ff' },
-        { label: 'SoB + Ret JotC @ 1s', times: sim2f.times, threats: sim2f.threats, color: '#ff9bd1' }
+        { label: 'SoR → JotC (recommended)', times: sim2e.times, threats: sim2e.threats, color: '#58a6ff' },
+        { label: 'SoR + Ret JotC @ 1s', times: sim2f.times, threats: sim2f.threats, color: '#ff9bd1' }
     ]));
 
     // Chart notes
@@ -5151,11 +5197,11 @@ For comparison (same 60s window, best realistic non-twist packages):
     const f1f = sim1f.threats[sim1f.threats.length - 1];
     document.getElementById('chartStandardNote').innerHTML =
         '<strong>Standard Boss &mdash; cumulative threat at 20s (full AW window):</strong><br>' +
-        '&nbsp;&nbsp;<span style="color:#ff9bd1;">SoB + Ret JotC @ 1s:</span> <strong>' + f1f.toLocaleString() + '</strong> &mdash; best case: a Ret paladin supplies JotC at 1s, so you keep the JoB snap <em>and</em> full amplification with every judge on Corruption.<br>' +
+        '&nbsp;&nbsp;<span style="color:#ff9bd1;">SoR + Ret JotC @ 1s:</span> <strong>' + f1f.toLocaleString() + '</strong> &mdash; best case: a Ret paladin supplies JotC at 1s, so you keep the JoR snap <em>and</em> full amplification with every judge on Corruption.<br>' +
         '&nbsp;&nbsp;<span style="color:#d2a8ff;">JotC opener (self):</span> <strong>' + f1c.toLocaleString() + '</strong> &mdash; self-applies the +219 debuff on the first judge (amplifies the whole window) but gives up the pull snap.<br>' +
-        '&nbsp;&nbsp;<span style="color:#58a6ff;">SoB &rarr; JotC hybrid:</span> <strong>' + f1e.toLocaleString() + '</strong> &mdash; recommended when solo: JoB snap secures the pull, then self-JotC at the 2nd judge amplifies the rest.<br>' +
+        '&nbsp;&nbsp;<span style="color:#58a6ff;">SoR &rarr; JotC hybrid:</span> <strong>' + f1e.toLocaleString() + '</strong> &mdash; recommended when solo: JoR snap secures the pull, then self-JotC at the 2nd judge amplifies the rest.<br>' +
         '&nbsp;&nbsp;<span style="color:#7ee787;">SoR opener:</span> <strong>' + f1d.toLocaleString() + '</strong> &mdash; no ramp or DoT, just steady SoR procs + JoR.<br>' +
-        '&nbsp;&nbsp;<span style="color:#ffd54f;">SoB opener:</span> <strong>' + f1b.toLocaleString() + '</strong> &mdash; JoB snap, then a slow SoC ramp.<br>' +
+        '&nbsp;&nbsp;<span style="color:#ffd54f;">SoB opener (low-gear):</span> <strong>' + f1b.toLocaleString() + '</strong> &mdash; JoB snap (only wins below ~400 SP), then a slow SoC ramp.<br>' +
         '&nbsp;&nbsp;<span style="color:#b388ff;">SoC opener:</span> <strong>' + f1a.toLocaleString() + '</strong> &mdash; weakest, with a 0-stack opener judge and the slowest ramp.';
 
     const f2a = sim2a.threats[sim2a.threats.length - 1];
@@ -5166,16 +5212,16 @@ For comparison (same 60s window, best realistic non-twist packages):
     const f2f = sim2f.threats[sim2f.threats.length - 1];
     document.getElementById('chartDemonNote').innerHTML =
         '<strong>Demon/Undead Boss &mdash; cumulative threat at 20s (full AW window):</strong><br>' +
-        '&nbsp;&nbsp;<span style="color:#ff9bd1;">SoB + Ret JotC @ 1s:</span> <strong>' + f2f.toLocaleString() + '</strong> &mdash; best case: Ret-supplied JotC at 1s keeps your JoB snap and amplifies everything (incl. Exorcism + Holy Wrath) with every judge on Corruption.<br>' +
+        '&nbsp;&nbsp;<span style="color:#ff9bd1;">SoR + Ret JotC @ 1s:</span> <strong>' + f2f.toLocaleString() + '</strong> &mdash; best case: Ret-supplied JotC at 1s keeps your JoR snap and amplifies everything (incl. Exorcism + Holy Wrath) with every judge on Corruption.<br>' +
         '&nbsp;&nbsp;<span style="color:#d2a8ff;">JotC opener (self):</span> <strong>' + f2c.toLocaleString() + '</strong> &mdash; self-applies the +219 debuff on the first judge; also amplifies Exo + HoW, so strong on Demon/Undead (weak pull snap).<br>' +
-        '&nbsp;&nbsp;<span style="color:#58a6ff;">SoB &rarr; JotC hybrid:</span> <strong>' + f2e.toLocaleString() + '</strong> &mdash; recommended when solo: JoB snap, then self-JotC amplification for the rest.<br>' +
+        '&nbsp;&nbsp;<span style="color:#58a6ff;">SoR &rarr; JotC hybrid:</span> <strong>' + f2e.toLocaleString() + '</strong> &mdash; recommended when solo: JoR snap, then self-JotC amplification for the rest.<br>' +
         '&nbsp;&nbsp;<span style="color:#7ee787;">SoR opener:</span> <strong>' + f2d.toLocaleString() + '</strong> &mdash; no ramp or DoT, just steady SoR procs + JoR.<br>' +
-        '&nbsp;&nbsp;<span style="color:#ffd54f;">SoB opener:</span> <strong>' + f2b.toLocaleString() + '</strong> &mdash; JoB snap, then a slow SoC ramp.<br>' +
+        '&nbsp;&nbsp;<span style="color:#ffd54f;">SoB opener (low-gear):</span> <strong>' + f2b.toLocaleString() + '</strong> &mdash; JoB snap (only wins below ~400 SP), then a slow SoC ramp.<br>' +
         '&nbsp;&nbsp;<span style="color:#b388ff;">SoC opener:</span> <strong>' + f2a.toLocaleString() + '</strong> &mdash; weakest, with a 0-stack opener judge and the slowest ramp.';
 
     // ============================================================
     // BUILDS SECTION: cumulative threat by build — one rotation
-    // Same gear, same engine as sim1f above (SoB + Ret JotC @ 1s). The only
+    // Same gear, same engine as sim1f above (SoR + Ret JotC @ 1s). The only
     // inputs that change are the talent deltas between the two guide builds:
     //   Avenger's (0/43/18): 4/5 1H Weapon Spec (+8% dmg), 5/5 Combat Expertise
     //     (5 exp → 5.25% boss dodge → 94% melee land), HAS Avenger's Shield,
@@ -5189,9 +5235,9 @@ For comparison (same 60s window, best realistic non-twist packages):
     // aura to your own group.
     // ============================================================
     const BUILD_DUR = 300; // 5-minute fight
-    const buildAvengers = simulate({ sobOpener: true, demon: false, retJotc: true,
+    const buildAvengers = simulate({ sorSnap: true, demon: false, retJotc: true,
         dmgMul: 1.08, meleeLand: 0.94, hasAS: true, dur: BUILD_DUR });
-    const buildSanctity = simulate({ sobOpener: true, demon: false, retJotc: true,
+    const buildSanctity = simulate({ sorSnap: true, demon: false, retJotc: true,
         dmgMul: 1.06 * 1.10 * 1.02, meleeLand: 0.935, hasAS: false, dur: BUILD_DUR });
     const bAvFinal = buildAvengers.threats[buildAvengers.threats.length - 1];
     const bSaFinal = buildSanctity.threats[buildSanctity.threats.length - 1];
@@ -5240,7 +5286,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             responsive: true,
             interaction: { mode: 'index', intersect: false },
             plugins: {
-                title: { display: true, text: 'Build Comparison — Cumulative Threat over 5 Minutes (SoB + Ret JotC @ 1s)',
+                title: { display: true, text: 'Build Comparison — Cumulative Threat over 5 Minutes (SoR + Ret JotC @ 1s)',
                     color: '#e6edf3', font: { size: 14, weight: 'bold' } },
                 legend: { labels: { color: '#e6edf3', font: { size: 12 } } },
                 tooltip: {
@@ -5276,7 +5322,7 @@ For comparison (same 60s window, best realistic non-twist packages):
 
     document.getElementById('buildTpsChartNote').innerHTML =
         '<strong>Same gear, same rotation &mdash; only the talents differ.</strong> Both builds run the identical ' +
-        '<span style="color:#ff9bd1;">SoB + Ret JotC @ 1s</span> rotation on the guide’s reference profile (709 SP, ' +
+        '<span style="color:#ff9bd1;">SoR + Ret JotC @ 1s</span> rotation on the guide’s reference profile (709 SP, ' +
         '41.1 DPS / 1.80 speed, 1.9&times; RF) over a <strong>5-minute fight</strong>. A Ret paladin in a different party keeps the ' +
         '+219 debuff up from 1s; Avenging Wrath covers only the first 20s. The Avenger’s build recasts Avenger’s Shield every 30s ' +
         '(its small periodic bumps), which the Sanctity build can’t.<br>' +
@@ -5579,7 +5625,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             var sorSw  = (44.2 + sp * 0.20) * _RF * _J2P;
             var socDot = (10 + sp * 0.034 / 3) * _RF * _J2P;
             function jocJ(s) { return (121 * s + sp * 0.429 * (s / 5)) * _RF * (1 + _SC * 0.5); } // JoC scales per Blood Corruption stack (0 at 0 stacks)
-            var jorJ = (162 + sp * 0.429) * _RF * (1 + _SC * 0.5);
+            var jorJ = (208 + sp * 0.728) * _RF * (1 + _SC * 0.5);
 
             var c = 0, cAtHalf = 0;
             var stacks = strategy === 'pure-sor' ? 0 : 5;
@@ -5785,7 +5831,7 @@ For comparison (same 60s window, best realistic non-twist packages):
         // SoR per-swing threat (cannot crit)
         var sorPerSwing = (SOR_BASE_PER_SWING + _SP * SOR_COEFF) * _RF * _JUSTICAR;
         // JoR threat per cast
-        var jorPerCast = (162 + _SP * 0.429) * _RF * (1 + _SC * 0.5);
+        var jorPerCast = (208 + _SP * 0.728) * _RF * (1 + _SC * 0.5);
         // SoC DoT TPS per stack
         var socDotDpsPerStack = 10 + _SP * 0.034 / 3;
         var socDotTpsPerStack = socDotDpsPerStack * _RF * _JUSTICAR;

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanctity Talent Trade-off: Conviction vs Improved Seal of the Crusader — TBC Prot Paladin</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root { color-scheme: dark; }
+  body { background:#0d1117; color:#e6edf3; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; line-height:1.6; max-width:980px; margin:0 auto; padding:24px 18px 80px; }
+  h1 { font-size:1.6em; border-bottom:2px solid #30363d; padding-bottom:.4em; }
+  h2 { font-size:1.25em; color:#58a6ff; margin-top:1.8em; border-bottom:1px solid #21262d; padding-bottom:.25em; }
+  h3 { font-size:1.05em; color:#7ee787; margin-top:1.4em; }
+  a { color:#58a6ff; }
+  code { background:#161b22; padding:1px 5px; border-radius:4px; font-size:.92em; }
+  table { border-collapse:collapse; width:100%; margin:1em 0; font-size:.93em; }
+  th,td { border:1px solid #30363d; padding:7px 10px; text-align:left; }
+  th { background:#161b22; }
+  .box { background:#161b22; border:1px solid #30363d; border-left:4px solid #58a6ff; border-radius:6px; padding:12px 16px; margin:1.2em 0; }
+  .assume { border-left-color:#8b949e; }
+  .verdict { border-left-color:#2ea043; background:#0f1c12; }
+  .warn { border-left-color:#d29922; background:#1c180f; }
+  .a { color:#ffd54f; font-weight:bold; }
+  .b { color:#7ee787; font-weight:bold; }
+  .good { color:#7ee787; }
+  .muted { color:#8b949e; font-size:.9em; }
+  .formula { background:#161b22; border:1px solid #30363d; border-radius:6px; padding:10px 14px; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.88em; white-space:pre-wrap; }
+  canvas { background:#0d1117; margin-top:.6em; }
+  .chart-wrap { max-width:760px; margin:1em auto; }
+</style>
+</head>
+<body>
+
+<h1>Sanctity (0/38/23) Talent Trade-offs</h1>
+<p class="muted">Two point-shuffles for the Sanctity prot-paladin build, grounded in the spell-power coefficients and threat math from the <a href="index.html">main guide</a>. Single-target boss, Judgement of the Crusader maintained. <strong>Part 1:</strong> Conviction vs Improved Seal of the Crusader (a near-wash). <strong>Part 2:</strong> One-Handed Weapon Specialization vs Combat Expertise (not close).</p>
+
+<h2>Part 1 &mdash; Conviction vs Improved Seal of the Crusader</h2>
+
+<div class="box assume">
+  <strong>The two configs compared:</strong>
+  <ul style="margin:.4em 0 0;">
+    <li><span class="a">Config A</span> &mdash; <strong>2/5 Conviction + 2/3 Improved SotC</strong> (the guide's current Sanctity build)</li>
+    <li><span class="b">Config B</span> &mdash; <strong>1/5 Conviction + 3/3 Improved SotC</strong> (move 1 point from Conviction to Imp SotC)</li>
+  </ul>
+  <span class="muted">Same gear, same rotation, same everything else &mdash; only this 1 point differs.</span>
+</div>
+
+<h2>Why the trade is almost a wash &mdash; and which way it tips</h2>
+
+<p>The two talents both grant crit, but they are <strong>not the same crit</strong>:</p>
+
+<table>
+  <tr><th>Talent</th><th>What it gives</th><th>Applies to</th></tr>
+  <tr>
+    <td><strong>Conviction</strong> (1%/rank)</td>
+    <td><strong>Melee</strong> crit only</td>
+    <td>Your melee swings, against <em>any</em> target. <span class="muted">(<a href="https://www.wowhead.com/tbc/spell=20121/conviction">Wowhead</a>: melee weapons only &mdash; does not touch spell crit.)</span></td>
+  </tr>
+  <tr>
+    <td><strong>Improved SotC</strong> (1%/rank)</td>
+    <td><strong>+crit-to-be-hit</strong> on the JotC target, <strong>all attacks (melee + spell)</strong></td>
+    <td>Everyone's hits &mdash; including <em>your</em> spell crits &mdash; against the boss while Judgement of the Crusader is up. <span class="muted">(<a href="https://warcraft.wiki.gg/wiki/Improved_Seal_of_the_Crusader">Warcraft Wiki</a>: TBC 2.3+ is purely the crit debuff; the old damage bonus was folded into the base spell, so the <code>+219</code> Holy-damage-taken debuff is identical at 2/3 and 3/3.)</span></td>
+  </tr>
+</table>
+
+<p>On a single boss with JotC up, your crit <em>against that boss</em> comes out as:</p>
+
+<table>
+  <tr><th>Crit vs the boss</th><th><span class="a">Config A</span><br>(2 Conv / 2 ImpSotC)</th><th><span class="b">Config B</span><br>(1 Conv / 3 ImpSotC)</th><th>Difference</th></tr>
+  <tr><td><strong>Melee</strong> crit (auto-attacks, JoB)</td><td>+2% (Conv) +2% (ImpSotC) = <strong>+4%</strong></td><td>+1% (Conv) +3% (ImpSotC) = <strong>+4%</strong></td><td class="muted">identical</td></tr>
+  <tr><td><strong>Spell</strong> crit (Judgements, Exo, HoW)</td><td>+2% (ImpSotC only)</td><td>+3% (ImpSotC only)</td><td class="good"><strong>+1% for Config B</strong></td></tr>
+</table>
+
+<p>Conviction can't help your spell crit, so the point you take <em>out</em> of it costs you nothing on spell damage; the point you put <em>into</em> Imp SotC adds <strong>+1% spell crit on the boss</strong>. The melee side breaks even (both reach +4%). <strong>So the entire personal-threat difference is +1% spell crit on your crit-able Holy abilities.</strong></p>
+
+<h2>What +1% spell crit is worth (guide coefficients)</h2>
+
+<p>Of the prot rotation, only the <strong>judgements, Exorcism, and Holy Wrath</strong> can spell-crit. Consecration, Holy Shield, the SoR proc, and the SoC DoT <strong>cannot crit</strong>, so they're unaffected. The Sanctity build has <strong>no Avenger's Shield</strong>. Each crit is &times;1.5 (spell), so +1% crit = +0.5% average damage on that ability.</p>
+
+<div class="formula" id="formulaBox"></div>
+
+<table id="deltaTable">
+  <tr><th>Ability (JotC up)</th><th>Landed hit (with +219 debuff)</th><th>CD</th><th class="good">+TPS for Config B<br>(from the extra 1% crit)</th></tr>
+</table>
+
+<div class="chart-wrap"><canvas id="deltaChart" height="300"></canvas></div>
+
+<div class="box" id="totalsBox"></div>
+
+<h2>Verdict</h2>
+
+<div class="box verdict" id="verdictBox"></div>
+
+<div class="box warn">
+  <strong>The one case for Config A (more Conviction):</strong> Conviction's melee crit works on <em>every</em> target and even before JotC lands, while Imp SotC only helps against the one JotC-debuffed mob. On heavy <strong>multi-target / AOE</strong> pulls &mdash; where your auto-attacks and any melee procs hit several mobs that aren't JotC'd &mdash; the extra Conviction point claws back a little. It's still small (auto-attacks are a minor share of prot threat), but it's the only scenario where A is ahead. On a sustained single boss, B wins.
+</div>
+
+<div class="box warn">
+  <strong>Guide note:</strong> the main guide currently says 2/3 Imp SotC "strengthens the Judgement of the Crusader Holy-damage debuff." That was true in vanilla but <strong>not in TBC 2.3+</strong> &mdash; the damage component was folded into the base spell, so the <code>+219</code> debuff is the same at any Imp SotC rank. The talent is purely the crit debuff. (This page assumes the correct TBC behavior; it doesn't change the verdict, but the guide line is worth fixing.)
+</div>
+
+<h2>Part 2 &mdash; One-Handed Weapon Specialization vs Combat Expertise</h2>
+
+<p>The Sanctity build runs <strong>3/5 One-Handed Weapon Specialization</strong> and <strong>3/5 Combat Expertise</strong>. Unlike Part 1, this trade is <strong>not</strong> close &mdash; the two talents do completely different things:</p>
+
+<table>
+  <tr><th>Talent</th><th>What it gives</th><th>Threat reach</th></tr>
+  <tr>
+    <td><strong>1H Weapon Spec</strong> (2%/rank)</td>
+    <td><strong>+2% to ALL damage</strong> you deal (every Holy ability + melee)</td>
+    <td>Multiplies your <em>entire</em> threat &mdash; Consecration, Holy Shield, judgements, seal procs, the SoC DoT, all of it.</td>
+  </tr>
+  <tr>
+    <td><strong>Combat Expertise</strong> (+1 exp, +2% Sta /rank)</td>
+    <td>+1 Expertise (&minus;0.25% boss <strong>dodge &amp; parry</strong>) and +2% Stamina</td>
+    <td>Expertise only un-dodges the <strong>melee-table</strong> slice &mdash; auto-attacks and seal procs. <strong>Judgements, Consecration, Holy Shield, and the SoC DoT cannot be dodged</strong> (spells / block-triggered / an already-applied debuff), so expertise does nothing for them.</td>
+  </tr>
+</table>
+
+<p>Running the guide's own reference simulation for the Sanctity build (~1,428 TPS with JotC up), one point each way is worth:</p>
+
+<table>
+  <tr><th>Move</th><th>Threat change</th><th>Other effects</th></tr>
+  <tr><td><span class="b">+1 rank One-Handed Weapon Spec</span> (e.g. 3/5 &rarr; 4/5)</td><td class="good"><strong>+27 TPS</strong> (~+1.9%)</td><td class="muted">none</td></tr>
+  <tr><td><span class="a">+1 rank Combat Expertise</span> (e.g. 3/5 &rarr; 4/5)</td><td class="muted"><strong>~+0 TPS</strong> (negligible)</td><td>+2% Stamina (~250&ndash;280 HP) &amp; &minus;0.25% boss parry (parry-haste safety)</td></tr>
+</table>
+
+<div class="chart-wrap"><canvas id="ceChart" height="240"></canvas></div>
+
+<p><strong>Why Combat Expertise is ~0 threat:</strong> almost none of a prot paladin's threat is dodgeable. The big sources &mdash; Consecration, Holy Shield, Judgement of Corruption, the SoC DoT &mdash; are spells, block-triggers, or an already-applied debuff. The only dodgeable threat is auto-attacks (physical, <em>not</em> amplified by Righteous Fury, so tiny) and the occasional Seal of Righteousness proc during the swap window. Shaving 0.25% off boss dodge barely moves that sliver, while One-Handed Weapon Spec lifts <em>everything</em> by 2%.</p>
+
+<div class="box verdict">
+  <strong>For threat: max One-Handed Weapon Specialization before Combat Expertise.</strong> Each 1H Weapon Spec rank is worth ~<span class="good">+27 TPS (~+1.9%)</span>; each Combat Expertise rank is worth essentially <strong>nothing</strong> for threat. If TPS is the only goal, move every spare Combat Expertise point into 1H Weapon Spec (toward 5/5).
+  <br><br>
+  <strong>The catch &mdash; Combat Expertise is a survivability talent, not a threat one.</strong> Its value is the <strong>+2% Stamina per rank</strong> and <strong>parry-haste reduction</strong> (each expertise removes 0.25% boss parry; a parried swing accelerates the boss's next hit, which can spike a tank). So keep Combat Expertise as your defensive floor on <strong>progression</strong>, and shift its points into 1H Weapon Spec on <strong>farm / threat-when-you-want-it</strong> content. Unlike Part 1, this is a <strong>threat-vs-survivability dial</strong>, not a threat-vs-threat wash.
+</div>
+
+<p class="muted">Reference profile (both parts): 709 SP, 1.9&times; Righteous Fury, 88.11% spell hit vs a level-73 boss, JotC <code>+219</code> Holy-damage-taken debuff maintained, Seal of Corruption at 5 stacks. Part 1: Config A spell crit vs boss taken as the guide's 11% (its current 2/3 build), Config B = 12%. Part 2: 1H Weapon Spec and Combat Expertise deltas from the guide's reference 5-minute Sanctity simulation (`dmgMul` step for 1H Weapon Spec; melee land 0.935&rarr;0.9325 for one Combat Expertise rank).</p>
+
+<script>
+(function(){
+  // ---- Guide constants ----
+  const SP = 709, RF = 1.9, HIT = 0.8811, JOTC = 219;
+  const critA = 0.11, critB = 0.12;          // spell crit vs boss: A = current 2/3 build, B = +1% from 3/3
+  const SPELL_CRIT_MULT = 0.5;               // spell crit deals 1.5x => +50% on a crit
+  const mulA = 1 + critA * SPELL_CRIT_MULT;  // 1.055
+  const mulB = 1 + critB * SPELL_CRIT_MULT;  // 1.060
+  const dCrit = mulB - mulA;                 // 0.005 == 1% crit * 0.5
+
+  // ability: [name, base, coef, cd(s), demonOnly]
+  const abilities = [
+    ['Judgement of Corruption (5 stk)', 605, 0.429, 10, false],
+    ['Exorcism (R7)',                   619, 0.429, 15, true],
+    ['Holy Wrath (R3)',                 635, 0.286, 60, true]
+  ];
+
+  // landed hit before crit, with the JotC +219 debuff added to the hit, RF and spell-hit applied
+  function landed(base, coef){ return (base + SP*coef + JOTC) * RF * HIT; }
+
+  const tbody = document.getElementById('deltaTable');
+  let stdDelta = 0, demonExtra = 0;
+  const labels = [], data = [], colors = [];
+
+  abilities.forEach(function(a){
+    const name=a[0], base=a[1], coef=a[2], cd=a[3], demon=a[4];
+    const L = landed(base, coef);
+    const delta = L * dCrit / cd;            // TPS gained by Config B on this ability
+    if (demon) demonExtra += delta; else stdDelta += delta;
+    const row = tbody.insertRow();
+    row.innerHTML = '<td>'+name+(demon?' <span class="muted">(demon/undead only)</span>':'')+'</td>'+
+      '<td>'+Math.round(L).toLocaleString()+'</td>'+
+      '<td>'+cd+'s</td>'+
+      '<td class="good">+'+delta.toFixed(2)+' TPS</td>';
+    labels.push(name.replace(/ \(.*/,''));
+    data.push(+delta.toFixed(3));
+    colors.push(demon ? 'rgba(210,153,34,0.85)' : 'rgba(126,231,135,0.85)');
+  });
+
+  const demonTotal = stdDelta + demonExtra;
+
+  // formula box
+  document.getElementById('formulaBox').textContent =
+    'Per ability:  +TPS(B) = (base + SP×coef + 219) × 1.9 RF × 0.8811 hit × (0.5 × 1% crit) ÷ CD\n' +
+    'e.g. Judgement of Corruption: (605 + 709×0.429 + 219) × 1.9 × 0.8811 × 0.005 ÷ 10s = +' +
+    (landed(605,0.429)*dCrit/10).toFixed(2) + ' TPS';
+
+  // totals
+  document.getElementById('totalsBox').innerHTML =
+    '<strong>Config B&rsquo;s personal single-target TPS edge:</strong><br>' +
+    '&nbsp;&nbsp;<span class="good">Standard boss: <strong>+' + stdDelta.toFixed(2) + ' TPS</strong></span> (Judgement of Corruption only)<br>' +
+    '&nbsp;&nbsp;<span class="good">Demon / Undead boss: <strong>+' + demonTotal.toFixed(2) + ' TPS</strong></span> (JoC + Exorcism + Holy Wrath)<br>' +
+    '<span class="muted">Plus a one-time ~' + (landed(208,0.728)*dCrit).toFixed(0) + ' extra threat on the opening Judgement of Righteousness. Melee crit is identical between the configs, so auto-attacks and the low-gear JoB are unchanged.</span>';
+
+  // verdict
+  document.getElementById('verdictBox').innerHTML =
+    '<strong>Take Config B &mdash; 1/5 Conviction + 3/3 Improved Seal of the Crusader.</strong> ' +
+    'For your own threat it is a tiny but real win on a single boss (<span class="good">+' + stdDelta.toFixed(1) + ' TPS</span> standard, <span class="good">+' + demonTotal.toFixed(1) + ' TPS</span> demon/undead), because the point converts melee-only Conviction crit into all-attacks crit on the boss &mdash; which is the crit your spell-based judgements actually use. ' +
+    'It is also <strong>strictly better for the raid</strong>: the 3rd point of Imp SotC gives <em>every</em> attacker on the boss +1% crit, not just you. Config A only edges ahead on heavy multi-target where Conviction crits your auto-attacks on non-JotC adds. ' +
+    'Net: <strong>1/5 Conviction + 3/3 Imp SotC is the better point allocation.</strong>';
+
+  // chart
+  new Chart(document.getElementById('deltaChart').getContext('2d'), {
+    type:'bar',
+    data:{ labels:labels, datasets:[{ label:'+TPS for Config B (from the extra 1% spell crit)', data:data, backgroundColor:colors, borderColor:colors.map(c=>c.replace('0.85','1')), borderWidth:1 }] },
+    options:{
+      responsive:true,
+      plugins:{
+        title:{ display:true, text:'Where Config B (3/3 Imp SotC) gains its TPS', color:'#e6edf3', font:{size:14,weight:'bold'} },
+        subtitle:{ display:true, text:'TPS gained per ability from +1% spell crit · green = always, gold = demon/undead only', color:'#8b949e', font:{size:11} },
+        legend:{ display:false },
+        tooltip:{ callbacks:{ label:function(c){ return '+'+c.parsed.y.toFixed(2)+' TPS'; } } }
+      },
+      scales:{
+        x:{ ticks:{ color:'#8b949e' }, grid:{ color:'rgba(139,148,158,0.12)' } },
+        y:{ beginAtZero:true, title:{ display:true, text:'TPS gained (Config B − Config A)', color:'#e6edf3' }, ticks:{ color:'#8b949e' }, grid:{ color:'rgba(139,148,158,0.12)' } }
+      }
+    }
+  });
+})();
+</script>
+
+<script>
+(function(){
+  new Chart(document.getElementById('ceChart').getContext('2d'), {
+    type:'bar',
+    data:{
+      labels:['One-Handed Weapon Spec','Combat Expertise'],
+      datasets:[{
+        label:'TPS gained per talent point',
+        data:[27, 0.0],
+        backgroundColor:['rgba(126,231,135,0.85)','rgba(255,213,79,0.85)'],
+        borderColor:['rgba(126,231,135,1)','rgba(255,213,79,1)'],
+        borderWidth:1
+      }]
+    },
+    options:{
+      responsive:true,
+      plugins:{
+        title:{ display:true, text:'Threat per talent point (guide reference sim, ~1,428 TPS Sanctity)', color:'#e6edf3', font:{size:14,weight:'bold'} },
+        subtitle:{ display:true, text:'1H Weapon Spec multiplies all threat · Combat Expertise only un-dodges the tiny melee slice', color:'#8b949e', font:{size:11} },
+        legend:{ display:false },
+        tooltip:{ callbacks:{ label:function(c){ return '+'+c.parsed.y.toFixed(1)+' TPS per rank'; } } }
+      },
+      scales:{
+        x:{ ticks:{ color:'#8b949e' }, grid:{ color:'rgba(139,148,158,0.12)' } },
+        y:{ beginAtZero:true, title:{ display:true, text:'TPS gained per rank', color:'#e6edf3' }, ticks:{ color:'#8b949e' }, grid:{ color:'rgba(139,148,158,0.12)' } }
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
