@@ -4908,7 +4908,7 @@ For comparison (same 60s window, best realistic non-twist packages):
     const JUSTICAR_2P = 1.10;
     // 4pc Justicar Armor (T4): flat +15 damage per Holy Shield block (pre-RF, pre-Imp HS).
     const JUSTICAR_4P_HS = 15;
-    // Hit rates vs level 73 boss (from gear: 3% melee hit, 4.11% spell hit, 5 expertise)
+    // Hit rates vs level 73 boss. Melee hit 3% = 3/3 Precision. Spell hit 4.11% = 3% Precision + ~1.11% from a spell-hit enchant. Expertise 5 from gear.
     const MELEE_LAND = 1 - Math.max(0, 0.09 - 0.03);       // 94% of melee swings land (seal procs, SoC stacking)
     const SPELL_LAND = 1 - Math.max(0, 0.16 - 0.0411);     // 88.11% of spells land (judgements, AS, Exo, HW)
 
