@@ -92,3 +92,42 @@ Folded the per-point math (**Conviction vs Improved SotC**, **1H Weapon Spec vs 
 
 - `04318 prot talents.txt` — pre-existing working-tree modification; left untouched.
 - Untracked screenshots, `changes for full guide.txt`, and `.claude/` — left untracked.
+
+---
+
+# Part 2 — Editorial restructure + review pass (same day)
+
+After the work above, a full editorial pass plus a round of reader-review fixes. All committed and pushed to `main`.
+
+## Work Completed
+
+### 10. Editorial restructure via editor agent (`aeb0c93`)
+Spun up a general-purpose **editor agent** (reviewed its diff before pushing) to bring the guide in line with best practices for a reference guide of this type:
+- **Chart-first + collapse:** every charted section (Combat Mechanics, Seal & Judgement Analysis, Builds, Threat vs Survivability, Party Buffs) now leads with the chart and a *visible* key-takeaway/verdict, with the per-ability math and long derivations moved into collapsed `<details class="rotation-frame">` blocks. Native `<details>` keeps Ctrl-F working. Goal: shrink the guide so a reader can answer "which seal?" without reading a novel.
+- **Four new visuals**, each sourced only from numbers already in the guide: Stat Priorities (TPS-per-point bar), Combat Rotations (styled GCD-cadence timeline), Consumables (spell-power-by-consumable bar), Combat Expertise vs Improved Sanctity (percent-change bar).
+- Verified integrity: every `<canvas>` id still paired to one drawing script, `<details>` balanced, TOC anchors intact, no numbers changed.
+
+### 11. Review-driven accuracy fixes
+- **Precision** (`57cb1ed`, comment `54affe5`) — gives **+3% spell hit, not +1%** (TBC Precision is +3% to *both* melee and spell; Wowhead spell=20193). Fixed in four places. Confirmed the sim's 4.11% spell hit / 88.11% spell land were already correct (3% Precision + ~1.11% enchant).
+- **Avenger's Shield** (`a33a5a8`) — on cooldown, cast it **right after a boss melee swing**: AS has a cast time during which you can't block/dodge/parry, so you're **crushable mid-cast**. Added to all three rotational on-CD mentions.
+- **Mana management** (`92d3478`) — reframed away from fight-duration ("4+ minutes") toward the real driver: incoming healing via Spiritual Attunement. Trigger to step the rotation down is now "mana low **and** potion already on cooldown"; pot proactively at **~70%** (`9e5e5fd`) so the full Super Mana Potion lands without overflow.
+
+### 12. "When does each rotation overtake pure SoR?" chart polish
+- Renamed from "When Does SoC Overtake SoR?" (`b2260ab`) — it compares every rotation, not just SoC.
+- **Ends at the pure-SoC crossover** (`73fcceb`, `3511ff0`) instead of a long flat tail; x-axis `max` = the crossover, with the cumulative note reporting totals there too.
+- **Call-out leader lines** (`d27c880`) — labels parked in the chart's clear band, each connected to its reference line by a thin colored leader + dot, so no label text overlaps a vertical line.
+- Fixed the **self-vs-Ret JotC labels** (`9e5e5fd`, `784f5eb`): the `#d2a8ff` crossover callout is the self-applied JotC@J2 variant (was mislabeled "Ret"); the scaling chart aligned to its own "Seal Swap + JotC" intro; the Ret callout reads "Swap+Ret JotC".
+- **Per-stack table now matches the graph** (`97d4ac2`) — added the `Cum. Swap+Ret JotC @ 1s` column so both cover the same five rotations.
+
+## Commits — Part 2
+- `aeb0c93` — Editorial restructure: chart-first layout, collapsible deep-dives, 4 new visuals
+- `57cb1ed` / `54affe5` — Fix Precision (+3% spell hit); clarify sim hit-rate comment
+- `a33a5a8` — Avenger's Shield: cast after a boss swing (crushable mid-cast)
+- `92d3478` / `9e5e5fd` — Reframe mana management; mana-pot at 70%; fix mislabeled self-JotC callout
+- `73fcceb` / `3511ff0` — Trim the SoC-vs-SoR chart to end at the crossover; right-justify edge labels
+- `d27c880` — Call-out leader lines for the crossover labels
+- `b2260ab` — Retitle the chart to "When does each rotation overtake pure SoR?"
+- `97d4ac2` — Add Swap+Ret JotC column so the per-stack table matches the graph
+- `784f5eb` — Label the Ret JotC crossover "Swap+Ret JotC"
+
+The in-guide Changelog was updated with a **v1.8** entry summarizing all of the above (plus the morning's JoR/opener work, which had not been logged in-guide).
