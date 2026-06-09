@@ -4969,7 +4969,7 @@ For comparison (same 60s window, best realistic non-twist packages):
     // Seal Swap + JotC = the swap, but the 2nd judge is JotC (permanent debuff),
     // amplifying every later SoR proc and judge by +219×RF.
     // ============================================================
-    const SEAL_SIM_DUR = 240, SEAL_SIM_STEP = 0.1, SEAL_SIM_SOR_STAY = 5.0;
+    const SEAL_SIM_DUR = 210, SEAL_SIM_STEP = 0.1, SEAL_SIM_SOR_STAY = 5.0; // window ends just past the pure-SoC crossover (~182s); no value in the flat tail beyond it
     function runSealSim(strategy) {
         var isSwap = (strategy === 'seal-swap' || strategy === 'seal-swap-jotc' || strategy === 'seal-swap-ret-jotc');
         var isJotC = (strategy === 'seal-swap-jotc');
@@ -5232,7 +5232,7 @@ For comparison (same 60s window, best realistic non-twist packages):
                 responsive: true,
                 interaction: { mode: 'index', intersect: false },
                 plugins: {
-                    title: { display: true, text: 'When Does SoC Overtake SoR? (240s, 1.8s weapon, 70% stack rate)', color: '#e6edf3', font: { size: 14, weight: 'bold' } },
+                    title: { display: true, text: 'When Does SoC Overtake SoR? (1.8s weapon, 70% stack rate)', color: '#e6edf3', font: { size: 14, weight: 'bold' } },
                     legend: { labels: { color: '#e6edf3', font: { size: 11 } } },
                     tooltip: {
                         itemSort: function(a, b) { return b.parsed.y - a.parsed.y; },
