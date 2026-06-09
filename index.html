@@ -4969,7 +4969,7 @@ For comparison (same 60s window, best realistic non-twist packages):
     // Seal Swap + JotC = the swap, but the 2nd judge is JotC (permanent debuff),
     // amplifying every later SoR proc and judge by +219×RF.
     // ============================================================
-    const SEAL_SIM_DUR = 210, SEAL_SIM_STEP = 0.1, SEAL_SIM_SOR_STAY = 5.0; // window ends just past the pure-SoC crossover (~182s); no value in the flat tail beyond it
+    const SEAL_SIM_DUR = 210, SEAL_SIM_STEP = 0.1, SEAL_SIM_SOR_STAY = 5.0; // sim length; the SoC-vs-SoR chart's x-axis clips the display at the pure-SoC crossover (~182s)
     function runSealSim(strategy) {
         var isSwap = (strategy === 'seal-swap' || strategy === 'seal-swap-jotc' || strategy === 'seal-swap-ret-jotc');
         var isJotC = (strategy === 'seal-swap-jotc');
@@ -5255,6 +5255,7 @@ For comparison (same 60s window, best realistic non-twist packages):
                 scales: {
                     x: {
                         type: 'linear',
+                        max: (crossSoCvsSoR !== null ? crossSoCvsSoR : SEAL_SIM_DUR), // end the chart right at the SoC crossover callout
                         title: { display: true, text: 'Time (seconds)', color: '#e6edf3' },
                         ticks: { color: '#8b949e', stepSize: 30, callback: function(v) { return v % 30 === 0 ? v + 's' : ''; } },
                         grid: { color: 'rgba(139,148,158,0.15)' }
@@ -5287,7 +5288,10 @@ For comparison (same 60s window, best realistic non-twist packages):
                         ctx.setLineDash([]);
                         ctx.fillStyle = color;
                         ctx.font = '11px sans-serif';
-                        ctx.fillText(label, px + 4, yScale.top + 14 + (yOffset || 0));
+                        // right-justify labels near the right edge so they read back into the chart instead of overflowing
+                        var nearRight = px > xScale.left + (xScale.right - xScale.left) * 0.7;
+                        ctx.textAlign = nearRight ? 'right' : 'left';
+                        ctx.fillText(label, px + (nearRight ? -4 : 4), yScale.top + 14 + (yOffset || 0));
                         ctx.restore();
                     }
                     drawVline(fiveStackT, '5 stacks', '#8b949e', true, 0);
@@ -5312,11 +5316,12 @@ For comparison (same 60s window, best realistic non-twist packages):
             return arr[arr.length - 1];
         }
 
-        var socFinal  = soc.cum[soc.cum.length - 1];
-        var sorFinal  = sor.cum[sor.cum.length - 1];
-        var swapFinal = swap.cum[swap.cum.length - 1];
-        var swapJotCFinal = swapJotC.cum[swapJotC.cum.length - 1];
-        var swapRetJotCFinal = swapRetJotC.cum[swapRetJotC.cum.length - 1];
+        var atT = (crossSoCvsSoR !== null ? crossSoCvsSoR : SEAL_SIM_DUR); // report totals where the chart ends — the SoC crossover
+        var socFinal  = lookup(soc.cum,  soc.times,  atT);
+        var sorFinal  = lookup(sor.cum,  sor.times,  atT);
+        var swapFinal = lookup(swap.cum, swap.times, atT);
+        var swapJotCFinal = lookup(swapJotC.cum, swapJotC.times, atT);
+        var swapRetJotCFinal = lookup(swapRetJotC.cum, swapRetJotC.times, atT);
 
         function crossMsg(label, color, t) {
             return t !== null
@@ -5331,7 +5336,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             crossMsg('Seal Swap + JotC (self)', '#d2a8ff', crossSwapJotCvsSoR) + '. ' +
             crossMsg('Seal Swap',  '#b388ff', crossSwapvsSoR) + '. ' +
             crossMsg('Pure SoC',   '#f0a500', crossSoCvsSoR) + '.<br><br>' +
-            '<strong>Cumulative threat at ' + SEAL_SIM_DUR + 's:</strong><br>' +
+            '<strong>Cumulative threat at the SoC crossover (~' + atT.toFixed(0) + 's):</strong><br>' +
             '&nbsp;&nbsp;<span style="color:#f0a500;">Pure SoC</span>: <strong>' + Math.round(socFinal).toLocaleString() + '</strong><br>' +
             '&nbsp;&nbsp;<span style="color:#7ee787;">Pure SoR</span>: <strong>' + Math.round(sorFinal).toLocaleString() + '</strong><br>' +
             '&nbsp;&nbsp;<span style="color:#b388ff;">Seal Swap</span>: <strong>' + Math.round(swapFinal).toLocaleString() + '</strong> (' +
