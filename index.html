@@ -1378,6 +1378,18 @@
             </ul>
         </div>
 
+        <details class="rotation-frame">
+            <summary>Then why is Retribution the default AOE aura if Sanctity out-threats it?</summary>
+            <p>The chart is right &mdash; <strong>Sanctity is the higher-throughput threat aura</strong> (155 vs 96 TPS AOE, 54 vs 13 single-target). The catch is that &ldquo;default&rdquo; here means the <em>free baseline you fall back to</em>, not the theoretical ceiling. Three reasons Retribution is that default:</p>
+            <ol>
+                <li><strong>Sanctity needs a specific build; Retribution is free.</strong> Sanctity Aura is a <strong>21-point Retribution talent</strong>, present only in the <a href="#sanctity-build" style="color:#58a6ff;">Sanctity (0/38/23)</a> spec. The flexible baseline <a href="#avengers-build" style="color:#58a6ff;">Avenger's Shield (0/43/18)</a> build doesn't have it, so for most setups Sanctity Aura isn't even on the menu. Retribution Aura is a <strong>base paladin aura</strong> &mdash; zero talent points, zero mana, works in any build. The chart shows the <em>ceiling if you spec for it</em>; the text describes the <em>floor everyone has</em>.</li>
+                <li><strong>One aura slot, and it competes with survival.</strong> You can only run one aura. Even with the Sanctity build, that slot is usually wanted for <strong>Devotion</strong> (physical bosses) or a <strong>Resistance aura</strong> (magic bosses), where staying alive beats extra threat. Sanctity's threat edge only gets spent in the narrow case where you have the build <em>and</em> another paladin is covering the defensive aura &mdash; exactly what the rule of thumb above says.</li>
+                <li><strong>Auras are party-wide and don't stack with themselves.</strong> If another paladin in your 5-player party already runs Sanctity, your running it too does nothing &mdash; you'd take Retribution or Devotion instead.</li>
+            </ol>
+            <p><strong>They also generate AOE threat differently.</strong> Retribution is a <em>per-incoming-hit reflect</em> (26 Holy &times; 1.9 RF on each landed melee against you) &mdash; immediate on the pull, scaling with the number of mobs hitting you, no ramp. Sanctity is a <em>+10% multiplier</em> on your Holy output, so it only pays off once Consecration and Holy Shield are actually landing. For the snap moment of a chaotic trash pull, Retribution's instant per-hit threat is precisely what you want.</p>
+            <p><strong>Bottom line:</strong> Sanctity wins on AOE threat <em>when you've specced for it and don't need the aura slot for Devotion/Resistance</em>. Absent that, Retribution is the universal, free default &mdash; which is the case for the build this guide centers on.</p>
+        </details>
+
         <h4>Blessing Comparison: Threat vs Mitigation</h4>
         <p>In a 25-man raid with multiple paladins, you'll receive several blessings simultaneously. But when blessings are limited (5-mans, few paladins), <strong>which blessing provides the most value for a tank?</strong> The chart below compares each blessing's personal threat generation and damage prevention.</p>
         <p style="color: #8b949e; font-size: 0.9em;"><strong>Assumptions:</strong> 709 SP, 41.1 DPS / 1.80 speed 1H, Righteous Fury, Holy Shield active (8 charges w/ Improved HS). <strong>AOE:</strong> 6 mobs, 2.0s swing. <strong>Boss:</strong> Single target, 2.5s swing, 35% avoidance. BoSanc Rank 5, BoK, BoM Rank 8 (264 AP), BoW Rank 7 (41 MP5), BoLight Rank 4.</p>
@@ -4092,6 +4104,10 @@ For comparison (same 60s window, best realistic non-twist packages):
         <!-- ============================================================ -->
         <h2 id="changelog"><a href="#toc">Changelog</a></h2>
         <div class="toc">
+            <h3>2026-06-10 (v2.1) &mdash; Aura comparison: added "why Retribution is the default AOE aura" explainer</h3>
+            <ul>
+                <li>Added a collapsed deep-dive box after the aura selection guidelines explaining why <strong>Retribution Aura is the default AOE-pull aura even though the chart shows Sanctity Aura with higher threat</strong> (155 vs 96 TPS AOE): Sanctity needs the 21-point Retribution talent (Sanctity build only) while Ret Aura is a free base aura; the single aura slot competes with Devotion/Resistance for survival; auras are party-wide and don't stack; and the two generate AOE threat differently (Ret = per-incoming-hit reflect, immediate on the pull, vs Sanctity = +10% Holy multiplier that needs Consec/HS already landing).</li>
+            </ul>
             <h3>2026-06-10 (v2.0) &mdash; Moved unverified sections to a holding file pending review</h3>
             <ul>
                 <li><strong>Pulled the following sections out of the live guide</strong> into <code>review prior to inclusion.html</code> until they can be vetted to the standard of the rest of the guide: <strong>Engineering, Weapon Selection, Shield Selection, Libram Optimization, Enchantments, Gems &amp; Professions, Essential Macros, WeakAuras, Addons, Simulators &amp; Tools, and the Crit &amp; Crush Immunity Calculator.</strong> The Gear Optimization section keeps its AOE / Boss / Mitigation / Off-Tank gear-set guidance; only the weapon/shield/libram subsections moved. TOC trimmed to match. No verified content (mechanics, coefficients, charts) was affected.</li>
