@@ -881,7 +881,7 @@
                 <td>512 total (64/tick, 8 ticks)</td>
                 <td>1.000 total (0.125/tick)</td>
                 <td>(512 + SP&times;1.0) &times; 1.9 per target</td>
-                <td style="color: #7ee787; font-weight: bold;">227&ndash;254 /target</td>
+                <td style="color: #7ee787; font-weight: bold;">273&ndash;290 /target</td>
                 <td>8 sec duration, 8 yard radius, AOE</td>
             </tr>
             <tr>
@@ -889,16 +889,16 @@
                 <td>155 per block</td>
                 <td>0.05 per block</td>
                 <td>(155 + SP&times;0.05) &times; 1.9 per block</td>
-                <td style="color: #7ee787; font-weight: bold;">126&ndash;130</td>
-                <td>~3 blocks/8s; 4 charges (8 w/ Improved HS)</td>
+                <td style="color: #7ee787; font-weight: bold;">173&ndash;176</td>
+                <td>~3 blocks/8s; 4 charges (8 w/ Improved HS); TPS incl. 4pc Justicar (+15/block) &amp; 2/2 Imp HS (&times;1.20)</td>
             </tr>
             <tr>
                 <td><strong>Avenger's Shield</strong> (Rank 3)</td>
                 <td>494&ndash;602 per target</td>
                 <td>0.193 per target</td>
                 <td>(548 + SP&times;0.193) &times; 1.9 per target</td>
-                <td style="color: #7ee787; font-weight: bold;">1,204&ndash;1,245 /target</td>
-                <td>Per cast; 3 targets, 6s daze, 30s CD (opener, not rotational)</td>
+                <td style="color: #7ee787; font-weight: bold;">1,326&ndash;1,373 /target</td>
+                <td>Per cast; 3 targets, 6s daze, 30s CD (opener, not rotational); crits 1.5&times; (spell)</td>
             </tr>
             <tr>
                 <td><strong>Seal of Blood</strong></td>
@@ -913,7 +913,7 @@
                 <td>295&ndash;325 base Holy</td>
                 <td>0.43</td>
                 <td>(310 + SP&times;0.43) &times; 1.9</td>
-                <td style="color: #7ee787; font-weight: bold;">102&ndash;115</td>
+                <td style="color: #7ee787; font-weight: bold;">118&ndash;128</td>
                 <td>10s CD; crits 2&times; (melee); 33% self-damage</td>
             </tr>
             <tr>
@@ -921,7 +921,7 @@
                 <td>Varies by weapon speed</td>
                 <td>0.092 &times; speed (1H); 0.108 &times; speed (2H)</td>
                 <td>(Base + SP&times;0.092&times;speed) &times; 1.9 &times; 1.10 (2pc T4)</td>
-                <td style="color: #7ee787; font-weight: bold;">136&ndash;160</td>
+                <td style="color: #7ee787; font-weight: bold;">174&ndash;188</td>
                 <td>Per-swing, cannot crit; +10% from 2pc Justicar. Weapon-speed scaled (0.166 effective at 1.8s)</td>
             </tr>
             <tr>
@@ -929,7 +929,7 @@
                 <td>208 base Holy</td>
                 <td>0.728</td>
                 <td>(208 + SP&times;0.728) &times; 1.9</td>
-                <td style="color: #7ee787; font-weight: bold;">128&ndash;138</td>
+                <td style="color: #7ee787; font-weight: bold;">133&ndash;145</td>
                 <td>10s CD; crits 1.5&times; (spell). High 0.728 coefficient &mdash; strongest flat Judgement at raid SP (overtakes JoB above ~400 SP). Not boosted by 2pc Justicar.</td>
             </tr>
             <tr>
@@ -945,7 +945,7 @@
                 <td>121 per Blood Corruption stack (605 at 5 stk)</td>
                 <td>0.429</td>
                 <td>(605 + SP&times;0.429) &times; 1.9 (at 5 stk)</td>
-                <td style="color: #7ee787; font-weight: bold;">167&ndash;173 (5 stk)</td>
+                <td style="color: #7ee787; font-weight: bold;">174&ndash;182 (5 stk)</td>
                 <td>10s CD; crits 1.5&times; (spell). Damage scales with Blood Corruption stacks &mdash; <strong>0 at 0 stacks</strong>, so never open with it. Not boosted by 2pc Justicar.</td>
             </tr>
             <tr>
@@ -953,7 +953,7 @@
                 <td>573&ndash;655 (619 avg)</td>
                 <td>0.429</td>
                 <td>(619 + SP&times;0.429) &times; 1.9</td>
-                <td style="color: #7ee787; font-weight: bold;">105&ndash;113</td>
+                <td style="color: #7ee787; font-weight: bold;">118&ndash;123</td>
                 <td>Undead/Demon only, 15s CD; crits 1.5&times; (spell)</td>
             </tr>
             <tr>
@@ -961,7 +961,7 @@
                 <td>567&ndash;701 (635 avg)</td>
                 <td>0.286</td>
                 <td>(635 + SP&times;0.286) &times; 1.9</td>
-                <td style="color: #7ee787; font-weight: bold;">1,447&ndash;1,508 /cast</td>
+                <td style="color: #7ee787; font-weight: bold;">1,615&ndash;1,679 /cast</td>
                 <td>Undead/Demon AOE, 2s cast, 60s CD; crits 1.5&times; (spell)</td>
             </tr>
             <tr>
@@ -984,12 +984,13 @@
         <p style="color: #8b949e; font-size: 0.9em;"><strong>TPS / Threat column:</strong> Range shows unbuffed (639 SP, 6.29% melee crit, 7.86% spell crit) to raid-buffed (709 SP, ~9.5% / ~11% crit). Rotational abilities show TPS assuming 1.80 speed weapon and ability used on cooldown. Avenger's Shield and Holy Wrath show <strong>per-cast threat</strong> instead of TPS since they are openers/cooldowns, not part of the steady-state rotation. Flat abilities (Ret Aura, BoSanc) show a single value. Crit-capable abilities include average crit contribution.</p>
 
         <h4>Threat Example: 709 Spell Power, Single Target</h4>
+        <p style="color: #8b949e; font-size: 0.9em;">Expected threat per cast/block at the raid-buffed profile &mdash; direct-damage abilities (judgements + Avenger's Shield) include their average crit (spell 1.5&times; / melee 2&times;) and Holy Shield includes 4pc Justicar (+15/block) and 2/2 Improved Holy Shield (&times;1.20), matching the per-ability table and the chart engine. <strong>Consecration and Holy Shield cannot crit.</strong></p>
         <div class="formula">
-            Consecration (8 sec): (512 + 709&times;1.0) &times; 1.9 = (512 + 709) &times; 1.9 = <strong>2,320 threat</strong><br>
-            Holy Shield (per block): (155 + 709&times;0.05) &times; 1.9 = (155 + 35.5) &times; 1.9 = <strong>362 threat</strong><br>
-            Avenger's Shield (per target): (548 + 709&times;0.193) &times; 1.9 = (548 + 136.8) &times; 1.9 = <strong>1,301 threat</strong><br>
-            Judgement of Blood: (310 + 709&times;0.43) &times; 1.9 = (310 + 304.9) &times; 1.9 = <strong>1,168 threat</strong><br>
-            Judgement of Righteousness: (208 + 709&times;0.728) &times; 1.9 = (208 + 516.2) &times; 1.9 = <strong>1,376 threat</strong>
+            Consecration (8 sec): (512 + 709&times;1.0) &times; 1.9 = <strong>2,320 threat</strong> <span style="color:#8b949e;">(cannot crit)</span><br>
+            Holy Shield (per block): (155 + 709&times;0.05 + 15) &times; 1.9 &times; 1.20 = <strong>468 threat</strong> <span style="color:#8b949e;">(+4pc Justicar, Imp HS; cannot crit)</span><br>
+            Avenger's Shield (per target): (548 + 709&times;0.193) &times; 1.9 &times; 1.055 = <strong>1,373 threat</strong> <span style="color:#8b949e;">(avg spell crit, 11%)</span><br>
+            Judgement of Blood: (310 + 709&times;0.43) &times; 1.9 &times; 1.095 = <strong>1,279 threat</strong> <span style="color:#8b949e;">(avg melee crit, 9.5%)</span><br>
+            Judgement of Righteousness: (208 + 709&times;0.728) &times; 1.9 &times; 1.055 = <strong>1,452 threat</strong> <span style="color:#8b949e;">(avg spell crit, 11%)</span>
         </div>
         </details>
 
@@ -1009,7 +1010,7 @@
         </div>
         <script>
         (function() {
-            var SEAL_YMAX = 550; // shared y-axis max so the active, judged, and combined charts compare directly
+            var SEAL_YMAX = 600; // shared y-axis max so the active, judged, and combined charts compare directly
             // Active TPS chart — ordered highest to lowest
             var ctxA = document.getElementById('sealActiveChart').getContext('2d');
             new Chart(ctxA, {
@@ -1018,7 +1019,7 @@
                     labels: ['SoR', 'SoV/SoC\n(5 stk)', 'SotC 3/3', 'SotC', 'SoB', 'SoCommand', 'SoW'],
                     datasets: [{
                         label: 'Active TPS (seal proc on swing)',
-                        data: [180, 171, 41, 35, 30, 13, 0],
+                        data: [188, 188, 41, 35, 30, 13, 0],
                         backgroundColor: [
                             'rgba(126, 231, 135, 0.85)',
                             'rgba(179, 136, 255, 0.85)',
@@ -1097,7 +1098,7 @@
                     labels: ['JoV/JoC\n(5 stk)', 'JoR', 'JoB', 'JoCommand', 'JotC 3/3', 'JotC', 'JoW'],
                     datasets: [{
                         label: 'Judged TPS (Judgement / 10s CD)',
-                        data: [168, 138, 115, 115, 71, 66, 0],
+                        data: [182, 145, 128, 115, 71, 66, 0],
                         backgroundColor: [
                             'rgba(179, 136, 255, 0.85)',
                             'rgba(126, 231, 135, 0.85)',
@@ -1176,7 +1177,7 @@
                     labels: ['SoC+SoR\nSwap', 'Pure SoC\n(5 stk)', 'Pure\nSoR', 'SoB', 'SoCmd', 'SotC\n3/3', 'SotC'],
                     datasets: [{
                         label: 'Combined TPS (Active + Judged)',
-                        data: [519, 339, 318, 145, 128, 112, 101],
+                        data: [558, 370, 333, 158, 128, 112, 101],
                         backgroundColor: [
                             'rgba(255, 215, 0, 0.9)',
                             'rgba(179, 136, 255, 0.85)',
@@ -1218,10 +1219,10 @@
                             callbacks: {
                                 afterBody: function(context) {
                                     var notes = [
-                                        'SoR procs 180 + SoC 5-stack DoT 171 + JoC 168 = 519.\nThe seal-swap rotation: ride SoR procs while the SoC DoT ticks, judge Corruption.',
-                                        'SoC 5-stack DoT 171 + JoC 168 = 339. ~10s ramp to 5 stacks.',
-                                        'SoR procs 180 + JoR 138 = 318. No ramp, no stack management.',
-                                        'SoB procs 30 + JoB 115 = 145. Scales with weapon DPS.',
+                                        'SoR procs 188 + SoC 5-stack DoT 188 + JoC 182 = 558.\nThe seal-swap rotation: ride SoR procs while the SoC DoT ticks, judge Corruption.',
+                                        'SoC 5-stack DoT 188 + JoC 182 = 370. ~10s ramp to 5 stacks.',
+                                        'SoR procs 188 + JoR 145 = 333. No ramp, no stack management.',
+                                        'SoB procs 30 + JoB 128 = 158. Scales with weapon DPS.',
                                         'SoCommand procs 13 + JoCommand 115 = 128. Requires 11 pts Ret.',
                                         'SotC active 41 + JotC 71 = 112. Value is the +219 debuff, not the hit.',
                                         'SotC active 35 + JotC 66 = 101. Value is the +219 debuff, not the hit.'
@@ -1252,9 +1253,9 @@
         <div class="tip">
             <strong>Key takeaways:</strong>
             <ul>
-                <li><strong>Seal of Corruption &mdash; single-target.</strong> Highest sustained single-target TPS (~339 with 2pc Justicar) at 5 stacks: a powerful DoT (171 TPS, +10% from 2pc Justicar) plus the strongest Judgement at full stacks (168 TPS). The DoT cannot crit; Judgement of Corruption can (spell crit 1.5&times;). The tradeoff is a <strong>&gt;10-second ramp-up</strong> to reach 5 stacks, and losing stacks on a target switch wipes the advantage. See the <a href="#seal-threat-analysis" style="color: #58a6ff;">Seal &amp; Judgement Threat Analysis</a> for the full rotation.</li>
-                <li><strong>Seal of Righteousness &mdash; AOE and short fights (&lt;30s).</strong> No ramp-up and no target-switch penalty, so it wins whenever you can't sit on one target long enough for SoC to stack, or the fight is too short for the ramp to pay off (~318 TPS with 2pc Justicar). Scales with spell power; the proc <strong>cannot crit</strong>, but Judgement of Righteousness can (spell crit 1.5&times;) and carries a high 0.728 coefficient.</li>
-                <li><strong>Seal of Blood &mdash; low-gear pull only.</strong> Its active proc is weak with a spell-power weapon (30 TPS, scales with weapon DPS). <strong>Judgement of Blood</strong> (115 TPS, 2&times; melee crit) hits hard on demand, but with the corrected 0.728 coefficient it is <strong>no longer the strongest flat Judgement at raid spell power</strong> &mdash; Judgement of Righteousness (~138 TPS) overtakes it above <strong>~400 SP</strong>, while JoB still wins below that crossover (leveling / early gear) on its higher base and 2&times; crit. So at this guide's raid gear <strong>SoB/JoB is no longer used &mdash; you open with SoR &rarr; Judge Righteousness</strong>; SoB is the pull only below ~400 SP. Not boosted by 2pc Justicar.</li>
+                <li><strong>Seal of Corruption &mdash; single-target.</strong> Highest sustained single-target TPS (~370 with 2pc Justicar) at 5 stacks: a powerful DoT (188 TPS, +10% from 2pc Justicar) plus the strongest Judgement at full stacks (182 TPS). The DoT cannot crit; Judgement of Corruption can (spell crit 1.5&times;). The tradeoff is a <strong>&gt;10-second ramp-up</strong> to reach 5 stacks, and losing stacks on a target switch wipes the advantage. See the <a href="#seal-threat-analysis" style="color: #58a6ff;">Seal &amp; Judgement Threat Analysis</a> for the full rotation.</li>
+                <li><strong>Seal of Righteousness &mdash; AOE and short fights (&lt;30s).</strong> No ramp-up and no target-switch penalty, so it wins whenever you can't sit on one target long enough for SoC to stack, or the fight is too short for the ramp to pay off (~333 TPS with 2pc Justicar). Scales with spell power; the proc <strong>cannot crit</strong>, but Judgement of Righteousness can (spell crit 1.5&times;) and carries a high 0.728 coefficient.</li>
+                <li><strong>Seal of Blood &mdash; low-gear pull only.</strong> Its active proc is weak with a spell-power weapon (30 TPS, scales with weapon DPS). <strong>Judgement of Blood</strong> (128 TPS, 2&times; melee crit) hits hard on demand, but with the corrected 0.728 coefficient it is <strong>no longer the strongest flat Judgement at raid spell power</strong> &mdash; Judgement of Righteousness (~145 TPS) overtakes it above <strong>~400 SP</strong>, while JoB still wins below that crossover (leveling / early gear) on its higher base and 2&times; crit. So at this guide's raid gear <strong>SoB/JoB is no longer used &mdash; you open with SoR &rarr; Judge Righteousness</strong>; SoB is the pull only below ~400 SP. Not boosted by 2pc Justicar.</li>
                 <li><strong>Seal of the Crusader</strong> does little direct threat (+495 AP to auto-attacks), but <strong>Judgement of the Crusader</strong> applies +219 Holy damage taken to the target for 20s, amplifying every Holy ability. With <strong>3/3 Improved</strong> it also adds +3% crit against the judged target. Ideally a Ret paladin maintains it for you &mdash; see the <a href="#seal-threat-analysis" style="color: #58a6ff;">threat-analysis section</a>.</li>
                 <li><strong>Seal of Wisdom</strong> generates zero threat but is essential for mana recovery; ideally another paladin supplies Judgement of Wisdom on the boss.</li>
                 <li><strong>Seal swap (SoC &rarr; SoR):</strong> once SoC reaches 5 stacks the DoT keeps ticking regardless of which seal is active, so you swap to <strong>SoR for per-swing procs on top of the DoT</strong>, then swap back before the stacks expire. This is the default sustained single-target rotation &mdash; full breakdown in the <a href="#seal-threat-analysis" style="color: #58a6ff;">Seal &amp; Judgement Threat Analysis</a>.</li>
@@ -2916,7 +2917,7 @@
         <table class="combat-table">
             <tr><th>Talent</th><th>Tree</th><th>Effect</th><th>Value</th></tr>
             <tr><td><strong>Improved Righteous Fury</strong> 3/3</td><td style="color:#7ee787;">Prot</td><td>Holy threat modifier <strong>1.6&times; &rarr; 1.9&times;</strong> &mdash; multiplies <em>all</em> your Holy threat, the single biggest threat talent in the game. (Also &minus;6% damage taken.)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;&#9733;</td></tr>
-            <tr><td><strong>Holy Shield</strong> + <strong>Improved Holy Shield</strong> 2/2</td><td style="color:#7ee787;">Prot</td><td>The block-nuke &mdash; ~126&ndash;130 TPS at 100% uptime, 8 charges instead of 4. (Also your crush immunity.)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;&#9733;</td></tr>
+            <tr><td><strong>Holy Shield</strong> + <strong>Improved Holy Shield</strong> 2/2</td><td style="color:#7ee787;">Prot</td><td>The block-nuke &mdash; ~173&ndash;176 TPS at 100% uptime, 8 charges instead of 4. (Also your crush immunity.)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>One-Handed Weapon Specialization</strong> 0&ndash;5/5</td><td style="color:#7ee787;">Prot</td><td><strong>+2% to ALL damage per rank</strong> &mdash; ~<span style="color:#7ee787;">+27 TPS per rank</span> in this guide's reference sim. The best raw-threat point after the core. (<a href="#talent-tradeoffs" style="color:#58a6ff;">math</a>)</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Sanctity Aura</strong> 1/1</td><td style="color:#58a6ff;">Ret</td><td>+10% Holy damage to your whole party, <em>you included</em> &mdash; a flat +10% on the Holy bulk of your threat. Needs 21 pts in Ret.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;</td></tr>
             <tr><td><strong>Blessing of Sanctuary</strong> 1/1</td><td style="color:#7ee787;">Prot</td><td>46 Holy to the attacker per block &times; 1.9 RF (~33 TPS) <em>and</em> flat damage reduction. Always on.</td><td style="color:#f0a500;white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;</td></tr>
@@ -3279,9 +3280,9 @@
             </tr>
             <tr>
                 <td><strong>Seal of Righteousness</strong> (proc)</td>
-                <td>0.20</td>
-                <td class="gain-good">+22.2</td>
-                <td class="gain-good">+42.2</td>
+                <td>0.166</td>
+                <td class="gain-good">+18.4</td>
+                <td class="gain-good">+35.0</td>
                 <td>Cannot crit &bull; 2pc Justicar applies</td>
             </tr>
             <tr>
@@ -3380,14 +3381,14 @@
         <div class="tip">
             <strong>Wrath of Air Totem Steady-State Contribution (SoR + JoR + Consec + HS rotation):</strong>
             <ul>
-                <li><strong>SoR procs:</strong> 42.2 threat &times; 0.556 procs/s = <strong>+23.5 TPS</strong></li>
+                <li><strong>SoR procs:</strong> 35.0 threat &times; 0.556 procs/s = <strong>+19.5 TPS</strong></li>
                 <li><strong>JoR on 10s CD:</strong> 146.7 / 10 = <strong>+14.7 TPS</strong></li>
                 <li><strong>Consec on 8s cycle:</strong> 191.9 / 8 = <strong>+24.0 TPS</strong> (if Consec kept up every cooldown)</li>
                 <li><strong>Holy Shield on 10s cycle (full 8 charges):</strong> 92.1 / 10 = <strong>+9.2 TPS</strong></li>
-                <li class="gain-good" style="font-size:1.05em;"><strong>Total added threat from WoA (101 SP): ~71 TPS</strong></li>
-                <li class="gain-good" style="font-size:1.05em;"><strong>With 2/2 Imp WoA (121 SP): ~85 TPS</strong></li>
+                <li class="gain-good" style="font-size:1.05em;"><strong>Total added threat from WoA (101 SP): ~67 TPS</strong></li>
+                <li class="gain-good" style="font-size:1.05em;"><strong>With 2/2 Imp WoA (121 SP): ~81 TPS</strong></li>
             </ul>
-            <p style="margin-top:10px;">Over a 5 minute fight: WoA adds <strong>~21,300 threat</strong> (Imp WoA: <strong>~25,500 threat</strong>). On Undead/Demon bosses with Exorcism + Holy Wrath in the rotation, add another <strong>~5&ndash;10 TPS</strong>.</p>
+            <p style="margin-top:10px;">Over a 5 minute fight: WoA adds <strong>~20,100 threat</strong> (Imp WoA: <strong>~24,300 threat</strong>). On Undead/Demon bosses with Exorcism + Holy Wrath in the rotation, add another <strong>~5&ndash;10 TPS</strong>.</p>
         </div>
 
         <h3>Windfury Totem: Per-Proc Contribution</h3>
@@ -3407,10 +3408,10 @@ Per-proc damage breakdown:
   &times; 1.9 RF                                            = ~247 threat
 
 Plus the extra swing triggers an SoR proc:
-  SoR proc dmg          44.2 + 709 &times; 0.20              = 186.2
-  &times; 1.10 (2pc Justicar) &times; 1.9 RF                  = ~389 threat
+  SoR proc dmg          44.2 + 709 &times; 0.166             = 161.6
+  &times; 1.10 (2pc Justicar) &times; 1.9 RF                  = ~338 threat
 
-Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
+Total per WF proc: ~585 threat / ~9 seconds              = ~65 TPS</div>
 
         <table class="combat-table">
             <tr>
@@ -3425,14 +3426,14 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
                 <td>+445</td>
                 <td>~119</td>
                 <td>~226</td>
-                <td class="gain-mid">~68 TPS</td>
+                <td class="gain-mid">~63 TPS</td>
             </tr>
             <tr>
                 <td>WF Rank 5 + 2/2 Imp WF</td>
                 <td>+578</td>
                 <td>~130</td>
                 <td>~247</td>
-                <td class="gain-good">~71 TPS</td>
+                <td class="gain-good">~65 TPS</td>
             </tr>
         </table>
 
@@ -3446,7 +3447,7 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
                 <th>+ Damage</th>
                 <th>+ Threat</th>
             </tr>
-            <tr><td>Seal of Righteousness (proc)</td><td>0.20</td><td class="gain-good">+9.2</td><td class="gain-good">+17.6</td></tr>
+            <tr><td>Seal of Righteousness (proc)</td><td>0.166</td><td class="gain-good">+7.6</td><td class="gain-good">+14.5</td></tr>
             <tr><td>Judgement of Righteousness</td><td>0.728</td><td class="gain-good">+30.6</td><td class="gain-good">+61.0</td></tr>
             <tr><td>SoC DoT (per tick, 5 stacks)</td><td>0.17</td><td class="gain-good">+7.9</td><td class="gain-good">+14.9</td></tr>
             <tr><td>Consecration (full 8s)</td><td>1.000</td><td class="gain-good">+42.0</td><td class="gain-good">+79.8</td></tr>
@@ -3456,7 +3457,7 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
         </table>
 
         <div class="tip">
-            <strong>Wizard Oil Steady-State Contribution:</strong> ~23 TPS (SoR + JoR + Consec + HS). With SoC stacks, add ~5 TPS. It&rsquo;s worth it regardless of seal &mdash; Consecration, Holy Shield, the Judgements and Avenger&rsquo;s Shield all scale with spell damage no matter which seal you&rsquo;re running, so <strong>Superior Wizard Oil always beats Superior Mana Oil for a threat tank.</strong>
+            <strong>Wizard Oil Steady-State Contribution:</strong> ~28 TPS (SoR + JoR + Consec + HS). With SoC stacks, add ~5 TPS. It&rsquo;s worth it regardless of seal &mdash; Consecration, Holy Shield, the Judgements and Avenger&rsquo;s Shield all scale with spell damage no matter which seal you&rsquo;re running, so <strong>Superior Wizard Oil always beats Superior Mana Oil for a threat tank.</strong>
         </div>
 
         <h3>Combining Buffs: The Real Choice Is &ldquo;WoA + Oil&rdquo; vs &ldquo;Windfury Alone&rdquo;</h3>
@@ -3473,19 +3474,19 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
                 <td><span class="legend-pill pill-woa">WoA</span> + <span class="legend-pill pill-oil">Oil</span> <strong>(stacks)</strong></td>
                 <td>Imp WoA stat aura <em>and</em> Wizard Oil on your weapon &mdash; both apply at once</td>
                 <td><strong>121 + 42 = 163 SP</strong></td>
-                <td class="gain-good">~85 + ~23 = <strong>~108 TPS</strong></td>
+                <td class="gain-good">~81 + ~28 = <strong>~109 TPS</strong></td>
             </tr>
             <tr>
                 <td><span class="legend-pill pill-woa">WoA</span> + <span class="legend-pill pill-oil">Oil</span> (base WoA)</td>
                 <td>Non-Imp WoA + Wizard Oil</td>
                 <td>101 + 42 = 143 SP</td>
-                <td class="gain-good">~71 + ~23 = <strong>~94 TPS</strong></td>
+                <td class="gain-good">~67 + ~28 = <strong>~95 TPS</strong></td>
             </tr>
             <tr class="summary-row">
                 <td><span class="legend-pill pill-woa">WoA</span> + <span class="legend-pill pill-wf">WF</span> via <strong>totem twisting</strong> (no Oil)</td>
                 <td>A dedicated twisting shaman keeps both air-totem effects up at once &mdash; the WF weapon buff persists through the swap (TBC mechanic). Still no oil.</td>
                 <td>101 SP (base WoA) + WF procs</td>
-                <td class="gain-good"><strong>~128 TPS</strong> &mdash; best case (see Twisting)</td>
+                <td class="gain-good"><strong>~124 TPS</strong> &mdash; best case (see Twisting)</td>
             </tr>
             <tr>
                 <td><span class="legend-pill pill-wf">WF</span> alone <strong>(no Oil)</strong></td>
@@ -3500,7 +3501,7 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
         </table>
 
         <div class="verdict">
-            <strong>Net result:</strong> the honest comparison isn&rsquo;t &ldquo;WoA ~85 vs WF ~65.&rdquo; It&rsquo;s <span class="gain-good">WoA + Oil &asymp; ~108 TPS</span> vs <span class="gain-mid">WF &asymp; ~65 TPS</span>, because choosing Windfury <em>costs</em> you the ~23 TPS of Wizard Oil you&rsquo;d otherwise keep. That turns a slim totem-vs-totem edge into a <strong>~43 TPS advantage for the WoA package</strong> in the SoR rotation. WF only claws it back when its <em>melee</em> value to you plus its value to the rest of your melee party outweighs that gap &mdash; a party-DPS argument, not a personal-threat one. The <em>only</em> thing that beats WoA + Oil for you is <strong>totem twisting</strong> (~128 TPS), which stacks both air-totem effects &mdash; see the <a href="#twisting">Totem Twisting</a> section below.
+            <strong>Net result:</strong> the honest comparison isn&rsquo;t &ldquo;WoA ~81 vs WF ~65.&rdquo; It&rsquo;s <span class="gain-good">WoA + Oil &asymp; ~109 TPS</span> vs <span class="gain-mid">WF &asymp; ~65 TPS</span>, because choosing Windfury <em>costs</em> you the ~28 TPS of Wizard Oil you&rsquo;d otherwise keep. That turns a slim totem-vs-totem edge into a <strong>~44 TPS advantage for the WoA package</strong> in the SoR rotation. WF only claws it back when its <em>melee</em> value to you plus its value to the rest of your melee party outweighs that gap &mdash; a party-DPS argument, not a personal-threat one. The <em>only</em> thing that beats WoA + Oil for you is <strong>totem twisting</strong> (~124 TPS), which stacks both air-totem effects &mdash; see the <a href="#twisting">Totem Twisting</a> section below.
         </div>
 
         <div class="warning">
@@ -3521,39 +3522,39 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
             </tr>
             <tr>
                 <td><span class="legend-pill pill-oil">Oil</span><strong>Superior Wizard Oil</strong></td>
-                <td>~11 DPS</td>
-                <td class="gain-mid">~23 TPS</td>
-                <td>~6,900</td>
+                <td>~15 DPS</td>
+                <td class="gain-mid">~28 TPS</td>
+                <td>~8,400</td>
                 <td>All Holy abilities</td>
                 <td>Mana Oil, stones, <strong>WF Totem buff</strong></td>
             </tr>
             <tr>
                 <td><span class="legend-pill pill-woa">WoA</span><strong>Wrath of Air Totem</strong></td>
-                <td>~26 DPS</td>
-                <td class="gain-good">~71 TPS</td>
-                <td>~21,300</td>
+                <td>~35 DPS</td>
+                <td class="gain-good">~67 TPS</td>
+                <td>~20,100</td>
                 <td>All Holy abilities</td>
                 <td>Windfury (Air totem slot)</td>
             </tr>
             <tr>
                 <td><span class="legend-pill pill-woa">WoA</span><strong>Imp Wrath of Air (2/2)</strong></td>
-                <td>~32 DPS</td>
-                <td class="gain-good">~85 TPS</td>
-                <td>~25,500</td>
+                <td>~42 DPS</td>
+                <td class="gain-good">~81 TPS</td>
+                <td>~24,300</td>
                 <td>All Holy abilities</td>
                 <td>Windfury (Air totem slot)</td>
             </tr>
             <tr>
                 <td><span class="legend-pill pill-wf">WF</span><strong>Windfury Totem (base)</strong></td>
-                <td>~28 DPS</td>
-                <td class="gain-good">~58 TPS</td>
-                <td>~17,400</td>
+                <td>~33 DPS</td>
+                <td class="gain-good">~63 TPS</td>
+                <td>~18,900</td>
                 <td>Melee swing + 1 SoR proc per WF</td>
                 <td>WoA (Air slot) + your Wizard Oil (weapon slot)</td>
             </tr>
             <tr class="summary-row">
                 <td><span class="legend-pill pill-wf">WF</span><strong>Imp Windfury Totem (2/2)</strong></td>
-                <td>~32 DPS</td>
+                <td>~34 DPS</td>
                 <td class="gain-good">~65 TPS</td>
                 <td>~19,500</td>
                 <td>Melee swing + 1 SoR proc per WF</td>
@@ -3573,15 +3574,15 @@ Total per WF proc: ~636 threat / ~9 seconds              = ~71 TPS</div>
 
         <div class="formula" style="white-space:pre; overflow-x:auto;"><strong>Expected gains per 60s twist (Enhancement shaman: Imp WF + base WoA):</strong>
   WF weapon buff   ~100% &times; 65 TPS (Imp WF procs + their SoR procs)  = ~65 TPS
-  WoA aura          ~88% &times; 71 TPS (base WoA &mdash; Enh has no Imp WoA)  = ~63 TPS
+  WoA aura          ~88% &times; 67 TPS (base WoA &mdash; Enh has no Imp WoA)  = ~59 TPS
   Wizard Oil        0 (run un-oiled; a coat would wipe the WF buff)     =   0 TPS
-  Combined twist                                                        = ~128 TPS   (~7,700 / 60s)
+  Combined twist                                                        = ~124 TPS   (~7,440 / 60s)
 
 For comparison (same 60s window, best realistic non-twist packages):
-  Imp WoA + Wizard Oil   108 &times; 60  = 6,480   (Ele/Resto shaman + your oil, they stack)
-  Base WoA + Wizard Oil  94 &times; 60   = 5,640
+  Imp WoA + Wizard Oil   109 &times; 60  = 6,540   (Ele/Resto shaman + your oil, they stack)
+  Base WoA + Wizard Oil  95 &times; 60   = 5,700
   Imp WF alone (no oil)  65 &times; 60   = 3,900   (run un-oiled; oil wipes WF)
-  Imp WoA alone (no oil) 85 &times; 60   = 5,100</div>
+  Imp WoA alone (no oil) 81 &times; 60   = 4,860</div>
 
         <h4>The Result</h4>
         <table class="combat-table">
@@ -3593,26 +3594,26 @@ For comparison (same 60s window, best realistic non-twist packages):
             </tr>
             <tr class="summary-row">
                 <td><strong>Twisting: WF + WoA</strong> (dedicated shaman, no oil)</td>
-                <td class="gain-good">~128</td>
-                <td class="gain-good">~7,700</td>
+                <td class="gain-good">~124</td>
+                <td class="gain-good">~7,440</td>
                 <td>Best case &mdash; persisting WF buff overlaps the live WoA aura</td>
             </tr>
             <tr>
                 <td><strong>Imp WoA + Wizard Oil</strong> (Ele/Resto shaman)</td>
-                <td class="gain-good">~108</td>
-                <td class="gain-good">~6,480</td>
+                <td class="gain-good">~109</td>
+                <td class="gain-good">~6,540</td>
                 <td>Best you can do without a twisting shaman &mdash; the two stack</td>
             </tr>
             <tr>
                 <td><strong>Base WoA + Wizard Oil</strong></td>
-                <td class="gain-mid">~94</td>
-                <td class="gain-mid">~5,640</td>
+                <td class="gain-mid">~95</td>
+                <td class="gain-mid">~5,700</td>
                 <td>No Imp WoA talent on the shaman</td>
             </tr>
             <tr>
                 <td><strong>Imp WoA alone</strong> (no oil)</td>
-                <td class="gain-mid">~85</td>
-                <td class="gain-mid">~5,100</td>
+                <td class="gain-mid">~81</td>
+                <td class="gain-mid">~4,860</td>
                 <td>If you skip oil for some reason</td>
             </tr>
             <tr>
@@ -3624,22 +3625,22 @@ For comparison (same 60s window, best realistic non-twist packages):
         </table>
 
         <div class="verdict">
-            <strong>For the Prot Paladin&rsquo;s threat, a real twist is the best case &mdash; if you can get it.</strong> Because the Windfury weapon buff persists through the totem swap, a dedicated twisting shaman gives you WoA <em>and</em> WF at the same time (~128 TPS), clearly ahead of any single-totem package. The catch is cost &mdash; twisting is essentially <strong>all the shaman does</strong>:
+            <strong>For the Prot Paladin&rsquo;s threat, a real twist is the best case &mdash; if you can get it.</strong> Because the Windfury weapon buff persists through the totem swap, a dedicated twisting shaman gives you WoA <em>and</em> WF at the same time (~124 TPS), clearly ahead of any single-totem package. The catch is cost &mdash; twisting is essentially <strong>all the shaman does</strong>:
             <ul>
                 <li>It eats ~190 mana per drop and near-constant GCDs &mdash; a Resto shaman who&rsquo;s also healing can&rsquo;t sustain it. Realistically only an Enhancement shaman (already meleeing in your group) twists.</li>
                 <li>An Enhancement twister has Imp WF but <em>not</em> Imp WoA, so your WoA portion is the base 101 SP value, not 121.</li>
                 <li>You forfeit Wizard Oil regardless &mdash; any coat you apply would wipe the WF buff, so you run un-oiled all fight.</li>
             </ul>
-            <strong>Bottom line for you, the tank:</strong> if a shaman is already twisting WF/WoA for the melee group, you&rsquo;re the incidental big winner (~128 TPS). Don&rsquo;t <em>demand</em> a twist purely for your own threat &mdash; it&rsquo;s a heavy ask. Without one, <strong>WoA + Wizard Oil (~108 TPS)</strong> is your reliable best.
+            <strong>Bottom line for you, the tank:</strong> if a shaman is already twisting WF/WoA for the melee group, you&rsquo;re the incidental big winner (~124 TPS). Don&rsquo;t <em>demand</em> a twist purely for your own threat &mdash; it&rsquo;s a heavy ask. Without one, <strong>WoA + Wizard Oil (~109 TPS)</strong> is your reliable best.
         </div>
 
         <div class="warning">
             <strong>Caveats on the twist model:</strong>
             <ul>
-                <li>The ~128 TPS figure is an idealized, well-executed twist. A sloppy or part-time twist lands somewhere between this and single-totem values.</li>
+                <li>The ~124 TPS figure is an idealized, well-executed twist. A sloppy or part-time twist lands somewhere between this and single-totem values.</li>
                 <li>Twisting relies on the WF weapon buff&rsquo;s carry-over lasting long enough to cover each WoA window. If the shaman lets it lapse, WF uptime drops and the procs go with it.</li>
                 <li>WF procs are random &mdash; the 0.111 procs/s rate is an expected value; any given 10s window might land 0 or 2.</li>
-                <li>Twisting forfeits your Wizard Oil entirely &mdash; you must run un-oiled so the WF buff stays up (a coat would wipe it). That cost is already baked into the ~128 TPS above.</li>
+                <li>Twisting forfeits your Wizard Oil entirely &mdash; you must run un-oiled so the WF buff stays up (a coat would wipe it). That cost is already baked into the ~124 TPS above.</li>
                 <li>If your shaman is in a different 5-man party (e.g. healer group), you get <strong>neither</strong> totem. Everything here assumes the shaman is in your party.</li>
             </ul>
         </div>
@@ -3647,13 +3648,13 @@ For comparison (same 60s window, best realistic non-twist packages):
 
         <h3>Verdict &amp; Practical Decision Tree</h3>
         <div class="verdict">
-            <strong>Wizard Oil: yes &mdash; unless your party runs Windfury Totem.</strong> It&rsquo;s a self-applied weapon coat worth ~23 TPS for one consumable per hour, and it <em>stacks on top of Wrath of Air</em>. But it shares your weapon slot with the Windfury Totem buff, so in a <em>Windfury</em> party it&rsquo;s oil <strong>or</strong> the totem, not both &mdash; and the totem (~65 TPS) wins, so you skip the oil there. (Don&rsquo;t reach for <strong>Superior Mana Oil</strong> instead &mdash; even when your <em>seal</em> doesn&rsquo;t scale with spell power, everything else in your kit does, so Wizard Oil is always the better weapon coat for a threat tank.)
+            <strong>Wizard Oil: yes &mdash; unless your party runs Windfury Totem.</strong> It&rsquo;s a self-applied weapon coat worth ~28 TPS for one consumable per hour, and it <em>stacks on top of Wrath of Air</em>. But it shares your weapon slot with the Windfury Totem buff, so in a <em>Windfury</em> party it&rsquo;s oil <strong>or</strong> the totem, not both &mdash; and the totem (~65 TPS) wins, so you skip the oil there. (Don&rsquo;t reach for <strong>Superior Mana Oil</strong> instead &mdash; even when your <em>seal</em> doesn&rsquo;t scale with spell power, everything else in your kit does, so Wizard Oil is always the better weapon coat for a threat tank.)
         </div>
 
         <div class="verdict">
             <strong>Air totem: lean WoA &mdash; and it&rsquo;s not as close as the raw totem numbers suggest.</strong>
             <ul>
-                <li>Totem-vs-totem, <strong>Imp WoA (~85 TPS)</strong> already edges <strong>Imp WF (~65 TPS)</strong> in the SoR rotation. But the real gap is bigger: WoA <em>lets you keep your Wizard Oil</em> (+23 TPS), while a Windfury party means running un-oiled (a coat wipes the WF buff). So the package comparison is <strong>~108 TPS (WoA + Oil) vs ~65 TPS (WF, no oil)</strong> &mdash; about a ~43 TPS swing.</li>
+                <li>Totem-vs-totem, <strong>Imp WoA (~81 TPS)</strong> already edges <strong>Imp WF (~65 TPS)</strong> in the SoR rotation. But the real gap is bigger: WoA <em>lets you keep your Wizard Oil</em> (+28 TPS), while a Windfury party means running un-oiled (a coat wipes the WF buff). So the package comparison is <strong>~109 TPS (WoA + Oil) vs ~65 TPS (WF, no oil)</strong> &mdash; about a ~44 TPS swing.</li>
                 <li>WF is strictly party-local melee. WoA's value is shared by other casters in the party (healing paladin, ele shaman, mage in melee group, etc.), so it has higher <em>raid utility</em>.</li>
                 <li>WF's threat is <em>bursty</em>. A 9s gap with no proc, then a 582-threat spike. Bad for taunt-races where TPS averages don't matter, only the floor.</li>
                 <li><strong>The opener doesn&rsquo;t change this.</strong> At raid spell power you open <em>Seal of Righteousness &rarr; Judge Righteousness</em> (JoR out-snaps JoB above ~400 SP), then run your sustained seal for the rest of the fight. So the comparison always runs under SoR, where WoA + Oil leads. (The on-pull JoR carries a 0.728 spell-power coefficient, so WoA and Wizard Oil feed it too.)</li>
@@ -3663,7 +3664,7 @@ For comparison (same 60s window, best realistic non-twist packages):
         <div class="verdict">
             <strong>Default party setup for a Prot Paladin:</strong>
             <ol>
-                <li><strong>For your personal threat, Wrath of Air is the pick</strong> &mdash; ~85 TPS from Imp WoA <em>plus</em> the ~23 TPS from the Wizard Oil it lets you keep = <strong>~108 TPS</strong>. Request WoA from any Elemental/Resto shaman in your party and coat with Superior Wizard Oil.</li>
+                <li><strong>For your personal threat, Wrath of Air is the pick</strong> &mdash; ~81 TPS from Imp WoA <em>plus</em> the ~28 TPS from the Wizard Oil it lets you keep = <strong>~109 TPS</strong>. Request WoA from any Elemental/Resto shaman in your party and coat with Superior Wizard Oil.</li>
                 <li><strong>If a Windfury party is better for the raid</strong> (an Enhancement shaman dropping Imp WF for a stacked melee group), you piggyback for ~65 TPS &mdash; but go un-oiled, since any coat you apply just wipes the WF buff. Don&rsquo;t waste oil charges in a Windfury party.</li>
                 <li>Wrath of Air also helps every caster in your party (healing paladin, ele shaman, mage), so it usually wins on raid utility too &mdash; unless the melee stack makes Windfury the group&rsquo;s clear choice.</li>
             </ol>
@@ -3672,7 +3673,7 @@ For comparison (same 60s window, best realistic non-twist packages):
         <div class="warning">
             <strong>Caveats and corner cases:</strong>
             <ul>
-                <li><strong>Threat &ne; DPS.</strong> WoA's TPS is inflated by Righteous Fury (1.9&times;) because every gain is Holy. WF's TPS is partially physical (1.0&times; RF). Compare DPS columns for a "fairness" check &mdash; there WoA and WF are nearly identical.</li>
+                <li><strong>Threat &ne; DPS.</strong> WoA's TPS is inflated by Righteous Fury (1.9&times;) because every gain is Holy. WF's TPS is partially physical (1.0&times; RF). Compare DPS columns for a "fairness" check &mdash; on raw added DPS they're far closer (WoA ~35, Imp ~42 vs WF ~33&ndash;34); WoA's bigger TPS lead comes from <em>all</em> of its damage being RF-amplified Holy, whereas WF is part physical (no RF).</li>
                 <li><strong>SoR-cap weapons.</strong> SoR damage caps at a per-swing amount based on weapon speed. With a slow 2H, SoR procs are bigger but rarer; with a 1.8s 1H, they're smaller but more frequent. Numbers above use this guide's 1.8s spell-power weapon.</li>
                 <li><strong>JotC debuff.</strong> Not modeled in these numbers. If your raid is running a JotC rotation (Judgement of the Crusader = +219 Holy damage taken), all WoA and Wizard Oil scaling is also amplified by that debuff. WF's physical portion is not.</li>
                 <li><strong>Mana cost.</strong> None of these three buffs costs you any mana. WoA does cost the shaman a totem slot, WF does too. Wizard Oil is gold (~3g per stack of 5).</li>
@@ -3682,8 +3683,8 @@ For comparison (same 60s window, best realistic non-twist packages):
 
         <h4>One-Line Bottom Line</h4>
         <div class="tip" style="font-size:1.05em;">
-            <strong>Raid rotation with SoR:</strong> <span class="gain-good">WoA + Wizard Oil &asymp; +108 TPS (they stack)</span> beats <span class="gain-mid">Windfury alone &asymp; +65 TPS (run un-oiled)</span>. <br>
-            <strong>You can&rsquo;t bring all three.</strong> Windfury Totem and Wizard Oil share your weapon slot &mdash; so it&rsquo;s <strong>Wrath of Air + Wizard Oil</strong> for max personal threat, or Windfury (no oil) if the raid needs it for the melee group. The one exception: a shaman <strong>twisting</strong> WF/WoA stacks both air effects on you for <span class="gain-good">~128 TPS</span> &mdash; the true ceiling, but a heavy ask.
+            <strong>Raid rotation with SoR:</strong> <span class="gain-good">WoA + Wizard Oil &asymp; +109 TPS (they stack)</span> beats <span class="gain-mid">Windfury alone &asymp; +65 TPS (run un-oiled)</span>. <br>
+            <strong>You can&rsquo;t bring all three.</strong> Windfury Totem and Wizard Oil share your weapon slot &mdash; so it&rsquo;s <strong>Wrath of Air + Wizard Oil</strong> for max personal threat, or Windfury (no oil) if the raid needs it for the melee group. The one exception: a shaman <strong>twisting</strong> WF/WoA stacks both air effects on you for <span class="gain-good">~124 TPS</span> &mdash; the true ceiling, but a heavy ask.
         </div>
 
         <script>
@@ -3692,11 +3693,11 @@ For comparison (same 60s window, best realistic non-twist packages):
             const labels = [];
             for (let t = 0; t <= T_END; t++) labels.push(t + 's');
 
-            const WOA_TPS = 71;     // base Wrath of Air
-            const IMPWOA_TPS = 85;  // 2/2 improved
-            const OIL_TPS = 23;
-            const WOAOIL_TPS = 108;     // Imp WoA + Wizard Oil stacked (the realistic package)
-            const WOAOIL_BASE_TPS = 94; // base WoA + Wizard Oil stacked (no Imp WoA talent)
+            const WOA_TPS = 67;     // base Wrath of Air
+            const IMPWOA_TPS = 81;  // 2/2 improved
+            const OIL_TPS = 28;
+            const WOAOIL_TPS = 109;     // Imp WoA + Wizard Oil stacked (the realistic package)
+            const WOAOIL_BASE_TPS = 95; // base WoA + Wizard Oil stacked (no Imp WoA talent)
 
             const WF_PROC = 582;
             const WF_PROC_TIMES = [9, 18, 27, 36, 45, 54];
@@ -3706,7 +3707,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             let nextProcIdx = 0;
 
             // TBC twist: the WF weapon buff persists through the totem swap, so it OVERLAPS WoA.
-            const TWIST_WOA_TPS = 71 * 0.88;  // base WoA (Enh shaman, no Imp WoA) at ~88% uptime
+            const TWIST_WOA_TPS = 67 * 0.88;  // base WoA (Enh shaman, no Imp WoA) at ~88% uptime
             let twistCum = 0;
             let twistProcIdx = 0;
             for (let t = 0; t <= T_END; t++) {
@@ -4745,6 +4746,14 @@ For comparison (same 60s window, best realistic non-twist packages):
         <!-- ============================================================ -->
         <h2 id="changelog"><a href="#toc">Changelog</a></h2>
         <div class="toc">
+            <h3>2026-06-10 (v1.9) &mdash; Seal of Righteousness SP coefficient correction (0.2 &rarr; 0.092&times;speed)</h3>
+            <ul>
+                <li><strong>Correction &mdash; SoR per-swing SP coefficient:</strong> Seal of Righteousness scales with <strong>weapon speed</strong> &mdash; <strong>0.092 &times; speed (1H)</strong>, which is <strong>&asymp;0.166</strong> for this guide's 1.8s weapon, not the flat <strong>0.2</strong> the simulation had used. The old 0.2 over-estimated SoR proc threat for a 1.8s weapon by &asymp;20%. <em>Discovered during the 2026-06-09 fresh editorial read-through</em> (the appendix/ability table had already been corrected to 0.092&times;speed, but the live chart engine and the buff-contribution math were still running on the disavowed 0.2) and fixed here.</li>
+                <li><strong>Propagated through every dependent figure:</strong> the interactive chart engine (so the seal-crossover table, cumulative-threat catch-up chart, seal-swap displays, opener-comparison table, and both 5-minute SP-sweep charts all recompute), plus the static Wrath-of-Air / Windfury / Wizard Oil contribution tables and totals. Net effect: SoR proc threat drops ~14%, so <strong>WoA ~71&rarr;67 TPS, Imp WoA ~85&rarr;81, Windfury ~71&rarr;65, twist ~128&rarr;124</strong>, and the corresponding 5-min / 60s totals.</li>
+                <li><strong>Consistency reconcile (same pass):</strong> the three overview <strong>seal-comparison charts</strong> and the <strong>per-ability threat table</strong> were brought into line with the verified chart engine &mdash; they had been omitting the <strong>2pc Justicar +10%</strong> (on seal procs / SoC DoT) and the <strong>average spell-crit</strong> the engine applies to judgements. So one set of numbers now holds guide-wide: <strong>SoR 188, SoC DoT 188, JoC 182, JoR 145, JoB 128</strong> TPS; combined <strong>Pure SoR 333, Pure SoC 370, Seal-swap 558</strong>. The per-ability table now honors its own "639&ndash;709 SP, crit included" footnote (Consec, Holy Shield, Avenger's Shield, Exorcism, Holy Wrath ranges all refreshed to the raid-buffed basis).</li>
+                <li><strong>Buff section made internally consistent:</strong> <strong>Wizard Oil ~23&rarr;28 TPS</strong> and <strong>base Windfury ~58&rarr;63 TPS</strong> (both had drifted from their own per-ability models), and the per-buff <strong>DPS column</strong> was corrected to match the TPS (WoA ~35, Imp ~42, Oil ~15). Knock-on: <strong>WoA + Oil ~109 TPS</strong> (Imp) / ~95 (base), a ~44-TPS edge over Windfury.</li>
+                <li><strong>Avenger's Shield crit fixed:</strong> AS is a direct-damage Holy nuke and <strong>does critically strike</strong> (spell crit, 1.5&times;) &mdash; the engine had been treating it as non-critting. Added the average-crit term (AS per-cast <strong>1,301 &rarr; 1,373</strong> at 709 SP), which also nudges the Avenger's Shield build's TPS up slightly. (Consecration and Holy Shield genuinely <em>cannot</em> crit and were left as-is.)</li>
+            </ul>
             <h3>2026-06-09 (v1.8) &mdash; JoR coefficient correction, SoR opener, layout overhaul &amp; review-pass fixes</h3>
             <ul>
                 <li><strong>Major correction &mdash; Judgement of Righteousness coefficient:</strong> JoR uses base <strong>208 / SP coefficient 0.728</strong> (rank 9, Wowhead TBC), not the generic 0.429 the simulation had used. JoR now out-scales Judgement of Blood above <strong>~400 spell power</strong>. Propagated through every calculator, chart, and the Wrath-of-Air / Wizard Oil contribution tables.</li>
@@ -4925,9 +4934,10 @@ For comparison (same 60s window, best realistic non-twist packages):
     // Seal of Righteousness
     // SoR proc per swing: (base + SP * coeff) * RF * 2pc Justicar. Cannot crit.
     // Base at rank 8 with 1.8 speed ≈ 44.2 (derived from guide: 110 TPS at 300 SP, 1.8 speed)
-    // Per-swing coefficient = 0.2 (from guide's ability table)
+    // Per-swing SP coefficient scales with weapon speed: 0.092 × speed (1H). At 1.8s ≈ 0.166.
+    // (The old flat 0.2 over-estimated SoR threat for a 1.8s weapon by ≈20% — corrected per the appendix.)
     const SOR_BASE_PER_SWING = 44.2;
-    const SOR_COEFF = 0.2;
+    const SOR_COEFF = 0.092 * WS;
     const SOR_PER_SWING = Math.round((SOR_BASE_PER_SWING + SP * SOR_COEFF) * RF * JUSTICAR_2P);
     const SOR_TPS = Math.round(SOR_PER_SWING / WS);
     // JoR: (base + SP*0.728) * RF * (1 + spellCrit*0.5). Base 208 at rank 9 (Wowhead TBC: "Value 208, SP mod 0.728"). NOT affected by 2pc Justicar.
@@ -4954,7 +4964,7 @@ For comparison (same 60s window, best realistic non-twist packages):
     const CONSEC_TICK = Math.round(CONSEC / 8); // per-tick Consec threat (8 ticks over 8s, 1/sec)
     const CONSEC_TICK_AW = Math.round((CONSEC * AW) / 8); // per-tick with AW
     const HS_BLK = Math.round((155 + SP * 0.05 + JUSTICAR_4P_HS) * RF * 1.20); // 2/2 Imp HS + 4pc Justicar (+15 flat per block)
-    const AS = Math.round((548 + SP * 0.193) * RF);                          // Wowhead TBC SP mod 0.193 (verified 2026-04-23)
+    const AS = Math.round((548 + SP * 0.193) * RF * (1 + SC * 0.5));         // Wowhead TBC SP mod 0.193; crits 1.5× (spell), like other direct Holy nukes
     const EXO = Math.round((619 + SP * 0.429) * RF * (1 + SC * 0.5));         // Wowhead TBC base 619, SP mod 0.429
     const HW = Math.round((635 + SP * 0.286) * RF * (1 + SC * 0.5));          // Wowhead TBC base 635, SP mod 0.286 (no-cap AoE penalty 2/3.5/2)
     const HS_BLOCKS_PER_8S = 3; // estimate
@@ -6135,7 +6145,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             var jotcOn = (strategy === 'sealswap-jotc'); // debuff permanently up at steady state
             var jAmp = JOTC_DEBUFF * _RF;                // +219 × RF per amplified Holy hit
             // Recompute ability constants (mirror of simAt internals)
-            var sorSw  = (44.2 + sp * 0.20) * _RF * _J2P;
+            var sorSw  = (44.2 + sp * 0.092 * _WS) * _RF * _J2P;
             var socDot = (10 + sp * 0.034 / 3) * _RF * _J2P;
             function jocJ(s) { return (121 * s + sp * 0.429 * (s / 5)) * _RF * (1 + _SC * 0.5); } // JoC scales per Blood Corruption stack (0 at 0 stacks)
             var jorJ = (208 + sp * 0.728) * _RF * (1 + _SC * 0.5);
