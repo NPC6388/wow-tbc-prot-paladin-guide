@@ -77,6 +77,14 @@ All folded into the **v1.9** changelog entry.
 
 ---
 
+---
+
+# Part 3 — Moved unverified sections to a holding file (v2.0)
+
+At the user's request, stripped not-yet-verified sections out of the live guide into a new standalone file **`review prior to inclusion.html`** (shares the guide's `<head>`/CSS so it renders), pending review before re-inclusion. Moved: **Engineering, Weapon/Shield/Libram selection, Enchantments, Gems & Professions, Essential Macros, WeakAuras, Addons, Simulators & Tools, Crit & Crush Immunity Calculator.** Gear Optimization keeps its AOE/Boss/Mitigation/Off-Tank gear-set guidance (only weapon/shield/libram subsections moved). All moved content is static HTML (no charts/scripts cross the boundary), so the engine and all charts are untouched. TOC trimmed; no body cross-links pointed into the moved sections. Changelog **v2.0** added.
+
+---
+
 ## Files Touched
 
 - **`index.html`** — Part 1: engine `SOR_COEFF` + sweep function; WF/Oil/WoA per-ability tables and formula blocks; WoA/twist/package cascade; cumulative-buff chart constants. Part 2: three seal-comparison charts + tooltips + key-takeaways; full per-ability threat table; talents-section HS reference; buff-section Oil/base-WF/DPS reconcile + re-cascade; **v1.9** changelog entry.
