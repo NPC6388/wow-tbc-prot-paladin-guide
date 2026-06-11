@@ -570,8 +570,29 @@
         <hr>
 
         <h2>Future Inclusion Candidates (to research &amp; write)</h2>
+
+        <h3>Greater Blessing &ldquo;spam&rdquo; as a threat tool</h3>
+        <div class="warning">
+            <strong>&#9888; Do not add to the live guide until verified for TBC 2.4.3 &mdash; this is a <u>WoW Classic</u> mechanic and may not work in TBC.</strong> The whole technique rests on Righteous Fury amplifying the threat of <em>all</em> Holy-school spells (blessings, cleanses, heals), which is how it behaves in Classic (Anniversary / Phase&nbsp;5). <strong>In TBC, Righteous Fury was changed to increase threat from your Holy <em>damage</em> only.</strong> If that holds in 2.4.3, a Greater Blessing cast is <em>not</em> multiplied by the 1.9&times; RF factor and the technique is dramatically weaker or non-viable. <strong>Verify in-game / via the threat API (does a GBoK cast scale with RF in 2.4.3?) before writing this into the guide.</strong>
+        </div>
         <div class="tip">
-            <strong>Blessing of Kings as a threat generator.</strong> Casting/recasting (Greater) Blessing of Kings on party/raid members reportedly generates threat and can be woven into the rotation for extra TPS. Document the mechanic, the per-cast threat, and where it fits the GCD priority before adding to the live guide. Source: <a href="https://www.wowhead.com/classic/guide/lights-bulwark-protection-paladin-tanking">Light's Bulwark &mdash; Protection Paladin Tanking (Wowhead Classic)</a> (has a "Greater Blessing of Kings as Threat Generator" section + video) and its Judgement/Seal of Wisdom mana-regen math (JoW PPM = (1 / weapon speed) &times; 0.50 &times; 60 &mdash; the 0.50 is the ~50% proc rate now reflected in the live guide's mana table).
+            <p><strong>The mechanic (per the Classic Light's Bulwark guide).</strong> Non-damaging Holy-school spells &mdash; especially <strong>Greater Blessings</strong> &mdash; generate threat, and that threat is <strong>split evenly across every enemy you are in combat with</strong>. A single Greater Blessing cast buffs <em>all</em> same-class members at once, so threat scales with how many same-class players the cast hits:</p>
+            <div class="formula">threat per cast = base_threat &times; 1.90 (Improved Righteous Fury) &times; players_buffed</div>
+            <p>&bull; <code>base_threat</code> = the blessing's flat base threat (per-spell; the guide's values are in a chart image, not transcribed here &mdash; pull exact numbers before inclusion).<br>
+            &bull; <code>players_buffed</code> = number of same-class players the one cast affects (e.g. all Warriors get Greater Blessing of Kings from one cast).</p>
+            <p><strong>Why it's attractive (in Classic):</strong></p>
+            <ul>
+                <li><strong>Unavoidable</strong> &mdash; no dodge/parry/miss against it.</li>
+                <li><strong>Unresistable</strong> &mdash; not subject to partial or binary spell resistance.</li>
+                <li><strong>Ranged</strong> &mdash; generates threat without attacking the target (the guide cites Onyxia P2 fireball phase: blessing-spam to stay high on threat while at range).</li>
+                <li><strong>Global / AOE</strong> &mdash; the threat is split across <em>all</em> mobs in combat, so it tops up threat on a whole pack at once, and scales hugely in stacked raids (many same-class players per cast).</li>
+            </ul>
+            <p><strong>To do before inclusion:</strong> (1) confirm the RF-on-blessings behavior in TBC 2.4.3; (2) if it works, transcribe the per-blessing <code>base_threat</code> table and compute realistic 5-man party numbers (TBC auras/blessings are party-wide, not raid-wide, so <code>players_buffed</code> is capped at your party's same-class count &mdash; far smaller than the raid-wide Classic figures); (3) decide where it fits the GCD priority and mana budget. Source: <a href="https://www.wowhead.com/classic/guide/lights-bulwark-protection-paladin-tanking">Light's Bulwark &mdash; Protection Paladin Tanking (Wowhead Classic)</a> + its &ldquo;Greater Blessing of Kings as Threat Generator&rdquo; video.</p>
+        </div>
+
+        <h3>Other parked notes</h3>
+        <div class="tip">
+            <strong>Seal / Judgement of Wisdom mana-regen model.</strong> Light's Bulwark gives <code>JoW PPM = (1 / weapon speed) &times; 0.50 &times; 60</code> (the 0.50 = the ~50% proc-per-hit, now reflected in the live guide's mana table) and notes mana restored by SoW/JoW also generates a little threat. A fuller SoW+JoW sustain model could be added if wanted.
         </div>
 
         <h2 id="engineering"><a href="#toc">Engineering</a></h2>
