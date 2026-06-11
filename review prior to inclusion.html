@@ -644,16 +644,16 @@
         </div>
 
         <h4>Which Greater Blessing is cheapest to spam (highest rank)?</h4>
-        <p>Threat per cast is essentially the same across blessings (it's set by the spell's <em>learned level</em>, not its effect), so the tiebreaker is <strong>mana cost at the rank you'd actually keep up &mdash; the highest</strong> (Wisdom R5, Might R3; Kings and Salvation have a single rank). The four split into two cost types:</p>
+        <p>Threat per cast is essentially the same across blessings (it's set by the spell's <em>learned level</em>, not its effect), so the tiebreaker is <strong>mana cost</strong>. In the spellbook every Greater Blessing shows a <strong>flat</strong> cost (the &ldquo;% of base mana&rdquo; is just how Wowhead displays the underlying value). Actual in-game level-70 costs at the highest rank:</p>
         <table class="combat-table">
-            <tr><th>Greater Blessing (max rank)</th><th>Cost type</th><th>&asymp; mana @ level 70</th></tr>
-            <tr><td><strong>Wisdom</strong> (R5)</td><td>flat</td><td style="color:#7ee787;"><strong>~280</strong></td></tr>
-            <tr><td><strong>Might</strong> (R3)</td><td>flat</td><td>~295</td></tr>
-            <tr><td><strong>Kings</strong> (1 rank)</td><td>12% of base mana</td><td>~340</td></tr>
-            <tr><td><strong>Salvation</strong> (1 rank)</td><td>13% of base mana</td><td>~370</td></tr>
+            <tr><th>Greater Blessing (max rank)</th><th>Mana cost (spellbook)</th></tr>
+            <tr><td><strong>Might</strong> (R3)</td><td style="color:#7ee787;"><strong>295 &mdash; cheapest</strong></td></tr>
+            <tr><td><strong>Wisdom</strong> (R3)</td><td>310</td></tr>
+            <tr><td><strong>Kings</strong></td><td>354</td></tr>
+            <tr><td><strong>Salvation</strong></td><td>383</td></tr>
         </table>
-        <p>The <strong>flat-cost blessings (Wisdom, Might) are the cheapest to spam</strong> at top rank (~280&ndash;295), so <strong>Greater Blessing of Wisdom or Might</strong> is the pick &mdash; same per-cast threat for the least mana. Kings and Salvation cost a <em>percentage of base mana</em> (12&ndash;13%), which on a level-70 paladin (base mana is a fixed ~2.8k constant) works out somewhat higher (~340&ndash;370). The gaps are modest &mdash; all roughly 280&ndash;370 &mdash; <strong>not the ~3&times; an earlier draft of this note wrongly suggested</strong> (that used a bad ~5.8k base-mana figure; corrected). Benediction's &minus;15% on instants hits all four equally, so it doesn't change the order.</p>
-        <p style="color:#8b949e; font-size:0.9em;"><strong>Caveats:</strong> (1) &ldquo;Same threat&rdquo; is approximate &mdash; base threat scales with the spell's <em>learned</em> level, so the level-70 Might R3 may post slightly more per cast than the level-60 Kings/Salvation; verify on a threat meter. (2) Cast the blessing your raid actually wants up &mdash; Wisdom on casters/healers, Might on melee; never spam <em>Salvation</em> on tanks (it cuts their threat). (3) Exact top-rank flat costs (Wisdom R5, Might R3) and the paladin base-mana constant should be pinned in-game before this goes live &mdash; the robust takeaway is <em>flat (Wisdom/Might) &lt; percent-of-base-mana (Kings/Salvation)</em>, all in the same ballpark.</p>
+        <p><strong>Greater Blessing of Might (295) is the cheapest to spam</strong>, with Wisdom (310) just behind; Kings (354) and Salvation (383) cost more. (Kings and Salvation are <em>12% / 13% of base mana</em> under the hood &mdash; which back-solves the paladin's level-70 base-mana constant to <strong>~2,950</strong>: 354 &divide; 0.12. Might and Wisdom are inherently flat.) So for the most threat per mana, <strong>spam Greater Blessing of Might on a melee class</strong> (or Wisdom on a caster/healer group) &mdash; both are buffs you'd keep up anyway. Benediction's &minus;15% on instants (if specced) hits all four equally, so the order is unchanged.</p>
+        <p style="color:#8b949e; font-size:0.9em;"><strong>Caveats:</strong> (1) &ldquo;Same threat&rdquo; is approximate &mdash; base threat scales with the spell's <em>learned</em> level, so the level-70 Might R3 may post slightly more per cast than the level-60 Kings/Salvation; worth a threat-meter check. (2) Cast the blessing your raid actually wants up &mdash; Might on melee, Wisdom on casters/healers; never spam <em>Salvation</em> on tanks (it cuts their threat). (Costs above are from an in-game spellbook, 2026-06-10.)</p>
 
         <h3>Other parked notes</h3>
         <div class="tip">
