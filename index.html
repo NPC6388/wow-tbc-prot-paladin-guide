@@ -2205,7 +2205,7 @@
     <div class="tip" id="crossoverTip"></div>
 
     <h4>Cumulative Threat Timeline — When Does SoC Catch Up?</h4>
-    <p>Same data as the detailed table below, plotted continuously over 60 seconds. All rotations start at t=0 with no opener. <span style="color:#f0a500;">Pure SoC</span> and <span style="color:#b388ff;">Seal Swap</span> both ramp from 0 stacks at 70% per swing (1.8s weapon); <span style="color:#7ee787;">Pure SoR</span> runs at full TPS from the first swing. A fourth line, <span style="color:#d2a8ff;">Seal Swap + JotC@J2</span>, spends its 2nd judge on Judgement of the Crusader &mdash; trading one JoC for the permanent +219 Holy debuff, which then amplifies every later SoR proc and judge by +219&times;1.9. Crossover points for the SoC variants vs Pure SoR are annotated on the chart and in the note below.</p>
+    <p>Same data as the detailed table below, plotted continuously over 60 seconds. All rotations start at t=0 with no opener. <span style="color:#f0a500;">Pure SoC</span> and <span style="color:#b388ff;">Hybrid</span> both ramp from 0 stacks at 70% per swing (1.8s weapon); <span style="color:#7ee787;">Pure SoR</span> runs at full TPS from the first swing. A fourth line, <span style="color:#d2a8ff;">Hybrid + JotC@J2 (self)@J2</span>, spends its 2nd judge on Judgement of the Crusader &mdash; trading one JoC for the permanent +219 Holy debuff, which then amplifies every later SoR proc and judge by +219&times;1.9. Crossover points for the SoC variants vs Pure SoR are annotated on the chart and in the note below.</p>
     <div class="chart-container">
         <canvas id="chartSocCatchup" width="900" height="500"></canvas>
     </div>
@@ -2225,20 +2225,20 @@
                 <th>SoC Total TPS</th>
                 <th>Cum. SoR</th>
                 <th>Cum. SoC</th>
-                <th>Cum. Swap</th>
-                <th style="color:#d2a8ff;">Cum. Swap+JotC (self) @ 2nd CD</th>
-                <th style="color:#58a6ff;">Cum. Swap+Ret JotC @ 1s</th>
+                <th>Cum. Hybrid</th>
+                <th style="color:#d2a8ff;">Cum. Hybrid+JotC (self) @ 2nd CD</th>
+                <th style="color:#58a6ff;">Cum. Hybrid+Ret JotC @ 1s</th>
             </tr>
             <tbody id="stackTable"></tbody>
         </table>
         </div>
-        <p style="color: #8b949e; font-size: 0.85em;"><strong>Time</strong> = expected time to reach each stack level from first SoC auto (1.8s weapon, ~70% proc rate). <strong>Cum. SoC</strong> = pure SoC (no swap), <strong>Cum. SoR</strong> = pure SoR, <strong>Cum. Swap</strong> = seal swap (SoC → JSoC → SoR → SoC → JSoC), <strong style="color:#d2a8ff;">Cum. Swap+JotC (self)</strong> = the same swap but <em>your own</em> 2nd judge is Judgement of the Crusader, so every later SoR proc and judge is amplified by +219. <strong style="color:#58a6ff;">Cum. Swap+Ret JotC</strong> = the same swap but a <em>Ret paladin</em> supplies Judgement of the Crusader from 1s, so the +219 is up almost from the pull and none of your own judges is spent on it. All cumulatives sourced from the same discrete-event simulation as the timeline graph above. Cumulative columns are <span style="color:#7ee787;">green</span> while ahead of pure SoR and <span style="color:#f85149;">red</span> while behind; the <strong>highlighted row</strong> marks where the <span style="color:#b388ff;">seal swap (~50s)</span> first overtakes pure SoR. With the corrected 0.728 JoR coefficient, <span style="color:#f0a500;">pure SoC</span> doesn’t overtake pure SoR until <strong>~180s</strong> &mdash; beyond this ramp-focused table, so see the cumulative-threat chart above.</p>
+        <p style="color: #8b949e; font-size: 0.85em;"><strong>Time</strong> = expected time to reach each stack level from first SoC auto (1.8s weapon, ~70% proc rate). <strong>Cum. SoC</strong> = pure SoC (no swap), <strong>Cum. SoR</strong> = pure SoR, <strong>Cum. Hybrid</strong> = the Hybrid (SoC&harr;SoR seal swap: SoC → JSoC → SoR → SoC → JSoC), <strong style="color:#d2a8ff;">Cum. Hybrid+JotC (self)</strong> = the same Hybrid but <em>your own</em> 2nd judge is Judgement of the Crusader, so every later SoR proc and judge is amplified by +219. <strong style="color:#58a6ff;">Cum. Hybrid+Ret JotC</strong> = the same Hybrid but a <em>Ret paladin</em> supplies Judgement of the Crusader from 1s, so the +219 is up almost from the pull and none of your own judges is spent on it. All cumulatives sourced from the same discrete-event simulation as the timeline graph above. Cumulative columns are <span style="color:#7ee787;">green</span> while ahead of pure SoR and <span style="color:#f85149;">red</span> while behind; the <strong>highlighted row</strong> marks where the <span style="color:#b388ff;">Hybrid (~50s)</span> first overtakes pure SoR. With the corrected 0.728 JoR coefficient, <span style="color:#f0a500;">pure SoC</span> doesn’t overtake pure SoR until <strong>~180s</strong> &mdash; beyond this ramp-focused table, so see the cumulative-threat chart above.</p>
     </details>
 
     <!-- ============================================================ -->
     <!-- SECTION 2: SEAL SWAP TECHNIQUE -->
     <!-- ============================================================ -->
-    <h3>SoC + SoR Seal Swap at 5 Stacks</h3>
+    <h3>SoC + SoR Hybrid at 5 Stacks</h3>
 
     <p>Once Corruption reaches 5 stacks, the DoT <strong>continues ticking regardless of which seal you have active</strong> &mdash; the stacks are a debuff on the target, not tied to your current seal. This means you can <strong>switch to Seal of Righteousness</strong> to gain SoR's per-swing procs <em>on top of</em> the 5-stack DoT. You get both.</p>
 
@@ -2302,7 +2302,7 @@
     <!-- ============================================================ -->
     <!-- SECTION 2C: 5-MINUTE SEAL+JUDGEMENT TPS COMPARISON -->
     <!-- ============================================================ -->
-    <h3>5-Minute TPS: Pure SoC vs Pure SoR vs Seal Swap vs Seal Swap + Ret JotC</h3>
+    <h3>5-Minute TPS: Pure SoC vs Pure SoR vs Hybrid vs Hybrid + JotC@J2 (self)</h3>
 
     <p>Long-term seal+judgement-only comparison over a full 5 minute fight. All rotations use the single-GCD <strong>judge macro</strong> (one GCD fires Judgement and re-seals in the same press). Opener, Avenging Wrath, Consecration, Holy Shield, Avenger's Shield, and all other abilities are <strong>excluded</strong> &mdash; this isolates the contribution of seal procs, the SoC DoT, and judgements themselves.</p>
 
@@ -2311,12 +2311,12 @@
     <ul>
         <li><span style="color:#f0a500;"><strong>Pure SoC &mdash; SoC &rarr; JSoC &rarr; SoC</strong></span>: Seal of Corruption only. Build 5 stacks, judge fires JoC at current stacks, macro re-seals SoC, next melee refreshes the 15s stack timer. Threat = 5-stack DoT ticking + JoC every 10s.</li>
         <li><span style="color:#7ee787;"><strong>Pure SoR &mdash; SoR &rarr; JSoR &rarr; SoR</strong></span>: Seal of Righteousness only. Macro variant re-seals SoR. Threat = per-swing SoR proc + JoR every 10s.</li>
-        <li><span style="color:#b388ff;"><strong>Seal Swap &mdash; SoC &rarr; JSoC &rarr; SoR &rarr; SoC &rarr; JSoC</strong></span>: Default SoC. After the judge macro fires (JoC + re-seal SoC, single GCD), swap to SoR for <strong>5 seconds</strong> &mdash; the 5-stack DoT keeps ticking while SoR procs add per-swing threat on top. Swap back to SoC, the next melee refreshes the stack timer, hold SoC until the next judge. Repeat.</li>
-        <li><span style="color:#d2a8ff;"><strong>Seal Swap + Ret JotC</strong></span>: The same seal swap, with a <strong>Ret paladin keeping the +219 JotC Holy debuff up</strong> &mdash; so every SoR proc and every one of your judges is amplified by +219&times;1.9 RF, and none of <em>your</em> judges is spent on JotC. (In steady state this is identical to self-maintaining JotC, since the one-time application cost is already paid.)</li>
+        <li><span style="color:#b388ff;"><strong>Hybrid &mdash; SoC &rarr; JSoC &rarr; SoR &rarr; SoC &rarr; JSoC</strong></span>: Default SoC. After the judge macro fires (JoC + re-seal SoC, single GCD), swap to SoR for <strong>5 seconds</strong> &mdash; the 5-stack DoT keeps ticking while SoR procs add per-swing threat on top. Swap back to SoC, the next melee refreshes the stack timer, hold SoC until the next judge. Repeat.</li>
+        <li><span style="color:#d2a8ff;"><strong>Hybrid + JotC@J2 (self)</strong></span>: The same Hybrid, but <em>your own</em> 2nd judge applies Judgement of the Crusader to put up the permanent <strong>+219 Holy debuff</strong> &mdash; from then on every SoR proc and every judge is amplified by +219&times;1.9 RF. In <strong>steady state this is identical to a Ret paladin supplying JotC</strong> (the one-time JoC&rarr;JotC application cost is already paid), so this single line represents both the self-applied and Ret-supplied cases.</li>
     </ul>
 
     <div class="assumptions">
-        All simulations start in <strong>steady state</strong>: 5 SoC stacks pre-applied where applicable and the first judgement fires at t=0. Seal swaps in the swap rotations each consume one 1.5s GCD (cost reflected in the simulation). Hit/crit/SP unchanged from the rest of this guide (709 SP, 94% melee land, 88.11% spell land, 2pc Justicar &times;1.10 on SoR procs and SoC DoT, Righteous Fury &times;1.9, JoC and JoR include the &times;1.05 average spell crit bonus). No Avenging Wrath, no Consec/HS/AS/Exo/HoW. The <span style="color:#d2a8ff;">Seal Swap + JotC</span> line adds only the debuff's effect on seals and judgements &mdash; its larger amplification of Consecration and Holy Shield is excluded here, so it is conservative.
+        All simulations start in <strong>steady state</strong>: 5 SoC stacks pre-applied where applicable and the first judgement fires at t=0. Seal swaps in the swap rotations each consume one 1.5s GCD (cost reflected in the simulation). Hit/crit/SP unchanged from the rest of this guide (709 SP, 94% melee land, 88.11% spell land, 2pc Justicar &times;1.10 on SoR procs and SoC DoT, Righteous Fury &times;1.9, JoC and JoR include the &times;1.05 average spell crit bonus). No Avenging Wrath, no Consec/HS/AS/Exo/HoW. The <span style="color:#d2a8ff;">Hybrid + JotC@J2 (self)</span> line adds only the debuff's effect on seals and judgements &mdash; its larger amplification of Consecration and Holy Shield is excluded here, so it is conservative.
     </div>
     </details>
 
@@ -2363,12 +2363,16 @@
     <!-- ============================================================ -->
     <h3>Seal Rotation Scaling vs Spell Power</h3>
 
-    <p>Steady-state TPS for each rotation swept across a range of spell-power values, from naked (0 SP) up to heavily buffed end-game (1200 SP). Each point is the simulated TPS after the rotation reaches steady state. The <span style="color:#d2a8ff;">Seal Swap + JotC</span> line adds the permanent +219 Holy debuff (kept up by auto-attacks), amplifying every SoR proc and judge. Watch for where the lines <strong>converge</strong> (rotations are equivalent at that gear level) or <strong>diverge</strong> (one starts pulling ahead as gear increases) &mdash; JotC's flat per-hit bonus makes its line run parallel to the plain swap rather than scaling with SP.</p>
+    <p>Steady-state TPS for each rotation swept across a range of spell-power values, from naked (0 SP) up to heavily buffed end-game (1200 SP). Each point is the simulated TPS after the rotation reaches steady state. The <span style="color:#d2a8ff;">Hybrid + JotC@J2 (self)</span> line adds the permanent +219 Holy debuff (kept up by auto-attacks), amplifying every SoR proc and judge. Watch for where the lines <strong>converge</strong> (rotations are equivalent at that gear level) or <strong>diverge</strong> (one starts pulling ahead as gear increases) &mdash; JotC's flat per-hit bonus makes its line run parallel to the plain swap rather than scaling with SP.</p>
 
     <div class="chart-container">
         <canvas id="chartSealScaling" width="900" height="520"></canvas>
     </div>
     <div id="chartSealScalingNote" class="mana-warning"></div>
+
+    <div class="tip">
+        <strong>Past ~1050 SP &mdash; does your rotation change?</strong> No. The ~1050 SP point where the chart shows <span style="color:#7ee787;">Pure SoR</span> crossing above <span style="color:#f0a500;">Pure SoC</span> is only a flip between the two <em>pure</em> rotations &mdash; SoR's high-coefficient Judgement of Righteousness (0.728) finally out-scales SoC's DoT-plus-Judgement-of-Corruption. But the <strong>SoC&rarr;SoR Hybrid stays the best seal/judgement rotation at every gear level</strong> &mdash; it rides the SoC DoT <em>on top of</em> SoR procs, so it scales faster than either pure line and only widens its lead as spell power climbs. So keep running the Hybrid (or Hybrid + JotC) regardless of gear. The crossover only matters as a <strong>stack-free fallback</strong>: if you can't keep Corruption stacked (constant target-swapping, or fights too short for the ramp), open with <strong>Pure SoR &rarr; Judgement of Righteousness</strong> above ~1050 SP &mdash; below it, Pure SoC's DoT still edges Pure SoR even from a cold start.
+    </div>
 
     <!-- ============================================================ -->
     <!-- SECTION 3: AVENGING WRATH + OPENER MATH -->
@@ -4313,6 +4317,13 @@ For comparison (same 60s window, best realistic non-twist packages):
             <ul>
                 <li>Dropped the Flagged for Further Verification section and its TOC entry. Every value it tracked has been verified and corrected (Holy Shield mana/cooldown, Improved Holy Shield charges, Judgement of Wisdom proc rate, Exorcism base, Seal of Righteousness coefficient &mdash; see earlier entries), so the section no longer served a purpose.</li>
             </ul>
+            <h3>2026-06-11 (v2.9) &mdash; Seal-analysis polish: "Hybrid" naming, self-JotC line, post-1050-SP note</h3>
+            <ul>
+                <li><strong>Standardized the rotation name to "Hybrid."</strong> The SoC&harr;SoR seal-swap rotation is now called <strong>Hybrid</strong> everywhere in the Seal &amp; Judgement Threat Analysis (chart legends, the catch-up chart's crossover call-outs, the per-stack table columns, headings and definitions), with the JotC variant as <strong>Hybrid + JotC@J2 (self)</strong>. The underlying "seal swap" mechanic descriptions are unchanged.</li>
+                <li><strong>Running-average TPS and cumulative-300s charts:</strong> the JotC line was data-correct but mislabeled "Ret JotC" &mdash; it's now <strong>Hybrid + JotC@J2 (self)</strong>, with a matching definition (in steady state it's identical to a Ret paladin supplying JotC, so one line covers both).</li>
+                <li><strong>Steady-state-TPS-vs-spell-power note:</strong> added a takeaway clarifying that past ~1050 SP, Pure SoR overtakes Pure SoC &mdash; but the Hybrid stays the best seal/judgement rotation at every gear level, so the crossover only matters as a stack-free fallback (use Pure SoR &rarr; JoR above ~1050 SP when you can't keep Corruption stacked).</li>
+                <li><strong>Catch-up chart labels:</strong> moved into a clear gutter right of all crossover lines (carried over from v2.7).</li>
+            </ul>
         </div>
 
     </div>
@@ -4396,9 +4407,9 @@ For comparison (same 60s window, best realistic non-twist packages):
     // SHARED: discrete-event seals-only simulation
     // Used by both the per-stack table below and the cumulative-threat chart.
     // Both readouts derive their cumulative columns from these runs so the
-    // numbers match exactly. Pure SoC = stay on SoC forever. Seal Swap = swap
+    // numbers match exactly. Pure SoC = stay on SoC forever. Hybrid = swap
     // to SoR for 5s when at 5 stacks, then back. Pure SoR = SoR throughout.
-    // Seal Swap + JotC = the swap, but the 2nd judge is JotC (permanent debuff),
+    // Hybrid + JotC@J2 (self) = the swap, but the 2nd judge is JotC (permanent debuff),
     // amplifying every later SoR proc and judge by +219×RF.
     // ============================================================
     const SEAL_SIM_DUR = 210, SEAL_SIM_STEP = 0.1, SEAL_SIM_SOR_STAY = 5.0; // sim length; the SoC-vs-SoR chart's x-axis clips the display at the pure-SoC crossover (~182s)
@@ -4645,9 +4656,9 @@ For comparison (same 60s window, best realistic non-twist packages):
         var datasets = [
             { label: 'Pure SoC (SoC → JSoC → SoC)',                          data: soc.cum,  color: '#f0a500' },
             { label: 'Pure SoR (SoR → JSoR → SoR)',                          data: sor.cum,  color: '#7ee787' },
-            { label: 'Seal Swap (SoC → JSoC → SoR → SoC → JSoC)',  data: swap.cum, color: '#b388ff' },
-            { label: 'Seal Swap + JotC@J2 (self)',                           data: swapJotC.cum, color: '#d2a8ff' },
-            { label: 'Seal Swap + Ret JotC @ 1s',                            data: swapRetJotC.cum, color: '#58a6ff' }
+            { label: 'Hybrid (SoC → JSoC → SoR → SoC → JSoC)',  data: swap.cum, color: '#b388ff' },
+            { label: 'Hybrid + JotC@J2 (self)',                           data: swapJotC.cum, color: '#d2a8ff' },
+            { label: 'Hybrid + Ret JotC @ 1s',                            data: swapRetJotC.cum, color: '#58a6ff' }
         ].sort(function(a, b) { return b.data[b.data.length - 1] - a.data[a.data.length - 1]; });
 
         new Chart(document.getElementById('chartSocCatchup').getContext('2d'), {
@@ -4708,7 +4719,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             },
             plugins: [{
                 // Inline plugin to draw vertical reference lines for "5 stacks" and the
-                // cumulative crossovers (Pure SoC vs SoR, and Seal Swap vs SoR).
+                // cumulative crossovers (Pure SoC vs SoR, and Hybrid vs SoR).
                 id: 'verticalLines',
                 afterDraw: function(chart) {
                     var ctx = chart.ctx;
@@ -4716,9 +4727,9 @@ For comparison (same 60s window, best realistic non-twist packages):
 
                     // Reference lines in chronological order (top to bottom in the call-out stack).
                     var lines = [{ x: fiveStackT, label: '5 stacks', color: '#8b949e', dashed: true }];
-                    if (crossRetJotCvsSoR  !== null) lines.push({ x: crossRetJotCvsSoR,  label: 'Swap+Ret JotC @ ' + crossRetJotCvsSoR.toFixed(0)  + 's', color: '#58a6ff' });
-                    if (crossSwapJotCvsSoR !== null) lines.push({ x: crossSwapJotCvsSoR, label: 'Swap+JotC (self) @ ' + crossSwapJotCvsSoR.toFixed(0) + 's', color: '#d2a8ff' });
-                    if (crossSwapvsSoR     !== null) lines.push({ x: crossSwapvsSoR,     label: 'Swap @ ' + crossSwapvsSoR.toFixed(0)     + 's', color: '#b388ff' });
+                    if (crossRetJotCvsSoR  !== null) lines.push({ x: crossRetJotCvsSoR,  label: 'Hybrid+Ret JotC @ ' + crossRetJotCvsSoR.toFixed(0)  + 's', color: '#58a6ff' });
+                    if (crossSwapJotCvsSoR !== null) lines.push({ x: crossSwapJotCvsSoR, label: 'Hybrid+JotC (self) @ ' + crossSwapJotCvsSoR.toFixed(0) + 's', color: '#d2a8ff' });
+                    if (crossSwapvsSoR     !== null) lines.push({ x: crossSwapvsSoR,     label: 'Hybrid @ ' + crossSwapvsSoR.toFixed(0)     + 's', color: '#b388ff' });
                     if (crossSoCvsSoR      !== null) lines.push({ x: crossSoCvsSoR,      label: 'SoC @ ' + crossSoCvsSoR.toFixed(0)      + 's', color: '#f0a500' });
 
                     // Full-height reference lines.
@@ -4787,18 +4798,18 @@ For comparison (same 60s window, best realistic non-twist packages):
         document.getElementById('chartSocCatchupNote').innerHTML =
             '<strong>Assumptions:</strong> 1.8s weapon, 70% stack chance per swing, 709 SP, judges every 10s from t=0, no opener / AW / other abilities.<br><br>' +
             '<strong>SoC reaches 5 stacks at ~' + fiveStackT.toFixed(1) + 's</strong> (8 swings &times; 1.8s; floor(8 &times; 0.7) = 5).<br><br>' +
-            crossMsg('Seal Swap + Ret JotC@1s', '#58a6ff', crossRetJotCvsSoR) + ' &mdash; the earliest crossover: the debuff is up from 1s and no judge is spent on it. ' +
-            crossMsg('Seal Swap + JotC (self)', '#d2a8ff', crossSwapJotCvsSoR) + '. ' +
-            crossMsg('Seal Swap',  '#b388ff', crossSwapvsSoR) + '. ' +
+            crossMsg('Hybrid + Ret JotC@1s', '#58a6ff', crossRetJotCvsSoR) + ' &mdash; the earliest crossover: the debuff is up from 1s and no judge is spent on it. ' +
+            crossMsg('Hybrid + JotC@J2 (self)', '#d2a8ff', crossSwapJotCvsSoR) + '. ' +
+            crossMsg('Hybrid',  '#b388ff', crossSwapvsSoR) + '. ' +
             crossMsg('Pure SoC',   '#f0a500', crossSoCvsSoR) + '.<br><br>' +
             '<strong>Cumulative threat at the SoC crossover (~' + atT.toFixed(0) + 's):</strong><br>' +
             '&nbsp;&nbsp;<span style="color:#f0a500;">Pure SoC</span>: <strong>' + Math.round(socFinal).toLocaleString() + '</strong><br>' +
             '&nbsp;&nbsp;<span style="color:#7ee787;">Pure SoR</span>: <strong>' + Math.round(sorFinal).toLocaleString() + '</strong><br>' +
-            '&nbsp;&nbsp;<span style="color:#b388ff;">Seal Swap</span>: <strong>' + Math.round(swapFinal).toLocaleString() + '</strong> (' +
+            '&nbsp;&nbsp;<span style="color:#b388ff;">Hybrid</span>: <strong>' + Math.round(swapFinal).toLocaleString() + '</strong> (' +
             (swapFinal >= sorFinal ? '+' : '') + Math.round(swapFinal - sorFinal).toLocaleString() + ' vs Pure SoR)<br>' +
-            '&nbsp;&nbsp;<span style="color:#d2a8ff;">Seal Swap + JotC@J2 (self)</span>: <strong>' + Math.round(swapJotCFinal).toLocaleString() + '</strong> (' +
-            (swapJotCFinal >= swapFinal ? '+' : '') + Math.round(swapJotCFinal - swapFinal).toLocaleString() + ' vs plain Seal Swap)<br>' +
-            '&nbsp;&nbsp;<span style="color:#58a6ff;">Seal Swap + Ret JotC @ 1s</span>: <strong>' + Math.round(swapRetJotCFinal).toLocaleString() + '</strong> (' +
+            '&nbsp;&nbsp;<span style="color:#d2a8ff;">Hybrid + JotC@J2 (self)</span>: <strong>' + Math.round(swapJotCFinal).toLocaleString() + '</strong> (' +
+            (swapJotCFinal >= swapFinal ? '+' : '') + Math.round(swapJotCFinal - swapFinal).toLocaleString() + ' vs plain Hybrid)<br>' +
+            '&nbsp;&nbsp;<span style="color:#58a6ff;">Hybrid + Ret JotC @ 1s</span>: <strong>' + Math.round(swapRetJotCFinal).toLocaleString() + '</strong> (' +
             (swapRetJotCFinal >= swapJotCFinal ? '+' : '') + Math.round(swapRetJotCFinal - swapJotCFinal).toLocaleString() + ' vs self-applied JotC)<br>' +
             '<em>Self-applied JotC dips briefly (you spend the 2nd judge on it). With a <strong>Ret paladin supplying JotC at 1s</strong>, the +219 is up almost from the pull <em>and</em> every one of your judges stays on Corruption &mdash; the best case. Counts only the seal/judge layer, not the bigger Consec/HS amplification.</em>';
     })();
@@ -5487,8 +5498,8 @@ For comparison (same 60s window, best realistic non-twist packages):
             sortByFinal([
                 { label: 'Pure SoC (SoC → JSoC → SoC)',                          times: simPureSoC.times,  data: simPureSoC.tps,  color: '#f0a500' },
                 { label: 'Pure SoR (SoR → JSoR → SoR)',                          times: simPureSoR.times,  data: simPureSoR.tps,  color: '#7ee787' },
-                { label: 'Seal Swap (SoC → JSoC → SoR → SoC → JSoC)',  times: simSwapRot.times,  data: simSwapRot.tps,  color: '#b388ff' },
-                { label: 'Seal Swap + Ret JotC',                                  times: simSwapJotC.times, data: simSwapJotC.tps, color: '#d2a8ff' }
+                { label: 'Hybrid (SoC → JSoC → SoR → SoC → JSoC)',  times: simSwapRot.times,  data: simSwapRot.tps,  color: '#b388ff' },
+                { label: 'Hybrid + JotC@J2 (self)',                                  times: simSwapJotC.times, data: simSwapJotC.tps, color: '#d2a8ff' }
             ]),
             'TPS',
             1000
@@ -5501,8 +5512,8 @@ For comparison (same 60s window, best realistic non-twist packages):
             sortByFinal([
                 { label: 'Pure SoC',           times: simPureSoC.times,  data: simPureSoC.cum,  color: '#f0a500' },
                 { label: 'Pure SoR',           times: simPureSoR.times,  data: simPureSoR.cum,  color: '#7ee787' },
-                { label: 'Seal Swap',          times: simSwapRot.times,  data: simSwapRot.cum,  color: '#b388ff' },
-                { label: 'Seal Swap + Ret JotC', times: simSwapJotC.times, data: simSwapJotC.cum, color: '#d2a8ff' }
+                { label: 'Hybrid',          times: simSwapRot.times,  data: simSwapRot.cum,  color: '#b388ff' },
+                { label: 'Hybrid + JotC@J2 (self)', times: simSwapJotC.times, data: simSwapJotC.cum, color: '#d2a8ff' }
             ]),
             'threat'
         );
@@ -5522,14 +5533,14 @@ For comparison (same 60s window, best realistic non-twist packages):
         var cumSwapJotC = finalCum(simSwapJotC);
 
         var bestTPS = Math.max(tpsSoC, tpsSoR, tpsSwap, tpsSwapJotC);
-        var bestLabel = bestTPS === tpsSwapJotC ? 'Seal Swap + Ret JotC' :
-                        (bestTPS === tpsSwap ? 'Seal Swap' : (bestTPS === tpsSoC ? 'Pure SoC' : 'Pure SoR'));
+        var bestLabel = bestTPS === tpsSwapJotC ? 'Hybrid + JotC@J2 (self)' :
+                        (bestTPS === tpsSwap ? 'Hybrid' : (bestTPS === tpsSoC ? 'Pure SoC' : 'Pure SoR'));
         var jotcOverSwap = (tpsSwapJotC - tpsSwap).toFixed(1);
 
         document.getElementById('chartSeals5minTPSNote').innerHTML =
             '<strong>Steady-state TPS at 5 minutes:</strong><br>' +
-            '&nbsp;&nbsp;<span style="color:#d2a8ff;">Seal Swap + Ret JotC</span>: <strong>' + tpsSwapJotC.toFixed(1) + ' TPS</strong><br>' +
-            '&nbsp;&nbsp;<span style="color:#b388ff;">Seal Swap</span>: <strong>' + tpsSwap.toFixed(1) + ' TPS</strong><br>' +
+            '&nbsp;&nbsp;<span style="color:#d2a8ff;">Hybrid + JotC@J2 (self)</span>: <strong>' + tpsSwapJotC.toFixed(1) + ' TPS</strong><br>' +
+            '&nbsp;&nbsp;<span style="color:#b388ff;">Hybrid</span>: <strong>' + tpsSwap.toFixed(1) + ' TPS</strong><br>' +
             '&nbsp;&nbsp;<span style="color:#f0a500;">Pure SoC</span>: <strong>' + tpsSoC.toFixed(1) + ' TPS</strong><br>' +
             '&nbsp;&nbsp;<span style="color:#7ee787;">Pure SoR</span>: <strong>' + tpsSoR.toFixed(1) + ' TPS</strong><br>' +
             '<strong>Highest sustained: ' + bestLabel + '</strong>. ' +
@@ -5538,11 +5549,11 @@ For comparison (same 60s window, best realistic non-twist packages):
         var totalDiff = cumSwapJotC - Math.max(cumSoC, cumSoR, cumSwap);
         document.getElementById('chartSeals5minCumNote').innerHTML =
             '<strong>Total threat over 300 seconds:</strong><br>' +
-            '&nbsp;&nbsp;<span style="color:#d2a8ff;">Seal Swap + Ret JotC</span>: <strong>' + cumSwapJotC.toLocaleString() + '</strong><br>' +
-            '&nbsp;&nbsp;<span style="color:#b388ff;">Seal Swap</span>: <strong>' + cumSwap.toLocaleString() + '</strong><br>' +
+            '&nbsp;&nbsp;<span style="color:#d2a8ff;">Hybrid + JotC@J2 (self)</span>: <strong>' + cumSwapJotC.toLocaleString() + '</strong><br>' +
+            '&nbsp;&nbsp;<span style="color:#b388ff;">Hybrid</span>: <strong>' + cumSwap.toLocaleString() + '</strong><br>' +
             '&nbsp;&nbsp;<span style="color:#f0a500;">Pure SoC</span>: <strong>' + cumSoC.toLocaleString() + '</strong><br>' +
             '&nbsp;&nbsp;<span style="color:#7ee787;">Pure SoR</span>: <strong>' + cumSoR.toLocaleString() + '</strong><br>' +
-            '<strong>Seal Swap + Ret JotC edge over plain Seal Swap:</strong> ' + (cumSwapJotC - cumSwap >= 0 ? '+' : '') + (cumSwapJotC - cumSwap).toLocaleString() + ' threat (' +
+            '<strong>Hybrid + JotC@J2 (self) edge over plain Hybrid:</strong> ' + (cumSwapJotC - cumSwap >= 0 ? '+' : '') + (cumSwapJotC - cumSwap).toLocaleString() + ' threat (' +
             ((cumSwapJotC - cumSwap) / cumSwap * 100).toFixed(1) + '%) across the 5 minute fight.';
     })();
 
@@ -5665,8 +5676,8 @@ For comparison (same 60s window, best realistic non-twist packages):
         var datasets = [
             { label: 'Pure SoC',  data: seriesSoC,  color: '#f0a500' },
             { label: 'Pure SoR',  data: seriesSoR,  color: '#7ee787' },
-            { label: 'Seal Swap', data: seriesSwap, color: '#b388ff' },
-            { label: 'Seal Swap + JotC', data: seriesSwapJotC, color: '#d2a8ff' }
+            { label: 'Hybrid', data: seriesSwap, color: '#b388ff' },
+            { label: 'Hybrid + JotC@J2 (self)', data: seriesSwapJotC, color: '#d2a8ff' }
         ].sort(function(a, b) { return b.data[b.data.length - 1] - a.data[a.data.length - 1]; });
 
         // Y-axis auto-fit across the full SP sweep
@@ -5736,7 +5747,7 @@ For comparison (same 60s window, best realistic non-twist packages):
         }
         function gap(seriesA, seriesB, sp) { return tpsAt(seriesA, sp) - tpsAt(seriesB, sp); }
 
-        // Find SP at which Seal Swap overtakes Pure SoR (if at all)
+        // Find SP at which Hybrid overtakes Pure SoR (if at all)
         var crossSP = null;
         for (var i = 0; i < spValues.length; i++) {
             if (seriesSwap[i] >= seriesSoR[i]) { crossSP = spValues[i]; break; }
@@ -5749,16 +5760,16 @@ For comparison (same 60s window, best realistic non-twist packages):
 
         document.getElementById('chartSealScalingNote').innerHTML =
             '<strong>Steady-state TPS at key SP levels:</strong><br>' +
-            '&nbsp;&nbsp;SP=0: SoC <strong>' + tpsAt(seriesSoC, 0).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 0).toFixed(1) + '</strong> &middot; Swap <strong>' + tpsAt(seriesSwap, 0).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Swap+JotC <strong>' + tpsAt(seriesSwapJotC, 0).toFixed(1) + '</strong></span><br>' +
-            '&nbsp;&nbsp;SP=400: SoC <strong>' + tpsAt(seriesSoC, 400).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 400).toFixed(1) + '</strong> &middot; Swap <strong>' + tpsAt(seriesSwap, 400).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Swap+JotC <strong>' + tpsAt(seriesSwapJotC, 400).toFixed(1) + '</strong></span><br>' +
-            '&nbsp;&nbsp;SP=800: SoC <strong>' + tpsAt(seriesSoC, 800).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 800).toFixed(1) + '</strong> &middot; Swap <strong>' + tpsAt(seriesSwap, 800).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Swap+JotC <strong>' + tpsAt(seriesSwapJotC, 800).toFixed(1) + '</strong></span><br>' +
-            '&nbsp;&nbsp;SP=1200: SoC <strong>' + tpsAt(seriesSoC, 1200).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 1200).toFixed(1) + '</strong> &middot; Swap <strong>' + tpsAt(seriesSwap, 1200).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Swap+JotC <strong>' + tpsAt(seriesSwapJotC, 1200).toFixed(1) + '</strong></span><br><br>' +
+            '&nbsp;&nbsp;SP=0: SoC <strong>' + tpsAt(seriesSoC, 0).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 0).toFixed(1) + '</strong> &middot; Hybrid <strong>' + tpsAt(seriesSwap, 0).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Hybrid+JotC <strong>' + tpsAt(seriesSwapJotC, 0).toFixed(1) + '</strong></span><br>' +
+            '&nbsp;&nbsp;SP=400: SoC <strong>' + tpsAt(seriesSoC, 400).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 400).toFixed(1) + '</strong> &middot; Hybrid <strong>' + tpsAt(seriesSwap, 400).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Hybrid+JotC <strong>' + tpsAt(seriesSwapJotC, 400).toFixed(1) + '</strong></span><br>' +
+            '&nbsp;&nbsp;SP=800: SoC <strong>' + tpsAt(seriesSoC, 800).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 800).toFixed(1) + '</strong> &middot; Hybrid <strong>' + tpsAt(seriesSwap, 800).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Hybrid+JotC <strong>' + tpsAt(seriesSwapJotC, 800).toFixed(1) + '</strong></span><br>' +
+            '&nbsp;&nbsp;SP=1200: SoC <strong>' + tpsAt(seriesSoC, 1200).toFixed(1) + '</strong> &middot; SoR <strong>' + tpsAt(seriesSoR, 1200).toFixed(1) + '</strong> &middot; Hybrid <strong>' + tpsAt(seriesSwap, 1200).toFixed(1) + '</strong> &middot; <span style="color:#d2a8ff;">Hybrid+JotC <strong>' + tpsAt(seriesSwapJotC, 1200).toFixed(1) + '</strong></span><br><br>' +
             '<strong>Per-100-SP gain (slope across the full sweep):</strong> ' +
             'SoC <strong>+' + ((seriesSoC[seriesSoC.length-1]   - seriesSoC[0])   / (SP_MAX/100)).toFixed(1) + ' TPS/100 SP</strong> &middot; ' +
             'SoR <strong>+' + ((seriesSoR[seriesSoR.length-1]   - seriesSoR[0])   / (SP_MAX/100)).toFixed(1) + ' TPS/100 SP</strong> &middot; ' +
-            'Swap <strong>+' + ((seriesSwap[seriesSwap.length-1] - seriesSwap[0]) / (SP_MAX/100)).toFixed(1) + ' TPS/100 SP</strong> &middot; ' +
-            'Swap+JotC <strong>+' + ((seriesSwapJotC[seriesSwapJotC.length-1] - seriesSwapJotC[0]) / (SP_MAX/100)).toFixed(1) + ' TPS/100 SP</strong><br><br>' +
-            '<strong>Read the chart:</strong> if two lines start far apart at SP=0 but converge as SP rises, the lower one is catching up (scales harder). If they fan out, the upper one is widening its lead (scales harder). The slope of each line is its TPS-per-SP &mdash; steeper = scales harder. <span style="color:#d2a8ff;">Seal Swap + JotC</span> rides a flat +219-per-hit boost above the plain swap; since that bonus does <em>not</em> scale with SP, the two lines run parallel and the gap shrinks in relative terms as gear improves.';
+            'Hybrid <strong>+' + ((seriesSwap[seriesSwap.length-1] - seriesSwap[0]) / (SP_MAX/100)).toFixed(1) + ' TPS/100 SP</strong> &middot; ' +
+            'Hybrid+JotC <strong>+' + ((seriesSwapJotC[seriesSwapJotC.length-1] - seriesSwapJotC[0]) / (SP_MAX/100)).toFixed(1) + ' TPS/100 SP</strong><br><br>' +
+            '<strong>Read the chart:</strong> if two lines start far apart at SP=0 but converge as SP rises, the lower one is catching up (scales harder). If they fan out, the upper one is widening its lead (scales harder). The slope of each line is its TPS-per-SP &mdash; steeper = scales harder. <span style="color:#d2a8ff;">Hybrid + JotC@J2 (self)</span> rides a flat +219-per-hit boost above the plain swap; since that bonus does <em>not</em> scale with SP, the two lines run parallel and the gap shrinks in relative terms as gear improves.';
     })();
 
     // ============================================================
