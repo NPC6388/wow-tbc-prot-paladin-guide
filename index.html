@@ -2334,21 +2334,21 @@
     <div id="chartSeals5minCumNote" class="mana-warning"></div>
 
     <!-- ============================================================ -->
-    <!-- SECTION 2C-2: SEAL ROTATION COMPARISON (incl. SoC+JotC) -->
+    <!-- SECTION 2C-2: SEAL ROTATION COMPARISON (Seal Swap + self/Ret JotC) -->
     <!-- ============================================================ -->
     <h3>Seal Rotation Comparison: Cumulative Threat Over Time</h3>
 
-    <p>A second-by-second view of four seal strategies, showing <strong>cumulative threat from seals and judgements only</strong> (Consecration, Holy Shield, and Avenger's Shield are shared across all rotations and omitted). Judgement threat appears as a <strong>discrete spike at the exact cast time</strong>, not averaged as TPS. The two JotC variants apply the <strong>+219 Holy debuff at the 2nd judgement</strong>; this chart counts the debuff's amplification of the SoR procs and judgements shown here (each amplified Holy hit gains +219&times;1.9 RF), but <em>not</em> its larger effect on the omitted Consecration and Holy Shield &mdash; so the JotC lines are conservative.</p>
+    <p>A second-by-second view of four seal strategies, showing <strong>cumulative threat from seals and judgements only</strong> (Consecration, Holy Shield, and Avenger's Shield are shared across all rotations and omitted). Judgement threat appears as a <strong>discrete spike at the exact cast time</strong>, not averaged as TPS. The two JotC variants apply the <strong>+219 Holy debuff</strong> (self-applied at the 2nd judgement, or supplied by a Ret paladin from ~1s); this chart counts the debuff's amplification of the SoR procs and judgements shown here (each amplified Holy hit gains +219&times;1.9 RF), but <em>not</em> its larger effect on the omitted Consecration and Holy Shield &mdash; so the JotC lines are conservative.</p>
 
     <details class="rotation-frame">
         <summary>Rotation definitions for this chart</summary>
     <div class="assumptions">
         <strong>Rotation definitions:</strong>
         <ul style="margin: 8px 0 0; padding-left: 20px;">
+            <li><strong style="color:#ff9bd1;">Seal Swap + Ret JotC @ 1s</strong> &mdash; The Seal Swap, but a <strong>Ret paladin applies Judgement of the Crusader at ~1s</strong>, so the permanent +219 Holy debuff is up almost from the pull <em>and</em> every one of your own judges stays on Corruption (none spent on JotC). The best case &mdash; it leads throughout.</li>
+            <li><strong style="color:#d2a8ff;">Seal Swap + JotC@J2 (self)</strong> &mdash; The Seal Swap, but <em>your own</em> <strong>2nd judge is JotC instead of JoC</strong>. It pays a one-time cost (a 5-stack JoC traded for JotC's trivial direct hit), but from then on every SoR-swap proc and judge is amplified by +219 &mdash; which is what lets it pull ahead of the plain Seal Swap once the debuff lands.</li>
             <li><strong style="color:#7ee787;">SoC + SoR (Seal Swap)</strong> &mdash; <strong>Open SoR &rarr; Judgement of Righteousness</strong> (snap at the pull &mdash; opening cold on SoC is never safe), then re-seal SoC and build to 5 stacks (~14.4s at 70% proc rate). Judge Corruption at 5 stacks (10s, 20s, ...); after each judge re-seal SoC, let a melee refresh the timer, then swap to SoR for per-swing procs while the DoT ticks, and swap back to SoC before stacks expire.</li>
-            <li><strong style="color:#58a6ff;">SoR Only</strong> &mdash; Pure Seal of Righteousness from pull. Judge Righteousness every 10s.</li>
-            <li><strong style="color:#f0a500;">SoC + JotC</strong> &mdash; Open SoC, 1st judge = JoC (0 stacks &mdash; the opener judge lands at range before the first auto). 2nd judge (10s) = JotC, applying +219 Holy debuff permanently (auto-attacks refresh it). All subsequent judges = JoC (5 stacks), each amplified by the debuff. JotC only needs to be judged once.</li>
-            <li><strong style="color:#d2a8ff;">SoC + SoR Seal Swap + JotC</strong> &mdash; The Seal Swap line above, but the <strong>2nd judge is JotC instead of JoC</strong>. It pays a one-time cost (a 5-stack JoC traded for JotC's trivial direct hit), but from then on <em>every SoR-swap proc and every judge is amplified by +219</em> &mdash; which is what lets it pull ahead of the plain Seal Swap after the debuff lands.</li>
+            <li><strong style="color:#58a6ff;">SoR Only</strong> &mdash; Pure Seal of Righteousness from pull (open SoR &rarr; Judgement of Righteousness). Judge Righteousness every 10s.</li>
         </ul>
     </div>
     </details>
@@ -2502,7 +2502,7 @@
     <!-- ============================================================ -->
     <h3>Cumulative Threat Timelines (Opener Comparison)</h3>
 
-    <p>These charts simulate the <strong>total cumulative threat from all abilities</strong> over the first <strong>20 seconds &mdash; the full Avenging Wrath window</strong>, where opener choice matters most. Includes: seal procs, seal DoT, judgements, Consecration, Holy Shield (estimated ~3 blocks/10s), Avenger's Shield, Exorcism, Holy Wrath, and the SoR swap at 5 stacks. Each chart compares every opener discussed in this guide: <span style="color:#b388ff;">SoC</span>, <span style="color:#ffd54f;">SoB</span> (low-gear snap threat), <span style="color:#d2a8ff;">JotC</span> (open with Judgement of the Crusader to apply the permanent +219 Holy debuff, which then amplifies every Holy ability), <span style="color:#7ee787;">SoR</span> (pure Seal of Righteousness + Judgement of Righteousness, no ramp or DoT), the <span style="color:#58a6ff;">SoR &rarr; JotC hybrid</span> (the recommended solo opener: JoR snap on the first judge, JotC on the second), and <span style="color:#ff9bd1;">SoR + Ret JotC @ 1s</span> (a Ret paladin applies JotC at 1s, so you keep the JoR snap <em>and</em> spend every judge on Corruption). Hover for exact values. <em>Note: with a Ret paladin supplying JotC, the <span style="color:#ff9bd1;">SoR + Ret JotC</span> line is the best case &mdash; full amplification from 1s with no judge cost. Solo, the pure <span style="color:#d2a8ff;">JotC opener</span> posts a high 20s total (debuff from the first judge) but gives up the pull snap, which is why the <span style="color:#58a6ff;">SoR &rarr; JotC hybrid</span> is the practical solo recommendation. The <span style="color:#ffd54f;">SoB</span> line is shown only as the low-gear (&lt;~400 SP) reference &mdash; at raid SP the JoR snap is strictly better.</em></p>
+    <p>These charts simulate the <strong>total cumulative threat from all abilities</strong> over the first <strong>20 seconds &mdash; the full Avenging Wrath window</strong>, where opener choice matters most. Includes: seal procs, seal DoT, judgements, Consecration, Holy Shield (estimated ~3 blocks/10s), Avenger's Shield, Exorcism, Holy Wrath, and the SoR swap at 5 stacks. Each chart compares the openers discussed in this guide: <span style="color:#ffd54f;">SoB</span> (low-gear snap threat), <span style="color:#d2a8ff;">JotC</span> (open with Judgement of the Crusader to apply the permanent +219 Holy debuff, which then amplifies every Holy ability), <span style="color:#7ee787;">SoR</span> (pure Seal of Righteousness + Judgement of Righteousness, no ramp or DoT), the <span style="color:#58a6ff;">SoR &rarr; JotC hybrid</span> (the recommended solo opener: JoR snap on the first judge, JotC on the second), and <span style="color:#ff9bd1;">SoR + Ret JotC @ 1s</span> (a Ret paladin applies JotC at 1s, so you keep the JoR snap <em>and</em> spend every judge on Corruption). Hover for exact values. <em>Note: with a Ret paladin supplying JotC, the <span style="color:#ff9bd1;">SoR + Ret JotC</span> line is the best case &mdash; full amplification from 1s with no judge cost. Solo, the pure <span style="color:#d2a8ff;">JotC opener</span> posts a high 20s total (debuff from the first judge) but gives up the pull snap, which is why the <span style="color:#58a6ff;">SoR &rarr; JotC hybrid</span> is the practical solo recommendation. The <span style="color:#ffd54f;">SoB</span> line is shown only as the low-gear (&lt;~400 SP) reference &mdash; at raid SP the JoR snap is strictly better.</em></p>
 
     <div class="chart-container">
         <canvas id="chartStandard" width="900" height="500"></canvas>
@@ -2519,7 +2519,7 @@
     <!-- ============================================================ -->
     <h3 id="eli5-rotations">ELI5 Full Rotations</h3>
 
-    <p>The charts above isolate the seal/judgement layer. Here is the <strong>whole rotation, plainly</strong>, for the four single-target cases you'll actually meet &mdash; split by whether <strong>you</strong> are the one keeping Judgement of the Crusader up, and whether the boss is a Demon/Undead.</p>
+    <p>The charts above isolate the seal/judgement layer. Here is the <strong>whole rotation, plainly</strong> &mdash; the four single-target cases you'll actually meet (split by whether <strong>you</strong> keep Judgement of the Crusader up, and whether the boss is a Demon/Undead), plus the AOE rotation for trash packs.</p>
 
     <div class="formula">
         <strong>Opener (every rotation):</strong> pre-pull <strong>Seal of Righteousness</strong> &rarr; pull with <strong>Judgement of Righteousness</strong> (your biggest opening snap) &rarr; immediately re-seal <strong>Seal of Corruption</strong> and start swinging to build Blood Corruption stacks. <em>(Below ~400 SP, open Seal of Blood &rarr; Judgement of Blood instead.)</em>
@@ -2550,6 +2550,10 @@
         <p style="margin:0;">Exactly the same, <strong>plus Exorcism + Holy Wrath on cooldown</strong> in empty GCDs.</p>
     </div>
 
+    <div class="tip">
+        <strong>Bonus threat filler &mdash; blessing spam.</strong> Greater Blessings are Holy-school spells, so Righteous Fury amplifies them. During genuine <strong>downtime in the rotation</strong> (an empty GCD with Holy Shield and Consecration already rolling), re-casting <strong>Greater Blessing of Might on the largest class group in the raid</strong> &mdash; mana permitting &mdash; is free extra threat, and it's the cheapest blessing to spam. See <a href="#blessing-spam">Greater Blessing Threat (&ldquo;Blessing Spam&rdquo;)</a> for the full math.
+    </div>
+
     <div class="warning">
         Remember our goal is to <strong>get and maintain 5 stacks of Blood Corruption</strong> so we can land a fully-stacked JoC on cooldown, while also getting ~5s of &ldquo;free&rdquo; SoR procs on top. Seal swapping must be <strong>woven into the rotation without ever missing Holy Shield</strong> or any encounter-required mechanic. SoC stacks are a chance-on-hit, so if you get unlucky at the start, you may only have a <strong>3&ndash;4 stack</strong> when the judge comes up &mdash; <strong>judge it anyway</strong>, never delay. And if you know a mechanic such as <strong>Gruul's Shatter</strong> is coming, <strong>stick with SoC beforehand</strong> to reduce the chance the stacks drop before you get back into melee.
     </div>
@@ -2567,6 +2571,16 @@
             <tr><td>5 min</td><td>&gt;79k threat</td></tr>
         </tbody>
     </table>
+
+    <div class="tip">
+        <strong>AOE / Multi-Target (trash packs)</strong>
+        <ol style="margin:0;">
+            <li><strong>Run Pure Seal of Righteousness</strong> &mdash; no SoC stacking or seal-swapping in AOE; SoR procs every swing and judges cheaply.</li>
+            <li><strong>Keep your target on the highest-priority mob</strong> (the one most likely to peel onto a healer or squishy), so your single-target threat &mdash; SoR procs + Judgement of Righteousness &mdash; lands where it matters most.</li>
+            <li><strong>Consecration and Holy Shield are your AOE threat</strong> &mdash; keep both on cooldown (with Righteous Fury, and Avenger's Shield if specced, they hit the whole pack). This is what holds the mobs you're <em>not</em> targeting.</li>
+            <li><strong>Keep an eye on the rest of the pack's threat</strong> &mdash; a threat overlay on enemy nameplates (Threat Plates / Tidy Plates) is perfect for this: re-target and judge, Avenger's Shield, or taunt back any mob creeping toward another player.</li>
+        </ol>
+    </div>
 
     <!-- ============================================================ -->
     <!-- SECTION 6: KEY TAKEAWAYS -->
@@ -4391,6 +4405,12 @@ For comparison (same 60s window, best realistic non-twist packages):
                 <li><strong>60s seal-comparison chart now opens realistically.</strong> The Seal Swap line (and the SoR Only / JotC seal-swap variants) now open with the <strong>SoR&rarr;JoR snap</strong> instead of cold-stacking SoC from zero &mdash; you'd never safely open on SoC. The snap is added to both the swap lines and the SoR baseline, so the crossovers are unchanged.</li>
                 <li><strong>Reframed the openers:</strong> there are <strong>two judgement openers &mdash; JoR and JotC</strong> &mdash; so JotC is no longer described as a "third" opener. The sub-~400-SP SoB&rarr;JoB note is kept as the low-gear substitution.</li>
             </ul>
+            <h3>2026-06-11 (v3.2) &mdash; Chart cleanups (drop unrealistic SoC openers), AOE rotation, blessing-spam filler</h3>
+            <ul>
+                <li><strong>60s seal-comparison chart:</strong> removed the <strong>SoC + JotC</strong> line (it opened with a 0-stack JoC, which you'd never cast); <strong>added the missing definition</strong> for the Seal Swap + Ret JotC line; <strong>re-ordered the rotation definitions by highest threat at 60s</strong> (Ret JotC &rarr; self JotC &rarr; Seal Swap &rarr; SoR Only); and the chart now plots the <strong>full-resolution series</strong> so the mouseover reads smoothly at every point on the lines, like the other threat charts.</li>
+                <li><strong>Opener-comparison timelines:</strong> removed the <strong>SoC opener</strong> from both the Standard and Demon/Undead graphs (and their text/notes) &mdash; opening on Seal of Corruption wastes the first judge on 0 stacks, so it's not a realistic opener. (The opener-comparison table still documents <em>why</em> a SoC opener is wasted.)</li>
+                <li><strong>ELI5 Full Rotations:</strong> added the <strong>AOE / multi-target rotation</strong> (Pure SoR on the highest-priority mob, Consecration + Holy Shield as your pack threat, watch the rest of the pack with a threat-plate overlay), and a <strong>blessing-spam filler note</strong> &mdash; casting <strong>Greater Blessing of Might on the largest class group</strong> during empty GCDs (mana permitting) is free amplified-by-RF threat (links to <a href="#blessing-spam">Greater Blessing Threat</a>).</li>
+            </ul>
         </div>
 
     </div>
@@ -5130,13 +5150,11 @@ For comparison (same 60s window, best realistic non-twist packages):
         return { times, threats };
     }
 
-    const sim1a = simulate({ sobOpener: false, demon: false });
     const sim1b = simulate({ sobOpener: true, demon: false });
     const sim1c = simulate({ sobOpener: false, demon: false, jotcOpener: true });
     const sim1d = simulate({ sobOpener: false, demon: false, sorOpener: true });
     const sim1e = simulate({ sorSnap: true, demon: false, jotcSecond: true });
     const sim1f = simulate({ sorSnap: true, demon: false, retJotc: true });
-    const sim2a = simulate({ sobOpener: false, demon: true });
     const sim2b = simulate({ sobOpener: true, demon: true });
     const sim2c = simulate({ sobOpener: false, demon: true, jotcOpener: true });
     const sim2d = simulate({ sobOpener: false, demon: true, sorOpener: true });
@@ -5211,7 +5229,6 @@ For comparison (same 60s window, best realistic non-twist packages):
     }
 
     makeChart('chartStandard', 'Standard Boss: Cumulative Threat over AW Window (all openers)', sortByFinalThreat([
-        { label: 'SoC Opener', times: sim1a.times, threats: sim1a.threats, color: '#b388ff' },
         { label: 'SoB Opener (low-gear)', times: sim1b.times, threats: sim1b.threats, color: '#ffd54f' },
         { label: 'JotC Opener', times: sim1c.times, threats: sim1c.threats, color: '#d2a8ff' },
         { label: 'SoR Opener', times: sim1d.times, threats: sim1d.threats, color: '#7ee787' },
@@ -5220,7 +5237,6 @@ For comparison (same 60s window, best realistic non-twist packages):
     ]));
 
     makeChart('chartDemon', 'Demon/Undead Boss: Cumulative Threat over AW Window (all openers)', sortByFinalThreat([
-        { label: 'SoC Opener', times: sim2a.times, threats: sim2a.threats, color: '#b388ff' },
         { label: 'SoB Opener (low-gear)', times: sim2b.times, threats: sim2b.threats, color: '#ffd54f' },
         { label: 'JotC Opener', times: sim2c.times, threats: sim2c.threats, color: '#d2a8ff' },
         { label: 'SoR Opener', times: sim2d.times, threats: sim2d.threats, color: '#7ee787' },
@@ -5229,7 +5245,6 @@ For comparison (same 60s window, best realistic non-twist packages):
     ]));
 
     // Chart notes
-    const f1a = sim1a.threats[sim1a.threats.length - 1];
     const f1b = sim1b.threats[sim1b.threats.length - 1];
     const f1c = sim1c.threats[sim1c.threats.length - 1];
     const f1d = sim1d.threats[sim1d.threats.length - 1];
@@ -5241,10 +5256,8 @@ For comparison (same 60s window, best realistic non-twist packages):
         '&nbsp;&nbsp;<span style="color:#d2a8ff;">JotC opener (self):</span> <strong>' + f1c.toLocaleString() + '</strong> &mdash; self-applies the +219 debuff on the first judge (amplifies the whole window) but gives up the pull snap.<br>' +
         '&nbsp;&nbsp;<span style="color:#58a6ff;">SoR &rarr; JotC hybrid:</span> <strong>' + f1e.toLocaleString() + '</strong> &mdash; recommended when solo: JoR snap secures the pull, then self-JotC at the 2nd judge amplifies the rest.<br>' +
         '&nbsp;&nbsp;<span style="color:#7ee787;">SoR opener:</span> <strong>' + f1d.toLocaleString() + '</strong> &mdash; no ramp or DoT, just steady SoR procs + JoR.<br>' +
-        '&nbsp;&nbsp;<span style="color:#ffd54f;">SoB opener (low-gear):</span> <strong>' + f1b.toLocaleString() + '</strong> &mdash; JoB snap (only wins below ~400 SP), then a slow SoC ramp.<br>' +
-        '&nbsp;&nbsp;<span style="color:#b388ff;">SoC opener:</span> <strong>' + f1a.toLocaleString() + '</strong> &mdash; weakest, with a 0-stack opener judge and the slowest ramp.';
+        '&nbsp;&nbsp;<span style="color:#ffd54f;">SoB opener (low-gear):</span> <strong>' + f1b.toLocaleString() + '</strong> &mdash; JoB snap (only wins below ~400 SP), then a slow SoC ramp.';
 
-    const f2a = sim2a.threats[sim2a.threats.length - 1];
     const f2b = sim2b.threats[sim2b.threats.length - 1];
     const f2c = sim2c.threats[sim2c.threats.length - 1];
     const f2d = sim2d.threats[sim2d.threats.length - 1];
@@ -5256,8 +5269,7 @@ For comparison (same 60s window, best realistic non-twist packages):
         '&nbsp;&nbsp;<span style="color:#d2a8ff;">JotC opener (self):</span> <strong>' + f2c.toLocaleString() + '</strong> &mdash; self-applies the +219 debuff on the first judge; also amplifies Exo + HoW, so strong on Demon/Undead (weak pull snap).<br>' +
         '&nbsp;&nbsp;<span style="color:#58a6ff;">SoR &rarr; JotC hybrid:</span> <strong>' + f2e.toLocaleString() + '</strong> &mdash; recommended when solo: JoR snap, then self-JotC amplification for the rest.<br>' +
         '&nbsp;&nbsp;<span style="color:#7ee787;">SoR opener:</span> <strong>' + f2d.toLocaleString() + '</strong> &mdash; no ramp or DoT, just steady SoR procs + JoR.<br>' +
-        '&nbsp;&nbsp;<span style="color:#ffd54f;">SoB opener (low-gear):</span> <strong>' + f2b.toLocaleString() + '</strong> &mdash; JoB snap (only wins below ~400 SP), then a slow SoC ramp.<br>' +
-        '&nbsp;&nbsp;<span style="color:#b388ff;">SoC opener:</span> <strong>' + f2a.toLocaleString() + '</strong> &mdash; weakest, with a 0-stack opener judge and the slowest ramp.';
+        '&nbsp;&nbsp;<span style="color:#ffd54f;">SoB opener (low-gear):</span> <strong>' + f2b.toLocaleString() + '</strong> &mdash; JoB snap (only wins below ~400 SP), then a slow SoC ramp.';
 
     // ============================================================
     // BUILDS SECTION: cumulative threat by build — one rotation
@@ -5858,7 +5870,7 @@ For comparison (same 60s window, best realistic non-twist packages):
     })();
 
     // ============================================================
-    // SEAL ROTATION COMPARISON: Cumulative Threat Timeline (+ SoC+JotC)
+    // SEAL ROTATION COMPARISON: Cumulative Threat Timeline (Seal Swap + self/Ret JotC)
     // ============================================================
     (function() {
         // Shared constants (same as parent scope)
@@ -5891,8 +5903,8 @@ For comparison (same 60s window, best realistic non-twist packages):
         var STEPS = Math.round(T_END / DT);
 
         // ---- Simulation state for each rotation ----
-        var times = [], cumHybrid = [], cumSoR = [], cumJotC = [], cumHybridJotC = [], cumHybridRet = [];
-        var hT = 0, sT = 0, jT = 0, hjT = 0, hrT = 0; // cumulative threat accumulators
+        var times = [], cumHybrid = [], cumSoR = [], cumHybridJotC = [], cumHybridRet = [];
+        var hT = 0, sT = 0, hjT = 0, hrT = 0; // cumulative threat accumulators
 
         // Hybrid (SoC+SoR): state
         var h_stackFloat = 0, h_stacks = 0;
@@ -5907,13 +5919,6 @@ For comparison (same 60s window, best realistic non-twist packages):
         var s_nextAuto = _WS;
         var s_nextJudge = _JCD;
         var s_judgeCount = 0;
-
-        // SoC+JotC: state
-        var j_stackFloat = 0, j_stacks = 0;
-        var j_nextAuto = _WS;
-        var j_nextJudge = _JCD;
-        var j_judgeCount = 0;
-        var j_jotcActive = false;
 
         // Hybrid + JotC@J2: state (same as hybrid, plus permanent debuff from J2 on)
         var hj_stackFloat = 0, hj_stacks = 0;
@@ -5998,32 +6003,6 @@ For comparison (same 60s window, best realistic non-twist packages):
                 s_nextJudge += _JCD;
             }
 
-            // ---- SOC + JOTC ----
-            while (t >= j_nextAuto - 1e-9) {
-                j_stackFloat += SOC_STACK_RATE_C;
-                var jNewStacks = Math.min(5, Math.floor(j_stackFloat));
-                if (jNewStacks > j_stacks) j_stacks = jNewStacks;
-                j_nextAuto += _WS;
-            }
-            if (j_stacks > 0) {
-                jT += socDotTpsPerStack * j_stacks * DT;
-            }
-            if (t >= j_nextJudge - 1e-9 && j_judgeCount < 100) {
-                j_judgeCount++;
-                if (j_judgeCount === 1) {
-                    var joc1 = jocThreat(j_stacks) * _SL;
-                    jT += joc1;
-                } else if (j_judgeCount === 2) {
-                    var jotcVal = jotcDirect * _SL;
-                    jT += jotcVal;
-                    j_jotcActive = true;
-                } else {
-                    var jocN = (jocThreat(j_stacks) + (j_jotcActive ? ampHit : 0)) * _SL;
-                    jT += jocN;
-                }
-                j_nextJudge += _JCD;
-            }
-
             // ---- HYBRID + JOTC@J2: SoC+SoR hybrid, 2nd judge spent on JotC ----
             while (t >= hj_nextAuto - 1e-9) {
                 if (!hj_sorActive) {
@@ -6101,29 +6080,17 @@ For comparison (same 60s window, best realistic non-twist packages):
             times.push(t);
             cumHybrid.push(Math.round(hT));
             cumSoR.push(Math.round(sT));
-            cumJotC.push(Math.round(jT));
             cumHybridJotC.push(Math.round(hjT));
             cumHybridRet.push(Math.round(hrT));
         }
 
-        // Chart — only plot 10s interval data points
-        var chartTimes = [], chartH = [], chartS = [], chartJ = [], chartHJ = [], chartHR = [];
-        for (var ci = 0; ci <= T_END; ci += 10) {
-            var cIdx = Math.round(ci / DT);
-            if (cIdx >= times.length) cIdx = times.length - 1;
-            chartTimes.push(ci);
-            chartH.push(cumHybrid[cIdx]);
-            chartS.push(cumSoR[cIdx]);
-            chartJ.push(cumJotC[cIdx]);
-            chartHJ.push(cumHybridJotC[cIdx]);
-            chartHR.push(cumHybridRet[cIdx]);
-        }
+        // Plot the full-resolution series (every 0.1s) so the mouseover reads
+        // smoothly at every point on the lines, like the other threat charts.
         var sealDatasets = [
-            { label: 'SoC + SoR (Seal Swap)',        times: chartTimes, threats: chartH,  color: '#7ee787' },
-            { label: 'SoR Only',                  times: chartTimes, threats: chartS,  color: '#58a6ff' },
-            { label: 'SoC + JotC',                times: chartTimes, threats: chartJ,  color: '#f0a500' },
-            { label: 'Seal Swap + JotC@J2 (self)',   times: chartTimes, threats: chartHJ, color: '#d2a8ff' },
-            { label: 'Seal Swap + Ret JotC @ 1s',    times: chartTimes, threats: chartHR, color: '#ff9bd1' }
+            { label: 'SoC + SoR (Seal Swap)',        times: times, threats: cumHybrid,    color: '#7ee787' },
+            { label: 'SoR Only',                  times: times, threats: cumSoR,        color: '#58a6ff' },
+            { label: 'Seal Swap + JotC@J2 (self)',   times: times, threats: cumHybridJotC, color: '#d2a8ff' },
+            { label: 'Seal Swap + Ret JotC @ 1s',    times: times, threats: cumHybridRet,  color: '#ff9bd1' }
         ];
         // Order the legend (and series) by highest cumulative threat at 60s, descending.
         sealDatasets.sort(function(a, b) { return b.threats[b.threats.length - 1] - a.threats[a.threats.length - 1]; });
@@ -6135,7 +6102,6 @@ For comparison (same 60s window, best realistic non-twist packages):
         // Note
         var hFinal  = cumHybrid[cumHybrid.length - 1];
         var sFinal  = cumSoR[cumSoR.length - 1];
-        var jFinal  = cumJotC[cumJotC.length - 1];
         var hjFinal = cumHybridJotC[cumHybridJotC.length - 1];
         var hrFinal = cumHybridRet[cumHybridRet.length - 1];
         document.getElementById('chartSealComparisonNote').innerHTML =
@@ -6144,7 +6110,6 @@ For comparison (same 60s window, best realistic non-twist packages):
             '&nbsp;&nbsp;<span style="color:#d2a8ff;">Seal Swap + JotC@J2 (self):</span> <strong>' + hjFinal.toLocaleString() + '</strong> threat<br>' +
             '&nbsp;&nbsp;<span style="color:#7ee787;">SoC+SoR Seal Swap:</span> <strong>' + hFinal.toLocaleString() + '</strong> threat<br>' +
             '&nbsp;&nbsp;<span style="color:#58a6ff;">SoR Only:</span> <strong>' + sFinal.toLocaleString() + '</strong> threat<br>' +
-            '&nbsp;&nbsp;<span style="color:#f0a500;">SoC+JotC:</span> <strong>' + jFinal.toLocaleString() + '</strong> threat<br>' +
             'Self-applied JotC costs one 5-stack JoC up front (the line dips right after the 2nd judge), then the +219 amplification pulls it ahead. ' +
             'A <strong>Ret paladin supplying JotC at 1s</strong> avoids that cost entirely &mdash; the debuff is up almost from the pull and all of your judges stay on Corruption, so it leads throughout. ' +
             'And this is the <em>conservative</em> picture: the debuff also amplifies Consecration and Holy Shield (not shown here), widening the JotC lines’ lead further.';
