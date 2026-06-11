@@ -934,10 +934,10 @@
             </tr>
             <tr>
                 <td><strong>Exorcism</strong> (Rank 7)</td>
-                <td>573&ndash;655 (619 avg)</td>
+                <td>626&ndash;698 (662 avg)</td>
                 <td>0.429</td>
-                <td>(619 + SP&times;0.429) &times; 1.9</td>
-                <td style="color: #7ee787; font-weight: bold;">118&ndash;123</td>
+                <td>(662 + SP&times;0.429) &times; 1.9</td>
+                <td style="color: #7ee787; font-weight: bold;">123&ndash;129</td>
                 <td>Undead/Demon only, 15s CD; crits 1.5&times; (spell)</td>
             </tr>
             <tr>
@@ -1552,8 +1552,8 @@
             <tr><td>With 2/2 Improved Holy Shield</td><td><strong>8 charges</strong></td></tr>
             <tr><td>Damage per block</td><td>155 Holy (Rank 4) + SP&times;0.05</td></tr>
             <tr><td>Duration</td><td>10 seconds</td></tr>
-            <tr><td>Cooldown</td><td>8 seconds</td></tr>
-            <tr><td>Mana cost</td><td>180 (153 with Benediction)</td></tr>
+            <tr><td>Cooldown</td><td>10 seconds (= duration &rarr; 100% uptime on recast)</td></tr>
+            <tr><td>Mana cost</td><td>280 (Benediction does <strong>not</strong> reduce it)</td></tr>
         </table>
 
         <p>Holy Shield is the single most important paladin tanking ability. It provides <strong>both threat and survivability</strong>. With 2/2 Improved Holy Shield, you get 8 charges &mdash; enough to handle fast-attacking bosses without running out before the cooldown resets.</p>
@@ -1608,8 +1608,8 @@
             </tr>
             <tr>
                 <td>Judgement of Wisdom (on target)</td>
-                <td>~74 mana per attack</td>
-                <td>Raid-wide benefit, per attacker</td>
+                <td>~74 mana per proc</td>
+                <td><strong>~50% chance per landed hit</strong> (&asymp;37 mana/attack avg); per attacker, party-wide</td>
             </tr>
             <tr>
                 <td>Super Mana Potion</td>
@@ -1627,11 +1627,11 @@
         <div class="formula">
             Full rotation (with 5/5 Benediction):<br>
             &nbsp;&nbsp;Consecration Rank 6: 561 mana<br>
-            &nbsp;&nbsp;Holy Shield Rank 4: 153 mana<br>
+            &nbsp;&nbsp;Holy Shield Rank 4: 280 mana <span style="color:#8b949e;">(Benediction does not apply)</span><br>
             &nbsp;&nbsp;Judgement: ~150 mana<br>
             &nbsp;&nbsp;Seal: 210 mana<br>
-            &nbsp;&nbsp;<strong>Total: ~1,074 mana per 8-second cycle</strong><br><br>
-            At 8,000 mana: sustainable for ~60 seconds without any mana return
+            &nbsp;&nbsp;<strong>Total: ~1,201 mana per 8-second cycle</strong><br><br>
+            At 8,000 mana: sustainable for ~53 seconds without any mana return
         </div>
 
         <div class="mana-warning">
@@ -1653,7 +1653,7 @@
                 <td><strong>Holy Shield</strong></td>
                 <td>+30% block chance, damage on block</td>
                 <td>10 sec</td>
-                <td>8 sec</td>
+                <td>10 sec</td>
                 <td>Maintain 100% uptime &mdash; #1 priority</td>
             </tr>
             <tr>
@@ -2033,7 +2033,7 @@
                 <span><span class="gcd-swatch gcd-fill"></span>open GCD / auto-attack (seal procs)</span>
             </div>
         </div>
-        <p style="color:#8b949e; font-size:0.85em;">Cadence and cooldowns mirror the <a href="#boss-rotation">Boss Core Loop</a> and <a href="#aoe-rotation">Sustained AOE Priority</a> below (Holy Shield &amp; Consecration ~8s, Judgement ~8&ndash;10s). On Demon/Undead pulls, Exorcism / Holy Wrath fill the open GCDs; on the Avenger's Shield build, Avenger's Shield fills one when off cooldown (cast it just after a boss swing &mdash; you can't block during its cast, so you're crushable mid-cast).</p>
+        <p style="color:#8b949e; font-size:0.85em;">Cadence and cooldowns mirror the <a href="#boss-rotation">Boss Core Loop</a> and <a href="#aoe-rotation">Sustained AOE Priority</a> below (Holy Shield ~10s, Consecration ~8s, Judgement ~8&ndash;10s). On Demon/Undead pulls, Exorcism / Holy Wrath fill the open GCDs; on the Avenger's Shield build, Avenger's Shield fills one when off cooldown (cast it just after a boss swing &mdash; you can't block during its cast, so you're crushable mid-cast).</p>
 
         <h3 id="aoe-rotation">AOE Tanking Rotation (Trash &amp; Heroics)</h3>
 
@@ -2050,7 +2050,7 @@
 
         <h4>Sustained AOE Priority</h4>
         <div class="formula">
-            <strong>Priority:</strong> Holy Shield (every 8s) &gt; Consecration (every 8s) &gt; Judgement (every 8&ndash;10s) + recast Seal of Righteousness
+            <strong>Priority:</strong> Holy Shield (every 10s) &gt; Consecration (every 8s) &gt; Judgement (every 8&ndash;10s) + recast Seal of Righteousness
         </div>
         <p style="color:#8b949e; font-size:0.9em;">Avenger's Shield is your <em>pull</em>, not part of the sustained loop &mdash; hold it for the next pack rather than spending a GCD on it mid-pack (Holy Shield and Consecration are higher AOE threat per GCD).</p>
 
@@ -2664,7 +2664,7 @@
 
               var SP=709, RF=1.9, HIT=0.8811, JOTC=219;
               var critA=0.11, critB=0.12, dCrit=(1+critB*0.5)-(1+critA*0.5); // 0.005
-              var abilities=[['Judgement of Corruption (5 stk)',605,0.429,10,false],['Exorcism (R7)',619,0.429,15,true],['Holy Wrath (R3)',635,0.19,60,true]];
+              var abilities=[['Judgement of Corruption (5 stk)',605,0.429,10,false],['Exorcism (R7)',662,0.429,15,true],['Holy Wrath (R3)',635,0.19,60,true]];
               function landed(base,coef){ return (base + SP*coef + JOTC) * RF * HIT; }
               var tbody=document.getElementById('cviDeltaTable'), stdDelta=0, demonExtra=0, labels=[], data=[], colors=[];
               abilities.forEach(function(a){
@@ -3996,7 +3996,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             <tr>
                 <td><strong>Exorcism (R7)</strong></td>
                 <td>0.429</td>
-                <td><a href="https://www.wowhead.com/tbc/spell=27138/exorcism">Wowhead TBC &mdash; Exorcism Rank 7</a> ("Value: 619 (SP mod: 0.429)"). Undead/Demon only in TBC.</td>
+                <td><a href="https://www.wowhead.com/tbc/spell=27138/exorcism">Wowhead TBC &mdash; Exorcism Rank 7</a>: 626&ndash;698 Holy damage (avg 662), SP mod 0.429. Instant, 340 mana, 15s CD, Undead/Demon only. (Base corrected from 573&ndash;655 on 2026-06-10.)</td>
             </tr>
             <tr>
                 <td><strong>Holy Wrath (R3)</strong></td>
@@ -4104,6 +4104,15 @@ For comparison (same 60s window, best realistic non-twist packages):
         <!-- ============================================================ -->
         <h2 id="changelog"><a href="#toc">Changelog</a></h2>
         <div class="toc">
+            <h3>2026-06-10 (v2.4) &mdash; Resolved all "Flagged for Further Verification" items</h3>
+            <ul>
+                <li><strong>Holy Shield Rank 4 mana: 180 &rarr; 280</strong>, and <strong>Benediction does not reduce it</strong> (it's not affected). Updated the ability detail table and the per-cycle mana math (full rotation now <strong>~1,201 mana</strong>/cycle, ~53s sustain at 8k mana without returns).</li>
+                <li><strong>Holy Shield Rank 4 cooldown: 8s &rarr; 10s</strong> (= its duration, so recasting on CD = 100% uptime; the sim engine already used 10s). Fixed the prose that called it "every 8s." (The "969" references elsewhere are about <em>Improved Judgement's</em> 8s judgement CD, which is correct and unchanged.)</li>
+                <li><strong>Judgement of Wisdom: ~50% proc per hit</strong> (not guaranteed) &mdash; ~74 mana per proc &asymp; 37/attack on average. Per the Light's Bulwark guide (JoW PPM = 1/speed &times; 0.50 &times; 60).</li>
+                <li><strong>Exorcism Rank 7 base: 573&ndash;655 &rarr; 626&ndash;698</strong> (avg 662), verified on Wowhead. Updated the ability table, coefficient appendix, and the chart engine.</li>
+                <li><strong>Improved Holy Shield (8 charges)</strong> and the <strong>Seal of Righteousness coefficient</strong> (now 0.092&times;speed) were already confirmed/corrected.</li>
+                <li><strong>Flagged section trimmed:</strong> with everything resolved, the conflicting-data-sources note, the stale review-status note, and the verification table were removed and replaced with a short "all verified" summary. (Blessing of Kings as a threat generator was noted in the holding file as a future-inclusion candidate.)</li>
+            </ul>
             <h3>2026-06-10 (v2.3) &mdash; Holy Wrath coefficient corrected (0.286 &rarr; 0.19); Consecration verified</h3>
             <ul>
                 <li><strong>Holy Wrath SP coefficient: 0.286 &rarr; 0.19.</strong> Same issue as Avenger's Shield &mdash; the 0.286 was Wowhead's auto-calculated tooltip mod (the ordinary &frac12; AoE penalty, 2/3.5/2), which over-states multi-target spells. Holy Wrath is <em>uncapped</em> AoE (all undead/demons in range), which takes the harsher 2/3.5/3 = <strong>0.19</strong> penalty; this matches Wowhead's Prot Paladin guide (19.05%) and older community theorycraft. Updated the engine, per-ability table (HW now <strong>1,494&ndash;1,543</strong> per cast, was 1,615&ndash;1,679), coefficient appendix + verification note, the WoA contribution row, and the demon-boss spell-crit delta calc. HoW is undead/demon-only on a 1-min CD, so impact is minor.</li>
@@ -4225,58 +4234,9 @@ For comparison (same 60s window, best realistic non-twist packages):
         <!-- ============================================================ -->
         <h2 id="flagged"><a href="#toc">Flagged for Further Verification</a></h2>
 
-        <div class="warning">
-            <strong>Note:</strong> The following values have conflicting data across sources (Wowhead TBC database, private server data, community guides). They may vary depending on TBC patch version or data source accuracy. If you can confirm the correct 2.4.3 values in-game or via combat logs, please report corrections.
-        </div>
-
         <div class="tip">
-            <strong>Review status:</strong> This guide has been vetted through the end of the Combat Rotations / Seal &amp; Judgement Threat Analysis sections. <strong>Continue vetting from the Engineering section onward</strong> &mdash; content from Engineering through the end (gear, enchants, gems, macros, WeakAuras, addons, simulators) has not yet had the same review pass.
+            <strong>All previously-flagged values have been verified and corrected</strong> (see Changelog v2.4, 2026-06-10): <strong>Holy Shield Rank 4</strong> &mdash; 280 mana (Benediction does not reduce it), 10s cooldown; <strong>Improved Holy Shield</strong> &mdash; 8 charges (4 base + 4 from 2/2) confirmed; <strong>Judgement of Wisdom</strong> &mdash; ~74 mana per proc at ~50% chance per landed hit; <strong>Exorcism Rank 7</strong> &mdash; 626&ndash;698 base (avg 662); <strong>Seal of Righteousness</strong> &mdash; 0.092&times;weapon-speed coefficient (corrected guide-wide). Nothing is currently pending verification.
         </div>
-
-        <table class="combat-table">
-            <tr>
-                <th>Item</th>
-                <th>Guide Value</th>
-                <th>Wowhead TBC Value</th>
-                <th>Notes</th>
-            </tr>
-            <tr>
-                <td><strong>Holy Shield Rank 4 &mdash; Mana Cost</strong></td>
-                <td>180 mana (153 with Benediction)</td>
-                <td>280 mana (238 with Benediction)</td>
-                <td>Guide's internal math (mana rotation totals) is consistent with 180. Wowhead TBC database shows 280. May reflect different patch versions or a data error on one side.</td>
-            </tr>
-            <tr>
-                <td><strong>Holy Shield Rank 4 &mdash; Cooldown</strong></td>
-                <td>8 seconds</td>
-                <td>10 seconds</td>
-                <td>8 sec aligns with the widely-referenced "969 rotation" used by the TBC prot paladin community. Wowhead shows 10 sec. The 969 rotation name itself implies 9-second and 6-second GCD cycles, which only works with an 8 sec HS cooldown. Verify in-game.</td>
-            </tr>
-            <tr>
-                <td><strong>Judgement of Wisdom &mdash; Proc Rate</strong></td>
-                <td>~74 mana per attack</td>
-                <td>74 mana with ~50% proc chance per direct hit</td>
-                <td>Guide implies guaranteed mana per attack. Wowhead comments indicate a ~50% proc rate on direct hits, making effective return ~37 mana per attack on average. Verify whether the proc rate is 50% or 100% in 2.4.3.</td>
-            </tr>
-            <tr>
-                <td><strong>Improved Holy Shield &mdash; Charge Count</strong></td>
-                <td>8 charges (4 base + 4 from 2/2 talent)</td>
-                <td>Could not verify exact talent tooltip on Wowhead (spell ID mismatch)</td>
-                <td>Most community sources agree on 8 charges at 2/2. Some sources say +2 per rank (= 8 total), others say the talent adds 4 total at rank 2. Functionally the same result. Verify in-game.</td>
-            </tr>
-            <tr>
-                <td><strong>Exorcism Rank 7 &mdash; Base Damage</strong></td>
-                <td>573&ndash;655</td>
-                <td>Could not verify (Wowhead spell ID redirected to wrong spell)</td>
-                <td>Values taken from original guide research. Cross-check against Wowhead TBC spell database or in-game tooltip.</td>
-            </tr>
-            <tr>
-                <td><strong>Seal of Righteousness &mdash; SP Coefficient</strong></td>
-                <td>0.2 per swing</td>
-                <td>Could not independently verify</td>
-                <td>Sourced from Maintankadin/Elitist Jerks theorycrafting archives. The coefficient may vary slightly by weapon speed (SoR scales with weapon speed in TBC). Verify via combat log testing.</td>
-            </tr>
-        </table>
 
     </div>
 <script>
@@ -4340,7 +4300,7 @@ For comparison (same 60s window, best realistic non-twist packages):
     const CONSEC_TICK_AW = Math.round((CONSEC * AW) / 8); // per-tick with AW
     const HS_BLK = Math.round((155 + SP * 0.05 + JUSTICAR_4P_HS) * RF * 1.20); // 2/2 Imp HS + 4pc Justicar (+15 flat per block)
     const AS = Math.round((548 + SP * 0.1357) * RF * (1 + SC * 0.5));        // effective 13.57%/target (empirical) — NOT Wowhead's auto-calc 0.193, which ignores the multi-target penalty; crits 1.5× (spell)
-    const EXO = Math.round((619 + SP * 0.429) * RF * (1 + SC * 0.5));         // Wowhead TBC base 619, SP mod 0.429
+    const EXO = Math.round((662 + SP * 0.429) * RF * (1 + SC * 0.5));         // Wowhead TBC R7 base 626–698 (avg 662), SP mod 0.429
     const HW = Math.round((635 + SP * 0.19) * RF * (1 + SC * 0.5));           // base 635; effective 0.19 (2/3.5/3 uncapped-AoE penalty) — NOT Wowhead's auto-calc 0.286, same over-statement as Avenger's Shield; crits 1.5× (spell)
     const HS_BLOCKS_PER_8S = 3; // estimate
 
