@@ -703,7 +703,6 @@
                 </li>
                 <li><a href="#sources">Sources & References</a></li>
                 <li><a href="#changelog">Changelog</a></li>
-                <li><a href="#flagged">Flagged for Further Verification</a></li>
             </ul>
         </div>
 
@@ -4308,17 +4307,12 @@ For comparison (same 60s window, best realistic non-twist packages):
             </ul>
             <h3>2026-06-11 (v2.7) &mdash; Fix crossover labels on the "When does each rotation overtake pure SoR?" chart</h3>
             <ul>
-                <li>The call-out crossover labels on the SoC-vs-SoR catch-up chart were overlapping the data/reference lines and hard to read. Each label now draws on a solid background pill and the label column is clamped inside the plot, so all five crossover call-outs (5 stacks, Swap+Ret JotC, Swap+JotC self, Swap, SoC) stay <strong>fully legible</strong> regardless of where the lines fall.</li>
+                <li>The call-out crossover labels on the SoC-vs-SoR catch-up chart overlapped the data and reference lines. They're now <strong>moved into a clear gutter to the right of every crossover line</strong> (the x-axis extends a little past the SoC crossover to make room), each joined to its line by a colored leader + dot and drawn on a background pill &mdash; so it's obvious which line each refers to and all five stay fully legible.</li>
             </ul>
-        </div>
-
-        <!-- ============================================================ -->
-        <!-- FLAGGED FOR FURTHER VERIFICATION -->
-        <!-- ============================================================ -->
-        <h2 id="flagged"><a href="#toc">Flagged for Further Verification</a></h2>
-
-        <div class="tip">
-            <strong>All previously-flagged values have been verified and corrected</strong> (see Changelog v2.4, 2026-06-10): <strong>Holy Shield Rank 4</strong> &mdash; 280 mana (Benediction does not reduce it), 10s cooldown; <strong>Improved Holy Shield</strong> &mdash; 8 charges (4 base + 4 from 2/2) confirmed; <strong>Judgement of Wisdom</strong> &mdash; ~74 mana per proc at ~50% chance per landed hit; <strong>Exorcism Rank 7</strong> &mdash; 626&ndash;698 base (avg 662); <strong>Seal of Righteousness</strong> &mdash; 0.092&times;weapon-speed coefficient (corrected guide-wide). Nothing is currently pending verification.
+            <h3>2026-06-11 (v2.8) &mdash; Removed the "Flagged for Further Verification" section</h3>
+            <ul>
+                <li>Dropped the Flagged for Further Verification section and its TOC entry. Every value it tracked has been verified and corrected (Holy Shield mana/cooldown, Improved Holy Shield charges, Judgement of Wisdom proc rate, Exorcism base, Seal of Righteousness coefficient &mdash; see earlier entries), so the section no longer served a purpose.</li>
+            </ul>
         </div>
 
     </div>
@@ -4699,7 +4693,7 @@ For comparison (same 60s window, best realistic non-twist packages):
                 scales: {
                     x: {
                         type: 'linear',
-                        max: (crossSoCvsSoR !== null ? crossSoCvsSoR : SEAL_SIM_DUR), // end the chart right at the SoC crossover callout
+                        max: (crossSoCvsSoR !== null ? crossSoCvsSoR * 1.34 : SEAL_SIM_DUR), // extend past the SoC crossover to leave a clear right-hand gutter for the call-out labels
                         title: { display: true, text: 'Time (seconds)', color: '#e6edf3' },
                         ticks: { color: '#8b949e', stepSize: 30, callback: function(v) { return v % 30 === 0 ? v + 's' : ''; } },
                         grid: { color: 'rgba(139,148,158,0.15)' }
@@ -4722,10 +4716,10 @@ For comparison (same 60s window, best realistic non-twist packages):
 
                     // Reference lines in chronological order (top to bottom in the call-out stack).
                     var lines = [{ x: fiveStackT, label: '5 stacks', color: '#8b949e', dashed: true }];
-                    if (crossRetJotCvsSoR  !== null) lines.push({ x: crossRetJotCvsSoR,  label: 'Swap+Ret JotC > SoR @ ' + crossRetJotCvsSoR.toFixed(0)  + 's', color: '#58a6ff' });
-                    if (crossSwapJotCvsSoR !== null) lines.push({ x: crossSwapJotCvsSoR, label: 'Swap+JotC (self) > SoR @ ' + crossSwapJotCvsSoR.toFixed(0) + 's', color: '#d2a8ff' });
-                    if (crossSwapvsSoR     !== null) lines.push({ x: crossSwapvsSoR,     label: 'Swap > SoR @ ' + crossSwapvsSoR.toFixed(0)     + 's', color: '#b388ff' });
-                    if (crossSoCvsSoR      !== null) lines.push({ x: crossSoCvsSoR,      label: 'SoC > SoR @ ' + crossSoCvsSoR.toFixed(0)      + 's', color: '#f0a500' });
+                    if (crossRetJotCvsSoR  !== null) lines.push({ x: crossRetJotCvsSoR,  label: 'Swap+Ret JotC @ ' + crossRetJotCvsSoR.toFixed(0)  + 's', color: '#58a6ff' });
+                    if (crossSwapJotCvsSoR !== null) lines.push({ x: crossSwapJotCvsSoR, label: 'Swap+JotC (self) @ ' + crossSwapJotCvsSoR.toFixed(0) + 's', color: '#d2a8ff' });
+                    if (crossSwapvsSoR     !== null) lines.push({ x: crossSwapvsSoR,     label: 'Swap @ ' + crossSwapvsSoR.toFixed(0)     + 's', color: '#b388ff' });
+                    if (crossSoCvsSoR      !== null) lines.push({ x: crossSoCvsSoR,      label: 'SoC @ ' + crossSoCvsSoR.toFixed(0)      + 's', color: '#f0a500' });
 
                     // Full-height reference lines.
                     lines.forEach(function(L) {
@@ -4737,33 +4731,31 @@ For comparison (same 60s window, best realistic non-twist packages):
                         ctx.restore();
                     });
 
-                    // Park each label in a stacked column near the top, with a solid background
-                    // pill so the text stays fully readable over the data/reference lines, and
-                    // connect it to its line with a thin call-out leader + a dot on the line.
+                    // Stack all the call-out labels in the clear gutter to the RIGHT of every
+                    // crossover line, so no vertical line crosses the text. Each label is joined
+                    // to its line by a colored horizontal leader + a dot, with a background pill.
                     ctx.save();
                     ctx.font = '11px sans-serif';
                     ctx.textAlign = 'left';
                     ctx.textBaseline = 'middle';
-                    // widest label, so the whole column fits inside the plot and never clips
-                    var maxW = 0;
-                    lines.forEach(function(L) { maxW = Math.max(maxW, ctx.measureText(L.label).width); });
-                    var labelX = xScale.left + (xScale.right - xScale.left) * 0.40;
-                    labelX = Math.min(labelX, xScale.right - maxW - 8);   // clamp so nothing runs off the right edge
-                    labelX = Math.max(labelX, xScale.left + 6);
+                    var maxW = 0, rightmostPx = 0;
+                    lines.forEach(function(L) {
+                        maxW = Math.max(maxW, ctx.measureText(L.label).width);
+                        rightmostPx = Math.max(rightmostPx, xScale.getPixelForValue(L.x));
+                    });
+                    // park the column just right of the rightmost crossover line (clamped to stay in-plot)
+                    var labelX = Math.min(rightmostPx + 16, xScale.right - maxW - 4);
                     lines.forEach(function(L, i) {
                         var px = xScale.getPixelForValue(L.x);
-                        var ly = yScale.top + 14 + i * 17;
+                        var ly = yScale.top + 16 + i * 18;
                         var w = ctx.measureText(L.label).width;
-                        // leader line + dot on the reference line
+                        // horizontal leader from the line out to the label column, + dot on the line
                         ctx.setLineDash([]);
                         ctx.strokeStyle = L.color; ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        if (px <= labelX) { ctx.moveTo(px, ly); ctx.lineTo(labelX - 5, ly); }
-                        else { ctx.moveTo(labelX + w + 5, ly); ctx.lineTo(px, ly); }
-                        ctx.stroke();
+                        ctx.beginPath(); ctx.moveTo(px, ly); ctx.lineTo(labelX - 6, ly); ctx.stroke();
                         ctx.fillStyle = L.color;
-                        ctx.beginPath(); ctx.arc(px, ly, 2, 0, Math.PI * 2); ctx.fill();
-                        // background pill behind the text, then the text on top
+                        ctx.beginPath(); ctx.arc(px, ly, 2.5, 0, Math.PI * 2); ctx.fill();
+                        // background pill + text
                         ctx.fillStyle = 'rgba(13,17,23,0.85)';
                         ctx.fillRect(labelX - 4, ly - 8, w + 8, 16);
                         ctx.fillStyle = L.color;
