@@ -4104,102 +4104,12 @@ For comparison (same 60s window, best realistic non-twist packages):
         <!-- ============================================================ -->
         <h2 id="changelog"><a href="#toc">Changelog</a></h2>
         <div class="toc">
-            <h3>2026-06-10 (v2.4) &mdash; Resolved all "Flagged for Further Verification" items</h3>
+            <h3>2026-02-09 (v0.1)</h3>
             <ul>
-                <li><strong>Holy Shield Rank 4 mana: 180 &rarr; 280</strong>, and <strong>Benediction does not reduce it</strong> (it's not affected). Updated the ability detail table and the per-cycle mana math (full rotation now <strong>~1,201 mana</strong>/cycle, ~53s sustain at 8k mana without returns).</li>
-                <li><strong>Holy Shield Rank 4 cooldown: 8s &rarr; 10s</strong> (= its duration, so recasting on CD = 100% uptime; the sim engine already used 10s). Fixed the prose that called it "every 8s." (The "969" references elsewhere are about <em>Improved Judgement's</em> 8s judgement CD, which is correct and unchanged.)</li>
-                <li><strong>Judgement of Wisdom: ~50% proc per hit</strong> (not guaranteed) &mdash; ~74 mana per proc &asymp; 37/attack on average. Per the Light's Bulwark guide (JoW PPM = 1/speed &times; 0.50 &times; 60).</li>
-                <li><strong>Exorcism Rank 7 base: 573&ndash;655 &rarr; 626&ndash;698</strong> (avg 662), verified on Wowhead. Updated the ability table, coefficient appendix, and the chart engine.</li>
-                <li><strong>Improved Holy Shield (8 charges)</strong> and the <strong>Seal of Righteousness coefficient</strong> (now 0.092&times;speed) were already confirmed/corrected.</li>
-                <li><strong>Flagged section trimmed:</strong> with everything resolved, the conflicting-data-sources note, the stale review-status note, and the verification table were removed and replaced with a short "all verified" summary. (Blessing of Kings as a threat generator was noted in the holding file as a future-inclusion candidate.)</li>
+                <li>Initial guide skeleton and structure created</li>
+                <li>Table of Contents with all planned sections</li>
+                <li>CSS styling foundation matching warrior guide format with paladin-specific additions</li>
             </ul>
-            <h3>2026-06-10 (v2.3) &mdash; Holy Wrath coefficient corrected (0.286 &rarr; 0.19); Consecration verified</h3>
-            <ul>
-                <li><strong>Holy Wrath SP coefficient: 0.286 &rarr; 0.19.</strong> Same issue as Avenger's Shield &mdash; the 0.286 was Wowhead's auto-calculated tooltip mod (the ordinary &frac12; AoE penalty, 2/3.5/2), which over-states multi-target spells. Holy Wrath is <em>uncapped</em> AoE (all undead/demons in range), which takes the harsher 2/3.5/3 = <strong>0.19</strong> penalty; this matches Wowhead's Prot Paladin guide (19.05%) and older community theorycraft. Updated the engine, per-ability table (HW now <strong>1,494&ndash;1,543</strong> per cast, was 1,615&ndash;1,679), coefficient appendix + verification note, the WoA contribution row, and the demon-boss spell-crit delta calc. HoW is undead/demon-only on a 1-min CD, so impact is minor.</li>
-                <li><strong>Consecration verified &mdash; kept at 1.000 total (0.125/tick).</strong> Checked against Wowhead's guide value (95.2%). Two independent empirical combat-log measurements support ~1.0: our own (129/tick at 516 SP) and a Wowhead spell-page comment (141/tick at +608 SP &rarr; 616 bonus &divide; 608 = 1.01). The 95.2% figure is a theoretical underestimate, so no change.</li>
-            </ul>
-            <h3>2026-06-10 (v2.2) &mdash; Avenger's Shield coefficient corrected (0.193 &rarr; 0.1357)</h3>
-            <ul>
-                <li><strong>Avenger's Shield SP coefficient: 0.193 &rarr; 0.1357 (13.57% per target).</strong> The 0.193 we had been using is Wowhead's <em>auto-calculated</em> tooltip coefficient, which over-states scaling for multi-target spells (it ignores the in-game multi-target/AoE penalty). Empirical TBC testing and Wowhead's own Prot Paladin guide both put the effective coefficient at <strong>13.57% per target</strong>. Updated the chart engine, the per-ability threat table (AS now <strong>1,253&ndash;1,291</strong> per target, was 1,326&ndash;1,373), the worked example, the coefficient appendix (with sourcing), and the Wrath-of-Air / Wizard Oil contribution rows. AS is a 30s-CD opener, not part of the steady-state rotation, so the buff TPS totals are unaffected. (The earlier v1.9 crit fix &mdash; AS <em>does</em> crit at 1.5&times; spell &mdash; still stands.)</li>
-            </ul>
-            <h3>2026-06-10 (v2.1) &mdash; Aura comparison: added "why Retribution is the default AOE aura" explainer</h3>
-            <ul>
-                <li>Added a collapsed deep-dive box after the aura selection guidelines explaining why <strong>Retribution Aura is the default AOE-pull aura even though the chart shows Sanctity Aura with higher threat</strong> (155 vs 96 TPS AOE): Sanctity needs the 21-point Retribution talent (Sanctity build only) while Ret Aura is a free base aura; the single aura slot competes with Devotion/Resistance for survival; auras are party-wide and don't stack; and the two generate AOE threat differently (Ret = per-incoming-hit reflect, immediate on the pull, vs Sanctity = +10% Holy multiplier that needs Consec/HS already landing).</li>
-            </ul>
-            <h3>2026-06-10 (v2.0) &mdash; Moved unverified sections to a holding file pending review</h3>
-            <ul>
-                <li><strong>Pulled the following sections out of the live guide</strong> into <code>review prior to inclusion.html</code> until they can be vetted to the standard of the rest of the guide: <strong>Engineering, Weapon Selection, Shield Selection, Libram Optimization, Enchantments, Gems &amp; Professions, Essential Macros, WeakAuras, Addons, Simulators &amp; Tools, and the Crit &amp; Crush Immunity Calculator.</strong> The Gear Optimization section keeps its AOE / Boss / Mitigation / Off-Tank gear-set guidance; only the weapon/shield/libram subsections moved. TOC trimmed to match. No verified content (mechanics, coefficients, charts) was affected.</li>
-            </ul>
-            <h3>2026-06-10 (v1.9) &mdash; Seal of Righteousness SP coefficient correction (0.2 &rarr; 0.092&times;speed)</h3>
-            <ul>
-                <li><strong>Correction &mdash; SoR per-swing SP coefficient:</strong> Seal of Righteousness scales with <strong>weapon speed</strong> &mdash; <strong>0.092 &times; speed (1H)</strong>, which is <strong>&asymp;0.166</strong> for this guide's 1.8s weapon, not the flat <strong>0.2</strong> the simulation had used. The old 0.2 over-estimated SoR proc threat for a 1.8s weapon by &asymp;20%. <em>Discovered during the 2026-06-09 fresh editorial read-through</em> (the appendix/ability table had already been corrected to 0.092&times;speed, but the live chart engine and the buff-contribution math were still running on the disavowed 0.2) and fixed here.</li>
-                <li><strong>Propagated through every dependent figure:</strong> the interactive chart engine (so the seal-crossover table, cumulative-threat catch-up chart, seal-swap displays, opener-comparison table, and both 5-minute SP-sweep charts all recompute), plus the static Wrath-of-Air / Windfury / Wizard Oil contribution tables and totals. Net effect: SoR proc threat drops ~14%, so <strong>WoA ~71&rarr;67 TPS, Imp WoA ~85&rarr;81, Windfury ~71&rarr;65, twist ~128&rarr;124</strong>, and the corresponding 5-min / 60s totals.</li>
-                <li><strong>Consistency reconcile (same pass):</strong> the three overview <strong>seal-comparison charts</strong> and the <strong>per-ability threat table</strong> were brought into line with the verified chart engine &mdash; they had been omitting the <strong>2pc Justicar +10%</strong> (on seal procs / SoC DoT) and the <strong>average spell-crit</strong> the engine applies to judgements. So one set of numbers now holds guide-wide: <strong>SoR 188, SoC DoT 188, JoC 182, JoR 145, JoB 128</strong> TPS; combined <strong>Pure SoR 333, Pure SoC 370, Seal-swap 558</strong>. The per-ability table now honors its own "639&ndash;709 SP, crit included" footnote (Consec, Holy Shield, Avenger's Shield, Exorcism, Holy Wrath ranges all refreshed to the raid-buffed basis).</li>
-                <li><strong>Buff section made internally consistent:</strong> <strong>Wizard Oil ~23&rarr;28 TPS</strong> and <strong>base Windfury ~58&rarr;63 TPS</strong> (both had drifted from their own per-ability models), and the per-buff <strong>DPS column</strong> was corrected to match the TPS (WoA ~35, Imp ~42, Oil ~15). Knock-on: <strong>WoA + Oil ~109 TPS</strong> (Imp) / ~95 (base), a ~44-TPS edge over Windfury.</li>
-                <li><strong>Avenger's Shield crit fixed:</strong> AS is a direct-damage Holy nuke and <strong>does critically strike</strong> (spell crit, 1.5&times;) &mdash; the engine had been treating it as non-critting. Added the average-crit term (AS per-cast <strong>1,301 &rarr; 1,373</strong> at 709 SP), which also nudges the Avenger's Shield build's TPS up slightly. (Consecration and Holy Shield genuinely <em>cannot</em> crit and were left as-is.)</li>
-            </ul>
-            <h3>2026-06-09 (v1.8) &mdash; JoR coefficient correction, SoR opener, layout overhaul &amp; review-pass fixes</h3>
-            <ul>
-                <li><strong>Major correction &mdash; Judgement of Righteousness coefficient:</strong> JoR uses base <strong>208 / SP coefficient 0.728</strong> (rank 9, Wowhead TBC), not the generic 0.429 the simulation had used. JoR now out-scales Judgement of Blood above <strong>~400 spell power</strong>. Propagated through every calculator, chart, and the Wrath-of-Air / Wizard Oil contribution tables.</li>
-                <li><strong>Opener flipped to Seal of Righteousness &rarr; Judge Righteousness</strong> at raid spell power (JoR out-snaps JoB), with SoB &rarr; Judge Blood kept as the sub-~400-SP (leveling) opener. Updated the rotation sections, pre-pull sequence, opener charts/tables, and the seal macro.</li>
-                <li><strong>Ability table:</strong> added Seal of Corruption DoT, Judgement of Corruption, and Judgement of Righteousness rows; verified the SoC DoT (~188 TPS at 5 stacks) and tidied the coefficient appendix.</li>
-                <li><strong>Layout overhaul (best-practice pass):</strong> every charted section now leads with its chart + a visible key-takeaway, with the per-ability math and long derivations in collapsible breakdowns &mdash; shrinks the guide and makes it skimmable while keeping native find-in-page. Added four new visuals: Stat Priorities (TPS-per-point), Combat Rotations (GCD-cadence timeline), Consumables (spell-power-by-consumable), and Combat Expertise vs Improved Sanctity (trade-off bars).</li>
-                <li><strong>Accuracy fixes (review pass):</strong> <strong>Precision gives +3% spell hit</strong> (not +1%) &mdash; it's +3% to both melee and spell. <strong>Avenger's Shield</strong> on cooldown should be cast <em>right after a boss melee swing</em>, since you can't block/dodge/parry while casting it (crushable mid-cast). Mana management reframed around incoming healing (Spiritual Attunement) and a low-mana + potion-on-cooldown trigger rather than fight duration, with a proactive ~70% potion threshold.</li>
-                <li><strong>Seal-analysis chart:</strong> retitled "When does each rotation overtake pure SoR?", now ends at the pure-SoC crossover with call-out leader lines so labels don't overlap the reference lines; corrected the self-vs-Ret JotC labels; and the per-stack breakdown table now shows the same five rotations as the graph (added the Swap+Ret JotC column).</li>
-            </ul>
-            <h3>2026-06-09 (v1.7) &mdash; Sanctity build tuned to max threat; talent threat-vs-survivability section</h3>
-            <ul>
-                <li><strong>Build Change:</strong> Sanctity build (still <strong>0/38/23</strong>) retuned to <strong>max threat</strong> &mdash; <strong>One-Handed Weapon Specialization 3/5 &rarr; 5/5</strong> and <strong>Improved Seal of the Crusader 2/3 &rarr; 3/3</strong>, funded by <strong>Combat Expertise 3/5 &rarr; 1/5</strong> and <strong>Conviction 2/5 &rarr; 1/5</strong>. Combat Expertise is ~0 threat (a survivability talent), and Improved Seal of the Crusader's spell crit feeds the judgements where Conviction's melee crit doesn't</li>
-                <li><strong>New Section:</strong> <a href="#threat-vs-survivability-talents">Threat vs Survivability Talents</a> &mdash; every threat and survivability talent rated, the non-negotiable tanking core, and three ready-to-apply specs (max-threat / balanced / max-survivability) with full point sheets and one-click calculator links. Inlined natively</li>
-                <li><strong>Updated:</strong> Sanctity talent tables, calculator links, build-comparison rows, the build-TPS simulation (1H Weapon Spec 5/5, Combat Expertise 1/5), and the mandatory-talents note</li>
-            </ul>
-            <h3>2026-05-29 (v1.5) &mdash; Sanctity Build: Improved Seal of the Crusader over Improved Judgement</h3>
-            <ul>
-                <li><strong>Build Change:</strong> Sanctity build (still <strong>0/38/23</strong>) drops <strong>2/2 Improved Judgement</strong> for <strong>2/3 Improved Seal of the Crusader</strong>. Improved Judgement's 8s Judgement cooldown desyncs the steady-state 969 cadence; Improved Seal of the Crusader instead adds a raid-wide +2% crit debuff on the boss (all attacks; the +219 Holy-damage debuff itself is unchanged &mdash; the talent is purely the crit debuff in TBC 2.3+) without touching the rotation</li>
-                <li><strong>Rename:</strong> "Sanctity Aura Build" &rarr; "Sanctity Build (Max Threat Raid without Ret Paladin in your party)"</li>
-                <li><strong>Updated:</strong> Ret talent table, build comparison table (Judgement CD now 10s for both builds; new Boss Crit Debuff row), build-choice tips, talent calculator link, and the boss-rotation Judgement cooldown note</li>
-                <li><strong>Consistency fix:</strong> Heroic-only defense floor corrected from 465 to <strong>485</strong> (level 72 crit immunity) in the AOE Threat Set gearing priorities and the AOE stat-priority notes &mdash; matches the Resilience vs Defense section</li>
-            </ul>
-
-            <h3>2026-05-27 (v1.4) &mdash; Combat Expertise vs Improved Sanctity Aura</h3>
-            <ul>
-                <li><strong>New Section:</strong> "Combat Expertise vs Improved Sanctity Aura" &mdash; net-effect analysis of 5/5 Combat Expertise vs 3/5 CE + 2/2 Improved Sanctity Aura (party-wide +2% all damage vs ~4% Stamina and 2 expertise), with worked party-DPS example and verdict</li>
-                <li><strong>Build Change:</strong> Sanctity build updated from 0/40/21 to <strong>0/38/23</strong> &mdash; Combat Expertise 5/5 &rarr; 3/5 to fund 2/2 Improved Sanctity Aura. Verified against talent data that Improved Sanctity Aura is a tier-5 (20-point) talent on the same row as Sanctity Aura, so the reallocation is legal</li>
-                <li><strong>Correction:</strong> Combat Expertise "+10 expertise" fixed to <strong>"+5 expertise"</strong> (+1 per rank, not +2) in both build tables and the Mandatory Talents box; matches the guide's reference profile (Expertise = 5)</li>
-            </ul>
-
-            <h3>2026-02-24 (v1.3) &mdash; Resilience vs Defense &amp; Crit/Crush Calculator</h3>
-            <ul>
-                <li><strong>New Section:</strong> "Resilience vs Defense: When PvP Gear Works for Tanking" &mdash; per-point comparison table, crit immunity thresholds by content (heroics vs raids), heroic dungeon sweet spot analysis, raid warning</li>
-                <li><strong>New Section:</strong> "Crit &amp; Crush Immunity Calculator" &mdash; spreadsheet-ready formulas for checking crit immunity (defense skill + resilience) and crush immunity (102.4% combat table) from character sheet values</li>
-                <li><strong>Updated:</strong> Resilience row in Stat Conversions table now shows crit immunity cap and links to new section</li>
-                <li><strong>Sources:</strong> Added 5 new citations (WoWWiki Defense, WoWHead Prot Paladin Stat Priority, Tank That!, Honorscode BCC Guide, TBC Rating Calculator)</li>
-            </ul>
-
-            <h3>2026-02-16 (v1.2) &mdash; Aura &amp; Build Comparison Charts</h3>
-            <ul>
-                <li><strong>New Chart:</strong> Added Aura Comparison chart (Chart.js) comparing threat (TPS) and mitigation (DPPS) across all 7 Horde auras (including Sanctity) for both AOE and single-target scenarios</li>
-                <li><strong>Aura Selection Guide:</strong> Added tip box with practical aura selection guidelines by encounter type</li>
-                <li><strong>New Chart:</strong> Added Blessing Comparison chart comparing threat (TPS) and mitigation (DPPS) for Sanctuary, Kings, Might, Wisdom, and Light</li>
-                <li><strong>New Section:</strong> "Sanctity Aura vs Avenger's Shield" &mdash; comparing 0/40/21 (Sanctity + Improved Judgement) vs 0/43/18 (Avenger's Shield + 1H Weapon Spec) builds with talent diff table, TPS chart, and analysis</li>
-            </ul>
-            <h3>2026-02-10 (v1.1) &mdash; Accuracy Audit</h3>
-            <ul>
-                <li><strong>Avenger's Shield:</strong> Corrected from "3 sec silence" to "6 sec daze" throughout guide (silence was added in WotLK, not TBC)</li>
-                <li><strong>Divine Protection:</strong> Corrected from "50% damage reduction, 12 sec" to "full immunity, 8 sec, cannot attack" (50% DR is WotLK version)</li>
-                <li><strong>Avenging Wrath:</strong> Corrected Forbearance interaction &mdash; AW <em>does</em> cause Forbearance in TBC 2.4.3 (removed in WotLK 3.0.2)</li>
-                <li><strong>Righteous Defense:</strong> Updated to note it can target enemies directly (as of patch 2.4.0), not just friendly players</li>
-                <li><strong>Arcane Torrent:</strong> Corrected mana restore from "6% of total mana" to Mana Tap charge-based system (~171 mana/charge, up to 3)</li>
-                <li><strong>Judgement of Blood:</strong> Corrected base damage from ~460 to 295&ndash;325 (verified against Wowhead TBC)</li>
-                <li><strong>Holy Wrath Rank 3:</strong> Corrected damage from 757 to 637&ndash;748, added 2 sec cast time</li>
-                <li><strong>Blessing of Sanctuary:</strong> Corrected to Rank 5 values (46 Holy/block, 80 DR) from incorrect values (14/42)</li>
-                <li><strong>Seal of Wisdom:</strong> Corrected mana per proc from ~100 to 121</li>
-                <li><strong>Continuum Blade:</strong> Corrected speed (1.80), stamina (+30), SP (+121), source (Keepers of Time Revered)</li>
-                <li><strong>Gavel of Unearthed Secrets:</strong> Corrected speed (2.70), stamina (+24), SP (+159), added Int and Spell Crit</li>
-                <li><strong>Mallet of the Tides:</strong> Corrected to show no spell damage (has Def+Expertise), fixed speed (1.70), fixed drop source (Lurker Below)</li>
-                <li>Updated all dependent calculations (threat examples, seal swap TPS, self-damage estimates)</li>
-            </ul>
-
             <h3>2026-02-09 (v1.0)</h3>
             <ul>
                 <li>Full guide content written for all 16 sections</li>
@@ -4220,12 +4130,101 @@ For comparison (same 60s window, best realistic non-twist packages):
                 <li>Sources & References: All mechanics verified against online sources with full citation links</li>
                 <li>All key values cross-checked: defense cap (490/332 rating), spell power coefficients, RF multiplier (1.9x), expertise soft cap (26), hit caps</li>
             </ul>
-
-            <h3>2026-02-09 (v0.1)</h3>
+            <h3>2026-02-10 (v1.1) &mdash; Accuracy Audit</h3>
             <ul>
-                <li>Initial guide skeleton and structure created</li>
-                <li>Table of Contents with all planned sections</li>
-                <li>CSS styling foundation matching warrior guide format with paladin-specific additions</li>
+                <li><strong>Avenger's Shield:</strong> Corrected from "3 sec silence" to "6 sec daze" throughout guide (silence was added in WotLK, not TBC)</li>
+                <li><strong>Divine Protection:</strong> Corrected from "50% damage reduction, 12 sec" to "full immunity, 8 sec, cannot attack" (50% DR is WotLK version)</li>
+                <li><strong>Avenging Wrath:</strong> Corrected Forbearance interaction &mdash; AW <em>does</em> cause Forbearance in TBC 2.4.3 (removed in WotLK 3.0.2)</li>
+                <li><strong>Righteous Defense:</strong> Updated to note it can target enemies directly (as of patch 2.4.0), not just friendly players</li>
+                <li><strong>Arcane Torrent:</strong> Corrected mana restore from "6% of total mana" to Mana Tap charge-based system (~171 mana/charge, up to 3)</li>
+                <li><strong>Judgement of Blood:</strong> Corrected base damage from ~460 to 295&ndash;325 (verified against Wowhead TBC)</li>
+                <li><strong>Holy Wrath Rank 3:</strong> Corrected damage from 757 to 637&ndash;748, added 2 sec cast time</li>
+                <li><strong>Blessing of Sanctuary:</strong> Corrected to Rank 5 values (46 Holy/block, 80 DR) from incorrect values (14/42)</li>
+                <li><strong>Seal of Wisdom:</strong> Corrected mana per proc from ~100 to 121</li>
+                <li><strong>Continuum Blade:</strong> Corrected speed (1.80), stamina (+30), SP (+121), source (Keepers of Time Revered)</li>
+                <li><strong>Gavel of Unearthed Secrets:</strong> Corrected speed (2.70), stamina (+24), SP (+159), added Int and Spell Crit</li>
+                <li><strong>Mallet of the Tides:</strong> Corrected to show no spell damage (has Def+Expertise), fixed speed (1.70), fixed drop source (Lurker Below)</li>
+                <li>Updated all dependent calculations (threat examples, seal swap TPS, self-damage estimates)</li>
+            </ul>
+            <h3>2026-02-16 (v1.2) &mdash; Aura &amp; Build Comparison Charts</h3>
+            <ul>
+                <li><strong>New Chart:</strong> Added Aura Comparison chart (Chart.js) comparing threat (TPS) and mitigation (DPPS) across all 7 Horde auras (including Sanctity) for both AOE and single-target scenarios</li>
+                <li><strong>Aura Selection Guide:</strong> Added tip box with practical aura selection guidelines by encounter type</li>
+                <li><strong>New Chart:</strong> Added Blessing Comparison chart comparing threat (TPS) and mitigation (DPPS) for Sanctuary, Kings, Might, Wisdom, and Light</li>
+                <li><strong>New Section:</strong> "Sanctity Aura vs Avenger's Shield" &mdash; comparing 0/40/21 (Sanctity + Improved Judgement) vs 0/43/18 (Avenger's Shield + 1H Weapon Spec) builds with talent diff table, TPS chart, and analysis</li>
+            </ul>
+            <h3>2026-02-24 (v1.3) &mdash; Resilience vs Defense &amp; Crit/Crush Calculator</h3>
+            <ul>
+                <li><strong>New Section:</strong> "Resilience vs Defense: When PvP Gear Works for Tanking" &mdash; per-point comparison table, crit immunity thresholds by content (heroics vs raids), heroic dungeon sweet spot analysis, raid warning</li>
+                <li><strong>New Section:</strong> "Crit &amp; Crush Immunity Calculator" &mdash; spreadsheet-ready formulas for checking crit immunity (defense skill + resilience) and crush immunity (102.4% combat table) from character sheet values</li>
+                <li><strong>Updated:</strong> Resilience row in Stat Conversions table now shows crit immunity cap and links to new section</li>
+                <li><strong>Sources:</strong> Added 5 new citations (WoWWiki Defense, WoWHead Prot Paladin Stat Priority, Tank That!, Honorscode BCC Guide, TBC Rating Calculator)</li>
+            </ul>
+            <h3>2026-05-27 (v1.4) &mdash; Combat Expertise vs Improved Sanctity Aura</h3>
+            <ul>
+                <li><strong>New Section:</strong> "Combat Expertise vs Improved Sanctity Aura" &mdash; net-effect analysis of 5/5 Combat Expertise vs 3/5 CE + 2/2 Improved Sanctity Aura (party-wide +2% all damage vs ~4% Stamina and 2 expertise), with worked party-DPS example and verdict</li>
+                <li><strong>Build Change:</strong> Sanctity build updated from 0/40/21 to <strong>0/38/23</strong> &mdash; Combat Expertise 5/5 &rarr; 3/5 to fund 2/2 Improved Sanctity Aura. Verified against talent data that Improved Sanctity Aura is a tier-5 (20-point) talent on the same row as Sanctity Aura, so the reallocation is legal</li>
+                <li><strong>Correction:</strong> Combat Expertise "+10 expertise" fixed to <strong>"+5 expertise"</strong> (+1 per rank, not +2) in both build tables and the Mandatory Talents box; matches the guide's reference profile (Expertise = 5)</li>
+            </ul>
+            <h3>2026-05-29 (v1.5) &mdash; Sanctity Build: Improved Seal of the Crusader over Improved Judgement</h3>
+            <ul>
+                <li><strong>Build Change:</strong> Sanctity build (still <strong>0/38/23</strong>) drops <strong>2/2 Improved Judgement</strong> for <strong>2/3 Improved Seal of the Crusader</strong>. Improved Judgement's 8s Judgement cooldown desyncs the steady-state 969 cadence; Improved Seal of the Crusader instead adds a raid-wide +2% crit debuff on the boss (all attacks; the +219 Holy-damage debuff itself is unchanged &mdash; the talent is purely the crit debuff in TBC 2.3+) without touching the rotation</li>
+                <li><strong>Rename:</strong> "Sanctity Aura Build" &rarr; "Sanctity Build (Max Threat Raid without Ret Paladin in your party)"</li>
+                <li><strong>Updated:</strong> Ret talent table, build comparison table (Judgement CD now 10s for both builds; new Boss Crit Debuff row), build-choice tips, talent calculator link, and the boss-rotation Judgement cooldown note</li>
+                <li><strong>Consistency fix:</strong> Heroic-only defense floor corrected from 465 to <strong>485</strong> (level 72 crit immunity) in the AOE Threat Set gearing priorities and the AOE stat-priority notes &mdash; matches the Resilience vs Defense section</li>
+            </ul>
+            <h3>2026-06-09 (v1.7) &mdash; Sanctity build tuned to max threat; talent threat-vs-survivability section</h3>
+            <ul>
+                <li><strong>Build Change:</strong> Sanctity build (still <strong>0/38/23</strong>) retuned to <strong>max threat</strong> &mdash; <strong>One-Handed Weapon Specialization 3/5 &rarr; 5/5</strong> and <strong>Improved Seal of the Crusader 2/3 &rarr; 3/3</strong>, funded by <strong>Combat Expertise 3/5 &rarr; 1/5</strong> and <strong>Conviction 2/5 &rarr; 1/5</strong>. Combat Expertise is ~0 threat (a survivability talent), and Improved Seal of the Crusader's spell crit feeds the judgements where Conviction's melee crit doesn't</li>
+                <li><strong>New Section:</strong> <a href="#threat-vs-survivability-talents">Threat vs Survivability Talents</a> &mdash; every threat and survivability talent rated, the non-negotiable tanking core, and three ready-to-apply specs (max-threat / balanced / max-survivability) with full point sheets and one-click calculator links. Inlined natively</li>
+                <li><strong>Updated:</strong> Sanctity talent tables, calculator links, build-comparison rows, the build-TPS simulation (1H Weapon Spec 5/5, Combat Expertise 1/5), and the mandatory-talents note</li>
+            </ul>
+            <h3>2026-06-09 (v1.8) &mdash; JoR coefficient correction, SoR opener, layout overhaul &amp; review-pass fixes</h3>
+            <ul>
+                <li><strong>Major correction &mdash; Judgement of Righteousness coefficient:</strong> JoR uses base <strong>208 / SP coefficient 0.728</strong> (rank 9, Wowhead TBC), not the generic 0.429 the simulation had used. JoR now out-scales Judgement of Blood above <strong>~400 spell power</strong>. Propagated through every calculator, chart, and the Wrath-of-Air / Wizard Oil contribution tables.</li>
+                <li><strong>Opener flipped to Seal of Righteousness &rarr; Judge Righteousness</strong> at raid spell power (JoR out-snaps JoB), with SoB &rarr; Judge Blood kept as the sub-~400-SP (leveling) opener. Updated the rotation sections, pre-pull sequence, opener charts/tables, and the seal macro.</li>
+                <li><strong>Ability table:</strong> added Seal of Corruption DoT, Judgement of Corruption, and Judgement of Righteousness rows; verified the SoC DoT (~188 TPS at 5 stacks) and tidied the coefficient appendix.</li>
+                <li><strong>Layout overhaul (best-practice pass):</strong> every charted section now leads with its chart + a visible key-takeaway, with the per-ability math and long derivations in collapsible breakdowns &mdash; shrinks the guide and makes it skimmable while keeping native find-in-page. Added four new visuals: Stat Priorities (TPS-per-point), Combat Rotations (GCD-cadence timeline), Consumables (spell-power-by-consumable), and Combat Expertise vs Improved Sanctity (trade-off bars).</li>
+                <li><strong>Accuracy fixes (review pass):</strong> <strong>Precision gives +3% spell hit</strong> (not +1%) &mdash; it's +3% to both melee and spell. <strong>Avenger's Shield</strong> on cooldown should be cast <em>right after a boss melee swing</em>, since you can't block/dodge/parry while casting it (crushable mid-cast). Mana management reframed around incoming healing (Spiritual Attunement) and a low-mana + potion-on-cooldown trigger rather than fight duration, with a proactive ~70% potion threshold.</li>
+                <li><strong>Seal-analysis chart:</strong> retitled "When does each rotation overtake pure SoR?", now ends at the pure-SoC crossover with call-out leader lines so labels don't overlap the reference lines; corrected the self-vs-Ret JotC labels; and the per-stack breakdown table now shows the same five rotations as the graph (added the Swap+Ret JotC column).</li>
+            </ul>
+            <h3>2026-06-10 (v1.9) &mdash; Seal of Righteousness SP coefficient correction (0.2 &rarr; 0.092&times;speed)</h3>
+            <ul>
+                <li><strong>Correction &mdash; SoR per-swing SP coefficient:</strong> Seal of Righteousness scales with <strong>weapon speed</strong> &mdash; <strong>0.092 &times; speed (1H)</strong>, which is <strong>&asymp;0.166</strong> for this guide's 1.8s weapon, not the flat <strong>0.2</strong> the simulation had used. The old 0.2 over-estimated SoR proc threat for a 1.8s weapon by &asymp;20%. <em>Discovered during the 2026-06-09 fresh editorial read-through</em> (the appendix/ability table had already been corrected to 0.092&times;speed, but the live chart engine and the buff-contribution math were still running on the disavowed 0.2) and fixed here.</li>
+                <li><strong>Propagated through every dependent figure:</strong> the interactive chart engine (so the seal-crossover table, cumulative-threat catch-up chart, seal-swap displays, opener-comparison table, and both 5-minute SP-sweep charts all recompute), plus the static Wrath-of-Air / Windfury / Wizard Oil contribution tables and totals. Net effect: SoR proc threat drops ~14%, so <strong>WoA ~71&rarr;67 TPS, Imp WoA ~85&rarr;81, Windfury ~71&rarr;65, twist ~128&rarr;124</strong>, and the corresponding 5-min / 60s totals.</li>
+                <li><strong>Consistency reconcile (same pass):</strong> the three overview <strong>seal-comparison charts</strong> and the <strong>per-ability threat table</strong> were brought into line with the verified chart engine &mdash; they had been omitting the <strong>2pc Justicar +10%</strong> (on seal procs / SoC DoT) and the <strong>average spell-crit</strong> the engine applies to judgements. So one set of numbers now holds guide-wide: <strong>SoR 188, SoC DoT 188, JoC 182, JoR 145, JoB 128</strong> TPS; combined <strong>Pure SoR 333, Pure SoC 370, Seal-swap 558</strong>. The per-ability table now honors its own "639&ndash;709 SP, crit included" footnote (Consec, Holy Shield, Avenger's Shield, Exorcism, Holy Wrath ranges all refreshed to the raid-buffed basis).</li>
+                <li><strong>Buff section made internally consistent:</strong> <strong>Wizard Oil ~23&rarr;28 TPS</strong> and <strong>base Windfury ~58&rarr;63 TPS</strong> (both had drifted from their own per-ability models), and the per-buff <strong>DPS column</strong> was corrected to match the TPS (WoA ~35, Imp ~42, Oil ~15). Knock-on: <strong>WoA + Oil ~109 TPS</strong> (Imp) / ~95 (base), a ~44-TPS edge over Windfury.</li>
+                <li><strong>Avenger's Shield crit fixed:</strong> AS is a direct-damage Holy nuke and <strong>does critically strike</strong> (spell crit, 1.5&times;) &mdash; the engine had been treating it as non-critting. Added the average-crit term (AS per-cast <strong>1,301 &rarr; 1,373</strong> at 709 SP), which also nudges the Avenger's Shield build's TPS up slightly. (Consecration and Holy Shield genuinely <em>cannot</em> crit and were left as-is.)</li>
+            </ul>
+            <h3>2026-06-10 (v2.0) &mdash; Moved unverified sections to a holding file pending review</h3>
+            <ul>
+                <li><strong>Pulled the following sections out of the live guide</strong> into <code>review prior to inclusion.html</code> until they can be vetted to the standard of the rest of the guide: <strong>Engineering, Weapon Selection, Shield Selection, Libram Optimization, Enchantments, Gems &amp; Professions, Essential Macros, WeakAuras, Addons, Simulators &amp; Tools, and the Crit &amp; Crush Immunity Calculator.</strong> The Gear Optimization section keeps its AOE / Boss / Mitigation / Off-Tank gear-set guidance; only the weapon/shield/libram subsections moved. TOC trimmed to match. No verified content (mechanics, coefficients, charts) was affected.</li>
+            </ul>
+            <h3>2026-06-10 (v2.1) &mdash; Aura comparison: added "why Retribution is the default AOE aura" explainer</h3>
+            <ul>
+                <li>Added a collapsed deep-dive box after the aura selection guidelines explaining why <strong>Retribution Aura is the default AOE-pull aura even though the chart shows Sanctity Aura with higher threat</strong> (155 vs 96 TPS AOE): Sanctity needs the 21-point Retribution talent (Sanctity build only) while Ret Aura is a free base aura; the single aura slot competes with Devotion/Resistance for survival; auras are party-wide and don't stack; and the two generate AOE threat differently (Ret = per-incoming-hit reflect, immediate on the pull, vs Sanctity = +10% Holy multiplier that needs Consec/HS already landing).</li>
+            </ul>
+            <h3>2026-06-10 (v2.2) &mdash; Avenger's Shield coefficient corrected (0.193 &rarr; 0.1357)</h3>
+            <ul>
+                <li><strong>Avenger's Shield SP coefficient: 0.193 &rarr; 0.1357 (13.57% per target).</strong> The 0.193 we had been using is Wowhead's <em>auto-calculated</em> tooltip coefficient, which over-states scaling for multi-target spells (it ignores the in-game multi-target/AoE penalty). Empirical TBC testing and Wowhead's own Prot Paladin guide both put the effective coefficient at <strong>13.57% per target</strong>. Updated the chart engine, the per-ability threat table (AS now <strong>1,253&ndash;1,291</strong> per target, was 1,326&ndash;1,373), the worked example, the coefficient appendix (with sourcing), and the Wrath-of-Air / Wizard Oil contribution rows. AS is a 30s-CD opener, not part of the steady-state rotation, so the buff TPS totals are unaffected. (The earlier v1.9 crit fix &mdash; AS <em>does</em> crit at 1.5&times; spell &mdash; still stands.)</li>
+            </ul>
+            <h3>2026-06-10 (v2.3) &mdash; Holy Wrath coefficient corrected (0.286 &rarr; 0.19); Consecration verified</h3>
+            <ul>
+                <li><strong>Holy Wrath SP coefficient: 0.286 &rarr; 0.19.</strong> Same issue as Avenger's Shield &mdash; the 0.286 was Wowhead's auto-calculated tooltip mod (the ordinary &frac12; AoE penalty, 2/3.5/2), which over-states multi-target spells. Holy Wrath is <em>uncapped</em> AoE (all undead/demons in range), which takes the harsher 2/3.5/3 = <strong>0.19</strong> penalty; this matches Wowhead's Prot Paladin guide (19.05%) and older community theorycraft. Updated the engine, per-ability table (HW now <strong>1,494&ndash;1,543</strong> per cast, was 1,615&ndash;1,679), coefficient appendix + verification note, the WoA contribution row, and the demon-boss spell-crit delta calc. HoW is undead/demon-only on a 1-min CD, so impact is minor.</li>
+                <li><strong>Consecration verified &mdash; kept at 1.000 total (0.125/tick).</strong> Checked against Wowhead's guide value (95.2%). Two independent empirical combat-log measurements support ~1.0: our own (129/tick at 516 SP) and a Wowhead spell-page comment (141/tick at +608 SP &rarr; 616 bonus &divide; 608 = 1.01). The 95.2% figure is a theoretical underestimate, so no change.</li>
+            </ul>
+            <h3>2026-06-10 (v2.4) &mdash; Resolved all "Flagged for Further Verification" items</h3>
+            <ul>
+                <li><strong>Holy Shield Rank 4 mana: 180 &rarr; 280</strong>, and <strong>Benediction does not reduce it</strong> (it's not affected). Updated the ability detail table and the per-cycle mana math (full rotation now <strong>~1,201 mana</strong>/cycle, ~53s sustain at 8k mana without returns).</li>
+                <li><strong>Holy Shield Rank 4 cooldown: 8s &rarr; 10s</strong> (= its duration, so recasting on CD = 100% uptime; the sim engine already used 10s). Fixed the prose that called it "every 8s." (The "969" references elsewhere are about <em>Improved Judgement's</em> 8s judgement CD, which is correct and unchanged.)</li>
+                <li><strong>Judgement of Wisdom: ~50% proc per hit</strong> (not guaranteed) &mdash; ~74 mana per proc &asymp; 37/attack on average. Per the Light's Bulwark guide (JoW PPM = 1/speed &times; 0.50 &times; 60).</li>
+                <li><strong>Exorcism Rank 7 base: 573&ndash;655 &rarr; 626&ndash;698</strong> (avg 662), verified on Wowhead. Updated the ability table, coefficient appendix, and the chart engine.</li>
+                <li><strong>Improved Holy Shield (8 charges)</strong> and the <strong>Seal of Righteousness coefficient</strong> (now 0.092&times;speed) were already confirmed/corrected.</li>
+                <li><strong>Flagged section trimmed:</strong> with everything resolved, the conflicting-data-sources note, the stale review-status note, and the verification table were removed and replaced with a short "all verified" summary. (Blessing of Kings as a threat generator was noted in the holding file as a future-inclusion candidate.)</li>
+            </ul>
+            <h3>2026-06-10 (v2.5) &mdash; Changelog reordered to chronological (oldest first)</h3>
+            <ul>
+                <li>Flipped the changelog to <strong>oldest&ndash;at&ndash;top, newest&ndash;at&ndash;the&ndash;bottom</strong> so it reads top-to-bottom as the guide evolved. Presentation only &mdash; no content changed.</li>
             </ul>
         </div>
 
