@@ -879,9 +879,9 @@
             <tr>
                 <td><strong>Avenger's Shield</strong> (Rank 3)</td>
                 <td>494&ndash;602 per target</td>
-                <td>0.193 per target</td>
-                <td>(548 + SP&times;0.193) &times; 1.9 per target</td>
-                <td style="color: #7ee787; font-weight: bold;">1,326&ndash;1,373 /target</td>
+                <td>0.136 per target (13.57%)</td>
+                <td>(548 + SP&times;0.1357) &times; 1.9 per target</td>
+                <td style="color: #7ee787; font-weight: bold;">1,253&ndash;1,291 /target</td>
                 <td>Per cast; 3 targets, 6s daze, 30s CD (opener, not rotational); crits 1.5&times; (spell)</td>
             </tr>
             <tr>
@@ -972,7 +972,7 @@
         <div class="formula">
             Consecration (8 sec): (512 + 709&times;1.0) &times; 1.9 = <strong>2,320 threat</strong> <span style="color:#8b949e;">(cannot crit)</span><br>
             Holy Shield (per block): (155 + 709&times;0.05 + 15) &times; 1.9 &times; 1.20 = <strong>468 threat</strong> <span style="color:#8b949e;">(+4pc Justicar, Imp HS; cannot crit)</span><br>
-            Avenger's Shield (per target): (548 + 709&times;0.193) &times; 1.9 &times; 1.055 = <strong>1,373 threat</strong> <span style="color:#8b949e;">(avg spell crit, 11%)</span><br>
+            Avenger's Shield (per target): (548 + 709&times;0.1357) &times; 1.9 &times; 1.055 = <strong>1,291 threat</strong> <span style="color:#8b949e;">(avg spell crit, 11%)</span><br>
             Judgement of Blood: (310 + 709&times;0.43) &times; 1.9 &times; 1.095 = <strong>1,279 threat</strong> <span style="color:#8b949e;">(avg melee crit, 9.5%)</span><br>
             Judgement of Righteousness: (208 + 709&times;0.728) &times; 1.9 &times; 1.055 = <strong>1,452 threat</strong> <span style="color:#8b949e;">(avg spell crit, 11%)</span>
         </div>
@@ -3353,9 +3353,9 @@
             </tr>
             <tr>
                 <td><strong>Avenger's Shield</strong></td>
-                <td>0.193</td>
-                <td class="gain-good">+19.5</td>
-                <td class="gain-good">+39.0</td>
+                <td>0.136</td>
+                <td class="gain-good">+13.7</td>
+                <td class="gain-good">+27.5</td>
                 <td>30s CD &bull; spell crit 1.5&times;</td>
             </tr>
             <tr>
@@ -3448,7 +3448,7 @@ Total per WF proc: ~585 threat / ~9 seconds              = ~65 TPS</div>
             <tr><td>SoC DoT (per tick, 5 stacks)</td><td>0.17</td><td class="gain-good">+7.9</td><td class="gain-good">+14.9</td></tr>
             <tr><td>Consecration (full 8s)</td><td>1.000</td><td class="gain-good">+42.0</td><td class="gain-good">+79.8</td></tr>
             <tr><td>Holy Shield (full 8 blocks)</td><td>0.40</td><td class="gain-good">+16.8</td><td class="gain-good">+38.3</td></tr>
-            <tr><td>Avenger's Shield</td><td>0.193</td><td class="gain-good">+8.1</td><td class="gain-good">+15.4</td></tr>
+            <tr><td>Avenger's Shield</td><td>0.136</td><td class="gain-good">+5.7</td><td class="gain-good">+11.4</td></tr>
             <tr><td>Seal of Blood / JoB</td><td>0 / 0.43</td><td class="gain-bad">+0</td><td class="gain-good">+18 (JoB only)</td></tr>
         </table>
 
@@ -3960,8 +3960,8 @@ For comparison (same 60s window, best realistic non-twist packages):
             </tr>
             <tr>
                 <td><strong>Avenger's Shield (R3)</strong></td>
-                <td>0.193 per target</td>
-                <td><a href="https://www.wowhead.com/tbc/spell=32700/avengers-shield">Wowhead TBC &mdash; Avenger's Shield Rank 3</a> ("Value: 494 (SP mod: 0.193)"). Rank 1 (<a href="https://www.wowhead.com/tbc/spell=31935/avengers-shield">31935</a>) confirms the same 0.193 across ranks.</td>
+                <td>0.1357 per target (13.57%)</td>
+                <td>Empirical TBC testing: <strong>13.57% per target</strong> (Wowhead spell=32700 user comment; matches <a href="https://www.wowhead.com/tbc/guide/classes/paladin/tank-stat-priority-attributes-pve">Wowhead's TBC Prot Paladin guide</a>, which lists 13.57%). The <a href="https://www.wowhead.com/tbc/spell=32700/avengers-shield">spell-page tooltip's "SP mod: 0.193"</a> is Wowhead's <em>auto-calculated</em> coefficient, which over-states scaling for multi-target spells because it ignores the in-game multi-target/AoE penalty &mdash; so the effective value is the lower 0.1357. (Corrected from 0.193 on 2026-06-10.)</td>
             </tr>
             <tr>
                 <td><strong>Judgement of Blood</strong></td>
@@ -4104,6 +4104,10 @@ For comparison (same 60s window, best realistic non-twist packages):
         <!-- ============================================================ -->
         <h2 id="changelog"><a href="#toc">Changelog</a></h2>
         <div class="toc">
+            <h3>2026-06-10 (v2.2) &mdash; Avenger's Shield coefficient corrected (0.193 &rarr; 0.1357)</h3>
+            <ul>
+                <li><strong>Avenger's Shield SP coefficient: 0.193 &rarr; 0.1357 (13.57% per target).</strong> The 0.193 we had been using is Wowhead's <em>auto-calculated</em> tooltip coefficient, which over-states scaling for multi-target spells (it ignores the in-game multi-target/AoE penalty). Empirical TBC testing and Wowhead's own Prot Paladin guide both put the effective coefficient at <strong>13.57% per target</strong>. Updated the chart engine, the per-ability threat table (AS now <strong>1,253&ndash;1,291</strong> per target, was 1,326&ndash;1,373), the worked example, the coefficient appendix (with sourcing), and the Wrath-of-Air / Wizard Oil contribution rows. AS is a 30s-CD opener, not part of the steady-state rotation, so the buff TPS totals are unaffected. (The earlier v1.9 crit fix &mdash; AS <em>does</em> crit at 1.5&times; spell &mdash; still stands.)</li>
+            </ul>
             <h3>2026-06-10 (v2.1) &mdash; Aura comparison: added "why Retribution is the default AOE aura" explainer</h3>
             <ul>
                 <li>Added a collapsed deep-dive box after the aura selection guidelines explaining why <strong>Retribution Aura is the default AOE-pull aura even though the chart shows Sanctity Aura with higher threat</strong> (155 vs 96 TPS AOE): Sanctity needs the 21-point Retribution talent (Sanctity build only) while Ret Aura is a free base aura; the single aura slot competes with Devotion/Resistance for survival; auras are party-wide and don't stack; and the two generate AOE threat differently (Ret = per-incoming-hit reflect, immediate on the pull, vs Sanctity = +10% Holy multiplier that needs Consec/HS already landing).</li>
@@ -4330,7 +4334,7 @@ For comparison (same 60s window, best realistic non-twist packages):
     const CONSEC_TICK = Math.round(CONSEC / 8); // per-tick Consec threat (8 ticks over 8s, 1/sec)
     const CONSEC_TICK_AW = Math.round((CONSEC * AW) / 8); // per-tick with AW
     const HS_BLK = Math.round((155 + SP * 0.05 + JUSTICAR_4P_HS) * RF * 1.20); // 2/2 Imp HS + 4pc Justicar (+15 flat per block)
-    const AS = Math.round((548 + SP * 0.193) * RF * (1 + SC * 0.5));         // Wowhead TBC SP mod 0.193; crits 1.5× (spell), like other direct Holy nukes
+    const AS = Math.round((548 + SP * 0.1357) * RF * (1 + SC * 0.5));        // effective 13.57%/target (empirical) — NOT Wowhead's auto-calc 0.193, which ignores the multi-target penalty; crits 1.5× (spell)
     const EXO = Math.round((619 + SP * 0.429) * RF * (1 + SC * 0.5));         // Wowhead TBC base 619, SP mod 0.429
     const HW = Math.round((635 + SP * 0.286) * RF * (1 + SC * 0.5));          // Wowhead TBC base 635, SP mod 0.286 (no-cap AoE penalty 2/3.5/2)
     const HS_BLOCKS_PER_8S = 3; // estimate
