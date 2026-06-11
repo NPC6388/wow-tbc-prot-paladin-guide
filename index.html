@@ -2258,8 +2258,8 @@
 
     <p>Corruption stacks last <strong>15 seconds</strong> from the last melee hit with SoC active. If you switch to SoR, the timer keeps counting down. To guarantee stacks don't fall off, <strong>switch back to Seal of Corruption ~9 seconds before the stacks expire</strong> (i.e., after ~6 seconds on SoR). Your next melee hit with SoC active refreshes the 15-second timer.</p>
 
-    <div class="tip">
-        <strong>Judging Corruption also rolls for a stack.</strong> Judgement of Corruption carries the <strong>same proc chance to apply or refresh a stack of Blood Corruption</strong> (the SoC DoT debuff) as a normal melee swing with the seal active &mdash; it's treated as a seal-triggering hit, not just a flat nuke. So every JoC is effectively a <em>free stack-application/refresh roll</em> riding on top of its direct threat: it helps push toward 5 stacks during the ramp, and it can refresh the 15-second timer at judge time even if you're parked in Seal of Righteousness. Don't think of the judge as &ldquo;stack-neutral&rdquo; &mdash; each one actively helps keep Blood Corruption alive.
+    <div class="warning">
+        <strong>Judging does NOT refresh your stacks.</strong> Blood Corruption stacks are applied, and the 15-second timer refreshed, <strong>only by melee hits with Seal of Corruption active</strong>. Judgement of Corruption consumes the seal and deals damage at your <em>current</em> stack count &mdash; it does <strong>not</strong> roll a new stack and does <strong>not</strong> refresh the timer. This is exactly why you <strong>re-seal SoC after every judge</strong> and let your next melee swing refresh the timer <em>before</em> swapping to Seal of Righteousness. Never re-seal SoR straight off the judge &mdash; with nothing refreshing them, your stacks would keep draining toward expiry the whole time you're parked in SoR.
     </div>
 
     <div class="warning">
@@ -2311,7 +2311,7 @@
     <ul>
         <li><span style="color:#f0a500;"><strong>Pure SoC &mdash; SoC &rarr; JSoC &rarr; SoC</strong></span>: Seal of Corruption only. Build 5 stacks, judge fires JoC at current stacks, macro re-seals SoC, next melee refreshes the 15s stack timer. Threat = 5-stack DoT ticking + JoC every 10s.</li>
         <li><span style="color:#7ee787;"><strong>Pure SoR &mdash; SoR &rarr; JSoR &rarr; SoR</strong></span>: Seal of Righteousness only. Macro variant re-seals SoR. Threat = per-swing SoR proc + JoR every 10s.</li>
-        <li><span style="color:#b388ff;"><strong>Seal Swap &mdash; SoC &rarr; JSoC &rarr; SoR &rarr; SoC &rarr; JSoC</strong></span>: Default SoC. After the judge macro fires (JoC + re-seal SoC, single GCD), swap to SoR for <strong>5 seconds</strong> &mdash; the 5-stack DoT keeps ticking while SoR procs add per-swing threat on top. Swap back to SoC, the next melee refreshes the stack timer, hold SoC until the next judge. Repeat.</li>
+        <li><span style="color:#b388ff;"><strong>Seal Swap &mdash; SoC &rarr; JSoC &rarr; SoR &rarr; SoC &rarr; JSoC</strong></span>: Default SoC. After the judge fires (JoC + re-seal <strong>SoC</strong> in one GCD), let your next melee with SoC active <strong>refresh the 15s stack timer</strong> &mdash; the judge itself does not &mdash; then swap to <strong>SoR</strong>: the 5-stack DoT keeps ticking while SoR procs add per-swing threat on top. Stay on SoR until <strong>~9s remain on the stacks</strong> (or until it's time to re-seal SoC for the next judge), then swap back to SoC so a melee refreshes the timer again. Repeat.</li>
         <li><span style="color:#d2a8ff;"><strong>Seal Swap + JotC@J2 (self)</strong></span>: The same Seal Swap, but <em>your own</em> 2nd judge applies Judgement of the Crusader to put up the permanent <strong>+219 Holy debuff</strong> &mdash; from then on every SoR proc and every judge is amplified by +219&times;1.9 RF. In <strong>steady state this is identical to a Ret paladin supplying JotC</strong> (the one-time JoC&rarr;JotC application cost is already paid), so this single line represents both the self-applied and Ret-supplied cases.</li>
     </ul>
 
@@ -2345,7 +2345,7 @@
     <div class="assumptions">
         <strong>Rotation definitions:</strong>
         <ul style="margin: 8px 0 0; padding-left: 20px;">
-            <li><strong style="color:#7ee787;">SoC + SoR (Seal Swap)</strong> &mdash; Open SoC, build to 5 stacks (~14.4s at 70% proc rate), swap to SoR for per-swing procs while DoT ticks. Judge Corruption at 5 stacks (10s, 20s, ...). Swap back to SoC before stacks expire.</li>
+            <li><strong style="color:#7ee787;">SoC + SoR (Seal Swap)</strong> &mdash; <strong>Open SoR &rarr; Judgement of Righteousness</strong> (snap at the pull &mdash; opening cold on SoC is never safe), then re-seal SoC and build to 5 stacks (~14.4s at 70% proc rate). Judge Corruption at 5 stacks (10s, 20s, ...); after each judge re-seal SoC, let a melee refresh the timer, then swap to SoR for per-swing procs while the DoT ticks, and swap back to SoC before stacks expire.</li>
             <li><strong style="color:#58a6ff;">SoR Only</strong> &mdash; Pure Seal of Righteousness from pull. Judge Righteousness every 10s.</li>
             <li><strong style="color:#f0a500;">SoC + JotC</strong> &mdash; Open SoC, 1st judge = JoC (0 stacks &mdash; the opener judge lands at range before the first auto). 2nd judge (10s) = JotC, applying +219 Holy debuff permanently (auto-attacks refresh it). All subsequent judges = JoC (5 stacks), each amplified by the debuff. JotC only needs to be judged once.</li>
             <li><strong style="color:#d2a8ff;">SoC + SoR Seal Swap + JotC</strong> &mdash; The Seal Swap line above, but the <strong>2nd judge is JotC instead of JoC</strong>. It pays a one-time cost (a 5-stack JoC traded for JotC's trivial direct hit), but from then on <em>every SoR-swap proc and every judge is amplified by +219</em> &mdash; which is what lets it pull ahead of the plain Seal Swap after the debuff lands.</li>
@@ -2400,11 +2400,11 @@
     <p>Opening with Seal of Righteousness does <strong>not</strong> delay your Seal of Corruption stacks. Judgement of Righteousness is cast at range, <em>before</em> your first melee swing; you re-seal Seal of Corruption in the same window, so your first melee auto applies Blood Corruption stack&nbsp;1 on exactly the same timeline as a pure-SoC opener. You get the JoR snap threat for free &mdash; there is no stacking penalty for opening with Seal of Righteousness, then switching to your sustained seal. (The same is true of the low-gear SoB&rarr;JoB opener.)</p>
 
     <details class="rotation-frame">
-    <summary>Third opener: Judgement of the Crusader (debuff opener) &mdash; full math</summary>
+    <summary>The other opener: Judgement of the Crusader (debuff opener) &mdash; full math</summary>
 
-    <h4>Third Opener: Judgement of the Crusader (Debuff Opener)</h4>
+    <h4>The JotC Opener (Debuff Opener)</h4>
 
-    <p>A <strong>third opener option</strong> worth considering when a co-tank/DPS handles initial aggro: open with <strong>Seal of the Crusader &rarr; Judgement of the Crusader</strong> to apply the <strong>+219 Holy damage taken</strong> debuff permanently. Auto-attacks refresh the debuff, so it only needs to be judged <strong>once</strong>. JotC itself does trivial direct threat (~71), but the debuff amplifies every subsequent Holy ability for the entire fight.</p>
+    <p>There are really only <strong>two judgement openers</strong> worth considering: <strong>JoR</strong> (the snap, covered above) and <strong>JotC</strong> (this one, the debuff opener). The JotC opener shines when a co-tank/DPS handles initial aggro: open with <strong>Seal of the Crusader &rarr; Judgement of the Crusader</strong> to apply the <strong>+219 Holy damage taken</strong> debuff permanently. Auto-attacks refresh the debuff, so it only needs to be judged <strong>once</strong>. JotC itself does trivial direct threat (~71), but the debuff amplifies every subsequent Holy ability for the entire fight.</p>
 
     <div class="tip">
         <strong>JotC Debuff Amplification (permanent, per ability):</strong>
@@ -2465,7 +2465,7 @@
         <ul style="margin: 8px 0 0;">
             <li><span style="color:#f0a500;"><strong>JoR</strong></span> (opener only): SoR is already active from pre-pull &rarr; Judge Righteousness &rarr; <strong>re-seal SoC</strong> (macro). Start building stacks. <em>(Below ~400 SP, open SoB &rarr; Judge Blood instead.)</em></li>
             <li><span style="color:#d2a8ff;"><strong>JotC</strong></span> (once only, at J2): Seal SotC <strong>1 GCD before</strong> judge CD &rarr; Judge Crusader &rarr; <strong>re-seal SoC</strong>. Costs 2 extra seals (SotC + SoC) = 420 mana beyond the judge itself. Auto-attacks refresh the debuff permanently &mdash; <strong>never needs re-judging.</strong> Your SoC stacks keep ticking from the DoT &mdash; you only lose ~1.5s of auto-attack stack refreshes.</li>
-            <li><span style="color:#7ee787;"><strong>JoC</strong></span>: SoC is already active &rarr; Judge Corruption &rarr; damage scales with current stacks, <strong>stacks are preserved and timer is refreshed</strong>. If at 5 stacks: re-seal <strong>SoR</strong> to ride per-swing procs while the DoT keeps ticking at full power. If below 5 stacks: re-seal <strong>SoC</strong> to keep building. Cheapest judge (just 1 re-seal = 210 mana).</li>
+            <li><span style="color:#7ee787;"><strong>JoC</strong></span>: SoC is already active &rarr; Judge Corruption &rarr; damage scales with current stacks; <strong>stacks are preserved, but the judge does not refresh the 15s timer</strong> (only a melee with SoC active does). Always <strong>re-seal SoC</strong> and let your next melee refresh the timer. If at 5 stacks you can then swap to <strong>SoR</strong> to ride per-swing procs while the DoT keeps ticking at full power; if below 5 stacks, stay on SoC to keep building. Cheapest judge (just 1 re-seal = 210 mana).</li>
             <li><span style="color:#58a6ff;"><strong>JoW</strong></span>: Seal SoW <strong>1 GCD before</strong> judge CD &rarr; Judge Wisdom &rarr; <strong>re-seal SoC</strong>. Costs 2 extra seals (SoW + SoC) = 420 mana, but the 10s JoW debuff returns ~386 mana from auto-attacks (net +176).</li>
         </ul>
         <strong>SoR swap at 5 stacks</strong> (~16.5s): Once SoC reaches 5 stacks, your DoT is ticking at max rate regardless of which seal is active. Swap to <strong>Seal of Righteousness</strong> for per-swing Holy procs while the DoT continues. Ride both for ~5s, then swap back to SoC before the 15s stack timer expires (stacks refresh on each SoC melee hit). SoC has ~70% chance per swing to apply a stack, averaging ~13s to reach 5 stacks with a 1.8s weapon.
@@ -2513,6 +2513,60 @@
         <canvas id="chartDemon" width="900" height="500"></canvas>
     </div>
     <div id="chartDemonNote" class="mana-warning"></div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5B: ELI5 FULL ROTATIONS -->
+    <!-- ============================================================ -->
+    <h3 id="eli5-rotations">ELI5 Full Rotations</h3>
+
+    <p>The charts above isolate the seal/judgement layer. Here is the <strong>whole rotation, plainly</strong>, for the four single-target cases you'll actually meet &mdash; split by whether <strong>you</strong> are the one keeping Judgement of the Crusader up, and whether the boss is a Demon/Undead.</p>
+
+    <div class="formula">
+        <strong>Opener (every rotation):</strong> pre-pull <strong>Seal of Righteousness</strong> &rarr; pull with <strong>Judgement of Righteousness</strong> (your biggest opening snap) &rarr; immediately re-seal <strong>Seal of Corruption</strong> and start swinging to build Blood Corruption stacks. <em>(Below ~400 SP, open Seal of Blood &rarr; Judgement of Blood instead.)</em>
+    </div>
+
+    <div class="tip">
+        <strong>If you ARE responsible for JotC</strong> (no Ret paladin covering it):
+        <p style="margin:8px 0 4px;"><strong>Single-Target (non-Demon/Undead)</strong></p>
+        <ol style="margin:0 0 8px;">
+            <li>Run the opener above.</li>
+            <li><strong>2nd judge:</strong> seal <strong>Seal of the Crusader</strong> one GCD early &rarr; <strong>Judgement of the Crusader</strong> (puts up the permanent <strong>+219 Holy debuff</strong> &mdash; auto-attacks keep it up, so you never judge it again) &rarr; re-seal SoC.</li>
+            <li><strong>Every judge after that is Judgement of Corruption at 5 stacks.</strong> Run the <strong>Seal Swap</strong>: after each JoC re-seal SoC, let a melee refresh the stacks, swap to SoR for ~5s of free per-swing procs while the DoT ticks, then back to SoC before the next judge.</li>
+            <li><strong>Throughout:</strong> Holy Shield on cooldown (100% uptime &mdash; never drop it, top priority), Consecration on cooldown (mana permitting). Fill empty GCDs.</li>
+        </ol>
+        <p style="margin:8px 0 4px;"><strong>Single-Target Demon/Undead</strong></p>
+        <p style="margin:0;">Exactly the same, <strong>plus Exorcism on cooldown and Holy Wrath on cooldown</strong> squeezed into empty GCDs &mdash; both hit hard and your JotC debuff amplifies them.</p>
+    </div>
+
+    <div class="tip">
+        <strong>If you are NOT responsible for JotC</strong> (a Ret or Holy paladin keeps it on the boss):
+        <p style="margin:8px 0 4px;"><strong>Single-Target (non-Demon/Undead)</strong></p>
+        <ol style="margin:0 0 8px;">
+            <li>Run the opener above.</li>
+            <li><strong>Every judge is Judgement of Corruption at 5 stacks</strong> &mdash; you never judge Crusader. Run the same <strong>Seal Swap</strong> (JoC &rarr; re-seal SoC &rarr; melee refresh &rarr; SoR ~5s &rarr; back to SoC before the next judge).</li>
+            <li><strong>Throughout:</strong> Holy Shield on cooldown, Consecration on cooldown.</li>
+        </ol>
+        <p style="margin:8px 0 4px;"><strong>Single-Target Demon/Undead</strong></p>
+        <p style="margin:0;">Exactly the same, <strong>plus Exorcism + Holy Wrath on cooldown</strong> in empty GCDs.</p>
+    </div>
+
+    <div class="warning">
+        Remember our goal is to <strong>get and maintain 5 stacks of Blood Corruption</strong> so we can land a fully-stacked JoC on cooldown, while also getting ~5s of &ldquo;free&rdquo; SoR procs on top. Seal swapping must be <strong>woven into the rotation without ever missing Holy Shield</strong> or any encounter-required mechanic. SoC stacks are a chance-on-hit, so if you get unlucky at the start, you may only have a <strong>3&ndash;4 stack</strong> when the judge comes up &mdash; <strong>judge it anyway</strong>, never delay. And if you know a mechanic such as <strong>Gruul's Shatter</strong> is coming, <strong>stick with SoC beforehand</strong> to reduce the chance the stacks drop before you get back into melee.
+    </div>
+
+    <p style="margin-bottom:4px;">The advantage of running <strong style="color:#d2a8ff;">Seal Swap + JotC@J2 (self)</strong> over <strong style="color:#7ee787;">Pure SoR/JoR</strong> compounds the longer the fight runs (seal + judgement threat only, verified against the 5-minute simulation):</p>
+    <table>
+        <thead>
+            <tr><th>Fight length</th><th>Threat advantage vs Pure SoR</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1 min</td><td>&gt;16k threat</td></tr>
+            <tr><td>2 min</td><td>&gt;32k threat</td></tr>
+            <tr><td>3 min</td><td>&gt;47k threat</td></tr>
+            <tr><td>4 min</td><td>&gt;63k threat</td></tr>
+            <tr><td>5 min</td><td>&gt;79k threat</td></tr>
+        </tbody>
+    </table>
 
     <!-- ============================================================ -->
     <!-- SECTION 6: KEY TAKEAWAYS -->
@@ -4329,11 +4383,37 @@ For comparison (same 60s window, best realistic non-twist packages):
                 <li><strong>Renamed the SoC&harr;SoR rotation from "Hybrid" back to "Seal Swap"</strong> &mdash; reversing the v2.9 standardization. "Seal Swap" describes the actual mechanic (you swap seals) more plainly, so it replaces "Hybrid" everywhere in the Seal &amp; Judgement Threat Analysis: chart legends, the catch-up chart's crossover call-outs and note, the per-stack table columns and description, the running-average / cumulative-300s charts, the scaling-vs-SP chart and its "past ~1050 SP" tip, the section heading ("SoC + SoR Seal Swap at 5 Stacks"), and all rotation definitions. The JotC variant is now <strong>Seal Swap + JotC@J2 (self)</strong> (and <strong>Seal Swap + Ret JotC @ 1s</strong>). Naming only &mdash; no data, coefficients, or chart math changed.</li>
                 <li><strong>Fixed two typos surfaced during the rename:</strong> a doubled "@J2" in the catch-up-chart intro (<em>Seal Swap + JotC@J2 (self)@J2</em> &rarr; <em>Seal Swap + JotC@J2 (self)</em>) and a missing space in the 5-minute-TPS heading (<em>vsSeal Swap</em> &rarr; <em>vs Seal Swap</em>). The unrelated "Hybrid DPS" gear-set name in Gear Optimization was left as-is.</li>
             </ul>
+            <h3>2026-06-11 (v3.1) &mdash; Stack-timer correction, ELI5 Full Rotations, opaque tooltips, snap-opener on the 60s chart</h3>
+            <ul>
+                <li><strong>Mechanics correction &mdash; Judgement of Corruption does NOT refresh Blood Corruption stacks.</strong> Stacks are applied and the 15-second timer refreshed <strong>only by melee hits with Seal of Corruption active</strong>; a judge consumes the seal and deals damage at the current stack count but neither rolls a new stack nor refreshes the timer. Removed the (incorrect) "Judging Corruption also rolls for a stack" box, and corrected the seal-management / Seal Swap descriptions accordingly. The documented swap flow is now consistent throughout: <strong>judge &rarr; re-seal SoC &rarr; let a melee refresh the timer &rarr; swap to SoR until ~9s remain on the stacks (or the next judge is due) &rarr; back to SoC</strong>. (The simulation already modelled this; only the prose was wrong.)</li>
+                <li><strong>New section: <a href="#eli5-rotations">ELI5 Full Rotations</a></strong> &mdash; the whole rotation in plain steps for the four single-target cases (responsible for JotC or not &times; non-Demon/Undead or Demon/Undead), with the shared SoR&rarr;JoR opener, the 5-stacks-of-Blood-Corruption goal, the "judge a 3&ndash;4 stack anyway / hold SoC before a Shatter-type mechanic" reminders, and a verified advantage table (Seal Swap + JotC over Pure SoR: &gt;16k / 32k / 47k / 63k / 79k threat at 1&ndash;5 min, confirmed against the 5-minute sim).</li>
+                <li><strong>Chart tooltips now fully legible.</strong> Set a global opaque tooltip background (was Chart.js's semi-transparent default, which let the lines bleed through) so every chart's mouseover text reads cleanly in front of the data.</li>
+                <li><strong>60s seal-comparison chart now opens realistically.</strong> The Seal Swap line (and the SoR Only / JotC seal-swap variants) now open with the <strong>SoR&rarr;JoR snap</strong> instead of cold-stacking SoC from zero &mdash; you'd never safely open on SoC. The snap is added to both the swap lines and the SoR baseline, so the crossovers are unchanged.</li>
+                <li><strong>Reframed the openers:</strong> there are <strong>two judgement openers &mdash; JoR and JotC</strong> &mdash; so JotC is no longer described as a "third" opener. The sub-~400-SP SoB&rarr;JoB note is kept as the low-gear substitution.</li>
+            </ul>
         </div>
 
     </div>
 <script>
 (function() {
+    // ============================================================
+    // GLOBAL CHART TOOLTIP STYLING
+    // Chart.js already draws tooltips above the dataset lines, but its default
+    // background is semi-transparent (rgba(0,0,0,0.8)) so the lines bleed through
+    // and hurt legibility. Force a fully-opaque, high-contrast tooltip for every
+    // chart in one place so the mouseover text is always in front and readable.
+    // ============================================================
+    if (window.Chart && Chart.defaults && Chart.defaults.plugins && Chart.defaults.plugins.tooltip) {
+        var _tt = Chart.defaults.plugins.tooltip;
+        _tt.backgroundColor = 'rgba(13, 17, 23, 0.98)';
+        _tt.titleColor = '#e6edf3';
+        _tt.bodyColor = '#e6edf3';
+        _tt.borderColor = '#30363d';
+        _tt.borderWidth = 1;
+        _tt.padding = 10;
+        _tt.titleFont = { weight: 'bold' };
+    }
+
     // ============================================================
     // CONSTANTS
     // ============================================================
@@ -5858,6 +5938,19 @@ For comparison (same 60s window, best realistic non-twist packages):
 
         for (var i = 0; i <= STEPS; i++) {
             var t = +(i * DT).toFixed(1);
+
+            // All SoR-based rotations open with a Judgement of Righteousness snap at the
+            // pull (cast at range before the first melee; you re-seal SoC immediately, so
+            // SoC stacking is not delayed). Opening cold on SoC is never safe in practice,
+            // so the Seal Swap lines open SoR → JoR, then transition into the swap. The
+            // same snap is added to SoR Only so the catch-up comparison stays fair (it
+            // shifts both curves up by the same constant, leaving the crossovers intact).
+            if (i === 0) {
+                hT  += jorPerCast * _SL; // Seal Swap
+                sT  += jorPerCast * _SL; // SoR Only
+                hjT += jorPerCast * _SL; // Seal Swap + JotC@J2 (self)
+                hrT += jorPerCast * _SL; // Seal Swap + Ret JotC @ 1s
+            }
 
             // ---- HYBRID: SoC+SoR ----
             while (t >= h_nextAuto - 1e-9) {
