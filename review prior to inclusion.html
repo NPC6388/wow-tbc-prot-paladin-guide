@@ -590,41 +590,49 @@
             <p><strong>To do before inclusion:</strong> (1) spot-check with a TBC 2.4.3 threat meter that a GBoK cast actually scales with Righteous Fury as the tooltip implies (the 114/target value itself is well-sourced for Classic); (2) decide where it fits the GCD priority and mana budget, and frame its niche (ranged/AOE/unavoidable threat top-up &mdash; while kited, during a fireball phase, or pre-positioning); (3) if useful, pull <code>base_threat</code> for the other Greater Blessings. Sources: <a href="https://www.wowhead.com/classic/guide/lights-bulwark-protection-paladin-tanking">Light's Bulwark (Wowhead Classic)</a>, <a href="https://www.warcrafttavern.com/tbc/guides/paladin-blessings/">Warcraft Tavern</a>, <a href="https://github.com/dfherr/LibThreatClassic2/issues/29">LibThreatClassic2 #29</a>.</p>
         </div>
 
-        <h4>How many GBoK targets to beat one Consecration?</h4>
-        <p>At <strong>114 threat per target</strong> (post-RF) and a single Consecration cast worth <strong>~2,320 threat</strong> at 709 SP (<code>(512 + 709) &times; 1.9</code>; Consec can't crit), here's how Greater Blessing of Kings scales by the number of same-class players one cast buffs. This is GBoK's <em>best</em> case &mdash; single target &mdash; because its threat is split across all enemies in combat, whereas Consecration lands its full threat on <em>each</em> enemy.</p>
+        <h4>GBoK spam vs Consecration over one Consecration cooldown (raid scenario)</h4>
+        <p>The fair comparison: Consecration is one cast per <strong>8s cooldown</strong>, and in that same 8s you can fire <strong>~5 Greater Blessings</strong> (8s &divide; 1.5s GCD). So compare threat <em>per 8-second window</em> &mdash; one Consecration (2,320, landed in full on <em>each</em> enemy) vs <strong>5 GBoK casts</strong> (114 &times; players_buffed each, <em>split</em> across all enemies). Two cases: a single raid boss, and a 5-pack (shown as per-enemy threat, since that's what holds aggro).</p>
         <div style="max-width: 760px; margin: 1.5em auto;">
-            <canvas id="gbokVsConsecChart" width="760" height="420"></canvas>
+            <canvas id="gbokVsConsecChart" width="760" height="430"></canvas>
         </div>
         <script>
         (function(){
             var el = document.getElementById('gbokVsConsecChart');
             if (!el || typeof Chart === 'undefined') return;
-            var GBOK_PER_TARGET = 114, CONSEC = 2320, MAXN = 25;
-            var labels = [], gbok = [], consec = [];
-            for (var n = 1; n <= MAXN; n++) { labels.push(n); gbok.push(GBOK_PER_TARGET * n); consec.push(CONSEC); }
+            var PER_TARGET = 114, CASTS = 5, CONSEC = 2320, MAXN = 12;   // ~5 GBoK casts fit in one 8s Consecration cooldown
+            var labels = [], single = [], pack5 = [], consec = [];
+            for (var n = 1; n <= MAXN; n++) {
+                labels.push(n);
+                single.push(PER_TARGET * CASTS * n);          // single target: no split
+                pack5.push(PER_TARGET * CASTS * n / 5);        // 5-pack: GBoK threat split across 5 enemies (per enemy)
+                consec.push(CONSEC);                            // Consec per enemy (full to each), same in both cases
+            }
             new Chart(el.getContext('2d'), {
                 type: 'line',
                 data: { labels: labels, datasets: [
-                    { label: 'Greater Blessing of Kings (114 × players buffed)', data: gbok, borderColor: '#7ee787', backgroundColor: 'rgba(126,231,135,0.10)', borderWidth: 2, pointRadius: 0, tension: 0, fill: true },
-                    { label: 'Consecration — one cast (709 SP)', data: consec, borderColor: '#f0a500', borderDash: [6,4], borderWidth: 2, pointRadius: 0 }
+                    { label: 'GBoK spam — single target (5 casts / 8s)', data: single, borderColor: '#7ee787', borderWidth: 2, pointRadius: 0, tension: 0 },
+                    { label: 'GBoK spam — 5-pack (per enemy)', data: pack5, borderColor: '#58a6ff', borderWidth: 2, pointRadius: 0, tension: 0 },
+                    { label: 'Consecration (per enemy, per 8s)', data: consec, borderColor: '#f0a500', borderDash: [6,4], borderWidth: 2, pointRadius: 0 }
                 ]},
                 options: {
                     responsive: true,
                     plugins: {
-                        title: { display: true, text: 'GBoK threat vs one Consecration (single target)', color: '#e6edf3', font: { size: 15, weight: 'bold' } },
-                        subtitle: { display: true, text: 'Crossover ≈ 20–21 same-class players buffed by a single cast', color: '#8b949e', font: { size: 12 } },
+                        title: { display: true, text: 'Threat per 8s window (one Consec CD): GBoK spam vs Consecration', color: '#e6edf3', font: { size: 14, weight: 'bold' } },
+                        subtitle: { display: true, text: 'Single-target crossover ≈ 4 players · 5-pack crossover ≈ 20 (off-chart, unrealistic)', color: '#8b949e', font: { size: 12 } },
                         legend: { labels: { color: '#e6edf3', font: { size: 11 } } }
                     },
                     scales: {
-                        x: { title: { display: true, text: 'Same-class players buffed by one GBoK cast', color: '#e6edf3' }, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139,148,158,0.15)' } },
-                        y: { beginAtZero: true, title: { display: true, text: 'Threat generated (single target)', color: '#e6edf3' }, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139,148,158,0.15)' } }
+                        x: { title: { display: true, text: 'Same-class players buffed by each GBoK cast', color: '#e6edf3' }, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139,148,158,0.15)' } },
+                        y: { beginAtZero: true, title: { display: true, text: 'Threat per enemy, per 8s window', color: '#e6edf3' }, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139,148,158,0.15)' } }
                     }
                 }
             });
         })();
         </script>
         <div class="tip">
-            <strong>Verdict:</strong> GBoK needs <strong>~21 same-class players buffed by a single cast</strong> to out-threat one Consecration on a single target (2,320 &divide; 114 &asymp; 20.4). Realistic raid counts are far lower &mdash; <strong>5 same-class players = 570 threat</strong> (about &frac14; of a Consecration), 8 = 912. And single target is GBoK's best case: because its threat is <em>split across all enemies</em>, Consecration (full threat to <em>each</em> mob) pulls even further ahead on multi-target pulls. <strong>Takeaway:</strong> blessing-spam is not a Consecration replacement &mdash; it's <em>supplemental, unavoidable, ranged</em> threat for moments your normal rotation can't run (kited, fireball phases, pre-positioning).
+            <strong>Single-target raid boss:</strong> 5 GBoK casts overtake one Consecration's per-CD threat at just <strong>~4 same-class players</strong> (2,320 &divide; (5 &times; 114) &asymp; 4.1) &mdash; very achievable in a 25-man (a full melee group of one class). At 5 players it's ~2,850 vs 2,320; at 8, ~4,560. <strong>On a single-target boss, GBoK spam is genuinely competitive with &mdash; even ahead of &mdash; Consecration's throughput.</strong><br><br>
+            <strong>5-pack:</strong> Consecration hits all five for full (2,320 <em>each</em>), while GBoK's flat threat <em>splits</em> across them &mdash; so per enemy it's 5&times; weaker and the crossover jumps to <strong>~20 players</strong> (off-chart, unrealistic). <strong>Consecration dominates AOE.</strong><br><br>
+            <strong>Reality check:</strong> &ldquo;5 GBoK in 8s&rdquo; means 5 GCDs doing nothing else &mdash; no Holy Shield (you'd drop crush immunity), no Judgement, no seal &mdash; so it's a <em>GCD-for-GCD</em> ceiling, not a full-rotation swap. Its real value is <em>spare-GCD and ranged</em> threat: on a single-target raid boss with a stacked class, or any time you're out of melee (kiting, fireball phases), weaving Greater Blessing of Kings is strong supplemental threat. It's mana-hungry, so it wants steady incoming healing.
         </div>
 
         <h3>Other parked notes</h3>
