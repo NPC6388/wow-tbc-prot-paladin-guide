@@ -943,9 +943,9 @@
             <tr>
                 <td><strong>Holy Wrath</strong> (Rank 3)</td>
                 <td>567&ndash;701 (635 avg)</td>
-                <td>0.286</td>
-                <td>(635 + SP&times;0.286) &times; 1.9</td>
-                <td style="color: #7ee787; font-weight: bold;">1,615&ndash;1,679 /cast</td>
+                <td>0.19</td>
+                <td>(635 + SP&times;0.19) &times; 1.9</td>
+                <td style="color: #7ee787; font-weight: bold;">1,494&ndash;1,543 /cast</td>
                 <td>Undead/Demon AOE, 2s cast, 60s CD; crits 1.5&times; (spell)</td>
             </tr>
             <tr>
@@ -2664,7 +2664,7 @@
 
               var SP=709, RF=1.9, HIT=0.8811, JOTC=219;
               var critA=0.11, critB=0.12, dCrit=(1+critB*0.5)-(1+critA*0.5); // 0.005
-              var abilities=[['Judgement of Corruption (5 stk)',605,0.429,10,false],['Exorcism (R7)',619,0.429,15,true],['Holy Wrath (R3)',635,0.286,60,true]];
+              var abilities=[['Judgement of Corruption (5 stk)',605,0.429,10,false],['Exorcism (R7)',619,0.429,15,true],['Holy Wrath (R3)',635,0.19,60,true]];
               function landed(base,coef){ return (base + SP*coef + JOTC) * RF * HIT; }
               var tbody=document.getElementById('cviDeltaTable'), stdDelta=0, demonExtra=0, labels=[], data=[], colors=[];
               abilities.forEach(function(a){
@@ -3367,10 +3367,10 @@
             </tr>
             <tr>
                 <td><strong>Holy Wrath</strong> (Undead/Demon only)</td>
-                <td>0.286</td>
-                <td class="gain-good">+28.9</td>
-                <td class="gain-good">+57.7</td>
-                <td>AoE no-cap penalty 2/3.5/2</td>
+                <td>0.19</td>
+                <td class="gain-good">+19.2</td>
+                <td class="gain-good">+38.5</td>
+                <td>uncapped AoE penalty (2/3.5/3)</td>
             </tr>
         </table>
 
@@ -4000,8 +4000,8 @@ For comparison (same 60s window, best realistic non-twist packages):
             </tr>
             <tr>
                 <td><strong>Holy Wrath (R3)</strong></td>
-                <td>0.286</td>
-                <td><a href="https://www.wowhead.com/tbc/spell=27139/holy-wrath">Wowhead TBC &mdash; Holy Wrath Rank 3</a> ("Value: 635 (SP mod: 0.286)"). Older community references cite 0.19 (2/3.5/3); Blizzard's TBC Classic DB uses 0.286 (standard no-cap AoE penalty 2/3.5/2).</td>
+                <td>0.19 (2/3.5/3)</td>
+                <td>2s cast, uncapped AoE (all undead/demons in range). Effective coefficient <strong>0.19</strong> &mdash; the harsher uncapped-AoE penalty (2 &divide; 3.5 &divide; 3). This matches <a href="https://www.wowhead.com/tbc/guide/classes/paladin/tank-stat-priority-attributes-pve">Wowhead's TBC Prot Paladin guide</a> (19.05%) and older community theorycraft. The <a href="https://www.wowhead.com/tbc/spell=27139/holy-wrath">spell-page tooltip's "SP mod: 0.286"</a> (= the ordinary &frac12; AoE penalty, 2/3.5/2) is Wowhead's auto-calc, which over-states multi-target spells &mdash; the same error it makes on Avenger's Shield. (Corrected from 0.286 on 2026-06-10.)</td>
             </tr>
             <tr>
                 <td><strong>Judgement of the Crusader</strong></td>
@@ -4038,7 +4038,7 @@ For comparison (same 60s window, best realistic non-twist packages):
             <strong>SoR weapon-speed scaling:</strong> Seal of Righteousness is the only paladin ability whose SP coefficient scales with weapon speed. At 1.8s 1H (Continuum Blade and similar T4/T5 tank-threat weapons): 0.092 &times; 1.8 &asymp; 0.166 per swing. At 2.6s 2H: 0.108 &times; 2.6 &asymp; 0.281 per swing. The previously-quoted flat 0.2 was an approximation that over-estimates SoR threat for a 1.8s weapon by &asymp;20%.
         </div>
         <div class="tip">
-            <strong>Holy Wrath 0.19 vs 0.286:</strong> Older community references (vanilla WoWWiki, early theorycrafting posts) show Holy Wrath at 2/3.5/3 = 0.19 with a /3 AoE penalty. Wowhead's TBC DB lists 0.286 (2/3.5/2 &mdash; the standard no-cap AoE penalty of &frac12;). The 0.286 value matches Blizzard's TBC Classic implementation. For a Prot Paladin on a demon/undead fight this is a &asymp;50% threat increase on HoW casts vs the old estimate, though HoW is still only used with a 1-min CD.
+            <strong>Holy Wrath 0.19 vs 0.286:</strong> This guide uses <strong>0.19</strong> (2 &divide; 3.5 &divide; 3 &mdash; the harsher penalty for <em>uncapped</em> AoE, which Holy Wrath is: it hits all undead/demons in range with no target cap). The competing 0.286 (2/3.5/2, the ordinary &frac12; AoE penalty) is what Wowhead's spell-page tooltip auto-calculates, but that auto-calc <strong>over-states multi-target spells</strong> &mdash; the same flaw that gives Avenger's Shield a too-high 0.193 (real value 0.1357). Wowhead's maintained Prot Paladin guide, which gets Avenger's Shield right, lists Holy Wrath at <strong>19.05%</strong>, agreeing with 0.19. Since HoW is undead/demon-only on a 1-min CD, the practical impact is small either way. <em>(We previously used 0.286 from the tooltip; corrected 2026-06-10.)</em>
         </div>
 
         <h3>Seal Twisting &amp; Seal Mechanics Sources</h3>
@@ -4104,6 +4104,11 @@ For comparison (same 60s window, best realistic non-twist packages):
         <!-- ============================================================ -->
         <h2 id="changelog"><a href="#toc">Changelog</a></h2>
         <div class="toc">
+            <h3>2026-06-10 (v2.3) &mdash; Holy Wrath coefficient corrected (0.286 &rarr; 0.19); Consecration verified</h3>
+            <ul>
+                <li><strong>Holy Wrath SP coefficient: 0.286 &rarr; 0.19.</strong> Same issue as Avenger's Shield &mdash; the 0.286 was Wowhead's auto-calculated tooltip mod (the ordinary &frac12; AoE penalty, 2/3.5/2), which over-states multi-target spells. Holy Wrath is <em>uncapped</em> AoE (all undead/demons in range), which takes the harsher 2/3.5/3 = <strong>0.19</strong> penalty; this matches Wowhead's Prot Paladin guide (19.05%) and older community theorycraft. Updated the engine, per-ability table (HW now <strong>1,494&ndash;1,543</strong> per cast, was 1,615&ndash;1,679), coefficient appendix + verification note, the WoA contribution row, and the demon-boss spell-crit delta calc. HoW is undead/demon-only on a 1-min CD, so impact is minor.</li>
+                <li><strong>Consecration verified &mdash; kept at 1.000 total (0.125/tick).</strong> Checked against Wowhead's guide value (95.2%). Two independent empirical combat-log measurements support ~1.0: our own (129/tick at 516 SP) and a Wowhead spell-page comment (141/tick at +608 SP &rarr; 616 bonus &divide; 608 = 1.01). The 95.2% figure is a theoretical underestimate, so no change.</li>
+            </ul>
             <h3>2026-06-10 (v2.2) &mdash; Avenger's Shield coefficient corrected (0.193 &rarr; 0.1357)</h3>
             <ul>
                 <li><strong>Avenger's Shield SP coefficient: 0.193 &rarr; 0.1357 (13.57% per target).</strong> The 0.193 we had been using is Wowhead's <em>auto-calculated</em> tooltip coefficient, which over-states scaling for multi-target spells (it ignores the in-game multi-target/AoE penalty). Empirical TBC testing and Wowhead's own Prot Paladin guide both put the effective coefficient at <strong>13.57% per target</strong>. Updated the chart engine, the per-ability threat table (AS now <strong>1,253&ndash;1,291</strong> per target, was 1,326&ndash;1,373), the worked example, the coefficient appendix (with sourcing), and the Wrath-of-Air / Wizard Oil contribution rows. AS is a 30s-CD opener, not part of the steady-state rotation, so the buff TPS totals are unaffected. (The earlier v1.9 crit fix &mdash; AS <em>does</em> crit at 1.5&times; spell &mdash; still stands.)</li>
@@ -4336,7 +4341,7 @@ For comparison (same 60s window, best realistic non-twist packages):
     const HS_BLK = Math.round((155 + SP * 0.05 + JUSTICAR_4P_HS) * RF * 1.20); // 2/2 Imp HS + 4pc Justicar (+15 flat per block)
     const AS = Math.round((548 + SP * 0.1357) * RF * (1 + SC * 0.5));        // effective 13.57%/target (empirical) — NOT Wowhead's auto-calc 0.193, which ignores the multi-target penalty; crits 1.5× (spell)
     const EXO = Math.round((619 + SP * 0.429) * RF * (1 + SC * 0.5));         // Wowhead TBC base 619, SP mod 0.429
-    const HW = Math.round((635 + SP * 0.286) * RF * (1 + SC * 0.5));          // Wowhead TBC base 635, SP mod 0.286 (no-cap AoE penalty 2/3.5/2)
+    const HW = Math.round((635 + SP * 0.19) * RF * (1 + SC * 0.5));           // base 635; effective 0.19 (2/3.5/3 uncapped-AoE penalty) — NOT Wowhead's auto-calc 0.286, same over-statement as Avenger's Shield; crits 1.5× (spell)
     const HS_BLOCKS_PER_8S = 3; // estimate
 
     // ============================================================
