@@ -643,6 +643,18 @@
             <strong>Reality check:</strong> &ldquo;5 GBoK in 8s&rdquo; means 5 GCDs doing nothing else &mdash; no Holy Shield (you'd drop crush immunity), no Judgement, no seal &mdash; so it's a <em>GCD-for-GCD</em> ceiling, not a full-rotation swap. Its real value is <em>spare-GCD and ranged</em> threat: on a single-target raid boss with a stacked class, or any time you're out of melee (kiting, fireball phases), weaving Greater Blessing of Kings is strong supplemental threat. It's mana-hungry, so it wants steady incoming healing.
         </div>
 
+        <h4>Which Greater Blessing is cheapest to spam?</h4>
+        <p>Threat per cast is essentially the same across blessings (it's set by the spell's <em>learned level</em>, not its effect), so the tiebreaker is <strong>mana cost</strong> &mdash; and the four split into two cost types:</p>
+        <table class="combat-table">
+            <tr><th>Greater Blessing</th><th>Cost type</th><th>&asymp; mana at level 70</th></tr>
+            <tr><td><strong>Wisdom</strong></td><td>flat (per rank)</td><td style="color:#7ee787;"><strong>~250</strong> (R2)</td></tr>
+            <tr><td><strong>Might</strong></td><td>flat (per rank)</td><td>~295 (R3, lvl 70)</td></tr>
+            <tr><td><strong>Kings</strong></td><td>12% of base mana</td><td>~700</td></tr>
+            <tr><td><strong>Salvation</strong></td><td>13% of base mana</td><td>~760</td></tr>
+        </table>
+        <p><strong>Greater Blessing of Wisdom is the cheapest to spam</strong> (~250 mana, flat), with Might close behind (~295). Kings and Salvation cost a <em>percentage of base mana</em> (12&ndash;13%), which at a level-70 paladin's base mana (~5.8k) resolves to ~700&ndash;760 &mdash; roughly <strong>3&times; the cost</strong> of the flat blessings. So for blessing-spam threat you'd refresh <strong>Greater Blessing of Wisdom</strong> &mdash; same per-cast threat, about a third of the mana. (Benediction's &minus;15% on instants applies to all four equally, so it doesn't change the ranking.)</p>
+        <p style="color:#8b949e; font-size:0.9em;"><strong>Caveats:</strong> (1) &ldquo;Same threat&rdquo; is an approximation &mdash; base threat scales with the spell's <em>learned</em> level, so a level-70 rank (e.g. Greater Blessing of Might R3) may post a bit more per cast than the level-60 Kings/Wisdom/Salvation; verify on a threat meter. (2) Cast the blessing your raid actually wants up &mdash; Wisdom on casters/healers, Might on melee; never spam <em>Salvation</em> on tanks (it cuts their threat). (3) Mana figures are Wowhead's TBC resolved values; the flat-vs-percent split is the robust takeaway regardless of exact base-mana.</p>
+
         <h3>Other parked notes</h3>
         <div class="tip">
             <strong>Seal / Judgement of Wisdom mana-regen model.</strong> Light's Bulwark gives <code>JoW PPM = (1 / weapon speed) &times; 0.50 &times; 60</code> (the 0.50 = the ~50% proc-per-hit, now reflected in the live guide's mana table) and notes mana restored by SoW/JoW also generates a little threat. A fuller SoW+JoW sustain model could be added if wanted.
