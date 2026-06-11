@@ -578,7 +578,7 @@
         <div class="tip">
             <p><strong>The mechanic (per the Classic Light's Bulwark guide).</strong> Non-damaging Holy-school spells &mdash; especially <strong>Greater Blessings</strong> &mdash; generate threat, and that threat is <strong>split evenly across every enemy you are in combat with</strong>. A single Greater Blessing cast buffs <em>all</em> same-class members at once, so threat scales with how many same-class players the cast hits:</p>
             <div class="formula">threat per cast = base_threat &times; 1.90 (Improved Righteous Fury) &times; players_buffed</div>
-            <p>&bull; <code>base_threat</code> = the blessing's flat base threat (per-spell; the guide's values are in a chart image, not transcribed here &mdash; pull exact numbers before inclusion).<br>
+            <p>&bull; <code>base_threat</code> for <strong>Greater Blessing of Kings = 60</strong> (set by the spell's learned level) &rarr; <strong>114 threat per target with Righteous Fury</strong> (60 &times; 1.9). Corroborated across sources: <a href="https://www.warcrafttavern.com/tbc/guides/paladin-blessings/">Warcraft Tavern &mdash; Paladin Blessings</a>, the <a href="https://github.com/dfherr/LibThreatClassic2/issues/29">LibThreatClassic2</a> threat-meter addon (issue #29), and community testing.<br>
             &bull; <code>players_buffed</code> = number of same-class players the one cast affects (e.g. all Warriors get Greater Blessing of Kings from one cast).</p>
             <p><strong>Why it's attractive (in Classic):</strong></p>
             <ul>
@@ -587,7 +587,44 @@
                 <li><strong>Ranged</strong> &mdash; generates threat without attacking the target (the guide cites Onyxia P2 fireball phase: blessing-spam to stay high on threat while at range).</li>
                 <li><strong>Global / AOE</strong> &mdash; the threat is split across <em>all</em> mobs in combat, so it tops up threat on a whole pack at once, and scales hugely in stacked raids (many same-class players per cast).</li>
             </ul>
-            <p><strong>To do before inclusion:</strong> (1) confirm with a TBC 2.4.3 threat meter that a Greater Blessing cast scales with Righteous Fury as the tooltip implies; (2) transcribe the per-blessing <code>base_threat</code> values from the source's chart and compute realistic raid numbers (<code>players_buffed</code> = same-class players in the raid &mdash; e.g. recasting Greater Blessing of Kings on a 5-warrior melee group); (3) decide where it fits the GCD priority and mana budget, and note its niche (ranged/AOE/unavoidable threat top-up, e.g. while kited or during a fireball phase). Source: <a href="https://www.wowhead.com/classic/guide/lights-bulwark-protection-paladin-tanking">Light's Bulwark &mdash; Protection Paladin Tanking (Wowhead Classic)</a> + its &ldquo;Greater Blessing of Kings as Threat Generator&rdquo; video.</p>
+            <p><strong>To do before inclusion:</strong> (1) spot-check with a TBC 2.4.3 threat meter that a GBoK cast actually scales with Righteous Fury as the tooltip implies (the 114/target value itself is well-sourced for Classic); (2) decide where it fits the GCD priority and mana budget, and frame its niche (ranged/AOE/unavoidable threat top-up &mdash; while kited, during a fireball phase, or pre-positioning); (3) if useful, pull <code>base_threat</code> for the other Greater Blessings. Sources: <a href="https://www.wowhead.com/classic/guide/lights-bulwark-protection-paladin-tanking">Light's Bulwark (Wowhead Classic)</a>, <a href="https://www.warcrafttavern.com/tbc/guides/paladin-blessings/">Warcraft Tavern</a>, <a href="https://github.com/dfherr/LibThreatClassic2/issues/29">LibThreatClassic2 #29</a>.</p>
+        </div>
+
+        <h4>How many GBoK targets to beat one Consecration?</h4>
+        <p>At <strong>114 threat per target</strong> (post-RF) and a single Consecration cast worth <strong>~2,320 threat</strong> at 709 SP (<code>(512 + 709) &times; 1.9</code>; Consec can't crit), here's how Greater Blessing of Kings scales by the number of same-class players one cast buffs. This is GBoK's <em>best</em> case &mdash; single target &mdash; because its threat is split across all enemies in combat, whereas Consecration lands its full threat on <em>each</em> enemy.</p>
+        <div style="max-width: 760px; margin: 1.5em auto;">
+            <canvas id="gbokVsConsecChart" width="760" height="420"></canvas>
+        </div>
+        <script>
+        (function(){
+            var el = document.getElementById('gbokVsConsecChart');
+            if (!el || typeof Chart === 'undefined') return;
+            var GBOK_PER_TARGET = 114, CONSEC = 2320, MAXN = 25;
+            var labels = [], gbok = [], consec = [];
+            for (var n = 1; n <= MAXN; n++) { labels.push(n); gbok.push(GBOK_PER_TARGET * n); consec.push(CONSEC); }
+            new Chart(el.getContext('2d'), {
+                type: 'line',
+                data: { labels: labels, datasets: [
+                    { label: 'Greater Blessing of Kings (114 × players buffed)', data: gbok, borderColor: '#7ee787', backgroundColor: 'rgba(126,231,135,0.10)', borderWidth: 2, pointRadius: 0, tension: 0, fill: true },
+                    { label: 'Consecration — one cast (709 SP)', data: consec, borderColor: '#f0a500', borderDash: [6,4], borderWidth: 2, pointRadius: 0 }
+                ]},
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: { display: true, text: 'GBoK threat vs one Consecration (single target)', color: '#e6edf3', font: { size: 15, weight: 'bold' } },
+                        subtitle: { display: true, text: 'Crossover ≈ 20–21 same-class players buffed by a single cast', color: '#8b949e', font: { size: 12 } },
+                        legend: { labels: { color: '#e6edf3', font: { size: 11 } } }
+                    },
+                    scales: {
+                        x: { title: { display: true, text: 'Same-class players buffed by one GBoK cast', color: '#e6edf3' }, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139,148,158,0.15)' } },
+                        y: { beginAtZero: true, title: { display: true, text: 'Threat generated (single target)', color: '#e6edf3' }, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139,148,158,0.15)' } }
+                    }
+                }
+            });
+        })();
+        </script>
+        <div class="tip">
+            <strong>Verdict:</strong> GBoK needs <strong>~21 same-class players buffed by a single cast</strong> to out-threat one Consecration on a single target (2,320 &divide; 114 &asymp; 20.4). Realistic raid counts are far lower &mdash; <strong>5 same-class players = 570 threat</strong> (about &frac14; of a Consecration), 8 = 912. And single target is GBoK's best case: because its threat is <em>split across all enemies</em>, Consecration (full threat to <em>each</em> mob) pulls even further ahead on multi-target pulls. <strong>Takeaway:</strong> blessing-spam is not a Consecration replacement &mdash; it's <em>supplemental, unavoidable, ranged</em> threat for moments your normal rotation can't run (kited, fireball phases, pre-positioning).
         </div>
 
         <h3>Other parked notes</h3>
