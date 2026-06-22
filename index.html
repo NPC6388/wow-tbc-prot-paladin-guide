@@ -4145,6 +4145,90 @@ For comparison (same 60s window, best realistic non-twist packages):
         <p>Paladin off-tank DPS (~300&ndash;600 DPS) is lower than warrior or druid off-tanks, but your raid utility (blessings, auras, Judgement of Wisdom) compensates.</p>
 
         <!-- ============================================================ -->
+        <!-- SIXTY UPGRADES STAT WEIGHTS (HIDDEN / DRAFT)                  -->
+        <!-- Un-hide: remove style="display:none" on the section below     -->
+        <!-- and add <li><a href="#stat-weights">Sixty Upgrades Stat       -->
+        <!-- Weights</a></li> to the TOC. Add a #changelog entry too.      -->
+        <!-- ============================================================ -->
+        <section id="stat-weights" style="display:none;">
+        <details class="rotation-frame">
+        <summary>Sixty Upgrades Stat Weights &mdash; copy-paste threat &amp; survival scales</summary>
+        <p>Custom stat-weight scales for <a href="https://sixtyupgrades.com/tbc">Sixty Upgrades</a>, derived from this guide's threat (<a href="#sp-vs-ap-analysis">Spell Power vs Physical Stats</a>) and mitigation (<a href="#stat-conversions">Stat Conversions</a>, <a href="#block-mechanics">Block Mechanics</a>) math. <strong>Paste one scale at a time</strong> into your set &rarr; <em>Edit Stat Weights</em> &rarr; <em>Custom</em>. Anchored to the <a href="#guide-assumptions">reference profile</a> (709 SP raid-buffed, 1.80 1H, 1.9&times; RF, level 73 boss).</p>
+        <div class="warning">
+            <strong>Gate first &mdash; the linear weights can't see these:</strong>
+            <strong>(1) Uncrittable</strong> (490 Defense skill raid / 485 heroic, or top off with Resilience) before any other stat matters; and
+            <strong>(2) Uncrushable</strong> (102.4% combined dodge + parry + block + miss with Holy Shield up) &mdash; don't let the optimizer gem/enchant you back under it.
+        </div>
+
+        <h4>1. Threat &mdash; Single Target (below caps)</h4>
+        <p>Your daily driver until you cap spell hit / melee hit / expertise. Spell power is the anchor (1.35 TPS/pt &rarr; 1.5); below their caps spell hit (&asymp;1.5 TPS) and expertise (&asymp;1.0 TPS) are the strongest per point. Survival stats are zeroed.</p>
+        <pre class="formula">{
+    "stamina": 0, "intellect": 0.1, "strength": 0.55, "agility": 0.05,
+    "dodgeRating": 0, "parryRating": 0, "defenseRating": 0.04,
+    "blockRating": 0.3, "blockValue": 0, "blockValueBonus": 0,
+    "hitRating": 0.85, "expertiseRating": 1.1,
+    "spellDamage": 1.5, "spellHitRating": 1.65,
+    "health": 0, "resilienceRating": 0, "armor": 0,
+    "metaSockets": 18, "redSockets": 13.5, "yellowSockets": 9, "blueSockets": 7
+}</pre>
+
+        <h4>2. Threat &mdash; Single Target (at caps)</h4>
+        <p>Once spell-hit capped (17% / ~215 rating), melee-hit capped (9%, or 6% w/ 3/3 Precision), and at 26 expertise &mdash; those three drop to zero so the optimizer stops chasing wasted itemization.</p>
+        <pre class="formula">{
+    "stamina": 0, "intellect": 0.1, "strength": 0.55, "agility": 0.05,
+    "dodgeRating": 0, "parryRating": 0, "defenseRating": 0.04,
+    "blockRating": 0.3, "blockValue": 0, "blockValueBonus": 0,
+    "hitRating": 0, "expertiseRating": 0,
+    "spellDamage": 1.5, "spellHitRating": 0,
+    "health": 0, "resilienceRating": 0, "armor": 0,
+    "metaSockets": 18, "redSockets": 13.5, "yellowSockets": 9, "blueSockets": 7
+}</pre>
+
+        <h4>3. Threat &mdash; AOE (heroics / trash / add fights)</h4>
+        <p>Spell power is rescaled up because Consecration scales <strong>per target</strong> &mdash; the red-socket value follows (9 SP &times; 2.5). Single-target-only stats (melee hit, expertise, Strength) fall in relative weight; Block Rating rises (more attackers &rarr; more Holy Shield procs) and Intellect rises slightly (Consec spam is the mana sink). Written below caps &mdash; zero the hit/expertise fields once capped, as in scale 2.</p>
+        <pre class="formula">{
+    "stamina": 0, "intellect": 0.15, "strength": 0.4, "agility": 0.05,
+    "dodgeRating": 0, "parryRating": 0, "defenseRating": 0.06,
+    "blockRating": 0.6, "blockValue": 0, "blockValueBonus": 0,
+    "hitRating": 0.5, "expertiseRating": 0.7,
+    "spellDamage": 2.5, "spellHitRating": 2.2,
+    "health": 0, "resilienceRating": 0, "armor": 0,
+    "metaSockets": 18, "redSockets": 22.5, "yellowSockets": 14, "blueSockets": 11
+}</pre>
+
+        <h4>4. Survival &mdash; Reaching / Maintaining Uncrushable</h4>
+        <p>While still climbing to (or fighting to hold) the 102.4% cap, <strong>every</strong> point of avoidance and block deletes a 1.5&times; crushing blow. Block Rating (cheapest per rating) leads, and Dodge/Parry/Defense/Agility carry the same crush-removal premium. Blue is the top socket (Solid +12 stamina).</p>
+        <pre class="formula">{
+    "stamina": 1, "intellect": 0.1, "strength": 0.02, "agility": 1.45,
+    "dodgeRating": 1.76, "parryRating": 1.41, "defenseRating": 2.0,
+    "blockRating": 2.54, "blockValue": 0.05, "blockValueBonus": 0.05,
+    "hitRating": 0.1, "expertiseRating": 0.2,
+    "spellDamage": 0.3, "spellHitRating": 0.1,
+    "health": 0.08, "resilienceRating": 0.05, "armor": 0.06,
+    "metaSockets": 18, "redSockets": 9, "yellowSockets": 9, "blueSockets": 12
+}</pre>
+        <p style="color:#8b949e; font-size:0.9em;"><strong>Resilience</strong> 0.05 assumes you're already crit-capped via Defense. If Resilience is your <em>route to</em> crit immunity (PvP gear in heroics), bump it to ~1.5+ until capped, then drop it back.</p>
+
+        <h4>5. Survival &mdash; Uncrushable / EHP (farm, geared)</h4>
+        <p>Once comfortably uncrushable with Holy Shield up, block loses its crush premium and falls to its block-value mitigation (&asymp; dodge per rating), while Dodge/Parry keep full-avoidance value. For spike-damage progression bosses, raise <code>stamina</code> to <strong>1.3&ndash;1.5</strong> to lean the leftover budget toward effective health.</p>
+        <pre class="formula">{
+    "stamina": 1, "intellect": 0.1, "strength": 0.02, "agility": 0.92,
+    "dodgeRating": 1.06, "parryRating": 0.85, "defenseRating": 1.2,
+    "blockRating": 1.02, "blockValue": 0.05, "blockValueBonus": 0.05,
+    "hitRating": 0.1, "expertiseRating": 0.2,
+    "spellDamage": 0.3, "spellHitRating": 0.1,
+    "health": 0.08, "resilienceRating": 0.05, "armor": 0.06,
+    "metaSockets": 18, "redSockets": 9, "yellowSockets": 9, "blueSockets": 12
+}</pre>
+
+        <h4>How the numbers are derived</h4>
+        <p><strong>Threat</strong> &mdash; anchored to the <a href="#sp-vs-ap-analysis">Spell Power vs Physical Stats</a> table, normalized to Spell Power = 1.5: spell hit (1.0&ndash;2.0 TPS below cap) &rarr; 1.65, expertise (0.8&ndash;1.2) &rarr; 1.1, melee hit &rarr; 0.85, Strength (= 2 AP, 0.5&ndash;0.7) &rarr; 0.55.</p>
+        <p><strong>Survival</strong> &mdash; from the <a href="#stat-conversions">rating costs</a>, by damage-per-swing prevented. Below the uncrushable cap the bottom of the combat table is a 1.5&times; crush, so block (7.88/1%) saves ~0.114 hit/rating, dodge (18.92/1%) ~0.079, parry (23.65/1%) ~0.063, Defense (5 benefits) ~0.091. At cap the bottom is a 1.0&times; hit and those collapse to ~0.051 / 0.053 / 0.042 / 0.057. Stamina anchors at 1 (1 Sta &asymp; 12.8 HP after Sacred Duty + Combat Expertise + Kings), so health = 1/12.8 &asymp; 0.08; armor &asymp; 0.06.</p>
+        <p style="color:#8b949e; font-size:0.9em;"><strong>Binary stats:</strong> hit / expertise / spell hit are strong below their caps and <em>exactly zero</em> above (switch scale 1&rarr;2). Defense's crit slice is worth ~&infin; until 490 skill then zero, but its avoidance/block slices never cap. Block Value does <em>not</em> feed Holy Shield threat in TBC, so it's ~0 on every threat scale.</p>
+        </details>
+        </section>
+
+        <!-- ============================================================ -->
         <!-- SOURCES & REFERENCES -->
         <!-- ============================================================ -->
         <h2 id="sources"><a href="#toc">Sources &amp; References</a></h2>
@@ -4597,6 +4681,10 @@ For comparison (same 60s window, best realistic non-twist packages):
             <h3>2026-06-20 (v3.6) &mdash; Changelog entries now link to the sections they reference</h3>
             <ul>
                 <li>Made the changelog navigable: every entry that names a live guide section now <strong>links to that section</strong> (Introduction, Race Selection, Combat Mechanics, Stat Priorities, Stat Conversions, Combat Rotations, Paladin Builds, Sanctity Build, Consumables, Gear Optimization, Party Buffs, Sources &amp; References, Resilience vs Defense, Combat Expertise vs Improved Sanctity Aura, Seal &amp; Judgement Threat Analysis, Greater Blessing Threat, ELI5 Full Rotations, AOE Threat Set, etc.). Sections that were moved to the <code>review prior to inclusion.html</code> holding file (Engineering, Enchantments, Macros, WeakAuras, the Crit &amp; Crush Calculator, &hellip;) are left unlinked since they have no live anchor. Presentation only &mdash; no content changed.</li>
+            </ul>
+            <h3>2026-06-22 (v3.7) &mdash; Sixty Upgrades stat-weight scales (hidden draft)</h3>
+            <ul>
+                <li>Wired in a <strong>Sixty Upgrades Stat Weights</strong> section (5 copy-paste scales: 3 threat &mdash; single-target below-cap, single-target at-cap, AOE &mdash; and 2 survival &mdash; reaching-uncrushable vs uncrushable/farm, split on the 102.4% crush gate), derived from the <a href="#sp-vs-ap-analysis">Spell Power vs Physical Stats</a> and <a href="#stat-conversions">Stat Conversions</a> math. Placed just before <a href="#sources">Sources &amp; References</a> but kept <strong>hidden</strong> (<code>display:none</code>, unlinked from the TOC) pending in-game testing of the weights. Un-hide instructions are in an HTML comment above the section.</li>
             </ul>
         </div>
 
