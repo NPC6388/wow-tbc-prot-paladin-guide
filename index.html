@@ -4237,23 +4237,26 @@ For comparison (same 60s window, best realistic non-twist packages):
         <p>GearForge uses 0&ndash;10 sliders (0.1 increments) and enforces the hit / spell-hit / expertise and crit/crush caps as <strong>constraints</strong>. Each column is one scale's weights rescaled so its top stat sits at 10, preserving the ratios. Set only the sliders GearForge exposes; leave the rest at 0.</p>
         <table class="combat-table">
             <tr><th>Slider</th><th>ST Threat</th><th>ST Threat (capped)</th><th>AoE Threat</th><th>Survival (&rarr;uncrush)</th><th>Survival (EHP)</th><th>Balanced</th></tr>
-            <tr><td>Stamina</td><td>0</td><td>0</td><td>0</td><td>3.9</td><td>8.3</td><td>8.3</td></tr>
             <tr><td>Spell Power</td><td>9.1</td><td>10</td><td>10</td><td>1.2</td><td>2.5</td><td>8.3</td></tr>
             <tr><td>Spell Hit</td><td>10</td><td>0</td><td>8.8</td><td>0.4</td><td>0.8</td><td>9.2</td></tr>
-            <tr><td>Hit</td><td>5.2</td><td>0</td><td>2.0</td><td>0.4</td><td>0.8</td><td>5.0</td></tr>
+            <tr><td>Stamina</td><td>0</td><td>0</td><td>0</td><td>3.9</td><td>8.3</td><td>8.3</td></tr>
             <tr><td>Expertise</td><td>6.7</td><td>0</td><td>2.8</td><td>0.8</td><td>1.7</td><td>7.5</td></tr>
-            <tr><td>Strength</td><td>3.3</td><td>3.7</td><td>1.6</td><td>0.1</td><td>0.2</td><td>3.3</td></tr>
-            <tr><td>Agility</td><td>0.3</td><td>0.3</td><td>0.2</td><td>5.7</td><td>7.7</td><td>7.7</td></tr>
+            <tr><td>Hit Rating</td><td>5.2</td><td>0</td><td>2.0</td><td>0.4</td><td>0.8</td><td>5.0</td></tr>
+            <tr><td>Crit Rating</td><td>0.3</td><td>0.3</td><td>0.2</td><td>0</td><td>0</td><td>0.2</td></tr>
             <tr><td>Intellect</td><td>0.6</td><td>0.7</td><td>0.6</td><td>0.4</td><td>0.8</td><td>1.2</td></tr>
-            <tr><td>Dodge</td><td>0</td><td>0</td><td>0</td><td>6.9</td><td>8.8</td><td>8.8</td></tr>
-            <tr><td>Parry</td><td>0</td><td>0</td><td>0</td><td>5.6</td><td>7.1</td><td>7.1</td></tr>
-            <tr><td>Defense</td><td>0.2</td><td>0.3</td><td>0.2</td><td>7.9</td><td>10</td><td>10</td></tr>
-            <tr><td>Block</td><td>1.8</td><td>2.0</td><td>2.4</td><td>10</td><td>8.5</td><td>10</td></tr>
+            <tr><td>Defense Rating</td><td>0.2</td><td>0.3</td><td>0.2</td><td>7.9</td><td>10</td><td>10</td></tr>
+            <tr><td>Strength</td><td>3.3</td><td>3.7</td><td>1.6</td><td>0.1</td><td>0.2</td><td>3.3</td></tr>
+            <tr><td>Haste Rating</td><td>0.5</td><td>0.5</td><td>0.3</td><td>0</td><td>0</td><td>0.3</td></tr>
             <tr><td>Block Value</td><td>0</td><td>0</td><td>0</td><td>0.2</td><td>0.4</td><td>0.4</td></tr>
-            <tr><td>Health</td><td>0</td><td>0</td><td>0</td><td>0.3</td><td>0.7</td><td>0.7</td></tr>
+            <tr><td>Dodge Rating</td><td>0</td><td>0</td><td>0</td><td>6.9</td><td>8.8</td><td>8.8</td></tr>
+            <tr><td>Parry Rating</td><td>0</td><td>0</td><td>0</td><td>5.6</td><td>7.1</td><td>7.1</td></tr>
+            <tr><td>Agility</td><td>0.3</td><td>0.3</td><td>0.2</td><td>5.7</td><td>7.7</td><td>7.7</td></tr>
+            <tr><td>Block Rating</td><td>1.8</td><td>2.0</td><td>2.4</td><td>10</td><td>8.5</td><td>10</td></tr>
+            <tr><td>Attack Power</td><td>1.7</td><td>1.9</td><td>0.8</td><td>0</td><td>0.1</td><td>1.7</td></tr>
             <tr><td>Armor</td><td>0</td><td>0</td><td>0</td><td>0.2</td><td>0.5</td><td>0.5</td></tr>
             <tr><td>Resilience</td><td>0</td><td>0</td><td>0</td><td>0.2</td><td>0.4</td><td>0.4</td></tr>
         </table>
+        <p style="color:#8b949e; font-size:0.9em;">Row order matches GearForge's slider list. <strong>Attack Power</strong> is half a Strength point (1 Str = 2 AP). <strong>Crit</strong> and <strong>Haste</strong> are deliberately small &mdash; in the SoR/SoC rotation only the judgements can crit and haste merely adds seal procs, so the <a href="#stat-conversions">Stat Conversions</a> table rates them minor/niche; they're rarely worth itemizing on tank gear.</p>
         <p style="color:#8b949e; font-size:0.9em;"><strong>Picking a column (pure-weights workflow).</strong> Driving GearForge by weights alone (no hit / spell-hit cap toggles): use <strong>ST Threat</strong> or <strong>AoE Threat</strong> for threat and <strong>Balanced</strong> for everyday &mdash; they value hit/spell-hit so the optimizer picks some up. Because a linear weight <em>can't see a cap</em>, if a result lands well past the spell-hit cap (17% / ~215 rating) or melee-hit cap (9% / ~142 rating), trim just those two sliders toward the <em>(capped)</em> column &mdash; hit beyond the cap is wasted. For survival, use <strong>Survival (&rarr;uncrush)</strong> until you reach 102.4% combined, then <strong>Survival (EHP)</strong>. <strong>Armor's low value is correct</strong> &mdash; per-point weights &times; ~15,000 armor still yields big EHP. Keep Defense/Block weighted &mdash; with no cap toggles on, those sliders are what get you to uncrittable/uncrushable in the first place.</p>
 
         <h4>How the numbers are derived</h4>
@@ -4736,6 +4739,10 @@ For comparison (same 60s window, best realistic non-twist packages):
             <h3>2026-06-22 (v3.11) &mdash; GearForge 0&ndash;10 slider table for all six scales</h3>
             <ul>
                 <li>Added a <a href="#gearforge-sliders">GearForge slider settings</a> table to the <a href="#stat-weights">Sixty Upgrades Stat Weights</a> section: every one of the six scales rescaled to GearForge's 0&ndash;10 sliders (0.1 increments), each scale's top stat pinned to 10, with notes on picking a column for a <strong>pure-weights</strong> GearForge workflow (no hit/spell-hit cap toggles) &mdash; including when to trim hit/spell-hit once a result overshoots the cap. Mirrored in the standalone weights <code>.md</code>.</li>
+            </ul>
+            <h3>2026-06-22 (v3.12) &mdash; GearForge slider table reordered to match the addon</h3>
+            <ul>
+                <li>Reordered the <a href="#gearforge-sliders">GearForge slider settings</a> rows to match GearForge's in-game slider list, and added the <strong>Crit Rating</strong>, <strong>Haste Rating</strong>, and <strong>Attack Power</strong> sliders (Attack Power = &frac12; a Strength point; Crit/Haste kept minor per the Stat Conversions table). Dropped the Health row (no GearForge slider for it). Mirrored in the standalone weights <code>.md</code>.</li>
             </ul>
         </div>
 

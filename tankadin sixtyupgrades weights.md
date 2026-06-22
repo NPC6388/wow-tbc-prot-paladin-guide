@@ -257,22 +257,29 @@ and crit/crush caps as **constraints**. Each column is one scale's weights resca
 top stat sits at 10, preserving the ratios. Set only the sliders GearForge exposes; leave
 the rest at 0.
 
+Row order matches GearForge's slider list. **Attack Power** = half a Strength point
+(1 Str = 2 AP). **Crit** and **Haste** are deliberately small — in the SoR/SoC rotation only
+the judgements can crit and haste just adds seal procs, so they're minor/niche and rarely
+worth itemizing.
+
 | Slider | ST Threat | ST Threat (capped) | AoE Threat | Survival (→uncrush) | Survival (EHP) | Balanced |
 |---|---|---|---|---|---|---|
-| Stamina | 0 | 0 | 0 | 3.9 | 8.3 | 8.3 |
 | Spell Power | 9.1 | 10 | 10 | 1.2 | 2.5 | 8.3 |
 | Spell Hit | 10 | 0 | 8.8 | 0.4 | 0.8 | 9.2 |
-| Hit | 5.2 | 0 | 2.0 | 0.4 | 0.8 | 5.0 |
+| Stamina | 0 | 0 | 0 | 3.9 | 8.3 | 8.3 |
 | Expertise | 6.7 | 0 | 2.8 | 0.8 | 1.7 | 7.5 |
-| Strength | 3.3 | 3.7 | 1.6 | 0.1 | 0.2 | 3.3 |
-| Agility | 0.3 | 0.3 | 0.2 | 5.7 | 7.7 | 7.7 |
+| Hit Rating | 5.2 | 0 | 2.0 | 0.4 | 0.8 | 5.0 |
+| Crit Rating | 0.3 | 0.3 | 0.2 | 0 | 0 | 0.2 |
 | Intellect | 0.6 | 0.7 | 0.6 | 0.4 | 0.8 | 1.2 |
-| Dodge | 0 | 0 | 0 | 6.9 | 8.8 | 8.8 |
-| Parry | 0 | 0 | 0 | 5.6 | 7.1 | 7.1 |
-| Defense | 0.2 | 0.3 | 0.2 | 7.9 | 10 | 10 |
-| Block | 1.8 | 2.0 | 2.4 | 10 | 8.5 | 10 |
+| Defense Rating | 0.2 | 0.3 | 0.2 | 7.9 | 10 | 10 |
+| Strength | 3.3 | 3.7 | 1.6 | 0.1 | 0.2 | 3.3 |
+| Haste Rating | 0.5 | 0.5 | 0.3 | 0 | 0 | 0.3 |
 | Block Value | 0 | 0 | 0 | 0.2 | 0.4 | 0.4 |
-| Health | 0 | 0 | 0 | 0.3 | 0.7 | 0.7 |
+| Dodge Rating | 0 | 0 | 0 | 6.9 | 8.8 | 8.8 |
+| Parry Rating | 0 | 0 | 0 | 5.6 | 7.1 | 7.1 |
+| Agility | 0.3 | 0.3 | 0.2 | 5.7 | 7.7 | 7.7 |
+| Block Rating | 1.8 | 2.0 | 2.4 | 10 | 8.5 | 10 |
+| Attack Power | 1.7 | 1.9 | 0.8 | 0 | 0.1 | 1.7 |
 | Armor | 0 | 0 | 0 | 0.2 | 0.5 | 0.5 |
 | Resilience | 0 | 0 | 0 | 0.2 | 0.4 | 0.4 |
 
