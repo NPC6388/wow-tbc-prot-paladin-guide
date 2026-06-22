@@ -245,35 +245,48 @@ dodge) edging just ahead of raw throughput for a survival-leaning balance.
 - `hitRating` / `expertiseRating` / `spellHitRating` are **below-cap** values; a
   constraint-based optimizer stops chasing them at the cap on its own.
 
-### GearForge 0–10 sliders
+GearForge slider settings for this and the other five scales are tabulated in
+[GearForge slider settings](#gearforge-slider-settings-010-every-scale) below.
 
-GearForge uses 0–10 sliders and enforces the hit/spell-hit/expertise caps as constraints.
-Same ratios as the scale above, with the top stat pinned to 10:
+---
 
-| Slider | 0–10 |
-|---|---|
-| Block Rating | 10 |
-| Defense Rating | 10 |
-| Spell Hit | 9 |
-| Dodge Rating | 9 |
-| Stamina | 8 |
-| Spell Power | 8 |
-| Agility | 8 |
-| Expertise | 7–8 |
-| Parry Rating | 7 |
-| Hit Rating | 5 |
-| Strength | 3 |
-| Intellect | 1 |
-| Health | 1 |
-| Armor | 1 |
-| Resilience | 0 |
-| Block Value | 0 |
+## GearForge slider settings (0–10, every scale)
 
-- **Armor at 1 looks low but is correct** — these are *per-point* weights and you carry
-  ~15,000 armor, so a 1 still contributes big EHP. Cranking it would over-value armor.
-- **Defense/Block at 10 partly duplicate** GearForge's uncrittable/uncrushable constraints;
-  drop **Defense→6, Block→7** to lean more on Stamina/Spell Power/Dodge once you're already
-  legal.
+GearForge uses 0–10 sliders (0.1 increments) and enforces the hit / spell-hit / expertise
+and crit/crush caps as **constraints**. Each column is one scale's weights rescaled so its
+top stat sits at 10, preserving the ratios. Set only the sliders GearForge exposes; leave
+the rest at 0.
+
+| Slider | ST Threat | ST Threat (capped) | AoE Threat | Survival (→uncrush) | Survival (EHP) | Balanced |
+|---|---|---|---|---|---|---|
+| Stamina | 0 | 0 | 0 | 3.9 | 8.3 | 8.3 |
+| Spell Power | 9.1 | 10 | 10 | 1.2 | 2.5 | 8.3 |
+| Spell Hit | 10 | 0 | 8.8 | 0.4 | 0.8 | 9.2 |
+| Hit | 5.2 | 0 | 2.0 | 0.4 | 0.8 | 5.0 |
+| Expertise | 6.7 | 0 | 2.8 | 0.8 | 1.7 | 7.5 |
+| Strength | 3.3 | 3.7 | 1.6 | 0.1 | 0.2 | 3.3 |
+| Agility | 0.3 | 0.3 | 0.2 | 5.7 | 7.7 | 7.7 |
+| Intellect | 0.6 | 0.7 | 0.6 | 0.4 | 0.8 | 1.2 |
+| Dodge | 0 | 0 | 0 | 6.9 | 8.8 | 8.8 |
+| Parry | 0 | 0 | 0 | 5.6 | 7.1 | 7.1 |
+| Defense | 0.2 | 0.3 | 0.2 | 7.9 | 10 | 10 |
+| Block | 1.8 | 2.0 | 2.4 | 10 | 8.5 | 10 |
+| Block Value | 0 | 0 | 0 | 0.2 | 0.4 | 0.4 |
+| Health | 0 | 0 | 0 | 0.3 | 0.7 | 0.7 |
+| Armor | 0 | 0 | 0 | 0.2 | 0.5 | 0.5 |
+| Resilience | 0 | 0 | 0 | 0.2 | 0.4 | 0.4 |
+
+- **Picking a column (pure-weights workflow).** Driving GearForge by weights alone (no
+  hit / spell-hit cap toggles): use **ST Threat** or **AoE Threat** for threat and
+  **Balanced** for everyday — they value hit/spell-hit so the optimizer picks some up.
+  Because a linear weight *can't see a cap*, if a result lands well past the spell-hit cap
+  (17% / ~215 rating) or melee-hit cap (9% / ~142 rating), trim just those two sliders
+  toward the **(capped)** column — hit beyond the cap is wasted. For survival, use
+  **Survival (→uncrush)** until you reach 102.4% combined, then **Survival (EHP)**.
+- **Armor's low value is correct** — these are *per-point* weights, and per-point × ~15,000
+  armor still yields big EHP. Cranking the slider would over-value it.
+- **Keep Defense/Block weighted** — with no cap toggles on, those sliders are what get you
+  to uncrittable/uncrushable in the first place.
 
 ---
 

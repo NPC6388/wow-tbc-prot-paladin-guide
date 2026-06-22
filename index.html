@@ -4231,7 +4231,30 @@ For comparison (same 60s window, best realistic non-twist packages):
     "metaSockets": 18, "redSockets": 9, "yellowSockets": 9, "blueSockets": 12
 }</pre>
         <p>Mitigation leads (block/defense 1.2 &gt; dodge 1.06); threat at par (spell power 1.0 = stamina 1.0, spell hit 1.1 just above); avoidance and throughput share the middle. The hit / expertise / spell-hit values are <strong>below-cap</strong> &mdash; a constraint-based optimizer stops chasing them at the cap on its own.</p>
-        <p style="color:#8b949e; font-size:0.9em;"><strong>GearForge 0&ndash;10 sliders</strong> (same ratios, top stat pinned to 10): Block&nbsp;10, Defense&nbsp;10, Spell&nbsp;Hit&nbsp;9, Dodge&nbsp;9, Stamina&nbsp;8, Spell&nbsp;Power&nbsp;8, Agility&nbsp;8, Expertise&nbsp;7&ndash;8, Parry&nbsp;7, Hit&nbsp;5, Strength&nbsp;3, Intellect&nbsp;1, Health&nbsp;1, Armor&nbsp;1, Resilience&nbsp;0, Block&nbsp;Value&nbsp;0. <strong>Armor&nbsp;1 looks low but is correct</strong> &mdash; these are per-point weights and you carry ~15,000 armor, so a 1 still contributes big EHP. Defense/Block at 10 partly duplicate GearForge's uncrittable/uncrushable constraints; drop Defense&rarr;6, Block&rarr;7 to lean more on Stamina/Spell&nbsp;Power/Dodge once you're already legal.</p>
+        <p style="color:#8b949e; font-size:0.9em;">GearForge slider values for this and the other five scales are in the <a href="#gearforge-sliders">GearForge slider settings</a> table below.</p>
+
+        <h4 id="gearforge-sliders">GearForge slider settings (0&ndash;10) for every scale</h4>
+        <p>GearForge uses 0&ndash;10 sliders (0.1 increments) and enforces the hit / spell-hit / expertise and crit/crush caps as <strong>constraints</strong>. Each column is one scale's weights rescaled so its top stat sits at 10, preserving the ratios. Set only the sliders GearForge exposes; leave the rest at 0.</p>
+        <table class="combat-table">
+            <tr><th>Slider</th><th>ST Threat</th><th>ST Threat (capped)</th><th>AoE Threat</th><th>Survival (&rarr;uncrush)</th><th>Survival (EHP)</th><th>Balanced</th></tr>
+            <tr><td>Stamina</td><td>0</td><td>0</td><td>0</td><td>3.9</td><td>8.3</td><td>8.3</td></tr>
+            <tr><td>Spell Power</td><td>9.1</td><td>10</td><td>10</td><td>1.2</td><td>2.5</td><td>8.3</td></tr>
+            <tr><td>Spell Hit</td><td>10</td><td>0</td><td>8.8</td><td>0.4</td><td>0.8</td><td>9.2</td></tr>
+            <tr><td>Hit</td><td>5.2</td><td>0</td><td>2.0</td><td>0.4</td><td>0.8</td><td>5.0</td></tr>
+            <tr><td>Expertise</td><td>6.7</td><td>0</td><td>2.8</td><td>0.8</td><td>1.7</td><td>7.5</td></tr>
+            <tr><td>Strength</td><td>3.3</td><td>3.7</td><td>1.6</td><td>0.1</td><td>0.2</td><td>3.3</td></tr>
+            <tr><td>Agility</td><td>0.3</td><td>0.3</td><td>0.2</td><td>5.7</td><td>7.7</td><td>7.7</td></tr>
+            <tr><td>Intellect</td><td>0.6</td><td>0.7</td><td>0.6</td><td>0.4</td><td>0.8</td><td>1.2</td></tr>
+            <tr><td>Dodge</td><td>0</td><td>0</td><td>0</td><td>6.9</td><td>8.8</td><td>8.8</td></tr>
+            <tr><td>Parry</td><td>0</td><td>0</td><td>0</td><td>5.6</td><td>7.1</td><td>7.1</td></tr>
+            <tr><td>Defense</td><td>0.2</td><td>0.3</td><td>0.2</td><td>7.9</td><td>10</td><td>10</td></tr>
+            <tr><td>Block</td><td>1.8</td><td>2.0</td><td>2.4</td><td>10</td><td>8.5</td><td>10</td></tr>
+            <tr><td>Block Value</td><td>0</td><td>0</td><td>0</td><td>0.2</td><td>0.4</td><td>0.4</td></tr>
+            <tr><td>Health</td><td>0</td><td>0</td><td>0</td><td>0.3</td><td>0.7</td><td>0.7</td></tr>
+            <tr><td>Armor</td><td>0</td><td>0</td><td>0</td><td>0.2</td><td>0.5</td><td>0.5</td></tr>
+            <tr><td>Resilience</td><td>0</td><td>0</td><td>0</td><td>0.2</td><td>0.4</td><td>0.4</td></tr>
+        </table>
+        <p style="color:#8b949e; font-size:0.9em;"><strong>Picking a column (pure-weights workflow).</strong> Driving GearForge by weights alone (no hit / spell-hit cap toggles): use <strong>ST Threat</strong> or <strong>AoE Threat</strong> for threat and <strong>Balanced</strong> for everyday &mdash; they value hit/spell-hit so the optimizer picks some up. Because a linear weight <em>can't see a cap</em>, if a result lands well past the spell-hit cap (17% / ~215 rating) or melee-hit cap (9% / ~142 rating), trim just those two sliders toward the <em>(capped)</em> column &mdash; hit beyond the cap is wasted. For survival, use <strong>Survival (&rarr;uncrush)</strong> until you reach 102.4% combined, then <strong>Survival (EHP)</strong>. <strong>Armor's low value is correct</strong> &mdash; per-point weights &times; ~15,000 armor still yields big EHP. Keep Defense/Block weighted &mdash; with no cap toggles on, those sliders are what get you to uncrittable/uncrushable in the first place.</p>
 
         <h4>How the numbers are derived</h4>
         <p><strong>Threat</strong> &mdash; anchored to the <a href="#sp-vs-ap-analysis">Spell Power vs Physical Stats</a> table, normalized to Spell Power = 1.5: spell hit (1.0&ndash;2.0 TPS below cap) &rarr; 1.65, expertise (0.8&ndash;1.2) &rarr; 1.1, melee hit &rarr; 0.85, Strength (= 2 AP, 0.5&ndash;0.7) &rarr; 0.55.</p>
@@ -4709,6 +4732,10 @@ For comparison (same 60s window, best realistic non-twist packages):
             <h3>2026-06-22 (v3.10) &mdash; Balanced stat-weight scale (#6)</h3>
             <ul>
                 <li>Added a sixth scale to the <a href="#stat-weights">Sixty Upgrades Stat Weights</a> section: <strong>Balanced &mdash; Uncrittable/Uncrushable, then Threat &harr; Survival</strong>, for constraint-based optimizers (e.g. the GearForge addon) that enforce the caps as hard constraints. Built on a 1-to-1 spell-power&hairsp;&asymp;&hairsp;stamina exchange with survival mitigation edging ahead, plus a <strong>GearForge 0&ndash;10 slider</strong> translation. Mirrored in the standalone <code>tankadin sixtyupgrades weights.md</code> companion file.</li>
+            </ul>
+            <h3>2026-06-22 (v3.11) &mdash; GearForge 0&ndash;10 slider table for all six scales</h3>
+            <ul>
+                <li>Added a <a href="#gearforge-sliders">GearForge slider settings</a> table to the <a href="#stat-weights">Sixty Upgrades Stat Weights</a> section: every one of the six scales rescaled to GearForge's 0&ndash;10 sliders (0.1 increments), each scale's top stat pinned to 10, with notes on picking a column for a <strong>pure-weights</strong> GearForge workflow (no hit/spell-hit cap toggles) &mdash; including when to trim hit/spell-hit once a result overshoots the cap. Mirrored in the standalone weights <code>.md</code>.</li>
             </ul>
         </div>
 
