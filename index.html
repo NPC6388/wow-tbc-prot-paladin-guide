@@ -4219,6 +4219,20 @@ For comparison (same 60s window, best realistic non-twist packages):
     "metaSockets": 18, "redSockets": 9, "yellowSockets": 9, "blueSockets": 12
 }</pre>
 
+        <h4>6. Balanced &mdash; Uncrittable/Uncrushable, then Threat &harr; Survival</h4>
+        <p>Built for an optimizer that enforces the caps as <strong>hard constraints</strong> (e.g. the <a href="https://www.curseforge.com/wow/addons/gearforge">GearForge</a> addon): uncrittable and uncrushable are handled by the optimizer, so these weights only govern the <strong>&ldquo;beyond the gates&rdquo; balance</strong>. Built on a 1-to-1 exchange &mdash; <strong>1 spell power (&asymp;1.35 TPS) &asymp; 1 stamina (&asymp;12.8 EHP)</strong> &mdash; with survival <em>mitigation</em> stats (block, defense, dodge) edging just ahead of raw throughput for a survival-leaning balance.</p>
+        <pre class="formula">{
+    "stamina": 1.0, "intellect": 0.15, "strength": 0.4, "agility": 0.92,
+    "dodgeRating": 1.06, "parryRating": 0.85, "defenseRating": 1.2,
+    "blockRating": 1.2, "blockValue": 0.05, "blockValueBonus": 0.05,
+    "hitRating": 0.6, "expertiseRating": 0.9,
+    "spellDamage": 1.0, "spellHitRating": 1.1,
+    "health": 0.08, "resilienceRating": 0.05, "armor": 0.06,
+    "metaSockets": 18, "redSockets": 9, "yellowSockets": 9, "blueSockets": 12
+}</pre>
+        <p>Mitigation leads (block/defense 1.2 &gt; dodge 1.06); threat at par (spell power 1.0 = stamina 1.0, spell hit 1.1 just above); avoidance and throughput share the middle. The hit / expertise / spell-hit values are <strong>below-cap</strong> &mdash; a constraint-based optimizer stops chasing them at the cap on its own.</p>
+        <p style="color:#8b949e; font-size:0.9em;"><strong>GearForge 0&ndash;10 sliders</strong> (same ratios, top stat pinned to 10): Block&nbsp;10, Defense&nbsp;10, Spell&nbsp;Hit&nbsp;9, Dodge&nbsp;9, Stamina&nbsp;8, Spell&nbsp;Power&nbsp;8, Agility&nbsp;8, Expertise&nbsp;7&ndash;8, Parry&nbsp;7, Hit&nbsp;5, Strength&nbsp;3, Intellect&nbsp;1, Health&nbsp;1, Armor&nbsp;1, Resilience&nbsp;0, Block&nbsp;Value&nbsp;0. <strong>Armor&nbsp;1 looks low but is correct</strong> &mdash; these are per-point weights and you carry ~15,000 armor, so a 1 still contributes big EHP. Defense/Block at 10 partly duplicate GearForge's uncrittable/uncrushable constraints; drop Defense&rarr;6, Block&rarr;7 to lean more on Stamina/Spell&nbsp;Power/Dodge once you're already legal.</p>
+
         <h4>How the numbers are derived</h4>
         <p><strong>Threat</strong> &mdash; anchored to the <a href="#sp-vs-ap-analysis">Spell Power vs Physical Stats</a> table, normalized to Spell Power = 1.5: spell hit (1.0&ndash;2.0 TPS below cap) &rarr; 1.65, expertise (0.8&ndash;1.2) &rarr; 1.1, melee hit &rarr; 0.85, Strength (= 2 AP, 0.5&ndash;0.7) &rarr; 0.55.</p>
         <p><strong>Survival</strong> &mdash; from the <a href="#stat-conversions">rating costs</a>, by damage-per-swing prevented. Below the uncrushable cap the bottom of the combat table is a 1.5&times; crush, so block (7.88/1%) saves ~0.114 hit/rating, dodge (18.92/1%) ~0.079, parry (23.65/1%) ~0.063, Defense (5 benefits) ~0.091. At cap the bottom is a 1.0&times; hit and those collapse to ~0.051 / 0.053 / 0.042 / 0.057. Stamina anchors at 1 (1 Sta &asymp; 12.8 HP after Sacred Duty + Combat Expertise + Kings), so health = 1/12.8 &asymp; 0.08; armor &asymp; 0.06.</p>
@@ -4691,6 +4705,10 @@ For comparison (same 60s window, best realistic non-twist packages):
             <h3>2026-06-22 (v3.9) &mdash; Spell-hit ability list correction</h3>
             <ul>
                 <li>Fixed the <a href="#stat-conversions">Stat Conversions</a> spell-hit note: <strong>removed Holy Shield</strong> (its per-block damage fires on a successful block and isn't rolled against the hit table, so spell hit doesn't gate it) and clarified that spell hit covers Consecration, Avenger's Shield, and the spell-school Judgements (Righteousness, Corruption/Vengeance). Added a caveat to the melee-hit note that the weapon-based <strong>Seal/Judgement of Blood roll on the melee table, not spell hit</strong>.</li>
+            </ul>
+            <h3>2026-06-22 (v3.10) &mdash; Balanced stat-weight scale (#6)</h3>
+            <ul>
+                <li>Added a sixth scale to the <a href="#stat-weights">Sixty Upgrades Stat Weights</a> section: <strong>Balanced &mdash; Uncrittable/Uncrushable, then Threat &harr; Survival</strong>, for constraint-based optimizers (e.g. the GearForge addon) that enforce the caps as hard constraints. Built on a 1-to-1 spell-power&hairsp;&asymp;&hairsp;stamina exchange with survival mitigation edging ahead, plus a <strong>GearForge 0&ndash;10 slider</strong> translation. Mirrored in the standalone <code>tankadin sixtyupgrades weights.md</code> companion file.</li>
             </ul>
         </div>
 

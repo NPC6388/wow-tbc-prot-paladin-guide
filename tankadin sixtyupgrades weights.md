@@ -206,6 +206,75 @@ full-avoidance value. This is the steady-state geared scale.
 - Keep an eye on the uncrushable gate: a linear scale will happily trade block away once
   it's "only" worth 1.02 — re-check that you're still ≥102.4% combined after any swap.
 
+## 6. Balanced — Uncrittable/Uncrushable, then Threat ⇄ Survival
+
+Built for an optimizer that enforces the caps as **hard constraints** (e.g. the GearForge
+addon): uncrittable and uncrushable are handled by the optimizer, so these weights only
+govern the **"beyond the gates" balance**. Built on a 1-to-1 exchange — **1 spell power
+(≈1.35 TPS) ≈ 1 stamina (≈12.8 EHP)** — with survival *mitigation* stats (block, defense,
+dodge) edging just ahead of raw throughput for a survival-leaning balance.
+
+```json
+{
+    "stamina": 1.0,
+    "intellect": 0.15,
+    "strength": 0.4,
+    "agility": 0.92,
+    "dodgeRating": 1.06,
+    "parryRating": 0.85,
+    "defenseRating": 1.2,
+    "blockRating": 1.2,
+    "blockValue": 0.05,
+    "blockValueBonus": 0.05,
+    "hitRating": 0.6,
+    "expertiseRating": 0.9,
+    "spellDamage": 1.0,
+    "spellHitRating": 1.1,
+    "health": 0.08,
+    "resilienceRating": 0.05,
+    "armor": 0.06,
+    "metaSockets": 18,
+    "redSockets": 9,
+    "yellowSockets": 9,
+    "blueSockets": 12
+}
+```
+
+- Mitigation leads (block/defense 1.2 > dodge 1.06); threat at par (spell power 1.0 =
+  stamina 1.0, spell hit 1.1 just above); avoidance/throughput share the middle.
+- `hitRating` / `expertiseRating` / `spellHitRating` are **below-cap** values; a
+  constraint-based optimizer stops chasing them at the cap on its own.
+
+### GearForge 0–10 sliders
+
+GearForge uses 0–10 sliders and enforces the hit/spell-hit/expertise caps as constraints.
+Same ratios as the scale above, with the top stat pinned to 10:
+
+| Slider | 0–10 |
+|---|---|
+| Block Rating | 10 |
+| Defense Rating | 10 |
+| Spell Hit | 9 |
+| Dodge Rating | 9 |
+| Stamina | 8 |
+| Spell Power | 8 |
+| Agility | 8 |
+| Expertise | 7–8 |
+| Parry Rating | 7 |
+| Hit Rating | 5 |
+| Strength | 3 |
+| Intellect | 1 |
+| Health | 1 |
+| Armor | 1 |
+| Resilience | 0 |
+| Block Value | 0 |
+
+- **Armor at 1 looks low but is correct** — these are *per-point* weights and you carry
+  ~15,000 armor, so a 1 still contributes big EHP. Cranking it would over-value armor.
+- **Defense/Block at 10 partly duplicate** GearForge's uncrittable/uncrushable constraints;
+  drop **Defense→6, Block→7** to lean more on Stamina/Spell Power/Dodge once you're already
+  legal.
+
 ---
 
 ## How the numbers are derived
